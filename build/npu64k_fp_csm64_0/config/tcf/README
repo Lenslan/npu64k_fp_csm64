@@ -1,0 +1,3 @@
+arc_cfg: npu_arc_se_ad1k_N64_mem_ecc_pg1
+prj    : project_npu_arc_se_ad1k_N64_mem_ecc_pg1
+slices : 16

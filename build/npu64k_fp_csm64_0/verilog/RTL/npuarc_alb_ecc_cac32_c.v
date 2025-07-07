@@ -1,0 +1,173 @@
+// Library ARCv2HS-3.5.999999999
+//----------------------------------------------------------------------------
+//
+// Copyright (C) 2010-2013 Synopsys, Inc. All rights reserved.
+//
+/// SYNOPSYS CONFIDENTIAL - This is an unpublished, proprietary
+// work of Synopsys, Inc., and is fully protected under copyright and
+// trade secret laws. You may not view, use, disclose, copy, or distribute
+// this file or any information contained herein except pursuant to a
+// valid written license from Synopsys, Inc.
+//
+// Certain materials incorporated herein are copyright (C) 2010 - 2011, The
+// University Court of the University of Edinburgh. All Rights Reserved.
+//
+// The entire notice above must be reproduced on all authorized copies.
+//
+//----------------------------------------------------------------------------
+//
+//
+// ===========================================================================
+//
+// Description:
+//  ECC "Check & Correct" module for ARC HS
+//
+//  This .vpp source file must be pre-processed with the Verilog Pre-Processor
+//  (VPP) to produce the equivalent .v file using a command such as:
+//
+//   vpp +q +o halt.vpp
+//
+// ===========================================================================
+
+
+// Configuration-dependent macro definitions
+//
+`include "npuarc_defines.v"
+
+// Set simulation timescale
+//
+`include "const.def"
+
+module npuarc_alb_ecc_cac32_c (
+// spyglass disable_block W193
+// SMD: empty statements
+// SJ:  empty default statements kept and empty statements cause no problems
+
+  input                  clk,
+  input                  rst_a,
+
+  ////////// Input signals /////////////////////////////////////////////////////
+  //
+  input [31:0]           data_in,            // 32-bit data in
+  input [6:0]            ecc_code_in,        // ECC code in
+  
+  input [1:0]            ecc_chk,           // check mode 0: no checking, 
+                                            //            1: ECC, 
+                                            //            2: Pariry
+                                            //            3: Not allowed
+  ///////// Output Signals /////////////////////////////////////////////////////
+  //
+  output wire            ecc_error,         // indicates ECC error detected
+  output wire            sb_error,          // single bit error detected
+  output wire            db_error,          // double bit error detected
+  output wire [`npuarc_SYNDROME_MSB:0]  syndrome,
+  output wire  [31:0]    data_out           // corrected data out   
+  
+  );
+ 
+  reg  [31:0]           i_data;              // corrected data
+
+  wire [31:0]             word_in;
+  wire [`npuarc_SYNDROME_MSB:0]  edc_in_tmp;
+  wire [`npuarc_SYNDROME_MSB:0]  calc_edc;
+  wire                    overall_parity;
+  wire                    is_syndrome_non_zero;
+  wire                    is_unused_syndrome;
+  reg  [`npuarc_SYNDROME_MSB:0]  syndrome_r;
+
+  assign word_in = data_in;
+
+// Since the encoder inverts last two EDC bits before storing them, invert them back before comparing with generated EDC
+  assign edc_in_tmp = {~ecc_code_in[5 ], ~ecc_code_in[4 ], ecc_code_in[3 :0]};
+
+// Pick particular word bits by using masks, then XOR them
+// Masks to select bits to be XORed
+  assign calc_edc[0] = ^(word_in & 32'b10101011010101010101010101011011);
+  assign calc_edc[1] = ^(word_in & 32'b11001101100110011001101001101101);
+  assign calc_edc[2] = ^(word_in & 32'b11110001111000011110001110001110);
+  assign calc_edc[3] = ^(word_in & 32'b00000001111111100000001111110000);
+  assign calc_edc[4] = ^(word_in & 32'b00000001111111111111110000000000);
+  assign calc_edc[5] = ^(word_in & 32'b11111110000000000000000000000000);
+
+// Calculate syndrome by comparing received and calculated EDC bits
+  assign syndrome = edc_in_tmp ^ calc_edc;
+
+// Overall parity check should be zero for no error and even number of bit error cases
+  assign overall_parity = ^{word_in, ecc_code_in};
+
+
+// Check if the syndrome is non zero
+  assign is_syndrome_non_zero = |syndrome;
+
+
+// Checks if the syndrome is unused syndrome
+  assign is_unused_syndrome = (syndrome[5] & (syndrome[4] | syndrome[3]))
+                          | (~(|syndrome[5:4]) & (&syndrome[3:0]));
+
+// If overall parity check fails and syndrome is used, then we flag a single bit error
+// Note that this also covers the case when syndrome is zero, and the overall parity fails
+  assign sb_error = ~is_unused_syndrome & overall_parity & ecc_chk[0];
+
+// Assert double error if syndrome is non-zero and overall parity overall parity does not match
+  assign db_error = ecc_chk[0] & ((is_syndrome_non_zero & ~overall_parity)
+                | (overall_parity & is_unused_syndrome));
+
+  assign ecc_error = (sb_error | db_error);
+
+  always @(posedge clk or posedge rst_a)
+    begin: syndrome_reg_PROC
+      if (rst_a == 1'b1) begin
+        syndrome_r <= {`npuarc_SYNDROME_MSB+1{1'b0}}; 
+      end
+      else begin
+      syndrome_r <= syndrome;
+      end
+  end
+
+  always @*
+  begin: data_out_PROC
+    // Map error syndrome to faulty data bit location and correct it
+
+     i_data = data_in;
+
+        case(syndrome_r)
+        6'd3  :        i_data[0] = ~data_in[0];
+        6'd5  :        i_data[1] = ~data_in[1];
+        6'd6  :        i_data[2] = ~data_in[2];
+        6'd7  :        i_data[3] = ~data_in[3];
+        6'd9  :        i_data[4] = ~data_in[4];
+        6'd10 :        i_data[5] = ~data_in[5];
+        6'd11 :        i_data[6] = ~data_in[6];
+        6'd12 :        i_data[7] = ~data_in[7];
+        6'd13 :        i_data[8] = ~data_in[8];
+        6'd14 :        i_data[9] = ~data_in[9];
+        6'd17 :        i_data[10] = ~data_in[10];
+        6'd18 :        i_data[11] = ~data_in[11];
+        6'd19 :        i_data[12] = ~data_in[12];
+        6'd20 :        i_data[13] = ~data_in[13];
+        6'd21 :        i_data[14] = ~data_in[14];
+        6'd22 :        i_data[15] = ~data_in[15];
+        6'd23 :        i_data[16] = ~data_in[16];
+        6'd24 :        i_data[17] = ~data_in[17];
+        6'd25 :        i_data[18] = ~data_in[18];
+        6'd26 :        i_data[19] = ~data_in[19];
+        6'd27 :        i_data[20] = ~data_in[20];
+        6'd28 :        i_data[21] = ~data_in[21];
+        6'd29 :        i_data[22] = ~data_in[22];
+        6'd30 :        i_data[23] = ~data_in[23];
+        6'd31 :        i_data[24] = ~data_in[24];
+        6'd33 :        i_data[25] = ~data_in[25];
+        6'd34 :        i_data[26] = ~data_in[26];
+        6'd35 :        i_data[27] = ~data_in[27];
+        6'd36 :        i_data[28] = ~data_in[28];
+        6'd37 :        i_data[29] = ~data_in[29];
+        6'd38 :        i_data[30] = ~data_in[30];
+        6'd39 :        i_data[31] = ~data_in[31];
+        endcase
+
+end
+  
+// provided the corrected data out
+assign data_out  = ({(32){sb_error}} & i_data) | ({(32){~sb_error}} & data_in);
+// spyglass enable_block W193
+endmodule 

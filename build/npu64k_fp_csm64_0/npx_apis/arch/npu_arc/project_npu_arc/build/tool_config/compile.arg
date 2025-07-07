@@ -1,0 +1,21 @@
+	-arcv2hs
+	-core4
+	-uarch_rev=3:2
+	-Xcode_density
+	-HL
+	-Xatomic
+	-Xll64
+	-Xunaligned
+	-Xdiv_rem=radix4
+	-Xswap
+	-Xbitscan
+	-Xmpy_option=qmpyh
+	-Xshift_assist
+	-Xbarrel_shifter
+	-Xtimer0
+	-Xrtc
+	-Xstack_check
+	-dcache=32768,64,2,a
+	-Hld_cycles=2
+	-DDCCM_SYSTEM_BASE_CORE0=0x42000000
+

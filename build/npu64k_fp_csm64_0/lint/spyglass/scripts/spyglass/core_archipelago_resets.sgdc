@@ -1,0 +1,9 @@
+current_design core_archipelago
+reset -name "npu_core_rst_a"     -async -value 1
+reset -name "npu_stu0_axi_rst_a" -async -value 1
+reset -name "npu_sl0_rst_a"      -async -value 1
+reset -name "npu_dmi0_rst_a"     -async -value 1
+reset -name "npu_mst0_rst_a"     -async -value 1
+reset -name "arcsync_axi_rst_a"  -async -value 1
+reset -name "arcsync_rst_a"      -async -value 1
+

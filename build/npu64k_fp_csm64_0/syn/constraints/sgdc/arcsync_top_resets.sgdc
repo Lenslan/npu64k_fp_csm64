@@ -1,0 +1,3 @@
+current_design arcsync_top 
+reset -name "arcsync_axi_rst_a" -value 1
+reset -name "arcsync_rst_a" -value 1

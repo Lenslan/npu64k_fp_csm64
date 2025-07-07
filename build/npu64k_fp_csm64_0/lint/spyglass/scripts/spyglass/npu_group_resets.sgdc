@@ -1,0 +1,2 @@
+current_design npu_group
+reset -name "grp_rst_a"     -async -value 1

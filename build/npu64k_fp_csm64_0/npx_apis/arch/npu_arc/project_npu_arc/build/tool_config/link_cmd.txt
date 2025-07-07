@@ -1,0 +1,34 @@
+# SYSTEM memory regions indicate where external memory might be located.
+#   The TCF has no specific knowledge of whether SYSTEM regions contain 
+#   external memory or not.
+# CCMWRAP memory regions indicate unusable portions of the address space
+#   due to CCM memory wrapping into upper addresses beyond its size
+
+MEMORY {
+    SYSTEM0 : ORIGIN = 0x00000000, LENGTH = 0x70000000
+    DCCM    : ORIGIN = 0x70000000, LENGTH = 0x00008000
+#   CCMWRAP0: ORIGIN = 0x70008000, LENGTH = 0x0fff8000
+#   SYSTEM1 : ORIGIN = 0x80000000, LENGTH = 0x40000000
+#   MSS_CLK : ORIGIN = 0xc0000000, LENGTH = 0x00001000
+#   SYSTEM2 : ORIGIN = 0xc0001000, LENGTH = 0x3ffff000
+    }
+SECTIONS {
+    GROUP BLOCK(4) : {
+        .vectors (TEXT) SIZE(DEFINED _IVTSIZE?_IVTSIZE:364): {}
+	.text? : { *('.text$crt*') }
+        * (TEXT): {}
+    	* (LIT): {}
+	} > SYSTEM0
+
+    GROUP BLOCK(4): {
+	/* _SDA_BASE_ computed implicitly */
+        .sdata?: {}
+        .sbss?: {}
+        * (DATA): {}
+        * (BSS): {}
+       .stack ALIGN(4) SIZE(DEFINED _STACKSIZE?_STACKSIZE:65536): {}
+       _end = . ;
+       .heap? ALIGN(4) SIZE(DEFINED _HEAPSIZE?_HEAPSIZE:0): {}
+	} > SYSTEM0
+    }
+

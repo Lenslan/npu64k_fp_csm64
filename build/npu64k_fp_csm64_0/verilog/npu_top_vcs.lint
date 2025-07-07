@@ -1,0 +1,32 @@
+// Lint message IDs of potential interest
+//      Lint-[PCWM-L]   Port connection width missmatch
+//      Lint-[TFIPC-L]  Too few instance port connections
+//      Lint-[CAWM-L]   Continuous assignment Width mismatch
+//      Lint-[FIAAS]    Function call in always @*
+//      Lint-[ONGS]     Output never gets set
+//      Lint-[UI]       Unused input
+//      Lint-[ULCO]     Unequal length in comparison operator
+//      Lint-[VNGS]     Variable never gets set
+//      Lint-[WMIA-L]   Width mismatch in assignment
+//      Lint-[IPDP]     Identifier previously declared as port
+//      Lint-[IWU]      Implicit wire used
+
+// FIXME: TFIPC doesn't work well with a +tree statement
+{
++lint=PCWM-L,TFIPC-L,IPDP,VNGS,ONGS,IWU;
+}
+
+{
+ -error=PCWM-L,IPDP,IPDW;
+ //-error=TFIPC-L,PCWM-L,IPDP,IPDW;
+}
+
+
+
+
+// Disable lint checks in UVM
+{
++file=$VCS_HOME/etc/uvm-1.2/reg/sequences/uvm_reg_mem_hdl_paths_seq.svh;
++file=$VCS_HOME/etc/uvm-1.2/verdi/uvm_verdi_recorder.svh;
+-suppress=VNGS,ONGS,UI,ULCO,CAWM-L;
+}

@@ -1,0 +1,2 @@
+current_design arcsync_top
+sdc_data -file "./constraints.sdc"

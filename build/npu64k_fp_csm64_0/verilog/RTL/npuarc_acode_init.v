@@ -1,0 +1,136 @@
+// Library ARCv2HS-3.5.999999999
+// *SYNOPSYS CONFIDENTIAL*
+// 
+// This is an unpublished, proprietary work of Synopsys, Inc., and is fully 
+// protected under copyright and trade secret laws.  You may not view, use, 
+// disclose, copy, or distribute this file or any information contained herein 
+// except pursuant to a valid written license from Synopsys.
+
+// Certain materials incorporated herein are copyright (C) 2010 - 2011,
+// The University Court of the University of Edinburgh. All Rights Reserved.
+
+    rf_wa0 = 6'b0;  // generated code
+    rf_wenb0 = 1'b0;  // generated code
+    rf_wenb0_64 = 1'b0;  // generated code
+    cc_byp_64_haz = 1'b0;  // generated code
+    has_limm = 1'b0;  // generated code
+    is_16bit = 1'b0;  // generated code
+    sr_op = 1'b0;  // generated code
+    loop_op = 1'b0;  // generated code
+    locked = 1'b0;  // generated code
+    wa0_lpc = 1'b0;  // generated code
+    dslot = 1'b0;  // generated code
+    sleep_op = 1'b0;  // generated code
+    acc_wenb = 1'b0;  // generated code
+    writes_acc = 1'b0;  // generated code
+    lr_op = 1'b0;  // generated code
+    jump = 1'b0;  // generated code
+    load = 1'b0;  // generated code
+    pref = 1'b0;  // generated code
+    store = 1'b0;  // generated code
+    uop_prol = 1'b0;  // generated code
+    rf_wa1 = 6'b0;  // generated code
+    rf_wenb1 = 1'b0;  // generated code
+    rf_wenb1_64 = 1'b0;  // generated code
+    signed_op = 1'b0;  // generated code
+    double_size = 1'b0;  // generated code
+    half_size = 1'b0;  // generated code
+    byte_size = 1'b0;  // generated code
+    rtie_op = 1'b0;  // generated code
+    enter_op = 1'b0;  // generated code
+    leave_op = 1'b0;  // generated code
+    trap_op = 1'b0;  // generated code
+    sync_op = 1'b0;  // generated code
+    brk_op = 1'b0;  // generated code
+    invalid_instr = 1'b0;  // generated code
+    rgf_link = 1'b0;  // generated code
+    prod_sign = 1'b0;  // generated code
+    macu = 1'b0;  // generated code
+    quad_op = 1'b0;  // generated code
+    acc_op = 1'b0;  // generated code
+    vector_op = 1'b0;  // generated code
+    dual_op = 1'b0;  // generated code
+    mpy_op = 1'b0;  // generated code
+    z_wen = 1'b0;  // generated code
+    n_wen = 1'b0;  // generated code
+    c_wen = 1'b0;  // generated code
+    v_wen = 1'b0;  // generated code
+    kernel_op = 1'b0;  // generated code
+    flag_op = 1'b0;  // generated code
+    bcc = 1'b0;  // generated code
+    link = 1'b0;  // generated code
+    brcc_bbit = 1'b0;  // generated code
+    cache_byp = 1'b0;  // generated code
+    slow_op = 1'b0;  // generated code
+    fast_op = 1'b0;  // generated code
+    div_op = 1'b0;  // generated code
+    btab_op = 1'b0;  // generated code
+    ei_op = 1'b0;  // generated code
+    in_eslot = 1'b0;  // generated code
+    rel_branch = 1'b0;  // generated code
+    illegal_operand = 1'b0;  // generated code
+    swap_op = 1'b0;  // generated code
+    setcc_op = 1'b0;  // generated code
+    cc_field = 3'b0;  // generated code
+    q_field = 5'b0;  // generated code
+    dest_cr_is_ext = 1'b0;  // generated code
+    add_op = 1'b0;  // generated code
+    and_op = 1'b0;  // generated code
+    or_op = 1'b0;  // generated code
+    xor_op = 1'b0;  // generated code
+    mov_op = 1'b0;  // generated code
+    with_carry = 1'b0;  // generated code
+    simple_shift_op = 1'b0;  // generated code
+    left_shift = 1'b0;  // generated code
+    rotate_op = 1'b0;  // generated code
+    inv_src1 = 1'b0;  // generated code
+    inv_src2 = 1'b0;  // generated code
+    bit_op = 1'b0;  // generated code
+    mask_op = 1'b0;  // generated code
+    src2_mask_sel = 1'b0;  // generated code
+    uop_commit = 1'b0;  // generated code
+    uop_epil = 1'b0;  // generated code
+    uop_excpn = 1'b0;  // generated code
+    predicate = 1'b0;  // generated code
+    rf_renb0 = 1'b0;  // generated code
+    rf_renb1 = 1'b0;  // generated code
+    rf_renb0_64 = 1'b0;  // generated code
+    rf_renb1_64 = 1'b0;  // generated code
+    rf_ra0 = 6'b0;  // generated code
+    rf_ra1 = 6'b0;  // generated code
+    jli_src0 = 1'b0;  // generated code
+    uop_inst = 1'b0;  // generated code
+    vec_shimm = 1'b0;  // generated code
+    iprot_viol = 1'b0;  // generated code
+    dmb_op = 1'b0;  // generated code
+    dmb_type = 3'b0;  // generated code
+    force_cin = 1'b0;  // generated code
+    opd3_sel = 1'b0;  // generated code
+    multi_op = 1'b0;  // generated code
+    abs_op = 1'b0;  // generated code
+    min_op = 1'b0;  // generated code
+    max_op = 1'b0;  // generated code
+    norm_op = 1'b0;  // generated code
+    ldi_src0 = 1'b0;  // generated code
+    pre_addr = 1'b0;  // generated code
+    stimm_op = 1'b0;  // generated code
+    src2_sh1 = 1'b0;  // generated code
+    src2_sh2 = 1'b0;  // generated code
+    src2_sh3 = 1'b0;  // generated code
+    barrel_shift_op = 1'b0;  // generated code
+    opds_in_x1 = 1'b0;  // generated code
+    agu_uses_r0 = 1'b0;  // generated code
+    opds_in_sa = 1'b0;  // generated code
+    limm0_64 = 1'b0;  // generated code
+    limm1_64 = 1'b0;  // generated code
+    may_graduate = 1'b0;  // generated code
+    agu_uses_r1 = 1'b0;  // generated code
+    reads_acc = 1'b0;  // generated code
+    dsync_op = 1'b0;  // generated code
+    src2_shifts = 1'b0;  // generated code
+    sel_shimm = 1'b0;  // generated code
+    shimm = 32'b0;  // generated code
+    limm_r0 = 1'b0;  // generated code
+    limm_r1 = 1'b0;  // generated code
+    offset = 32'b0;  // generated code
+

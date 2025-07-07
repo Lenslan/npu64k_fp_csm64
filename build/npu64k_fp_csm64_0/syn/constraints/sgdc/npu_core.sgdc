@@ -1,0 +1,2 @@
+current_design npu_core
+sdc_data -file "./constraints.sdc"

@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<com.arc.ipmodel.ComponentInst instance="0" globalInstance="3" type="com.arc.templates.project.npu64k_fp_csm64_0.1_0" folded="false">
+    <java.util.ArrayList _name_="links">
+        <com.arc.ipmodel.LinkInst _name_="entry" name="link_1" type="com.arc.links.Tests">
+            <java.util.ArrayList _name_="ends">
+                <com.arc.ipmodel.components.LinkEnd _name_="entry" site="tests_child">
+                    <java.util.LinkedList _name_="path">
+                        <com.arc.ipmodel.components.PathElement _name_="entry" name="System"/>
+                    </java.util.LinkedList>
+                </com.arc.ipmodel.components.LinkEnd>
+                <com.arc.ipmodel.components.LinkEnd _name_="entry" site="tests_parent">
+                    <java.util.LinkedList _name_="path"/>
+                </com.arc.ipmodel.components.LinkEnd>
+            </java.util.ArrayList>
+        </com.arc.ipmodel.LinkInst>
+        <com.arc.ipmodel.LinkInst _name_="entry" name="link_2" type="com.arc.links.Verilog">
+            <java.util.ArrayList _name_="ends">
+                <com.arc.ipmodel.components.LinkEnd _name_="entry" site="verilog_child">
+                    <java.util.LinkedList _name_="path">
+                        <com.arc.ipmodel.components.PathElement _name_="entry" name="System"/>
+                    </java.util.LinkedList>
+                </com.arc.ipmodel.components.LinkEnd>
+                <com.arc.ipmodel.components.LinkEnd _name_="entry" site="verilog_parent">
+                    <java.util.LinkedList _name_="path"/>
+                </com.arc.ipmodel.components.LinkEnd>
+            </java.util.ArrayList>
+        </com.arc.ipmodel.LinkInst>
+        <com.arc.ipmodel.LinkInst _name_="entry" name="link_3" type="com.arc.links.Project">
+            <java.util.ArrayList _name_="ends">
+                <com.arc.ipmodel.components.LinkEnd _name_="entry" site="project_child">
+                    <java.util.LinkedList _name_="path">
+                        <com.arc.ipmodel.components.PathElement _name_="entry" name="System"/>
+                    </java.util.LinkedList>
+                </com.arc.ipmodel.components.LinkEnd>
+                <com.arc.ipmodel.components.LinkEnd _name_="entry" site="project_parent">
+                    <java.util.LinkedList _name_="path"/>
+                </com.arc.ipmodel.components.LinkEnd>
+            </java.util.ArrayList>
+        </com.arc.ipmodel.LinkInst>
+        <com.arc.ipmodel.LinkInst _name_="entry" name="link_4" type="com.arc.links.Scripts">
+            <java.util.ArrayList _name_="ends">
+                <com.arc.ipmodel.components.LinkEnd _name_="entry" site="scripts_child">
+                    <java.util.LinkedList _name_="path">
+                        <com.arc.ipmodel.components.PathElement _name_="entry" name="System"/>
+                    </java.util.LinkedList>
+                </com.arc.ipmodel.components.LinkEnd>
+                <com.arc.ipmodel.components.LinkEnd _name_="entry" site="scripts_parent">
+                    <java.util.LinkedList _name_="path"/>
+                </com.arc.ipmodel.components.LinkEnd>
+            </java.util.ArrayList>
+        </com.arc.ipmodel.LinkInst>
+        <com.arc.ipmodel.LinkInst _name_="entry" name="link_5" type="com.arc.links.Software">
+            <java.util.ArrayList _name_="ends">
+                <com.arc.ipmodel.components.LinkEnd _name_="entry" site="software_child">
+                    <java.util.LinkedList _name_="path">
+                        <com.arc.ipmodel.components.PathElement _name_="entry" name="System"/>
+                    </java.util.LinkedList>
+                </com.arc.ipmodel.components.LinkEnd>
+                <com.arc.ipmodel.components.LinkEnd _name_="entry" site="software_parent">
+                    <java.util.LinkedList _name_="path"/>
+                </com.arc.ipmodel.components.LinkEnd>
+            </java.util.ArrayList>
+        </com.arc.ipmodel.LinkInst>
+        <com.arc.ipmodel.LinkInst _name_="entry" name="link_6" type="com.arc.links.System">
+            <java.util.ArrayList _name_="ends">
+                <com.arc.ipmodel.components.LinkEnd _name_="entry" site="system_parent">
+                    <java.util.LinkedList _name_="path">
+                        <com.arc.ipmodel.components.PathElement _name_="entry" name="System"/>
+                    </java.util.LinkedList>
+                </com.arc.ipmodel.components.LinkEnd>
+                <com.arc.ipmodel.components.LinkEnd _name_="entry" site="system_child">
+                    <java.util.LinkedList _name_="path"/>
+                </com.arc.ipmodel.components.LinkEnd>
+            </java.util.ArrayList>
+        </com.arc.ipmodel.LinkInst>
+        <com.arc.ipmodel.LinkInst _name_="entry" name="link_7" type="com.arc.links.Processor">
+            <java.util.ArrayList _name_="ends">
+                <com.arc.ipmodel.components.LinkEnd _name_="entry" site="processor_parent">
+                    <java.util.LinkedList _name_="path">
+                        <com.arc.ipmodel.components.PathElement _name_="entry" name="System"/>
+                        <com.arc.ipmodel.components.PathElement _name_="entry" name="NPX6"/>
+                    </java.util.LinkedList>
+                </com.arc.ipmodel.components.LinkEnd>
+                <com.arc.ipmodel.components.LinkEnd _name_="entry" site="processor_child">
+                    <java.util.LinkedList _name_="path">
+                        <com.arc.ipmodel.components.PathElement _name_="entry" name="System"/>
+                    </java.util.LinkedList>
+                </com.arc.ipmodel.components.LinkEnd>
+            </java.util.ArrayList>
+        </com.arc.ipmodel.LinkInst>
+        <com.arc.ipmodel.LinkInst _name_="entry" name="link_8" type="com.arc.links.Project">
+            <java.util.ArrayList _name_="ends">
+                <com.arc.ipmodel.components.LinkEnd _name_="entry" site="project_child">
+                    <java.util.LinkedList _name_="path">
+                        <com.arc.ipmodel.components.PathElement _name_="entry" name="System"/>
+                        <com.arc.ipmodel.components.PathElement _name_="entry" name="NPX6"/>
+                    </java.util.LinkedList>
+                </com.arc.ipmodel.components.LinkEnd>
+                <com.arc.ipmodel.components.LinkEnd _name_="entry" site="project_parent">
+                    <java.util.LinkedList _name_="path"/>
+                </com.arc.ipmodel.components.LinkEnd>
+            </java.util.ArrayList>
+        </com.arc.ipmodel.LinkInst>
+        <com.arc.ipmodel.LinkInst _name_="entry" name="link_9" type="com.arc.links.Scripts">
+            <java.util.ArrayList _name_="ends">
+                <com.arc.ipmodel.components.LinkEnd _name_="entry" site="scripts_child">
+                    <java.util.LinkedList _name_="path">
+                        <com.arc.ipmodel.components.PathElement _name_="entry" name="System"/>
+                        <com.arc.ipmodel.components.PathElement _name_="entry" name="NPX6"/>
+                    </java.util.LinkedList>
+                </com.arc.ipmodel.components.LinkEnd>
+                <com.arc.ipmodel.components.LinkEnd _name_="entry" site="scripts_parent">
+                    <java.util.LinkedList _name_="path">
+                        <com.arc.ipmodel.components.PathElement _name_="entry" name="System"/>
+                    </java.util.LinkedList>
+                </com.arc.ipmodel.components.LinkEnd>
+            </java.util.ArrayList>
+        </com.arc.ipmodel.LinkInst>
+        <com.arc.ipmodel.LinkInst _name_="entry" name="link_10" type="com.arc.links.System">
+            <java.util.ArrayList _name_="ends">
+                <com.arc.ipmodel.components.LinkEnd _name_="entry" site="system_child">
+                    <java.util.LinkedList _name_="path">
+                        <com.arc.ipmodel.components.PathElement _name_="entry" name="System"/>
+                        <com.arc.ipmodel.components.PathElement _name_="entry" name="NPX6"/>
+                    </java.util.LinkedList>
+                </com.arc.ipmodel.components.LinkEnd>
+                <com.arc.ipmodel.components.LinkEnd _name_="entry" site="system_parent">
+                    <java.util.LinkedList _name_="path">
+                        <com.arc.ipmodel.components.PathElement _name_="entry" name="System"/>
+                    </java.util.LinkedList>
+                </com.arc.ipmodel.components.LinkEnd>
+            </java.util.ArrayList>
+        </com.arc.ipmodel.LinkInst>
+        <com.arc.ipmodel.LinkInst _name_="entry" name="link_11" type="com.arc.links.Tests">
+            <java.util.ArrayList _name_="ends">
+                <com.arc.ipmodel.components.LinkEnd _name_="entry" site="tests_child">
+                    <java.util.LinkedList _name_="path">
+                        <com.arc.ipmodel.components.PathElement _name_="entry" name="System"/>
+                        <com.arc.ipmodel.components.PathElement _name_="entry" name="NPX6"/>
+                    </java.util.LinkedList>
+                </com.arc.ipmodel.components.LinkEnd>
+                <com.arc.ipmodel.components.LinkEnd _name_="entry" site="tests_parent">
+                    <java.util.LinkedList _name_="path">
+                        <com.arc.ipmodel.components.PathElement _name_="entry" name="System"/>
+                    </java.util.LinkedList>
+                </com.arc.ipmodel.components.LinkEnd>
+            </java.util.ArrayList>
+        </com.arc.ipmodel.LinkInst>
+        <com.arc.ipmodel.LinkInst _name_="entry" name="link_12" type="com.arc.links.Verilog">
+            <java.util.ArrayList _name_="ends">
+                <com.arc.ipmodel.components.LinkEnd _name_="entry" site="verilog_child">
+                    <java.util.LinkedList _name_="path">
+                        <com.arc.ipmodel.components.PathElement _name_="entry" name="System"/>
+                        <com.arc.ipmodel.components.PathElement _name_="entry" name="NPX6"/>
+                    </java.util.LinkedList>
+                </com.arc.ipmodel.components.LinkEnd>
+                <com.arc.ipmodel.components.LinkEnd _name_="entry" site="verilog_parent">
+                    <java.util.LinkedList _name_="path">
+                        <com.arc.ipmodel.components.PathElement _name_="entry" name="System"/>
+                    </java.util.LinkedList>
+                </com.arc.ipmodel.components.LinkEnd>
+            </java.util.ArrayList>
+        </com.arc.ipmodel.LinkInst>
+        <com.arc.ipmodel.LinkInst _name_="entry" name="link_13" type="com.arc.links.Verilog">
+            <java.util.ArrayList _name_="ends">
+                <com.arc.ipmodel.components.LinkEnd _name_="entry" site="verilog_child">
+                    <java.util.LinkedList _name_="path">
+                        <com.arc.ipmodel.components.PathElement _name_="entry" name="System"/>
+                        <com.arc.ipmodel.components.PathElement _name_="entry" name="Tool Configuration"/>
+                    </java.util.LinkedList>
+                </com.arc.ipmodel.components.LinkEnd>
+                <com.arc.ipmodel.components.LinkEnd _name_="entry" site="verilog_parent">
+                    <java.util.LinkedList _name_="path">
+                        <com.arc.ipmodel.components.PathElement _name_="entry" name="System"/>
+                    </java.util.LinkedList>
+                </com.arc.ipmodel.components.LinkEnd>
+            </java.util.ArrayList>
+        </com.arc.ipmodel.LinkInst>
+        <com.arc.ipmodel.LinkInst _name_="entry" name="link_14" type="com.arc.links.Processor">
+            <java.util.ArrayList _name_="ends">
+                <com.arc.ipmodel.components.LinkEnd _name_="entry" site="processor_child">
+                    <java.util.LinkedList _name_="path">
+                        <com.arc.ipmodel.components.PathElement _name_="entry" name="System"/>
+                        <com.arc.ipmodel.components.PathElement _name_="entry" name="Tool Configuration"/>
+                    </java.util.LinkedList>
+                </com.arc.ipmodel.components.LinkEnd>
+                <com.arc.ipmodel.components.LinkEnd _name_="entry" site="processor_parent">
+                    <java.util.LinkedList _name_="path">
+                        <com.arc.ipmodel.components.PathElement _name_="entry" name="System"/>
+                        <com.arc.ipmodel.components.PathElement _name_="entry" name="NPX6"/>
+                    </java.util.LinkedList>
+                </com.arc.ipmodel.components.LinkEnd>
+            </java.util.ArrayList>
+        </com.arc.ipmodel.LinkInst>
+        <com.arc.ipmodel.LinkInst _name_="entry" name="link_15" type="com.arc.links.Project">
+            <java.util.ArrayList _name_="ends">
+                <com.arc.ipmodel.components.LinkEnd _name_="entry" site="project_child">
+                    <java.util.LinkedList _name_="path">
+                        <com.arc.ipmodel.components.PathElement _name_="entry" name="System"/>
+                        <com.arc.ipmodel.components.PathElement _name_="entry" name="Tool Configuration"/>
+                    </java.util.LinkedList>
+                </com.arc.ipmodel.components.LinkEnd>
+                <com.arc.ipmodel.components.LinkEnd _name_="entry" site="project_parent">
+                    <java.util.LinkedList _name_="path"/>
+                </com.arc.ipmodel.components.LinkEnd>
+            </java.util.ArrayList>
+        </com.arc.ipmodel.LinkInst>
+        <com.arc.ipmodel.LinkInst _name_="entry" name="link_16" type="com.arc.links.Scripts">
+            <java.util.ArrayList _name_="ends">
+                <com.arc.ipmodel.components.LinkEnd _name_="entry" site="scripts_child">
+                    <java.util.LinkedList _name_="path">
+                        <com.arc.ipmodel.components.PathElement _name_="entry" name="System"/>
+                        <com.arc.ipmodel.components.PathElement _name_="entry" name="Tool Configuration"/>
+                    </java.util.LinkedList>
+                </com.arc.ipmodel.components.LinkEnd>
+                <com.arc.ipmodel.components.LinkEnd _name_="entry" site="scripts_parent">
+                    <java.util.LinkedList _name_="path">
+                        <com.arc.ipmodel.components.PathElement _name_="entry" name="System"/>
+                    </java.util.LinkedList>
+                </com.arc.ipmodel.components.LinkEnd>
+            </java.util.ArrayList>
+        </com.arc.ipmodel.LinkInst>
+        <com.arc.ipmodel.LinkInst _name_="entry" name="link_17" type="com.arc.links.System">
+            <java.util.ArrayList _name_="ends">
+                <com.arc.ipmodel.components.LinkEnd _name_="entry" site="system_child">
+                    <java.util.LinkedList _name_="path">
+                        <com.arc.ipmodel.components.PathElement _name_="entry" name="System"/>
+                        <com.arc.ipmodel.components.PathElement _name_="entry" name="Tool Configuration"/>
+                    </java.util.LinkedList>
+                </com.arc.ipmodel.components.LinkEnd>
+                <com.arc.ipmodel.components.LinkEnd _name_="entry" site="system_parent">
+                    <java.util.LinkedList _name_="path">
+                        <com.arc.ipmodel.components.PathElement _name_="entry" name="System"/>
+                    </java.util.LinkedList>
+                </com.arc.ipmodel.components.LinkEnd>
+            </java.util.ArrayList>
+        </com.arc.ipmodel.LinkInst>
+    </java.util.ArrayList>
+</com.arc.ipmodel.ComponentInst>

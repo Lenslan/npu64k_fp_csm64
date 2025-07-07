@@ -1,0 +1,12 @@
+- Multi-slice config
+  - Synthesis: User should use npu_slice_top.sdc, npu_top.sdc, arcsync_top.sdc(arcsync_top_safety_controller.sdc for safety config)
+  - PrimeTime: User should use npu_top.sdc and npu_top_pt.sdc for npu_top, arcsync_top.sdc(arcsync_top_safety_controller.sdc)
+    and arcsync_top_pt.sdc(arcsync_top_safety_controller_pt.sdc) for arcsync_top(arcsync_top_safety_controller)
+- Single-slice config
+  - Synthesis: User should use npu_top.sdc, arcsync_top.sdc(arcsync_top_safety_controller.sdc for safety config)
+  - PrimeTime: User should use npu_top.sdc and npu_top_pt.sdc for npu_top, arcsync_top.sdc(arcsync_top_safety_controller.sdc)
+    and arcsync_top_pt.sdc(arcsync_top_safety_controller_pt.sdc) for arcsync_top(arcsync_top_safety_controller)
+
+- Note:
+  - The additional checks in npu_top_pt.sdc/arcsync_top_pt.sdc(arcsync_top_pt.sdc) may not be required for non safety build which is expected.
+    Please review the *_pt.sdc before using it in PT.

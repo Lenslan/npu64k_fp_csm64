@@ -1,0 +1,2 @@
+System: "Please make sure that env variable LD_LIBRARY_PATH invokes $ARCHITECT_ROOT/lib/linux_x86_64 before $ARCHITECT_ROOT/lib/linux for proper 64-bit VCS compilation."
+System: "NOTE: you are using the arc_dev license."

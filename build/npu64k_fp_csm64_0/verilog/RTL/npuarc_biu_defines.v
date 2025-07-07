@@ -1,0 +1,1214 @@
+`define npuarc_BIU_SUPPORT_L2C_BYPASS     0
+`define npuarc_BIU_LQWQ_COMBINED          1
+`define npuarc_BIU_HAS_AUX 0
+`define npuarc_BIU_HAS_SLC 0
+`define npuarc_BIU_SUPPORT_B0 0
+`define npuarc_BIU_PER0_BUS_ADD_PIPE_STAGE 0
+`define npuarc_BIU_PER1_BUS_ADD_PIPE_STAGE 0
+`define npuarc_BIU_MEM_BUS_ADD_PIPE_STAGE 0
+`define npuarc_BIU_MEM_BUS_STYLE_COMBINED 0
+`define npuarc_BIU_MEM_BUS_STYLE_SEPRATED 1
+`define npuarc_BIU_PER_BUS_STYLE_COMBINED 0
+`define npuarc_BIU_PER_BUS_STYLE_SEPRATED 1
+`define npuarc_BIU_MEM_BUS_STYLE          0
+`define npuarc_BIU_PER0_BUS_STYLE         0
+`define npuarc_BIU_PER0_BUS_STYLE_INT     0
+`define npuarc_BIU_PER1_BUS_STYLE         0
+`define npuarc_BIU_PER0_DEDICATED_BUS     0
+`define npuarc_BIU_PER1_DEDICATED_BUS     0
+`define npuarc_BIU_AXI_BUS_LOCK_W               2
+`define npuarc_BIU_AXI_BUS_PROT_W               3
+`define npuarc_BIU_AXI_BUS_BURS_W               2
+`define npuarc_BIU_AXI_BUS_ASIZ_W               3
+`define npuarc_BIU_AXI_BUS_RRSP_W               2
+`define npuarc_BIU_AXI_BUS_CACH_W               4
+`define npuarc_BIU_AXI_BUS_ALEN_W               4
+`define npuarc_BIU_AXI_BUS_BRSP_W               2
+`define npuarc_BIU_AHB_BUS_TRNS_W               2
+`define npuarc_BIU_AHB_BUS_SIZE_W               3
+`define npuarc_BIU_AHB_BUS_BURS_W               3
+`define npuarc_BIU_AHB_BUS_PROT_W               4
+`define npuarc_BIU_BVC_BUS_PLEN_W               8
+`define npuarc_BIU_BVC_BUS_CMD_W                2
+`define npuarc_BIU_IBP_BUS_DSIZ_W               3
+`define npuarc_BIU_IBP_BUS_BSIZ_W               4
+`define npuarc_BIU_IBP_BUS_PROT_W               2
+`define npuarc_BIU_IBP_BUS_CACH_W               4
+`define npuarc_BIU_SCU_IO_RD_IBP_PFX   scu_io_rbu_
+`define npuarc_BIU_SCU_IO_WR_IBP_PFX   scu_io_wbu_
+`define npuarc_BIU_IFU_IBP_PFX      ifu_
+`define npuarc_BIU_LQ_IBP_PFX       lq_
+`define npuarc_BIU_WQ_IBP_PFX       wq_
+`define npuarc_BIU_LQWQ_IBP_PFX     lqwq_
+`define npuarc_BIU_DMU_RD_IBP_PFX   dmu_rbu_
+`define npuarc_BIU_DMU_WR_IBP_PFX   dmu_wbu_
+`define npuarc_BIU_PER0_IBP_PFX     per0_
+`define npuarc_BIU_PER0_RD_IBP_PFX  per0_rbu_
+`define npuarc_BIU_PER0_WR_IBP_PFX  per0_wbu_
+`define npuarc_BIU_PER1_IBP_PFX     per1_
+`define npuarc_BIU_PER1_RD_IBP_PFX  per1_rbu_
+`define npuarc_BIU_PER1_WR_IBP_PFX  per1_wbu_
+`define npuarc_BIU_SCU_RD_IBP_PFX   scu_rbu_
+`define npuarc_BIU_SCU_WR_IBP_PFX   scu_wbu_
+`define npuarc_BIU_L2_RD_IBP_PFX    l2_rbu_
+`define npuarc_BIU_L2_WR_IBP_PFX    l2_wbu_
+`define npuarc_BIU_CDMA2LBU_BUS_PFX  dma_lbu_
+`define npuarc_BIU_CDMA2IOC_BUS_PFX  dma_ioc_
+`define npuarc_BIU_CDMA2CCM_BUS_PFX  dma_ccm_
+`define npuarc_BIU_CDMA2CSM_BUS_PFX  dma_ioc_
+`define npuarc_BIU_CDMA2LBU_CVT_BUS_PFX  dma_lbu_cvt_
+`define npuarc_BIU_CDMA2IOC_CVT_BUS_PFX  dma_ioc_cvt_
+`define npuarc_BIU_CDMA2CCM_CVT_BUS_PFX  dma_ccm_cvt_
+`define npuarc_BIU_XDMA_IOC_IBP_PFX stu_ioc_
+`define npuarc_BIU_XDMA_IOC_IBP_DW  64
+`define npuarc_BIU_XDMA_ICCM_IBP_PFX stu_iccm_
+`define npuarc_BIU_XDMA_DCCM_IBP_PFX stu_dccm_
+`define npuarc_BIU_XDMA_SCCM_IBP_PFX stu_sccm_
+`define npuarc_BIU_CDMA_ICCM_IBP_PFX dma_iccm_
+`define npuarc_BIU_CDMA_DCCM_IBP_PFX dma_ccm_cvt_
+`define npuarc_BIU_CDMA_SCCM_IBP_PFX dma_ccm_cvt_
+`define npuarc_BIU_SCCM_BUS_PFX      sccm_
+`define npuarc_BIU_ICCM_BUS_PFX      iccm_
+`define npuarc_BIU_DCCM_BUS_PFX      dccm_
+`define npuarc_BIU_VCCM_BUS_PFX      vmem_
+`define npuarc_BIU_ICCM0_IBP_PFX     iccm0_dmi_
+`define npuarc_BIU_ICCM1_IBP_PFX     iccm1_dmi_
+`define npuarc_BIU_DCCM_IBP_PFX      dccm_dmi_
+`define npuarc_BIU_VCCM_IBP_PFX      vmem_dmi_
+`define npuarc_BIU_VCCM_WIDE_IBP_PFX vmem_wide_
+`define npuarc_BIU_IOC_IBP_PFX       dma_
+`define npuarc_BIU_OBU_BUS_PFX       obu_
+`define npuarc_BIU_IOC_BUS_PFX       ioc_
+`define npuarc_BIU2LLM_IBP0_PFX    biu2csm_0_
+`define npuarc_BIU2LLM_IBP1_PFX    biu2csm_1_
+`define npuarc_BIU2LLM_IBP2_PFX    biu2csm_2_
+`define npuarc_BIU2LLM_IBP3_PFX    biu2csm_3_
+`define npuarc_BIU2LLM_IBP4_PFX    biu2csm_4_
+`define npuarc_BIU2LLM_IBP5_PFX    biu2csm_5_
+`define npuarc_BIU2LLM_IBP6_PFX    biu2csm_6_
+`define npuarc_BIU2LLM_IBP7_PFX    biu2csm_7_
+`define npuarc_BIU_BUS_OPTION_AXI               0
+`define npuarc_BIU_BUS_OPTION_AHB_LITE          1
+`define npuarc_BIU_BUS_OPTION_BVCI               2
+`define npuarc_BIU_PER_BUS_NUM                  0
+`define npuarc_BIU_PER0_BUS_OPTION              0
+`define npuarc_BIU_PER0_BUS_DATA_W              32
+`define npuarc_BIU_PER1_BUS_OPTION              0
+`define npuarc_BIU_PER1_BUS_DATA_W              32
+`define npuarc_BIU_IBP2AXI_ZERODEEP             0
+`define npuarc_BIU_PER0_BUS_OPTION_INT          0
+`define npuarc_BIU_PER0_BUS_DATA_W_INT          32
+`define npuarc_BIU_PER0_DEDICATED_BUS_INT       0
+`define npuarc_BIU_PER0_BUS_ADD_PIPE_STAGE_INT  0
+`define npuarc_BIU_OBU_BUS_NUM                  0
+`define npuarc_BIU_OBU_BUS_OPTION               0
+`define npuarc_BIU_OBU_BUS_DATA_W               64
+`define npuarc_BIU_OBU_BUS_ID_W                 16
+`define npuarc_BIU_MEM_BUS_NUM                  1
+`define npuarc_BIU_MEM_BUS_OPTION               0
+`define npuarc_BIU_MEM_BUS_DATA_W               64
+`define npuarc_BIU_NEED_IDCCM_DMI                1
+`define npuarc_BIU_NEED_VCCM_DMI                 0
+`define npuarc_BIU_UDMI_BUS_NUM                  0
+`define npuarc_BIU_UDMI_ACCESS_PER               0
+`define npuarc_BIU_UDMI_ACCESS_PER1              0
+`define npuarc_BIU_UDMI_BUS_OPTION               0
+`define npuarc_BIU_UDMI_BUS_DATA_W               64
+`define npuarc_BIU_UDMI_BUS_ID_W                 16
+`define npuarc_BIU_UDMI_BUS_PFX                  udmi_
+`define npuarc_BIU_UDMI_ADD_PIPE_STAGE           0
+`define npuarc_BIU_UDMI_BUS_ADDR_W               40
+`define npuarc_BIU_UDMI_IOC_FULL_COHERENT        0
+`define npuarc_BIU_UDMI_SUPPORT_IOC              0
+`define npuarc_BIU_DMI_BUS_NUM_GUI               1
+`define npuarc_BIU_DMI_BUS_NUM                   1
+`define npuarc_BIU_VCCM_DMI_BUS_NUM              0
+`define npuarc_BIU_DMI_BUS_OPTION                0
+`define npuarc_BIU_DMI_BUS_DATA_W                64
+`define npuarc_BIU_DMI_BUS_ID_W                  16
+`define npuarc_BIU_IOC_BUS_NUM_GUI               0
+`define npuarc_BIU_TOTAL_IOC_BUS_NUM             0
+`define npuarc_BIU_IOC_BUS_NUM                   0
+`define npuarc_BIU_XNN_IOC_BUS_NUM               0
+`define npuarc_BIU_IOC_BUS_OPTION                0
+`define npuarc_BIU_IOC_BUS_DATA_W                64
+`define npuarc_BIU_IOC_BUS_ID_W      16
+`define npuarc_BIU_SUPPORT_XDMA      0
+`define npuarc_BIU_SUPPORT_LLM_DB      0
+`define npuarc_BIU_SUPPORT_CDMA         0
+`define npuarc_BIU_CDMA2LBU_BUS_AW        40
+`define npuarc_BIU_CDMA2LBU_BUS_IDW       8
+`define npuarc_BIU_CDMA2LBU_BUS_TYPE      axi
+`define npuarc_BIU_CDMA2CSM_BUS_AW        40
+`define npuarc_BIU_CDMA2CSM_BUS_IDW       8
+`define npuarc_BIU_CDMA2CSM_BUS_TYPE      axi
+`define npuarc_BIU_CDMA2IOC_BUS_AW        40
+`define npuarc_BIU_CDMA2IOC_BUS_IDW       8
+`define npuarc_BIU_CDMA2IOC_BUS_TYPE      axi
+`define npuarc_BIU_CDMA2CCM_BUS_AW        40
+`define npuarc_BIU_CDMA2CCM_BUS_IDW       0
+`define npuarc_BIU_CDMA2CCM_BUS_TYPE      ibp
+`define npuarc_BIU_CDMA2CCM_BUS_RGON_NUM  1
+`define npuarc_BIU_CDMA2CCM_BUS_RGON_W    1
+`define npuarc_BIU_AXI_MST_SUPPORT_ID      1
+`define npuarc_BIU_AXI_MST_ID_WIDTH        4
+`define npuarc_BIU_LBU_BUS_PFX   lbu_
+`define npuarc_BIU_LBI_BUS_PFX   lbi_
+`define npuarc_BIU_CBU_BUS_PFX   cbu_
+`define npuarc_BIU_IBU_BUS_PFX   ibu_
+`define npuarc_BIU_DBU_BUS_PFX   dbu_
+`define npuarc_BIU_DMAMEM_IBP_PFX    dmamem_
+`define npuarc_BIU_DMAPER_IBP_PFX    dmaper_
+`define npuarc_BIU_DMABU_BUS_PFX     dma_
+`define npuarc_BIU_DMA_IBP_DW         64
+`define npuarc_BIU_XDMA_IBP_DW        64
+`define npuarc_BIU_CDMA_IBP_DW        64
+`define npuarc_BIU_HAS_OBU            0
+`define npuarc_BIU_HAS_ICCM_XDMA     0
+`define npuarc_BIU_HAS_DCCM_XDMA     0
+`define npuarc_BIU_HAS_SCCM_XDMA     0
+`define npuarc_BIU2XDMA_DMI_BUS_NUM  0
+`define npuarc_BIU_HAS_ICCM_CDMA     0
+`define npuarc_BIU_HAS_DCCM_CDMA     0
+`define npuarc_BIU_HAS_SCCM_CDMA     0
+`define npuarc_BIU2CDMA_DMI_BUS_NUM  0
+`define npuarc_BIU_HAS_SCCM_DMI      1
+`define npuarc_BIU_HAS_ICCM_DMI      0
+`define npuarc_BIU_HAS_DCCM_DMI      0
+`define npuarc_BIU_HAS_VCCM_DMI      0
+`define npuarc_CC_BIU_HAS_VDMI_BUS   0
+`define npuarc_CC_BIU_VDMI_AXI_IDW   8
+`define npuarc_CC_BIU_VDMI_BUS_WIDTH 64
+`define npuarc_BIU_SCCM_RGON_W  2
+`define npuarc_BIU_ICCM_RGON_W  1
+`define npuarc_BIU_DCCM_RGON_W  1
+`define npuarc_BIU_VCCM_RGON_W  1
+`define npuarc_BIU_UDMI_RGON_W  3
+`define npuarc_BIU_SCCM_RGON_NUM  3
+`define npuarc_BIU_ICCM_RGON_NUM  2
+`define npuarc_BIU_DCCM_RGON_NUM  1
+`define npuarc_BIU_VCCM_RGON_NUM  1
+`define npuarc_BIU_UDMI_RGON_NUM  8
+`define npuarc_BIU_CORE_NUMBER                  1
+`define npuarc_BIU_TO_LLM_IBP_NUM     1
+`define npuarc_BIU_TO_LLM_IBP_DW     64
+`define npuarc_BIU_TO_LLM_XNN_IBP_DW 64
+`define npuarc_BIU_XNN_DMI_BUS_NUM 0
+`define npuarc_BIU_XNN_DMI_BUS_ADD_PIPE_STAGE 0
+`define npuarc_BIU_STU_DMI_AXI_PFX   stu_xnn_
+`define npuarc_BIU_STU0_DMI_AXI_PFX  stu0_xnn_
+`define npuarc_BIU_STU1_DMI_AXI_PFX  stu1_xnn_
+`define npuarc_BIU_STU2_DMI_AXI_PFX  stu2_xnn_
+`define npuarc_BIU_STU3_DMI_AXI_PFX  stu3_xnn_
+`define npuarc_CC_XNN_DMI_RANGE      `npuarc_CC_XNN_DMI_RANGE
+`define npuarc_BIU_SUPPORT_MEU        0
+`define npuarc_BIU_XDMA_NUM_MST  0
+`define npuarc_BIU_SUPPORT_BUS_ECC   0
+`define npuarc_BIU_BUS_ECC_PROTECTION  32
+`define npuarc_BIU_BUS_PARITY_LEVEL  1
+`define npuarc_BIU_SLV_SUPPORT_BUS_ECC   0
+`define npuarc_BIU_SAFETY 0
+`define npuarc_BIU_SUPPORT_DIRECT_IOC 0
+`define npuarc_BIU_CDMA_BUS_R_IDW  0
+`define npuarc_BIU_DMA_BRG_EN 0
+`define npuarc_BIU_DMA_OBU_EN 0
+`define npuarc_BIU_DMA_CBU_EN 0
+`define npuarc_BIU_DMA_DBU_EN 0
+`define npuarc_BIU_HAS_CDMA_LBU_BUS      0
+`define npuarc_BIU_HAS_CDMA_CCM_BUS       0
+`define npuarc_BIU_HAS_CDMA_IOC_BUS        0
+`define npuarc_BIU_HAS_CDMA_LLM_BUS        0
+`define npuarc_BIU_ADDR_WIDTH     40
+`define npuarc_BIU_SUPPORT_PDM  0
+`define npuarc_BIU_GAUX_REQUIRED     1
+`define npuarc_BIU_GAUX_CMD_WIDTH    12 + 1 + 1 + 3
+`define npuarc_BIU_GAUX_CMD_ADDR     11:0
+`define npuarc_BIU_GAUX_CMD_WEN      12
+`define npuarc_BIU_GAUX_CMD_REN      13
+`define npuarc_BIU_GAUX_RES_WIDTH    32 + 1 + 1 + 1 + 1 + 1 + 1
+`define npuarc_BIU_GAUX_WDATA_WIDTH  32
+`define npuarc_BIU_GAUX_WADDR_WIDTH  12
+`define npuarc_BIU_GAUX_RES_DATA     31:0
+`define npuarc_BIU_GAUX_RES_ILLEGAL  32
+`define npuarc_BIU_GAUX_RES_K_RD     33
+`define npuarc_BIU_GAUX_RES_K_WR     34
+`define npuarc_BIU_GAUX_RES_UNIMPL   35
+`define npuarc_BIU_GAUX_RES_SERIAL   36
+`define npuarc_BIU_GAUX_RES_STRICT   37
+`define npuarc_BIU_IOC_BASE_BITS      28
+`define npuarc_BIU_IOC_SIZE_BITS      6
+`define npuarc_BIU_IOC_MATCH_RANGE    39:12
+`define npuarc_BIU_IOC_BASE_RANGE     27:0
+`define npuarc_BIU_IOC_SIZE_RANGE     5:0
+`define npuarc_BIU_IOC_BASE_RAZ       4
+`define npuarc_BIU_IOC_SIZE_RAZ       26
+`define npuarc_BIU_IOC_ENB_RAZ        31
+`define npuarc_BIU_IOC_PAR_RAZ        31
+`define npuarc_BIU_CBU_SBE_ERROR_CNT    620
+`define npuarc_BIU_IBU_SBE_ERROR_CNT    621
+`define npuarc_BIU_DBU_SBE_ERROR_CNT    622
+`define npuarc_BIU_PER0_SBE_ERROR_CNT   623
+`define npuarc_BIU_PER1_SBE_ERROR_CNT   624
+`define npuarc_BIU_UDMI_SBE_ERROR_CNT   625
+`define npuarc_BIU_DMI0_SBE_ERROR_CNT   626
+`define npuarc_BIU_DMI1_SBE_ERROR_CNT   627
+`define npuarc_BIU_IOC_SBE_ERROR_CNT    628
+`define npuarc_BIU_OBU_SBE_ERROR_CNT    629
+`define npuarc_BIU_ADD_PPB_IFETCH  0
+`define npuarc_BIU_ADD_PPB_DUNCACH 0
+`define npuarc_BIU_ADD_PPB_PER     0
+`define npuarc_BIU_ADD_PPB_DCACH   1
+`define npuarc_BIU_ADD_PPB_SCU     0
+`define npuarc_BIU_ADD_PPB_L2C     0
+`define npuarc_BIU_ADD_PPB_DMAMEM  0
+`define npuarc_BIU_ADD_PPB_DMAPER  0
+`define npuarc_BIU_PREPRC_NEED_CLKG             1
+`define npuarc_BIU_HAS_CLKCTRL                  1
+`define npuarc_BIU_PREPRC_I_IBP_NUM          3
+`define npuarc_BIU_NEED_PREPRC             1
+`define npuarc_BIU_PREPRC_I_IBP0_TYPE       i_ibp
+`define npuarc_BIU_PREPRC_I_IBP0_I_PFX1     ifu_
+`define npuarc_BIU_PREPRC_I_IBP0_I_PFX2     none
+`define npuarc_BIU_PREPRC_I_IBP0_O_PFX      ifu_merg_
+`define npuarc_BIU_PREPRC_I_IBP0_DW         64
+`define npuarc_BIU_PREPRC_I_IBP0_AW         40
+`define npuarc_BIU_PREPRC_I_IBP0_OUT_NUM   4
+`define npuarc_BIU_PREPRC_I_IBP0_NEED_1ST_PPB   0
+`define npuarc_BIU_PREPRC_I_IBP0_NEED_2ND_PPB   0
+`define npuarc_BIU_PREPRC_I_IBP0_NEED_3RD_PPB   0
+`define npuarc_BIU_PREPRC_I_IBP0_SPLT4LLM   1
+`define npuarc_BIU_PREPRC_I_IBP0_LLM_ID     0
+`define npuarc_BIU_PREPRC_I_IBP0_FULL_IBP   0
+`define npuarc_BIU_PREPRC_I_IBP0_L2C        0
+`define npuarc_BIU_PREPRC_I_IBP0_ALLOW_DIFF_BRANCH   1
+`define npuarc_BIU_PREPRC_I_IBP0_NEED_RWMERG            0
+`define npuarc_BIU_PREPRC_I_IBP1_TYPE       i_ibp
+`define npuarc_BIU_PREPRC_I_IBP1_I_PFX1     lqwq_
+`define npuarc_BIU_PREPRC_I_IBP1_I_PFX2     none
+`define npuarc_BIU_PREPRC_I_IBP1_O_PFX      lq_wq_
+`define npuarc_BIU_PREPRC_I_IBP1_DW         64
+`define npuarc_BIU_PREPRC_I_IBP1_AW         40
+`define npuarc_BIU_PREPRC_I_IBP1_OUT_NUM   8
+`define npuarc_BIU_PREPRC_I_IBP1_NEED_1ST_PPB   0
+`define npuarc_BIU_PREPRC_I_IBP1_NEED_2ND_PPB   0
+`define npuarc_BIU_PREPRC_I_IBP1_NEED_3RD_PPB   0
+`define npuarc_BIU_PREPRC_I_IBP1_SPLT4LLM   1
+`define npuarc_BIU_PREPRC_I_IBP1_LLM_ID     0
+`define npuarc_BIU_PREPRC_I_IBP1_FULL_IBP   1
+`define npuarc_BIU_PREPRC_I_IBP1_L2C        0
+`define npuarc_BIU_PREPRC_I_IBP1_ALLOW_DIFF_BRANCH   1
+`define npuarc_BIU_PREPRC_I_IBP1_NEED_RWMERG            0
+`define npuarc_BIU_PREPRC_I_IBP2_TYPE       i_ibp
+`define npuarc_BIU_PREPRC_I_IBP2_I_PFX1     dmu_rbu_
+`define npuarc_BIU_PREPRC_I_IBP2_I_PFX2     dmu_wbu_
+`define npuarc_BIU_PREPRC_I_IBP2_O_PFX      dmu_rbu_dmu_wbu_
+`define npuarc_BIU_PREPRC_I_IBP2_DW         128
+`define npuarc_BIU_PREPRC_I_IBP2_AW         40
+`define npuarc_BIU_PREPRC_I_IBP2_OUT_NUM   8
+`define npuarc_BIU_PREPRC_I_IBP2_NEED_1ST_PPB   1
+`define npuarc_BIU_PREPRC_I_IBP2_NEED_2ND_PPB   0
+`define npuarc_BIU_PREPRC_I_IBP2_NEED_3RD_PPB   0
+`define npuarc_BIU_PREPRC_I_IBP2_SPLT4LLM   1
+`define npuarc_BIU_PREPRC_I_IBP2_LLM_ID     0
+`define npuarc_BIU_PREPRC_I_IBP2_FULL_IBP   0
+`define npuarc_BIU_PREPRC_I_IBP2_L2C        0
+`define npuarc_BIU_PREPRC_I_IBP2_ALLOW_DIFF_BRANCH   1
+`define npuarc_BIU_PREPRC_I_IBP2_NEED_RWMERG            1
+`define npuarc_CC_BIU_ADDR_WIDTH                 40
+`define npuarc_BIU_SUPPORT_LLM                 0
+`define npuarc_BIU_HAS_DMABU_MST               0
+`define npuarc_BIUBUS_NUM 1
+`define npuarc_BIU_HAS_L2IFU_MST           1
+`define npuarc_BIU_HAS_OBU_MST            0
+`define npuarc_BIU_HAS_IBU                 0
+`define npuarc_BIU_HAS_DBU                 0
+`define npuarc_BIU_HAS_LBU                 0
+`define npuarc_BIU_HAS_LBI                 0
+`define npuarc_BIU_HAS_CBU                 1
+`define npuarc_BIU_HAS_LLMBU                0
+`define npuarc_BIU_CBU_MST_EDC                0
+`define npuarc_BIU_CBU_MST_AW                 40
+`define npuarc_BIU_CBU_MST_IDW                4
+    `define npuarc_BIUBUS0_I0_TYP           i_ibp
+    `define npuarc_BIUBUS0_I0_PFX           bfed_ifu_merg_
+    `define npuarc_BIUBUS0_I0_AW              40
+    `define npuarc_BIUBUS0_I0_DW                64
+    `define npuarc_BIUBUS0_I0_IDW                none
+    `define npuarc_BIUBUS0_I0_LOCKABLE                0
+    `define npuarc_BIUBUS0_I0_AHBL_WRITE_BURST_EN     0
+      `define npuarc_BIU_CBU_MST_I0_OUT_NUM         8
+      `define npuarc_BIU_CBU_MST_I0_UNIQ_ID         0
+      `define npuarc_BIU_CBU_MST_I0_PFX             bfed_core0_nllm_l2ifu_
+      `define npuarc_BIU_CBU_MST_I0_INST_PFX        bfed_core0_nllm_l2ifu_
+      `define npuarc_BIU_CBU_MST_I0_DW              64
+      `define npuarc_BIU_CBU_MST_I0_ENPACK          0
+      `define npuarc_BIU_CBU_MST_I0_LOCKABLE        0
+      `define npuarc_BIU_CBU_MST_I0_AHBL_WRITE_BURST_EN        0
+    `define npuarc_BIUBUS0_I1_TYP           i_ibp
+    `define npuarc_BIUBUS0_I1_PFX           bfed_lq_wq_
+    `define npuarc_BIUBUS0_I1_AW              40
+    `define npuarc_BIUBUS0_I1_DW                64
+    `define npuarc_BIUBUS0_I1_IDW                none
+    `define npuarc_BIUBUS0_I1_LOCKABLE                1
+    `define npuarc_BIUBUS0_I1_AHBL_WRITE_BURST_EN     0
+      `define npuarc_BIU_CBU_MST_I1_OUT_NUM         8
+      `define npuarc_BIU_CBU_MST_I1_UNIQ_ID         1
+      `define npuarc_BIU_CBU_MST_I1_PFX             bfed_lq_wq_
+      `define npuarc_BIU_CBU_MST_I1_INST_PFX        bfed_lq_wq_
+      `define npuarc_BIU_CBU_MST_I1_DW              64
+      `define npuarc_BIU_CBU_MST_I1_ENPACK          0
+      `define npuarc_BIU_CBU_MST_I1_LOCKABLE        1
+      `define npuarc_BIU_CBU_MST_I1_AHBL_WRITE_BURST_EN        0
+    `define npuarc_BIUBUS0_I2_TYP           i_ibp
+    `define npuarc_BIUBUS0_I2_PFX           bfed_dmu_rbu_dmu_wbu_
+    `define npuarc_BIUBUS0_I2_AW              40
+    `define npuarc_BIUBUS0_I2_DW                128
+    `define npuarc_BIUBUS0_I2_IDW                none
+    `define npuarc_BIUBUS0_I2_LOCKABLE                0
+    `define npuarc_BIUBUS0_I2_AHBL_WRITE_BURST_EN     0
+      `define npuarc_BIU_CBU_MST_I2_OUT_NUM         8
+      `define npuarc_BIU_CBU_MST_I2_UNIQ_ID         2
+      `define npuarc_BIU_CBU_MST_I2_PFX             bfed_dmu_rbu_dmu_wbu_
+      `define npuarc_BIU_CBU_MST_I2_INST_PFX        bfed_dmu_rbu_dmu_wbu_
+      `define npuarc_BIU_CBU_MST_I2_DW              128
+      `define npuarc_BIU_CBU_MST_I2_ENPACK          0
+      `define npuarc_BIU_CBU_MST_I2_LOCKABLE        0
+      `define npuarc_BIU_CBU_MST_I2_AHBL_WRITE_BURST_EN        0
+    `define npuarc_BIU_CBU_MST_INUM              3
+    `define npuarc_BIU_CBU_MST_O_BUS_ENDIAN       little
+    `define npuarc_BIU_CBU_MST_O_BUS_DW           64
+    `define npuarc_BIU_CBU_MST_O_ENPACK           0
+    `define npuarc_BIU_CBU_MST_O_BUS_PFX          cbu_
+    `define npuarc_BIU_CBU_MST_O_BUS_INST_PFX          cbu_
+    `define npuarc_BIU_CBU_MST_O_BUS_BUF_ENTRIES  2
+    `define npuarc_BIU_CBU_MST_O_HAS_CLK_EN       1
+    `define npuarc_BIU_CBU_MST_O_BUS_CLK_EN_NAME   mbus_clk_en
+    `define npuarc_BIU_CBU_MST_O_BUS_INST_CLK_EN_NAME   mbus_clk_en
+    `define npuarc_BIU_CBU_MST_O_BUS_SPLT_IBP     0
+    `define npuarc_BIU_CBU_MST_O_ADD_PPB     0
+    `define npuarc_BIU_CBU_MST_O_BUS_TYPE         axi
+    `define npuarc_BIU_CBU_MST_O_BUS_OUT_NUM      16
+    `define npuarc_BIUBUS0_O_TYPE           axi
+    `define npuarc_BIUBUS0_O_PFX             cbu_
+    `define npuarc_BIUBUS0_O_AW               40
+    `define npuarc_BIUBUS0_O_DW                64
+    `define npuarc_BIUBUS0_O_ENDIAN             little
+    `define npuarc_BIUBUS0_O_CLKEN                mbus_clk_en
+    `define npuarc_BIUBUS0_O_IDW                    4
+    `define npuarc_BIUBUS0_O_OUT_BIU                  1
+   `define npuarc_BIU_IBU_MST_INUM              0
+   `define npuarc_BIU_DBU_MST_INUM              0
+   `define npuarc_BIU_IBU0_MST_INUM              0
+   `define npuarc_BIU_DBU0_MST_INUM              0
+ `define npuarc_BIU_NEED_IBU    1
+ `define npuarc_BIU_NEED_DBU    1
+`define npuarc_BIU_LBU_MST_EDC                0
+`define npuarc_BIU_LBU_MST_AW                 40
+`define npuarc_BIU_LBU_MST_IDW                4
+`define npuarc_BIU_LBU_MST_INUM               0
+`define npuarc_BIU_LBI_MST_EDC                0
+`define npuarc_BIU_LBI_MST_AW                 40
+`define npuarc_BIU_LBI_MST_IDW                4
+`define npuarc_BIU_LBI_MST_INUM               0
+`define npuarc_BIUBUS_ECC_ONUM         0
+   `define npuarc_BIU_L2IFU_MST_EDC                0
+   `define npuarc_BIU_L2IFU_MST_AW                 40
+   `define npuarc_BIU_L2IFU_MST_I0_OUT_NUM         4
+   `define npuarc_BIU_L2IFU_MST_I0_UNIQ_ID         0
+   `define npuarc_BIU_L2IFU_MST_I0_PFX             bfed_ifu_merg_
+   `define npuarc_BIU_L2IFU_MST_I0_INST_PFX        bfed_ifu_merg_
+   `define npuarc_BIU_L2IFU_MST_I0_DW              64
+   `define npuarc_BIU_L2IFU_MST_I0_ENPACK          0
+   `define npuarc_BIU_L2IFU_MST_I0_LOCKABLE        0
+   `define npuarc_BIU_L2IFU_MST_IDW                1
+   `define npuarc_BIU_L2IFU_MST_INUM               1
+   `define npuarc_BIU_L2IFU_MST_O_BUS_ENDIAN       little
+   `define npuarc_BIU_L2IFU_MST_O_BUS_DW           64
+   `define npuarc_BIU_L2IFU_MST_O_ENPACK           0
+   `define npuarc_BIU_L2IFU_MST_O_BUS_PFX          bfed_core0_nllm_l2ifu_
+   `define npuarc_BIU_L2IFU_MST_O_BUS_INST_PFX     bfed_core0_nllm_l2ifu_
+   `define npuarc_BIU_L2IFU_MST_O_BUS_BUF_ENTRIES  0
+   `define npuarc_BIU_L2IFU_MST_O_BUS_BUF_THROUGH  1
+   `define npuarc_BIU_L2IFU_MST_O_HAS_CLK_EN       0
+   `define npuarc_BIU_L2IFU_MST_O_BUS_CLK_EN_NAME  none
+   `define npuarc_BIU_L2IFU_MST_O_BUS_INST_CLK_EN_NAME  none
+   `define npuarc_BIU_L2IFU_MST_O_BUS_SPLT_IBP     0
+   `define npuarc_BIU_L2IFU_MST_O_BUS_TYPE         ibp
+   `define npuarc_BIU_L2IFU_MST_O_BUS_OUT_NUM      4
+   `define npuarc_BIU_DMABU_MST_INUM               0
+   `define npuarc_BIU_OBU_MST_INUM               0
+  `define npuarc_BIUBUS0_I_NUM 3
+      `define npuarc_BIU_MEM_BUS_SEP_HAS_CORE0 1
+      `define npuarc_BIU_PER0_BUS_SEP_HAS_CORE0 0
+      `define npuarc_BIU_PER1_BUS_SEP_HAS_CORE0 0
+      `define npuarc_BIU_HAS_CBU0 1
+      `define npuarc_BIU_HAS_IBU0 1
+      `define npuarc_BIU_HAS_DBU0 1
+      `define npuarc_BIU_HAS_LBU0 0
+      `define npuarc_BIU_HAS_LBI0 0
+`define npuarc_BIU_DMI_ADD_PIPE_STAGE            0
+`define npuarc_BIU_DMI_BUS_ADDR_W    24
+`define npuarc_BIU_HAS_VDMI_BUS      0    
+`define npuarc_BIU_VDMI_BUS_WIDTH    64
+`define npuarc_BIU_VDMI_AXI_IDW      8  
+`define npuarc_BIU_VCCM_IBP_DATA_W   256
+`define npuarc_BIU_HAS_VCCM_XDMA            0
+`define npuarc_BIU_HAS_VCCM_CDMA            0
+`define npuarc_BIU_HAS_SCCM_MST             1
+`define npuarc_BIU_HAS_ICCM_MST             0
+`define npuarc_BIU_HAS_DCCM_MST             0
+`define npuarc_BIU_HAS_ICCM_DMI_SLV         0
+`define npuarc_BIU_HAS_ICCM_SLV             0
+`define npuarc_BIU_HAS_DCCM_DMI_SLV         0
+`define npuarc_BIU_HAS_DCCM_SLV             0
+`define npuarc_BIU_HAS_SCCM_DMI_SLV         1
+`define npuarc_BIU_HAS_SCCM_SLV             1
+`define npuarc_BIU_HAS_VCCM_MST             0
+`define npuarc_BIU_HAS_VCCM_DMI_SLV         0
+`define npuarc_BIU_HAS_VCCM_SLV             0
+  `define npuarc_BIU_HAS_CORE0_CCM_DMI  1
+  `define npuarc_BIU_HAS_CORE0_VCCM_IBP  0
+    `define npuarc_BIUCCM0_I0_TYPE       axi
+    `define npuarc_BIUCCM0_I0_PFX                      sccm_
+    `define npuarc_BIUCCM0_I0_AW                       24
+        `define npuarc_BIUCCM0_I0_DW                   64
+        `define npuarc_BIUCCM0_I0_IDW                  16
+    `define npuarc_BIUCCM0_I0_RGON_W                   2
+    `define npuarc_BIUCCM0_I0_HSEL_W                   3
+    `define npuarc_BIUCCM0_I0_ENDIAN                   little
+    `define npuarc_BIUCCM0_I0_CLKEN                    dbus_clk_en
+    `define npuarc_BIUCCM0_O0_TYPE      ibp
+    `define npuarc_BIUCCM0_O0_PFX         dccm_dmi_
+    `define npuarc_BIUCCM0_O0_AW            24
+    `define npuarc_BIUCCM0_O0_DW              64
+    `define npuarc_BIUCCM0_O0_IDW               16
+    `define npuarc_BIUCCM0_O0_RGON_ID              2
+    `define npuarc_BIUCCM0_O0_ENDIAN                  none
+    `define npuarc_BIUCCM0_O0_CLKEN                    none
+`define npuarc_BIUCCM_NUM 1
+`define npuarc_BIUCCM_ECC_NUM 0
+    `define npuarc_BIUCCM0_I_NUM 1
+    `define npuarc_BIUCCM0_O_NUM 1
+`define  npuarc_BIU_IDVCCM_IBP0_NEED_UDMA     0
+`define  npuarc_BIU_IDVCCM_IBP0_NEED_CW_BUF     1
+`define  npuarc_BIU_IDVCCM_IBP0_NEED_RESP_BUF     1
+`define  npuarc_BIU_IDVCCM_IBP0_BUF_PFX     dccm_dmi_buf_
+`define  npuarc_BIU_IDVCCM_IBP0_PFX     dccm_dmi_
+`define  npuarc_BIU_IDVCCM_IBP0_DW      64
+`define  npuarc_BIU_IDVCCM_IBP0_CORE    0
+`define  npuarc_BIU_IDVCCM_IBP0_ICCM     0
+`define  npuarc_BIU_IDVCCM_IBP0_DCCM     1
+`define  npuarc_BIU_IDVCCM_IBP0_VCCM     0
+`define  npuarc_BIU_IDVCCM_IBP0_SCCM     1
+`define  npuarc_BIU_IDVCCM_IBP0_ICCM_RGON none
+`define  npuarc_BIU_IDVCCM_IBP0_DCCM_RGON 0
+`define  npuarc_BIU_IDVCCM_IBP0_VCCM_RGON none
+`define  npuarc_BIU_IDVCCM_IBP0_SCCM_RGON 2
+`define npuarc_BIU_SCCM_DMI_SLV_EDC                0
+`define npuarc_BIU_SCCM_DMI_SLV_AW                 24
+`define npuarc_BIU_SCCM_DMI_SLV_RGON_W             2
+`define npuarc_BIU_SCCM_DMI_SLV_HSEL_W             3
+`define npuarc_BIU_SCCM_DMI_SLV_IDW                16
+`define npuarc_BIU_SCCM_DMI_SLV_I_IBP_ENPACK       0
+`define npuarc_BIU_SCCM_DMI_SLV_I_BUS_ENDIAN       little
+`define npuarc_BIU_SCCM_DMI_SLV_I_BUS_DW           64
+`define npuarc_BIU_SCCM_DMI_SLV_I_BUS_PFX          sccm_
+`define npuarc_BIU_SCCM_DMI_SLV_I_BUS_INST_PFX     sccm_
+`define npuarc_BIU_SCCM_DMI_SLV_I_HAS_CLK_EN       1
+`define npuarc_BIU_SCCM_DMI_SLV_I_BUS_CLK_EN_NAME  dbus_clk_en
+`define npuarc_BIU_SCCM_DMI_SLV_I_BUS_INST_CLK_EN_NAME  dbus_clk_en
+`define npuarc_BIU_SCCM_DMI_SLV_I_BUS_TYPE          axi
+`define npuarc_BIU_SCCM_DMI_SLV_I_BUS_BUF_ENTRIES  2
+`define npuarc_BIU_SCCM_DMI_SLV_I_BUS_OUT_NUM       10
+`define npuarc_BIU_SCCM_DMI_SLV_MID_BUF_THROUGH      1
+`define npuarc_BIU_SCCM_DMI_SLV_MID_BUF_CMD_ENTRIES  0
+`define npuarc_BIU_SCCM_DMI_SLV_MID_BUF_WD_ENTRIES   0
+`define npuarc_BIU_SCCM_DMI_SLV_MID_BUF_RD_ENTRIES   0
+`define npuarc_BIU_SCCM_DMI_SLV_MID_BUF_WRSP_ENTRIES 0
+`define npuarc_BIU_SCCM_DMI_SLV_O_BUS0_RGON          0
+`define npuarc_BIU_SCCM_DMI_SLV_O_BUS0_PFX           sccm_dmi_slv_
+`define npuarc_BIU_SCCM_DMI_SLV_O_BUS0_INST_PFX      sccm_dmi_slv_
+`define npuarc_BIU_SCCM_DMI_SLV_O_BUS0_ENPACK        0
+`define npuarc_BIU_SCCM_DMI_SLV_O_BUS0_NEED_REQ      0
+`define npuarc_BIU_SCCM_DMI_SLV_O_BUS0_CWBIND        0
+`define npuarc_BIU_SCCM_DMI_SLV_ALL_O_BUS_DW         64
+`define npuarc_BIU_SCCM_DMI_SLV_ALL_O_NEED_SPLT      1
+`define npuarc_BIU_SCCM_DMI_SLV_O_BUS_NUM            1
+`define npuarc_BIU_SCCM_DMI_SLV_O_PASS_RGON          1
+`define npuarc_BIU_SCCM_DMIIBP_SLV_EDC                0
+`define npuarc_BIU_SCCM_DMIIBP_SLV_AW                 24
+`define npuarc_BIU_SCCM_DMIIBP_SLV_RGON_W             2
+`define npuarc_BIU_SCCM_DMIIBP_SLV_HSEL_W             none
+`define npuarc_BIU_SCCM_DMIIBP_SLV_IDW                none
+`define npuarc_BIU_SCCM_DMIIBP_SLV_I_IBP_ENPACK       0
+`define npuarc_BIU_SCCM_DMIIBP_SLV_I_BUS_ENDIAN       little
+`define npuarc_BIU_SCCM_DMIIBP_SLV_I_BUS_DW           64
+`define npuarc_BIU_SCCM_DMIIBP_SLV_I_BUS_PFX          sccm_dmi_slv_
+`define npuarc_BIU_SCCM_DMIIBP_SLV_I_BUS_INST_PFX     sccm_dmi_slv_
+`define npuarc_BIU_SCCM_DMIIBP_SLV_I_HAS_CLK_EN       0
+`define npuarc_BIU_SCCM_DMIIBP_SLV_I_BUS_CLK_EN_NAME  none
+`define npuarc_BIU_SCCM_DMIIBP_SLV_I_BUS_INST_CLK_EN_NAME  none
+`define npuarc_BIU_SCCM_DMIIBP_SLV_I_BUS_TYPE         ibp
+`define npuarc_BIU_SCCM_DMIIBP_SLV_I_BUS_IBP_IS_SINGLE  1
+`define npuarc_BIU_SCCM_DMIIBP_SLV_I_BUS_BUF_ENTRIES  0
+`define npuarc_BIU_SCCM_DMIIBP_SLV_I_BUS_BUF_THROUGH  1
+`define npuarc_BIU_SCCM_DMIIBP_SLV_I_BUS_OUT_NUM       10
+`define npuarc_BIU_SCCM_DMIIBP_SLV_MID_BUF_THROUGH      1
+`define npuarc_BIU_SCCM_DMIIBP_SLV_MID_BUF_CMD_ENTRIES  0
+`define npuarc_BIU_SCCM_DMIIBP_SLV_MID_BUF_WD_ENTRIES   0
+`define npuarc_BIU_SCCM_DMIIBP_SLV_MID_BUF_RD_ENTRIES   0
+`define npuarc_BIU_SCCM_DMIIBP_SLV_MID_BUF_WRSP_ENTRIES 0
+`define npuarc_BIU_SCCM_DMIIBP_SLV_O_BUS0_RGON          0
+`define npuarc_BIU_SCCM_DMIIBP_SLV_O_BUS0_PFX           sccm_dmiibp_slv_
+`define npuarc_BIU_SCCM_DMIIBP_SLV_O_BUS0_INST_PFX      sccm_dmiibp_slv_
+`define npuarc_BIU_SCCM_DMIIBP_SLV_O_BUS0_ENPACK        0
+`define npuarc_BIU_SCCM_DMIIBP_SLV_O_BUS0_NEED_REQ      0
+`define npuarc_BIU_SCCM_DMIIBP_SLV_O_BUS0_CWBIND        0
+`define npuarc_BIU_SCCM_DMIIBP_SLV_ALL_O_BUS_DW         64
+`define npuarc_BIU_SCCM_DMIIBP_SLV_ALL_O_NEED_SPLT      1
+`define npuarc_BIU_SCCM_DMIIBP_SLV_O_BUS_NUM            1
+`define npuarc_BIU_SCCM_DMIIBP_SLV_O_PASS_USER          1
+`define npuarc_BIU_SCCM_DMIIBP_SLV_USER_W               2
+  `define npuarc_BIU_SCCM_MST_EDC                0
+  `define npuarc_BIU_SCCM_MST_AW                 24
+      `define npuarc_BIU_SCCM_MST_I0_OUT_NUM         10
+      `define npuarc_BIU_SCCM_MST_I0_UNIQ_ID         0
+      `define npuarc_BIU_SCCM_MST_I0_PFX             sccm_dmiibp_slv_
+      `define npuarc_BIU_SCCM_MST_I0_INST_PFX        sccm_dmiibp_slv_
+      `define npuarc_BIU_SCCM_MST_I0_DW              64
+      `define npuarc_BIU_SCCM_MST_I0_ENPACK          0
+      `define npuarc_BIU_SCCM_MST_I0_LOCKABLE        0
+  `define npuarc_BIU_SCCM_MST_INUM              1
+  `define npuarc_BIU_SCCM_MST_IDW                1
+  `define npuarc_BIU_SCCM_MST_PASS_USER          1
+  `define npuarc_BIU_SCCM_MST_USER_W             2
+  `define npuarc_BIU_SCCM_MST_O_BUS_ENDIAN       little
+  `define npuarc_BIU_SCCM_MST_O_BUS_DW           64
+  `define npuarc_BIU_SCCM_MST_O_ENPACK           1
+  `define npuarc_BIU_SCCM_MST_O_BUS_PFX          sccm_mst_
+  `define npuarc_BIU_SCCM_MST_O_BUS_INST_PFX     sccm_mst_
+  `define npuarc_BIU_SCCM_MST_O_BUS_BUF_ENTRIES  0
+  `define npuarc_BIU_SCCM_MST_O_BUS_BUF_THROUGH  1
+  `define npuarc_BIU_SCCM_MST_O_HAS_CLK_EN       0
+  `define npuarc_BIU_SCCM_MST_O_BUS_CLK_EN_NAME  none
+  `define npuarc_BIU_SCCM_MST_O_BUS_INST_CLK_EN_NAME  none
+  `define npuarc_BIU_SCCM_MST_O_BUS_SPLT_IBP     0
+  `define npuarc_BIU_SCCM_MST_O_BUS_TYPE         ibp
+  `define npuarc_BIU_SCCM_MST_O_BUS_OUT_NUM      10
+`define npuarc_BIU_SCCM_SLV_EDC                0
+`define npuarc_BIU_SCCM_SLV_AW                 24
+`define npuarc_BIU_SCCM_SLV_RGON_W             2
+`define npuarc_BIU_SCCM_SLV_HSEL_W             none
+`define npuarc_BIU_SCCM_SLV_IDW                none
+`define npuarc_BIU_SCCM_SLV_I_IBP_ENPACK       1
+`define npuarc_BIU_SCCM_SLV_I_BUS_ENDIAN       little
+`define npuarc_BIU_SCCM_SLV_I_BUS_DW           64
+`define npuarc_BIU_SCCM_SLV_I_BUS_PFX          sccm_mst_
+`define npuarc_BIU_SCCM_SLV_I_BUS_INST_PFX     sccm_mst_
+`define npuarc_BIU_SCCM_SLV_I_HAS_CLK_EN       0
+`define npuarc_BIU_SCCM_SLV_I_BUS_CLK_EN_NAME  none
+`define npuarc_BIU_SCCM_SLV_I_BUS_INST_CLK_EN_NAME  none
+`define npuarc_BIU_SCCM_SLV_I_BUS_BUF_ENTRIES  0
+`define npuarc_BIU_SCCM_SLV_I_BUS_BUF_THROUGH  1
+`define npuarc_BIU_SCCM_SLV_I_BUS_TYPE          ibp
+`define npuarc_BIU_SCCM_SLV_I_BUS_OUT_NUM       10
+`define npuarc_BIU_SCCM_SLV_MID_BUF_CMD_ENTRIES  0
+`define npuarc_BIU_SCCM_SLV_MID_BUF_WD_ENTRIES   0
+`define npuarc_BIU_SCCM_SLV_MID_BUF_RD_ENTRIES   10
+`define npuarc_BIU_SCCM_SLV_MID_BUF_WRSP_ENTRIES 10
+`define npuarc_BIU_SCCM_SLV_O_BUS0_RGON          2
+`define npuarc_BIU_SCCM_SLV_O_BUS0_ORGI_PFX      dccm_dmi_
+`define npuarc_BIU_SCCM_SLV_O_BUS0_ENPACK        0
+`define npuarc_BIU_SCCM_SLV_O_BUS0_NEED_REQ      1
+`define npuarc_BIU_SCCM_SLV_O_BUS0_PFX           dccm_dmi_
+`define npuarc_BIU_SCCM_SLV_O_BUS0_INST_PFX      dccm_dmi_
+`define npuarc_BIU_SCCM_SLV_O_BUS0_RESP_ALWAYS_ACCEPT      1
+`define npuarc_BIU_SCCM_SLV_O_BUS0_CWBIND        1
+`define npuarc_BIU_SCCM_SLV_O_BUS0_NEED_CW_BUF      1
+`define npuarc_BIU_SCCM_SLV_O_BUS0_NEED_RESP_BUF    1
+`define npuarc_BIU_SCCM_SLV_ALL_O_BUS_DW         64
+`define npuarc_BIU_SCCM_SLV_ALL_O_NEED_SPLT      0
+`define npuarc_BIU_SCCM_SLV_O_BUS_NUM            1
+`define npuarc_BIU_SCCM_SLV_O_ALLOW_DIFF_BRANCH  0
+  `define npuarc_BIU_ICCM_MST_EDC                0
+  `define npuarc_BIU_ICCM_MST_AW                 24
+  `define npuarc_BIU_ICCM_MST_INUM              0
+  `define npuarc_BIU_ICCM_MST_IDW                -Infinity
+  `define npuarc_BIU_ICCM_MST_PASS_USER          1
+  `define npuarc_BIU_ICCM_MST_USER_W             1
+  `define npuarc_BIU_ICCM_MST_O_BUS_ENDIAN       little
+  `define npuarc_BIU_ICCM_MST_O_BUS_DW           64
+  `define npuarc_BIU_ICCM_MST_O_ENPACK           1
+  `define npuarc_BIU_ICCM_MST_O_BUS_PFX          iccm_mst_
+  `define npuarc_BIU_ICCM_MST_O_BUS_INST_PFX     iccm_mst_
+  `define npuarc_BIU_ICCM_MST_O_BUS_BUF_ENTRIES  0
+  `define npuarc_BIU_ICCM_MST_O_BUS_BUF_THROUGH  1
+  `define npuarc_BIU_ICCM_MST_O_HAS_CLK_EN       0
+  `define npuarc_BIU_ICCM_MST_O_BUS_CLK_EN_NAME  none
+  `define npuarc_BIU_ICCM_MST_O_BUS_INST_CLK_EN_NAME  none
+  `define npuarc_BIU_ICCM_MST_O_BUS_SPLT_IBP     0
+  `define npuarc_BIU_ICCM_MST_O_BUS_TYPE         ibp
+  `define npuarc_BIU_ICCM_MST_O_BUS_OUT_NUM      10
+  `define npuarc_BIU_DCCM_MST_EDC                0
+  `define npuarc_BIU_DCCM_MST_AW                 24
+  `define npuarc_BIU_DCCM_MST_INUM              0
+  `define npuarc_BIU_DCCM_MST_IDW                -Infinity
+  `define npuarc_BIU_DCCM_MST_PASS_USER          1
+  `define npuarc_BIU_DCCM_MST_USER_W             1
+  `define npuarc_BIU_DCCM_MST_O_BUS_ENDIAN       little
+  `define npuarc_BIU_DCCM_MST_O_BUS_DW           64
+  `define npuarc_BIU_DCCM_MST_O_ENPACK           1
+  `define npuarc_BIU_DCCM_MST_O_BUS_PFX          dccm_mst_
+  `define npuarc_BIU_DCCM_MST_O_BUS_INST_PFX     dccm_mst_
+  `define npuarc_BIU_DCCM_MST_O_BUS_BUF_ENTRIES  0
+  `define npuarc_BIU_DCCM_MST_O_BUS_BUF_THROUGH  1
+  `define npuarc_BIU_DCCM_MST_O_HAS_CLK_EN       0
+  `define npuarc_BIU_DCCM_MST_O_BUS_CLK_EN_NAME  none
+  `define npuarc_BIU_DCCM_MST_O_BUS_INST_CLK_EN_NAME  none
+  `define npuarc_BIU_DCCM_MST_O_BUS_SPLT_IBP     0
+  `define npuarc_BIU_DCCM_MST_O_BUS_TYPE         ibp
+  `define npuarc_BIU_DCCM_MST_O_BUS_OUT_NUM      10
+  `define npuarc_BIU_VCCM_MST_EDC                0
+  `define npuarc_BIU_VCCM_MST_AW                 24
+  `define npuarc_BIU_VCCM_MST_INUM              0
+  `define npuarc_BIU_VCCM_MST_IDW                -Infinity
+  `define npuarc_BIU_VCCM_MST_PASS_USER          1
+  `define npuarc_BIU_VCCM_MST_USER_W             1
+  `define npuarc_BIU_VCCM_MST_O_BUS_ENDIAN       little
+  `define npuarc_BIU_VCCM_MST_O_BUS_DW           64
+  `define npuarc_BIU_VCCM_MST_O_ENPACK           1
+  `define npuarc_BIU_VCCM_MST_O_BUS_PFX          vccm_mst_
+  `define npuarc_BIU_VCCM_MST_O_BUS_INST_PFX     vccm_mst_
+  `define npuarc_BIU_VCCM_MST_O_BUS_BUF_ENTRIES  0
+  `define npuarc_BIU_VCCM_MST_O_BUS_BUF_THROUGH  1
+  `define npuarc_BIU_VCCM_MST_O_HAS_CLK_EN       0
+  `define npuarc_BIU_VCCM_MST_O_BUS_CLK_EN_NAME  none
+  `define npuarc_BIU_VCCM_MST_O_BUS_INST_CLK_EN_NAME  none
+  `define npuarc_BIU_VCCM_MST_O_BUS_SPLT_IBP     0
+  `define npuarc_BIU_VCCM_MST_O_BUS_TYPE         ibp
+  `define npuarc_BIU_VCCM_MST_O_BUS_OUT_NUM      10
+`define npuarc_ICCM_DMI_ID                       999
+`define npuarc_DCCM_DMI_ID                       999
+`define npuarc_SCCM_DMI_ID                       0
+`define npuarc_VCCM_DMI_ID                       999
+`define npuarc_BIU_IDVCCM_IBP_NUM                1
+`define npuarc_BIU_IOC_ADD_PIPE_STAGE      0
+`define npuarc_BIU_HAS_IOC                 0
+`define npuarc_BIU_HAS_IOC_BRIDGE          0
+`define npuarc_BIU_SUPPORT_XDMA_IOC        0
+`define npuarc_BIU_SUPPORT_CDMA_IOC        0
+`define npuarc_BIU_CDMA2IOC_BUS_DW         64
+`define npuarc_BIU_UDMI2IOC_IOCB_DIFF_BRANCH    1
+`define npuarc_BIU_UDMI2IOC_BUS_PFX        udmi2ioc_
+`define npuarc_BIU_UDMI2IOC_BUS_IDW        1
+`define npuarc_BIU_UDMI2IOC_BUS_AW         40
+`define npuarc_BIU_UDMI2IOC_BUS_DW         128
+`define npuarc_BIU_HAS_AHBL_IOC2SCU_SLV    0
+`define npuarc_BIU_HAS_AHBL_IOC2LLM_SLV    0
+`define npuarc_BIU_HAS_AXI_IOC2SCU_SLV     0
+`define npuarc_BIU_HAS_AXI_IOC2LLM_SLV     0
+`define npuarc_BIU_SUPPORT_IOC2LLM         0
+`define npuarc_BIU_IOC_IBP_DW              128
+`define npuarc_BIU_IOC_PRE_IBP_PFX         dma_pre_
+`define npuarc_BIU_IOC0_PRE_IBP_PFX        dma_pre0_
+`define npuarc_BIU_IOC1_PRE_IBP_PFX        dma_pre1_
+`define npuarc_BIU_IOC2_PRE_IBP_PFX        dma_pre2_
+`define npuarc_BIU_IOC3_PRE_IBP_PFX        dma_pre3_
+`define npuarc_BIU_IOC4_PRE_IBP_PFX        dma_pre4_
+`define npuarc_BIU_IOC5_PRE_IBP_PFX        dma_pre5_
+`define npuarc_BIU_IOC6_PRE_IBP_PFX        dma_pre6_
+`define npuarc_BIU_IOC7_PRE_IBP_PFX        dma_pre7_
+`define npuarc_BIU_IOC2LLM_IBP_PFX         ioc2csm_
+`define npuarc_BIU_IOC2LLM_IBP0_PFX        ioc2csm_0_
+`define npuarc_BIU_IOC2LLM_IBP1_PFX        ioc2csm_1_
+`define npuarc_BIU_IOC2LLM_IBP2_PFX        ioc2csm_2_
+`define npuarc_BIU_IOC2LLM_IBP3_PFX        ioc2csm_3_
+`define npuarc_BIU_IOC2LLM_IBP4_PFX        ioc2csm_4_
+`define npuarc_BIU_IOC2LLM_IBP5_PFX        ioc2csm_5_
+`define npuarc_BIU_IOC2LLM_IBP6_PFX        ioc2csm_6_
+`define npuarc_BIU_IOC2LLM_IBP7_PFX        ioc2csm_7_
+`define npuarc_BIU_IOC2LLM_BASE_PFX        csm2ioc_
+`define npuarc_BIU_IOC2LLM_BASE0_PFX       csm2ioc_0_
+`define npuarc_BIU_IOC2LLM_BASE1_PFX       csm2ioc_1_
+`define npuarc_BIU_IOC2LLM_BASE2_PFX       csm2ioc_2_
+`define npuarc_BIU_IOC2LLM_BASE3_PFX       csm2ioc_3_
+`define npuarc_BIU_IOC2LLM_BASE4_PFX       csm2ioc_4_
+`define npuarc_BIU_IOC2LLM_BASE5_PFX       csm2ioc_5_
+`define npuarc_BIU_IOC2LLM_BASE6_PFX       csm2ioc_6_
+`define npuarc_BIU_IOC2LLM_BASE7_PFX       csm2ioc_7_
+`define npuarc_BIU_IOC2SCU_OUT_NUM         6
+`define npuarc_BIU_IOC2OBU_OUT_NUM         16
+`define npuarc_BIU_SEPRATE_OBU_OUT         1
+`define npuarc_BIU_AXI_IOC2LLM_SLV_EDC                0
+`define npuarc_BIU_AXI_IOC2LLM_SLV_AW                 40
+`define npuarc_BIU_AXI_IOC2LLM_SLV_RGON_W             1
+`define npuarc_BIU_AXI_IOC2LLM_SLV_HSEL_W             1
+`define npuarc_BIU_AXI_IOC2LLM_SLV_IDW                16
+`define npuarc_BIU_AXI_IOC2LLM_SLV_I_IBP_ENPACK       0
+`define npuarc_BIU_AXI_IOC2LLM_SLV_I_BUS_ENDIAN       little
+`define npuarc_BIU_AXI_IOC2LLM_SLV_I_BUS_DW           64
+`define npuarc_BIU_AXI_IOC2LLM_SLV_I_BUS_PFX           i_axi_ioc2llm_
+`define npuarc_BIU_AXI_IOC2LLM_SLV_I_BUS_INST_PFX      i_axi_ioc2llm_
+`define npuarc_BIU_AXI_IOC2LLM_SLV_I_BUS_TYPE          axi
+`define npuarc_BIU_AXI_IOC2LLM_SLV_I_BUS_BUF_ENTRIES   2
+`define npuarc_BIU_AXI_IOC2LLM_SLV_I_BUS_BUF_THROUGH   0
+`define npuarc_BIU_AXI_IOC2LLM_SLV_I_HAS_CLK_EN       0
+`define npuarc_BIU_AXI_IOC2LLM_SLV_I_BUS_CLK_EN_NAME  0
+`define npuarc_BIU_AXI_IOC2LLM_SLV_I_BUS_INST_CLK_EN_NAME  0
+`define npuarc_BIU_AXI_IOC2LLM_SLV_I_BUS_OUT_NUM       15
+`define npuarc_BIU_AXI_IOC2LLM_SLV_MID_BUF_CMD_ENTRIES  2
+`define npuarc_BIU_AXI_IOC2LLM_SLV_MID_BUF_WD_ENTRIES   2
+`define npuarc_BIU_AXI_IOC2LLM_SLV_MID_BUF_RD_ENTRIES   2
+`define npuarc_BIU_AXI_IOC2LLM_SLV_MID_BUF_WRSP_ENTRIES 2
+`define npuarc_BIU_AXI_IOC2LLM_SLV_O_BUS_NUM            1
+`define npuarc_BIU_AXI_IOC2LLM_SLV_ALL_O_BUS_DW         64
+`define npuarc_BIU_AXI_IOC2LLM_SLV_ALL_O_NEED_SPLT      1
+`define npuarc_BIU_AXI_IOC2LLM_SLV_O_BUS0_RGON          0
+`define npuarc_BIU_AXI_IOC2LLM_SLV_O_BUS0_PFX           ioc2csm_
+`define npuarc_BIU_AXI_IOC2LLM_SLV_O_BUS0_INST_PFX      ioc2csm_
+`define npuarc_BIU_AXI_IOC2LLM_SLV_O_BUS0_ENPACK        0
+`define npuarc_BIU_AXI_IOC2LLM_SLV_O_BUS0_NEED_REQ      0
+`define npuarc_BIU_AXI_IOC2SCU_SLV_EDC                0
+`define npuarc_BIU_AXI_IOC2SCU_SLV_AW                 40
+`define npuarc_BIU_AXI_IOC2SCU_SLV_RGON_W             1
+`define npuarc_BIU_AXI_IOC2SCU_SLV_HSEL_W             1
+`define npuarc_BIU_AXI_IOC2SCU_SLV_IDW                16
+`define npuarc_BIU_AXI_IOC2SCU_SLV_I_IBP_ENPACK       0
+`define npuarc_BIU_AXI_IOC2SCU_SLV_I_BUS_ENDIAN       little
+`define npuarc_BIU_AXI_IOC2SCU_SLV_I_BUS_DW           64
+`define npuarc_BIU_AXI_IOC2SCU_SLV_I_BUS_PFX           i_axi_ioc2scu_
+`define npuarc_BIU_AXI_IOC2SCU_SLV_I_BUS_INST_PFX      i_axi_ioc2scu_
+`define npuarc_BIU_AXI_IOC2SCU_SLV_I_BUS_TYPE          axi
+`define npuarc_BIU_AXI_IOC2SCU_SLV_I_BUS_BUF_ENTRIES   0
+`define npuarc_BIU_AXI_IOC2SCU_SLV_I_BUS_BUF_THROUGH   1
+`define npuarc_BIU_AXI_IOC2SCU_SLV_I_HAS_CLK_EN       0
+`define npuarc_BIU_AXI_IOC2SCU_SLV_I_BUS_CLK_EN_NAME  0
+`define npuarc_BIU_AXI_IOC2SCU_SLV_I_BUS_INST_CLK_EN_NAME  0
+`define npuarc_BIU_AXI_IOC2SCU_SLV_I_BUS_OUT_NUM       6
+`define npuarc_BIU_AXI_IOC2SCU_SLV_MID_BUF_THROUGH      1
+`define npuarc_BIU_AXI_IOC2SCU_SLV_MID_BUF_CMD_ENTRIES  0
+`define npuarc_BIU_AXI_IOC2SCU_SLV_MID_BUF_WD_ENTRIES   0
+`define npuarc_BIU_AXI_IOC2SCU_SLV_MID_BUF_RD_ENTRIES   0
+`define npuarc_BIU_AXI_IOC2SCU_SLV_MID_BUF_WRSP_ENTRIES 0
+`define npuarc_BIU_AXI_IOC2SCU_SLV_O_BUS_NUM            1
+`define npuarc_BIU_AXI_IOC2SCU_SLV_ALL_O_BUS_DW         128
+`define npuarc_BIU_AXI_IOC2SCU_SLV_ALL_O_NEED_SPLT      0
+`define npuarc_BIU_AXI_IOC2SCU_SLV_O_BUS0_RGON          0
+`define npuarc_BIU_AXI_IOC2SCU_SLV_O_BUS0_PFX           dma_pre_
+`define npuarc_BIU_AXI_IOC2SCU_SLV_O_BUS0_INST_PFX      dma_pre_
+`define npuarc_BIU_AXI_IOC2SCU_SLV_O_BUS0_ENPACK        0
+`define npuarc_BIU_AXI_IOC2SCU_SLV_O_BUS0_NEED_REQ      0
+`define npuarc_BIU_AXI_IOC2MEU_SLV_EDC                0
+`define npuarc_BIU_AXI_IOC2MEU_SLV_AW                 40
+`define npuarc_BIU_AXI_IOC2MEU_SLV_RGON_W             0
+`define npuarc_BIU_AXI_IOC2MEU_SLV_USER_W             `MEU_RG_IDX_W
+`define npuarc_BIU_AXI_IOC2MEU_SLV_HSEL_W             1
+`define npuarc_BIU_AXI_IOC2MEU_SLV_IDW                16
+`define npuarc_BIU_AXI_IOC2MEU_SLV_I_IBP_ENPACK       0
+`define npuarc_BIU_AXI_IOC2MEU_SLV_I_BUS_ENDIAN       little
+`define npuarc_BIU_AXI_IOC2MEU_SLV_I_BUS_DW           `MEU_IBP_DW
+`define npuarc_BIU_AXI_IOC2MEU_SLV_I_BUS_PFX           i_axi_ioc2meu_
+`define npuarc_BIU_AXI_IOC2MEU_SLV_I_BUS_INST_PFX      i_axi_ioc2meu_
+`define npuarc_BIU_AXI_IOC2MEU_SLV_I_BUS_TYPE          axi
+`define npuarc_BIU_AXI_IOC2MEU_SLV_I_BUS_BUF_ENTRIES   0
+`define npuarc_BIU_AXI_IOC2MEU_SLV_I_BUS_BUF_THROUGH   1
+`define npuarc_BIU_AXI_IOC2MEU_SLV_I_HAS_CLK_EN       0
+`define npuarc_BIU_AXI_IOC2MEU_SLV_I_BUS_CLK_EN_NAME  0
+`define npuarc_BIU_AXI_IOC2MEU_SLV_I_BUS_INST_CLK_EN_NAME  0
+`define npuarc_BIU_AXI_IOC2MEU_SLV_I_BUS_OUT_NUM       6
+`define npuarc_BIU_AXI_IOC2MEU_SLV_MID_BUF_THROUGH      1
+`define npuarc_BIU_AXI_IOC2MEU_SLV_MID_BUF_CMD_ENTRIES  0
+`define npuarc_BIU_AXI_IOC2MEU_SLV_MID_BUF_WD_ENTRIES   0
+`define npuarc_BIU_AXI_IOC2MEU_SLV_MID_BUF_RD_ENTRIES   0
+`define npuarc_BIU_AXI_IOC2MEU_SLV_MID_BUF_WRSP_ENTRIES 0
+`define npuarc_BIU_AXI_IOC2MEU_SLV_O_BUS_NUM            1
+`define npuarc_BIU_AXI_IOC2MEU_SLV_ALL_O_BUS_DW         `MEU_IBP_DW
+`define npuarc_BIU_AXI_IOC2MEU_SLV_ALL_O_NEED_SPLT      0
+`define npuarc_BIU_AXI_IOC2MEU_SLV_O_BUS0_RGON          0
+`define npuarc_BIU_AXI_IOC2MEU_SLV_O_BUS0_PFX           ioc2meu_
+`define npuarc_BIU_AXI_IOC2MEU_SLV_O_BUS0_INST_PFX      ioc2meu_
+`define npuarc_BIU_AXI_IOC2MEU_SLV_O_BUS0_ENPACK        0
+`define npuarc_BIU_AXI_IOC2MEU_SLV_O_BUS0_NEED_REQ      0
+`define npuarc_BIU_AXI_IOC2MEU_SLV_O_PASS_USER          1
+`define npuarc_BIU_AXI_IOC2LLM_INT_SLV_EDC                0
+`define npuarc_BIU_AXI_IOC2LLM_INT_SLV_AW                 40
+`define npuarc_BIU_AXI_IOC2LLM_INT_SLV_RGON_W             1
+`define npuarc_BIU_AXI_IOC2LLM_INT_SLV_HSEL_W             1
+`define npuarc_BIU_AXI_IOC2LLM_INT_SLV_IDW                `BIU_IOC_INT_BUS_ID_W
+`define npuarc_BIU_AXI_IOC2LLM_INT_SLV_I_IBP_ENPACK       0
+`define npuarc_BIU_AXI_IOC2LLM_INT_SLV_I_BUS_ENDIAN       little
+`define npuarc_BIU_AXI_IOC2LLM_INT_SLV_I_BUS_DW           64
+`define npuarc_BIU_AXI_IOC2LLM_INT_SLV_I_BUS_PFX           i_axi_ioc2llm_
+`define npuarc_BIU_AXI_IOC2LLM_INT_SLV_I_BUS_INST_PFX      i_axi_ioc2llm_
+`define npuarc_BIU_AXI_IOC2LLM_INT_SLV_I_BUS_TYPE          axi
+`define npuarc_BIU_AXI_IOC2LLM_INT_SLV_I_BUS_BUF_ENTRIES   2
+`define npuarc_BIU_AXI_IOC2LLM_INT_SLV_I_BUS_BUF_THROUGH   0
+`define npuarc_BIU_AXI_IOC2LLM_INT_SLV_I_HAS_CLK_EN       0
+`define npuarc_BIU_AXI_IOC2LLM_INT_SLV_I_BUS_CLK_EN_NAME  0
+`define npuarc_BIU_AXI_IOC2LLM_INT_SLV_I_BUS_INST_CLK_EN_NAME  0
+`define npuarc_BIU_AXI_IOC2LLM_INT_SLV_I_BUS_OUT_NUM       15
+`define npuarc_BIU_AXI_IOC2LLM_INT_SLV_MID_BUF_CMD_ENTRIES  2
+`define npuarc_BIU_AXI_IOC2LLM_INT_SLV_MID_BUF_WD_ENTRIES   2
+`define npuarc_BIU_AXI_IOC2LLM_INT_SLV_MID_BUF_RD_ENTRIES   2
+`define npuarc_BIU_AXI_IOC2LLM_INT_SLV_MID_BUF_WRSP_ENTRIES 2
+`define npuarc_BIU_AXI_IOC2LLM_INT_SLV_O_BUS_NUM            1
+`define npuarc_BIU_AXI_IOC2LLM_INT_SLV_ALL_O_BUS_DW         64
+`define npuarc_BIU_AXI_IOC2LLM_INT_SLV_ALL_O_NEED_SPLT      1
+`define npuarc_BIU_AXI_IOC2LLM_INT_SLV_O_BUS0_RGON          0
+`define npuarc_BIU_AXI_IOC2LLM_INT_SLV_O_BUS0_PFX           ioc2csm_
+`define npuarc_BIU_AXI_IOC2LLM_INT_SLV_O_BUS0_INST_PFX      ioc2csm_
+`define npuarc_BIU_AXI_IOC2LLM_INT_SLV_O_BUS0_ENPACK        0
+`define npuarc_BIU_AXI_IOC2LLM_INT_SLV_O_BUS0_NEED_REQ      0
+`define npuarc_BIU_AXI_IOC2SCU_INT_SLV_EDC                0
+`define npuarc_BIU_AXI_IOC2SCU_INT_SLV_AW                 40
+`define npuarc_BIU_AXI_IOC2SCU_INT_SLV_RGON_W             1
+`define npuarc_BIU_AXI_IOC2SCU_INT_SLV_HSEL_W             1
+`define npuarc_BIU_AXI_IOC2SCU_INT_SLV_IDW                `BIU_IOC_INT_BUS_ID_W
+`define npuarc_BIU_AXI_IOC2SCU_INT_SLV_I_IBP_ENPACK       0
+`define npuarc_BIU_AXI_IOC2SCU_INT_SLV_I_BUS_ENDIAN       little
+`define npuarc_BIU_AXI_IOC2SCU_INT_SLV_I_BUS_DW           64
+`define npuarc_BIU_AXI_IOC2SCU_INT_SLV_I_BUS_PFX           i_axi_ioc2scu_
+`define npuarc_BIU_AXI_IOC2SCU_INT_SLV_I_BUS_INST_PFX      i_axi_ioc2scu_
+`define npuarc_BIU_AXI_IOC2SCU_INT_SLV_I_BUS_TYPE          axi
+`define npuarc_BIU_AXI_IOC2SCU_INT_SLV_I_BUS_BUF_ENTRIES   0
+`define npuarc_BIU_AXI_IOC2SCU_INT_SLV_I_BUS_BUF_THROUGH   1
+`define npuarc_BIU_AXI_IOC2SCU_INT_SLV_I_HAS_CLK_EN       0
+`define npuarc_BIU_AXI_IOC2SCU_INT_SLV_I_BUS_CLK_EN_NAME  0
+`define npuarc_BIU_AXI_IOC2SCU_INT_SLV_I_BUS_INST_CLK_EN_NAME  0
+`define npuarc_BIU_AXI_IOC2SCU_INT_SLV_I_BUS_OUT_NUM       6
+`define npuarc_BIU_AXI_IOC2SCU_INT_SLV_MID_BUF_THROUGH      1
+`define npuarc_BIU_AXI_IOC2SCU_INT_SLV_MID_BUF_CMD_ENTRIES  0
+`define npuarc_BIU_AXI_IOC2SCU_INT_SLV_MID_BUF_WD_ENTRIES   0
+`define npuarc_BIU_AXI_IOC2SCU_INT_SLV_MID_BUF_RD_ENTRIES   0
+`define npuarc_BIU_AXI_IOC2SCU_INT_SLV_MID_BUF_WRSP_ENTRIES 0
+`define npuarc_BIU_AXI_IOC2SCU_INT_SLV_O_BUS_NUM            1
+`define npuarc_BIU_AXI_IOC2SCU_INT_SLV_ALL_O_BUS_DW         128
+`define npuarc_BIU_AXI_IOC2SCU_INT_SLV_ALL_O_NEED_SPLT      0
+`define npuarc_BIU_AXI_IOC2SCU_INT_SLV_O_BUS0_RGON          0
+`define npuarc_BIU_AXI_IOC2SCU_INT_SLV_O_BUS0_PFX           dma_pre_
+`define npuarc_BIU_AXI_IOC2SCU_INT_SLV_O_BUS0_INST_PFX      dma_pre_
+`define npuarc_BIU_AXI_IOC2SCU_INT_SLV_O_BUS0_ENPACK        0
+`define npuarc_BIU_AXI_IOC2SCU_INT_SLV_O_BUS0_NEED_REQ      0
+`define npuarc_BIU_XNN_IOC2LLM_SLV_EDC                0
+`define npuarc_BIU_XNN_IOC2LLM_SLV_AW                 40
+`define npuarc_BIU_XNN_IOC2LLM_SLV_RGON_W             1
+`define npuarc_BIU_XNN_IOC2LLM_SLV_HSEL_W             1
+`define npuarc_BIU_XNN_IOC2LLM_SLV_IDW                16
+`define npuarc_BIU_XNN_IOC2LLM_SLV_I_IBP_ENPACK       0
+`define npuarc_BIU_XNN_IOC2LLM_SLV_I_BUS_ENDIAN       little
+`define npuarc_BIU_XNN_IOC2LLM_SLV_I_BUS_DW           64
+`define npuarc_BIU_XNN_IOC2LLM_SLV_I_BUS_PFX           i_axi_ioc2llm_
+`define npuarc_BIU_XNN_IOC2LLM_SLV_I_BUS_INST_PFX      i_axi_ioc2llm_
+`define npuarc_BIU_XNN_IOC2LLM_SLV_I_BUS_TYPE          axi
+`define npuarc_BIU_XNN_IOC2LLM_SLV_I_BUS_BUF_ENTRIES   2
+`define npuarc_BIU_XNN_IOC2LLM_SLV_I_BUS_BUF_THROUGH   0
+`define npuarc_BIU_XNN_IOC2LLM_SLV_I_HAS_CLK_EN       0
+`define npuarc_BIU_XNN_IOC2LLM_SLV_I_BUS_CLK_EN_NAME  0
+`define npuarc_BIU_XNN_IOC2LLM_SLV_I_BUS_INST_CLK_EN_NAME  0
+`define npuarc_BIU_XNN_IOC2LLM_SLV_I_BUS_OUT_NUM       15
+`define npuarc_BIU_XNN_IOC2LLM_SLV_MID_BUF_CMD_ENTRIES  2
+`define npuarc_BIU_XNN_IOC2LLM_SLV_MID_BUF_WD_ENTRIES   2
+`define npuarc_BIU_XNN_IOC2LLM_SLV_MID_BUF_RD_ENTRIES   2
+`define npuarc_BIU_XNN_IOC2LLM_SLV_MID_BUF_WRSP_ENTRIES 2
+`define npuarc_BIU_XNN_IOC2LLM_SLV_O_BUS_NUM            1
+`define npuarc_BIU_XNN_IOC2LLM_SLV_ALL_O_BUS_DW         64
+`define npuarc_BIU_XNN_IOC2LLM_SLV_ALL_O_NEED_SPLT      1
+`define npuarc_BIU_XNN_IOC2LLM_SLV_O_BUS0_RGON          0
+`define npuarc_BIU_XNN_IOC2LLM_SLV_O_BUS0_PFX           ioc2csm_
+`define npuarc_BIU_XNN_IOC2LLM_SLV_O_BUS0_INST_PFX      ioc2csm_
+`define npuarc_BIU_XNN_IOC2LLM_SLV_O_BUS0_ENPACK        0
+`define npuarc_BIU_XNN_IOC2LLM_SLV_O_BUS0_NEED_REQ      0
+`define npuarc_BIU_AHBL_IOC2IBP_SLV_EDC                0
+`define npuarc_BIU_AHBL_IOC2IBP_SLV_AW                 40
+`define npuarc_BIU_AHBL_IOC2IBP_SLV_RGON_W             1
+`define npuarc_BIU_AHBL_IOC2IBP_SLV_HSEL_W             1
+`define npuarc_BIU_AHBL_IOC2IBP_SLV_IDW                16
+`define npuarc_BIU_AHBL_IOC2IBP_SLV_I_IBP_ENPACK       0
+`define npuarc_BIU_AHBL_IOC2IBP_SLV_I_BUS_ENDIAN       little
+`define npuarc_BIU_AHBL_IOC2IBP_SLV_I_BUS_DW           64
+`define npuarc_BIU_AHBL_IOC2IBP_SLV_I_BUS_PFX          ioc_
+`define npuarc_BIU_AHBL_IOC2IBP_SLV_I_BUS_INST_PFX     ioc_
+`define npuarc_BIU_AHBL_IOC2IBP_SLV_I_BUS_TYPE          bvci
+`define npuarc_BIU_AHBL_IOC2IBP_SLV_I_AHBL_EBT          1
+`define npuarc_BIU_AHBL_IOC2IBP_SLV_I_HAS_CLK_EN       1
+`define npuarc_BIU_AHBL_IOC2IBP_SLV_I_BUS_CLK_EN_NAME  ioc_clk_en
+`define npuarc_BIU_AHBL_IOC2IBP_SLV_I_BUS_INST_CLK_EN_NAME  ioc_clk_en
+`define npuarc_BIU_AHBL_IOC2IBP_SLV_I_BUS_OUT_NUM        16
+`define npuarc_BIU_AHBL_IOC2IBP_SLV_I_BUS_BUF_ENTRIES   2
+`define npuarc_BIU_AHBL_IOC2IBP_SLV_MID_BUF_THROUGH      1
+`define npuarc_BIU_AHBL_IOC2IBP_SLV_MID_BUF_CMD_ENTRIES  0
+`define npuarc_BIU_AHBL_IOC2IBP_SLV_MID_BUF_WD_ENTRIES   0
+`define npuarc_BIU_AHBL_IOC2IBP_SLV_MID_BUF_RD_ENTRIES   0
+`define npuarc_BIU_AHBL_IOC2IBP_SLV_MID_BUF_WRSP_ENTRIES 0
+`define npuarc_BIU_AHBL_IOC2IBP_SLV_O_BUS_NUM            1
+`define npuarc_BIU_AHBL_IOC2IBP_SLV_ALL_O_BUS_DW         64
+`define npuarc_BIU_AHBL_IOC2IBP_SLV_ALL_O_NEED_SPLT      0
+`define npuarc_BIU_AHBL_IOC2IBP_SLV_O_BUS0_RGON          0
+`define npuarc_BIU_AHBL_IOC2IBP_SLV_O_BUS0_PFX           i_ahbl_ioc2ibp_
+`define npuarc_BIU_AHBL_IOC2IBP_SLV_O_BUS0_INST_PFX      i_ahbl_ioc2ibp_
+`define npuarc_BIU_AHBL_IOC2IBP_SLV_O_BUS0_ENPACK        0
+`define npuarc_BIU_AHBL_IOC2IBP_SLV_O_BUS0_NEED_REQ      0
+`define npuarc_BIU_AHBL_IOC2SPLT_SLV_EDC                0
+`define npuarc_BIU_AHBL_IOC2SPLT_SLV_AW                 40
+`define npuarc_BIU_AHBL_IOC2SPLT_SLV_HSEL_W             1
+`define npuarc_BIU_AHBL_IOC2SPLT_SLV_IDW                16
+`define npuarc_BIU_AHBL_IOC2SPLT_SLV_I_IBP_ENPACK       0
+`define npuarc_BIU_AHBL_IOC2SPLT_SLV_I_BUS_ENDIAN       little
+`define npuarc_BIU_AHBL_IOC2SPLT_SLV_I_BUS_DW           64
+`define npuarc_BIU_AHBL_IOC2SPLT_SLV_I_BUS_PFX          i_ahbl_ioc2ibp_
+`define npuarc_BIU_AHBL_IOC2SPLT_SLV_I_BUS_INST_PFX     i_ahbl_ioc2ibp_
+`define npuarc_BIU_AHBL_IOC2SPLT_SLV_I_BUS_TYPE          ibp
+`define npuarc_BIU_AHBL_IOC2SPLT_SLV_I_AHBL_EBT          none
+`define npuarc_BIU_AHBL_IOC2SPLT_SLV_I_BUS_BUF_THROUGH   1
+`define npuarc_BIU_AHBL_IOC2SPLT_SLV_I_BUS_BUF_ENTRIES   0
+`define npuarc_BIU_AHBL_IOC2SPLT_SLV_I_HAS_CLK_EN       0
+`define npuarc_BIU_AHBL_IOC2SPLT_SLV_I_BUS_CLK_EN_NAME  none
+`define npuarc_BIU_AHBL_IOC2SPLT_SLV_I_BUS_INST_CLK_EN_NAME  none
+`define npuarc_BIU_AHBL_IOC2SPLT_SLV_I_BUS_OUT_NUM        16
+`define npuarc_BIU_AHBL_IOC2SPLT_SLV_MID_BUF_THROUGH      1
+`define npuarc_BIU_AHBL_IOC2SPLT_SLV_MID_BUF_CMD_ENTRIES  0
+`define npuarc_BIU_AHBL_IOC2SPLT_SLV_MID_BUF_WD_ENTRIES   0
+`define npuarc_BIU_AHBL_IOC2SPLT_SLV_MID_BUF_RD_ENTRIES   0
+`define npuarc_BIU_AHBL_IOC2SPLT_SLV_MID_BUF_WRSP_ENTRIES 0
+`define npuarc_BIU_AHBL_IOC2SPLT_SLV_ALL_O_BUS_DW         64
+`define npuarc_BIU_AHBL_IOC2SPLT_SLV_ALL_O_NEED_SPLT      0
+`define npuarc_BIU_AHBL_IOC2SPLT_SLV_O_ALLOW_DIFF_BRANCH      0
+`define npuarc_BIU_AHBL_IOC2SPLT_SLV_O_BUS_NUM            2
+`define npuarc_BIU_AHBL_IOC2SPLT_SLV_RGON_W             1
+`define npuarc_BIU_AHBL_IOC2SPLT_SLV_O_BUS0_RGON          0
+`define npuarc_BIU_AHBL_IOC2SPLT_SLV_O_BUS0_PFX           i_ahbl_ioc2obu_
+`define npuarc_BIU_AHBL_IOC2SPLT_SLV_O_BUS0_INST_PFX      i_ahbl_ioc2obu_
+`define npuarc_BIU_AHBL_IOC2SPLT_SLV_O_BUS0_ENPACK        0
+`define npuarc_BIU_AHBL_IOC2SPLT_SLV_O_BUS0_NEED_REQ      0
+`define npuarc_BIU_AHBL_IOC2SPLT_SLV_O_BUS1_RGON          1
+`define npuarc_BIU_AHBL_IOC2SPLT_SLV_O_BUS1_PFX           i_ahbl_ioc2scu_
+`define npuarc_BIU_AHBL_IOC2SPLT_SLV_O_BUS1_INST_PFX      i_ahbl_ioc2scu_
+`define npuarc_BIU_AHBL_IOC2SPLT_SLV_O_BUS1_ENPACK        0
+`define npuarc_BIU_AHBL_IOC2SPLT_SLV_O_BUS1_NEED_REQ      0
+`define npuarc_BIU_AHBL_IOC2LLM_SLV_EDC                0
+`define npuarc_BIU_AHBL_IOC2LLM_SLV_AW                 40
+`define npuarc_BIU_AHBL_IOC2LLM_SLV_RGON_W             1
+`define npuarc_BIU_AHBL_IOC2LLM_SLV_HSEL_W             1
+`define npuarc_BIU_AHBL_IOC2LLM_SLV_IDW                16
+`define npuarc_BIU_AHBL_IOC2LLM_SLV_I_IBP_ENPACK       0
+`define npuarc_BIU_AHBL_IOC2LLM_SLV_I_BUS_ENDIAN       little
+`define npuarc_BIU_AHBL_IOC2LLM_SLV_I_BUS_DW           64
+`define npuarc_BIU_AHBL_IOC2LLM_SLV_I_BUS_PFX           i_ahbl_ioc2llm_
+`define npuarc_BIU_AHBL_IOC2LLM_SLV_I_BUS_INST_PFX      i_ahbl_ioc2llm_
+`define npuarc_BIU_AHBL_IOC2LLM_SLV_I_BUS_TYPE          ibp
+`define npuarc_BIU_AHBL_IOC2LLM_SLV_I_BUS_BUF_THROUGH   0
+`define npuarc_BIU_AHBL_IOC2LLM_SLV_I_HAS_CLK_EN       0
+`define npuarc_BIU_AHBL_IOC2LLM_SLV_I_BUS_CLK_EN_NAME  0
+`define npuarc_BIU_AHBL_IOC2LLM_SLV_I_BUS_INST_CLK_EN_NAME  0
+`define npuarc_BIU_AHBL_IOC2LLM_SLV_I_BUS_OUT_NUM        15
+`define npuarc_BIU_AHBL_IOC2LLM_SLV_I_BUS_BUF_ENTRIES   2
+`define npuarc_BIU_AHBL_IOC2LLM_SLV_MID_BUF_CMD_ENTRIES  2
+`define npuarc_BIU_AHBL_IOC2LLM_SLV_MID_BUF_WD_ENTRIES   2
+`define npuarc_BIU_AHBL_IOC2LLM_SLV_MID_BUF_RD_ENTRIES   2
+`define npuarc_BIU_AHBL_IOC2LLM_SLV_MID_BUF_WRSP_ENTRIES 2
+`define npuarc_BIU_AHBL_IOC2LLM_SLV_MID_BUF_THROUGH      0
+`define npuarc_BIU_AHBL_IOC2LLM_SLV_O_BUS_NUM            1
+`define npuarc_BIU_AHBL_IOC2LLM_SLV_ALL_O_BUS_DW         64
+`define npuarc_BIU_AHBL_IOC2LLM_SLV_ALL_O_NEED_SPLT      1
+`define npuarc_BIU_AHBL_IOC2LLM_SLV_O_BUS0_RGON          0
+`define npuarc_BIU_AHBL_IOC2LLM_SLV_O_BUS0_PFX           ioc2csm_
+`define npuarc_BIU_AHBL_IOC2LLM_SLV_O_BUS0_INST_PFX      ioc2csm_
+`define npuarc_BIU_AHBL_IOC2LLM_SLV_O_BUS0_ENPACK        0
+`define npuarc_BIU_AHBL_IOC2LLM_SLV_O_BUS0_NEED_REQ      0
+`define npuarc_BIU_AHBL_IOC2SCU_SLV_EDC                0
+`define npuarc_BIU_AHBL_IOC2SCU_SLV_AW                 40
+`define npuarc_BIU_AHBL_IOC2SCU_SLV_RGON_W             1
+`define npuarc_BIU_AHBL_IOC2SCU_SLV_HSEL_W             1
+`define npuarc_BIU_AHBL_IOC2SCU_SLV_IDW                16
+`define npuarc_BIU_AHBL_IOC2SCU_SLV_I_IBP_ENPACK       0
+`define npuarc_BIU_AHBL_IOC2SCU_SLV_I_BUS_ENDIAN       little
+`define npuarc_BIU_AHBL_IOC2SCU_SLV_I_BUS_DW           64
+`define npuarc_BIU_AHBL_IOC2SCU_SLV_I_BUS_PFX          i_ahbl_ioc2scu_
+`define npuarc_BIU_AHBL_IOC2SCU_SLV_I_BUS_INST_PFX     i_ahbl_ioc2scu_
+`define npuarc_BIU_AHBL_IOC2SCU_SLV_I_BUS_TYPE          ibp
+`define npuarc_BIU_AHBL_IOC2SCU_SLV_I_AHBL_EBT          1
+`define npuarc_BIU_AHBL_IOC2SCU_SLV_I_HAS_CLK_EN       0
+`define npuarc_BIU_AHBL_IOC2SCU_SLV_I_BUS_CLK_EN_NAME  none
+`define npuarc_BIU_AHBL_IOC2SCU_SLV_I_BUS_INST_CLK_EN_NAME  none
+`define npuarc_BIU_AHBL_IOC2SCU_SLV_I_BUS_OUT_NUM        6
+`define npuarc_BIU_AHBL_IOC2SCU_SLV_I_BUS_BUF_ENTRIES   0
+`define npuarc_BIU_AHBL_IOC2SCU_SLV_I_BUS_BUF_THROUGH   1
+`define npuarc_BIU_AHBL_IOC2SCU_SLV_MID_BUF_THROUGH      1
+`define npuarc_BIU_AHBL_IOC2SCU_SLV_MID_BUF_CMD_ENTRIES  0
+`define npuarc_BIU_AHBL_IOC2SCU_SLV_MID_BUF_WD_ENTRIES   0
+`define npuarc_BIU_AHBL_IOC2SCU_SLV_MID_BUF_RD_ENTRIES   0
+`define npuarc_BIU_AHBL_IOC2SCU_SLV_MID_BUF_WRSP_ENTRIES 0
+`define npuarc_BIU_AHBL_IOC2SCU_SLV_O_BUS_NUM            1
+`define npuarc_BIU_AHBL_IOC2SCU_SLV_ALL_O_BUS_DW         128
+`define npuarc_BIU_AHBL_IOC2SCU_SLV_ALL_O_NEED_SPLT      0
+`define npuarc_BIU_AHBL_IOC2SCU_SLV_O_BUS0_RGON          0
+`define npuarc_BIU_AHBL_IOC2SCU_SLV_O_BUS0_PFX           dma_pre_
+`define npuarc_BIU_AHBL_IOC2SCU_SLV_O_BUS0_INST_PFX      dma_pre_
+`define npuarc_BIU_AHBL_IOC2SCU_SLV_O_BUS0_ENPACK        0
+`define npuarc_BIU_AHBL_IOC2SCU_SLV_O_BUS0_NEED_REQ      0
+   `define npuarc_BIU_AHBL_IOC2OBU_MST_EDC                0
+   `define npuarc_BIU_AHBL_IOC2OBU_MST_AW                 40
+   `define npuarc_BIU_AHBL_IOC2OBU_MST_INUM               1
+   `define npuarc_BIU_AHBL_IOC2OBU_MST_I0_OUT_NUM         16
+   `define npuarc_BIU_AHBL_IOC2OBU_MST_I0_UNIQ_ID         0
+   `define npuarc_BIU_AHBL_IOC2OBU_MST_I0_PFX             i_ahbl_ioc2obu_
+   `define npuarc_BIU_AHBL_IOC2OBU_MST_I0_INST_PFX        i_ahbl_ioc2obu_
+   `define npuarc_BIU_AHBL_IOC2OBU_MST_I0_DW              64
+   `define npuarc_BIU_AHBL_IOC2OBU_MST_I0_ENPACK          0
+   `define npuarc_BIU_AHBL_IOC2OBU_MST_I0_LOCKABLE        0
+   `define npuarc_BIU_AHBL_IOC2OBU_MST_IDW                1
+   `define npuarc_BIU_AHBL_IOC2OBU_MST_O_BUS_ENDIAN      little
+   `define npuarc_BIU_AHBL_IOC2OBU_MST_O_BUS_DW           64
+   `define npuarc_BIU_AHBL_IOC2OBU_MST_O_ENPACK           0
+   `define npuarc_BIU_AHBL_IOC2OBU_MST_O_BUS_PFX          obu_
+   `define npuarc_BIU_AHBL_IOC2OBU_MST_O_BUS_INST_PFX     obu_
+   `define npuarc_BIU_AHBL_IOC2OBU_MST_O_BUS_BUF_ENTRIES  2
+   `define npuarc_BIU_AHBL_IOC2OBU_MST_O_BUS_OUT_NUM      16
+   `define npuarc_BIU_AHBL_IOC2OBU_MST_O_HAS_CLK_EN       1
+   `define npuarc_BIU_AHBL_IOC2OBU_MST_O_BUS_CLK_EN_NAME  mbus_clk_en
+   `define npuarc_BIU_AHBL_IOC2OBU_MST_O_BUS_INST_CLK_EN_NAME  mbus_clk_en
+   `define npuarc_BIU_AHBL_IOC2OBU_MST_O_BUS_SPLT_IBP     0
+   `define npuarc_BIU_AHBL_IOC2OBU_MST_O_BUS_TYPE         bvci
+   `define npuarc_BIU_IOC2SCU_MST_EDC                0
+   `define npuarc_BIU_IOC2SCU_MST_AW                 40
+   `define npuarc_BIU_IOC2SCU_MST_PASS_USER        1
+   `define npuarc_BIU_IOC2SCU_MST_USER_W           1
+   `define npuarc_BIU_IOC2SCU_MST_INUM               0
+   `define npuarc_BIU_IOC2SCU_MST_IDW                -Infinity
+   `define npuarc_BIU_IOC2SCU_MST_O_BUS_ENDIAN      little
+   `define npuarc_BIU_IOC2SCU_MST_O_BUS_DW           128
+   `define npuarc_BIU_IOC2SCU_MST_O_ENPACK           0
+   `define npuarc_BIU_IOC2SCU_MST_O_BUS_PFX          dma_
+   `define npuarc_BIU_IOC2SCU_MST_O_BUS_INST_PFX     dma_
+   `define npuarc_BIU_IOC2SCU_MST_O_BUS_BUF_ENTRIES  2
+   `define npuarc_BIU_IOC2SCU_MST_O_BUS_BUF_THROUGH  0
+   `define npuarc_BIU_IOC2SCU_MST_O_BUS_OUT_NUM      6
+   `define npuarc_BIU_IOC2SCU_MST_O_HAS_CLK_EN       0
+   `define npuarc_BIU_IOC2SCU_MST_O_BUS_CLK_EN_NAME  none
+   `define npuarc_BIU_IOC2SCU_MST_O_BUS_INST_CLK_EN_NAME  none
+   `define npuarc_BIU_IOC2SCU_MST_O_BUS_SPLT_IBP     0
+   `define npuarc_BIU_IOC2SCU_MST_O_BUS_TYPE         ibp
+ `define npuarc_BIU_IOC_SLV_I_BUS_OUT_NUM 16
+ `define npuarc_BIU_IOC_SLV_EDC 0
+ `define npuarc_BIU_IOC_SLV_AW  40
+ `define npuarc_BIU_IOC_SLV_HSEL_W 1
+ `define npuarc_BIU_IOC_SLV_IDW 16
+ `define npuarc_BIU_IOC_SLV_I_IBP_ENPACK 0
+ `define npuarc_BIU_IOC_SLV_I_HAS_CLK_EN 0
+ `define npuarc_BIU_IOC_SLV_I_BUS_CLK_EN_NAME none
+ `define npuarc_BIU_IOC_SLV_I_BUS_PFX udmi2ioc_
+ `define npuarc_BIU_IOC_SLV_I_BUS_INST_CLK_EN_NAME none
+ `define npuarc_BIU_IOC_SLV_I_BUS_INST_PFX  udmi2ioc_
+ `define npuarc_BIU_IOC_SLV_I_BUS_BUF_ENTRIES 0
+ `define npuarc_BIU_IOC_SLV_I_BUS_BUF_THROUGH 1
+ `define npuarc_BIU_IOC_SLV_I_BUS_IBP_IS_SINGLE  0
+ `define npuarc_BIU_IOC_SLV_I_BUS_RGON_1HOT 0
+ `define npuarc_BIU_IOC_SLV_I_BUS_ENDIAN 0
+ `define npuarc_BIU_IOC_SLV_I_BUS_DW  64
+ `define npuarc_BIU_IOC_SLV_I_BUS_TYPE ibp
+ `define npuarc_BIU_IOC_SLV_I_AHBL_EBT 1
+ `define npuarc_BIU_IOC_SLV_I_IBP_W2N_MAY_OVF 0
+ `define npuarc_BIU_IOC_SLV_MID_BUF_THROUGH 1
+ `define npuarc_BIU_IOC_SLV_MID_BUF_CMD_MWHILE 0
+ `define npuarc_BIU_IOC_SLV_MID_BUF_WD_MWHILE 0
+ `define npuarc_BIU_IOC_SLV_MID_BUF_RD_MWHILE 0
+ `define npuarc_BIU_IOC_SLV_MID_BUF_WRSP_MWHILE 0
+ `define npuarc_BIU_IOC_SLV_MID_BUF_CMD_ENTRIES 0
+ `define npuarc_BIU_IOC_SLV_MID_BUF_WD_ENTRIES 0
+ `define npuarc_BIU_IOC_SLV_MID_BUF_RD_ENTRIES 0
+ `define npuarc_BIU_IOC_SLV_MID_BUF_WRSP_ENTRIES 0
+ `define npuarc_BIU_IOC_SLV_MID_SPLT_OUT_NUM 16
+ `define npuarc_BIU_IOC_SLV_ALL_O_BUS_DW  64
+ `define npuarc_BIU_IOC_SLV_ALL_O_NEED_SPLT 0
+ `define npuarc_BIU_IOC_SLV_O_PASS_RGON 0
+ `define npuarc_BIU_IOC_SLV_O_PASS_USER 0
+ `define npuarc_BIU_IOC_SLV_RGON_W 2
+ `define npuarc_BIU_IOC_SLV_USER_W 2
+ `define npuarc_BIU_IOC_SLV_O_BUS_NUM 2
+ `define npuarc_BIU_IOC_SLV_O_ALLOW_DIFF_BRANCH 0
+ `define npuarc_BIU_IOC_SLV_O_BUS0_RGON 1
+ `define npuarc_BIU_IOC_SLV_O_BUS0_PFX  biu_obu_
+ `define npuarc_BIU_IOC_SLV_O_BUS0_INST_PFX biu_obu_
+ `define npuarc_BIU_IOC_SLV_O_BUS0_ENPACK   0
+ `define npuarc_BIU_IOC_SLV_O_BUS0_NEED_REQ 0
+ `define npuarc_BIU_IOC_SLV_O_BUS0_NEED_CW_BUF 0
+ `define npuarc_BIU_IOC_SLV_O_BUS0_NEED_RESP_BUF 0
+ `define npuarc_BIU_IOC_SLV_O_BUS0_CWBIND 0
+ `define npuarc_BIU_IOC_SLV_O_BUS0_RESP_ALWAYS_ACCEPT 0
+ `define npuarc_BIU_IOC_SLV_O_BUS1_RGON 2
+ `define npuarc_BIU_IOC_SLV_O_BUS1_PFX  dma_pre_
+ `define npuarc_BIU_IOC_SLV_O_BUS1_INST_PFX dma_pre_
+ `define npuarc_BIU_IOC_SLV_O_BUS1_ENPACK   0
+ `define npuarc_BIU_IOC_SLV_O_BUS1_NEED_REQ 0
+ `define npuarc_BIU_IOC_SLV_O_BUS1_NEED_CW_BUF 0
+ `define npuarc_BIU_IOC_SLV_O_BUS1_NEED_RESP_BUF 0
+ `define npuarc_BIU_IOC_SLV_O_BUS1_CWBIND 0
+ `define npuarc_BIU_IOC_SLV_O_BUS1_RESP_ALWAYS_ACCEPT 0
+ `define npuarc_BIU_IOC_SLV_O_BUS2_RGON 4
+ `define npuarc_BIU_IOC_SLV_O_BUS2_PFX biu_csm_
+ `define npuarc_BIU_IOC_SLV_O_BUS2_INST_PFX biu_csm_
+ `define npuarc_BIU_IOC_SLV_O_BUS2_ENPACK   0
+ `define npuarc_BIU_IOC_SLV_O_BUS2_NEED_REQ 0
+ `define npuarc_BIU_IOC_SLV_O_BUS2_NEED_CW_BUF 0
+ `define npuarc_BIU_IOC_SLV_O_BUS2_NEED_RESP_BUF 0
+ `define npuarc_BIU_IOC_SLV_O_BUS2_CWBIND 0
+ `define npuarc_BIU_IOC_SLV_O_BUS2_RESP_ALWAYS_ACCEPT 0
+ `define npuarc_BIU_IOC_UDMI_SLV_EDC 0
+ `define npuarc_BIU_IOC_UDMI_SLV_AW  40
+ `define npuarc_BIU_IOC_UDMI_SLV_RGON_W 1
+ `define npuarc_BIU_IOC_UDMI_SLV_IDW     16
+ `define npuarc_BIU_IOC_UDMI_SLV_BUS_DW  64
+   `define npuarc_BIU_IOC_MST_AW                 40
+   `define npuarc_BIU_IOC_MST_IDW                16
+   `define npuarc_BIU_IOC_MST_INUM               1
+   `define npuarc_BIU_IOC_MST_RGON_W             1
+   `define npuarc_BIU_IOC_MST_BUS_DW             64
+   `define npuarc_BIU_IOC_MST_EDC                0
+   `define npuarc_BIU_OBU_IBP_MST_EDC                0
+   `define npuarc_BIU_OBU_IBP_MST_AW                 40
+   `define npuarc_BIU_OBU_IBP_MST_INUM               1
+   `define npuarc_BIU_OBU_IBP_MST_I0_OUT_NUM         16
+   `define npuarc_BIU_OBU_IBP_MST_I0_UNIQ_ID         0
+   `define npuarc_BIU_OBU_IBP_MST_I0_PFX             biu_obu_
+   `define npuarc_BIU_OBU_IBP_MST_I0_INST_PFX        biu_obu_
+   `define npuarc_BIU_OBU_IBP_MST_I0_DW              64
+   `define npuarc_BIU_OBU_IBP_MST_I0_ENPACK          0
+   `define npuarc_BIU_OBU_IBP_MST_I0_LOCKABLE        0
+   `define npuarc_BIU_OBU_IBP_MST_IDW                16
+   `define npuarc_BIU_OBU_IBP_MST_O_BUS_ENDIAN      little
+   `define npuarc_BIU_OBU_IBP_MST_O_BUS_DW           64
+   `define npuarc_BIU_OBU_IBP_MST_O_ENPACK           0
+   `define npuarc_BIU_OBU_IBP_MST_O_BUS_PFX          obu_
+   `define npuarc_BIU_OBU_IBP_MST_O_BUS_INST_PFX     obu_
+   `define npuarc_BIU_OBU_IBP_MST_O_BUS_BUF_ENTRIES  2
+   `define npuarc_BIU_OBU_IBP_MST_O_BUS_BUF_THROUGH  0
+   `define npuarc_BIU_OBU_IBP_MST_O_BUS_OUT_NUM      16
+   `define npuarc_BIU_OBU_IBP_MST_O_HAS_CLK_EN       1
+   `define npuarc_BIU_OBU_IBP_MST_O_BUS_CLK_EN_NAME  mbus_clk_en
+   `define npuarc_BIU_OBU_IBP_MST_O_BUS_INST_CLK_EN_NAME  mbus_clk_en
+   `define npuarc_BIU_OBU_IBP_MST_O_BUS_SPLT_IBP     0
+   `define npuarc_BIU_OBU_IBP_MST_O_BUS_TYPE         axi
+   `define npuarc_BIU_LLM_IBP_MST_EDC                0
+   `define npuarc_BIU_LLM_IBP_MST_AW                 40
+   `define npuarc_BIU_LLM_IBP_MST_INUM               1
+   `define npuarc_BIU_LLM_IBP_MST_I0_OUT_NUM         6
+   `define npuarc_BIU_LLM_IBP_MST_I0_UNIQ_ID         0
+   `define npuarc_BIU_LLM_IBP_MST_I0_PFX             biu_csm_
+   `define npuarc_BIU_LLM_IBP_MST_I0_INST_PFX        biu_csm_
+   `define npuarc_BIU_LLM_IBP_MST_I0_DW              64
+   `define npuarc_BIU_LLM_IBP_MST_I0_ENPACK          0
+   `define npuarc_BIU_LLM_IBP_MST_I0_LOCKABLE        0
+   `define npuarc_BIU_LLM_IBP_MST_IDW                1
+   `define npuarc_BIU_LLM_IBP_MST_O_BUS_ENDIAN      little
+   `define npuarc_BIU_LLM_IBP_MST_O_BUS_DW           64
+   `define npuarc_BIU_LLM_IBP_MST_O_ENPACK           0
+   `define npuarc_BIU_LLM_IBP_MST_O_BUS_PFX          ioc2csm_
+   `define npuarc_BIU_LLM_IBP_MST_O_BUS_INST_PFX     ioc2csm_
+   `define npuarc_BIU_LLM_IBP_MST_O_BUS_BUF_ENTRIES  0
+   `define npuarc_BIU_LLM_IBP_MST_O_BUS_BUF_THROUGH  1
+   `define npuarc_BIU_LLM_IBP_MST_O_BUS_OUT_NUM      15
+   `define npuarc_BIU_LLM_IBP_MST_O_HAS_CLK_EN       0
+   `define npuarc_BIU_LLM_IBP_MST_O_BUS_CLK_EN_NAME  none
+   `define npuarc_BIU_LLM_IBP_MST_O_BUS_INST_CLK_EN_NAME  none
+   `define npuarc_BIU_LLM_IBP_MST_O_BUS_SPLT_IBP     1
+   `define npuarc_BIU_LLM_IBP_MST_O_BUS_TYPE         ibp

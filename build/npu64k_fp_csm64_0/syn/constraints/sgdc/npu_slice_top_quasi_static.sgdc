@@ -1,0 +1,7 @@
+current_design npu_slice_top 
+quasi_static -name "test_mode"
+test_mode -name "test_mode" -value 1
+quasi_static -name "clusternum"
+quasi_static -name "arcnum"
+quasi_static -name "intvbase_in"
+quasi_static -name "arct_dbg_prot_sel"

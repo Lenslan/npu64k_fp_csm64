@@ -1,0 +1,8 @@
+current_design npu_slice_top 
+
+reset -name "rst_a" -async -value 1
+test_mode -name "rst_a" -value 0 -scanshift
+
+reset -name "arct_rst_an" -async -value 0
+test_mode -name "arct_rst_an" -value 1 -scanshift
+

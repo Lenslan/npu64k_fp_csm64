@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<com.arc.data.FileTimeStampList checksum="">
+    <java.util.ArrayList _name_="timeStampList">
+        <com.arc.data.FileTime _name_="entry" checksum="1926c9a7806d32cf3a9c1f5c5a84f672" modifiedTime="1730083726816" fileName="/home/jjt/arc_proj/npu64k_fp_csm64/build/bcr_contents.txt"/>
+    </java.util.ArrayList>
+</com.arc.data.FileTimeStampList>

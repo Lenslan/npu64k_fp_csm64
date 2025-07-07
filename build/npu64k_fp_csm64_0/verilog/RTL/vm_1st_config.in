@@ -1,0 +1,8 @@
+`include_s "npu_defines.v"
+`let DATA_BITS         =  64
+`let ADDR_BITS         =  16
+`let SECDED            =  `NPU_MEM_SECDED
+`let ALL_ZERO_ALL_ONE  =  1
+`let OVERWRITE_PREFIX  =  "vm_ecc_1st_"
+`let PIPELINE          =  `NPU_ECC_PIPELINE
+`let generic           = 0

@@ -1,0 +1,29 @@
+current_design npu_top 
+reset -name "npu_core_rst_a"     -async -value 1
+reset -name "grp0_rst_a"     -async -value 1
+reset -name "grp1_rst_a"     -async -value 1
+reset -name "grp2_rst_a"     -async -value 1
+reset -name "grp3_rst_a"     -async -value 1
+reset -name "nl2_rst_a"         -async -value 1
+reset -name "nl2arc0_rst_a"     -async -value 1
+reset -name "nl2arc1_rst_a"     -async -value 1
+reset -name "npu_cfg_rst_a"     -async -value 1
+reset -name "sl0_rst_a"     -async -value 1
+reset -name "sl1_rst_a"     -async -value 1
+reset -name "sl2_rst_a"     -async -value 1
+reset -name "sl3_rst_a"     -async -value 1
+reset -name "sl4_rst_a"     -async -value 1
+reset -name "sl5_rst_a"     -async -value 1
+reset -name "sl6_rst_a"     -async -value 1
+reset -name "sl7_rst_a"     -async -value 1
+reset -name "sl8_rst_a"     -async -value 1
+reset -name "sl9_rst_a"     -async -value 1
+reset -name "sl10_rst_a"     -async -value 1
+reset -name "sl11_rst_a"     -async -value 1
+reset -name "sl12_rst_a"     -async -value 1
+reset -name "sl13_rst_a"     -async -value 1
+reset -name "sl14_rst_a"     -async -value 1
+reset -name "sl15_rst_a"     -async -value 1
+reset -name "npu_noc_rst_a"     -async -value 1
+reset -name "presetdbgn" -async -value 0
+

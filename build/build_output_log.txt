@@ -1,0 +1,103 @@
+
+***** Build Started: October 28, 2024 at 10:48:45 AM CST *****
+
+Version Information:
+    ARChitect U-2023.03
+
+    IP Libraries:
+        NPX6               v2.0.0
+        ARC xCAM           v4.3.22
+        Tool Configuration  v1.0.99
+
+IP Library locations:
+    NPX6                    /home/jjt/ARC/ARC_NPX6/DWC_ARC_NPX6_2_00a-IP-Libraries/NPX6_v2.0.0.iplib
+    ARC xCAM                /home/jjt/opt/ARC_2023/ARChitect/lib/ARC_xCAM.iplib
+    Tool Configuration      /home/jjt/opt/ARC_2023/ARChitect/lib/cgen.iplib
+
+*** Dependency summary ***
+
+System: NOTE: you are using the arc_dev license.
+System: Please make sure that env variable LD_LIBRARY_PATH invokes $ARCHITECT_ROOT/lib/linux_x86_64 before $ARCHITECT_ROOT/lib/linux for proper 64-bit VCS compilation.
+Building scripts despite the Build Scripts option being turned off, as this is required for correct HDL construction.
+
+*** Building Scripts ***
+
+Writing file '/home/jjt/arc_proj/npu64k_fp_csm64/build/rascal.env'.
+Writing file '/home/jjt/arc_proj/npu64k_fp_csm64/build/rascal_ram_map.txt'.
+Writing file '/home/jjt/arc_proj/npu64k_fp_csm64/build/.arctest'.
+Writing file '/home/jjt/arc_proj/npu64k_fp_csm64/build/build_configuration.json'.
+Writing file '/home/jjt/arc_proj/npu64k_fp_csm64/build/build_configuration.csv'.
+Writing file '/home/jjt/arc_proj/npu64k_fp_csm64/build/build_configuration_full.json'.
+Writing file '/home/jjt/arc_proj/npu64k_fp_csm64/build/verilog/RTL/build_info.v'.
+Writing file '/home/jjt/arc_proj/npu64k_fp_csm64/build/additional_makefiles/makefile_operating_system_abstraction.linux'.
+Writing file '/home/jjt/arc_proj/npu64k_fp_csm64/build/additional_makefiles/makefile_operating_system_abstraction.unix'.
+Writing file '/home/jjt/arc_proj/npu64k_fp_csm64/build/additional_makefiles/makefile_operating_system_abstraction.win32'.
+Writing file '/home/jjt/arc_proj/npu64k_fp_csm64/build/additional_makefiles/makefile_operating_system_abstraction.win64'.
+Writing file '/home/jjt/arc_proj/npu64k_fp_csm64/build/additional_makefiles/arc_copyright_notice.txt'.
+Writing file '/home/jjt/arc_proj/npu64k_fp_csm64/build/additional_makefiles/makefile_rules_verilog'.
+Writing file '/home/jjt/arc_proj/npu64k_fp_csm64/build/additional_makefiles/makefile_header_verilog'.
+Writing file '/home/jjt/arc_proj/npu64k_fp_csm64/build/makefile'.
+Writing file '/home/jjt/arc_proj/npu64k_fp_csm64/build/hex_conv.pl'.
+Writing file '/home/jjt/arc_proj/npu64k_fp_csm64/build/additional_makefiles/makefile_interface_vcs_verilog'.
+Writing file '/home/jjt/arc_proj/npu64k_fp_csm64/build/scripts/arc_vcs_pli_table'.
+Writing file '/home/jjt/arc_proj/npu64k_fp_csm64/build/vcs_run'.
+Writing file '/home/jjt/arc_proj/npu64k_fp_csm64/build/scripts/pdisp_a6k_pli_table'.
+Writing file '/home/jjt/arc_proj/npu64k_fp_csm64/build/dat/library.list'.
+Writing file '/home/jjt/arc_proj/npu64k_fp_csm64/build/dat/board.hier'.
+Writing file '/home/jjt/arc_proj/npu64k_fp_csm64/build/dat/board.mg'.
+Writing file '/home/jjt/arc_proj/npu64k_fp_csm64/build/verilog/RTL/config/NPX6_config.in'.
+Writing file '/home/jjt/arc_proj/npu64k_fp_csm64/build/rascal.env'.
+Writing file '/home/jjt/arc_proj/npu64k_fp_csm64/build/rascal_ram_map.txt'.
+Writing file '/home/jjt/arc_proj/npu64k_fp_csm64/build/.arctest'.
+Writing file '/home/jjt/arc_proj/npu64k_fp_csm64/build/build_configuration.json'.
+Writing file '/home/jjt/arc_proj/npu64k_fp_csm64/build/build_configuration.csv'.
+Writing file '/home/jjt/arc_proj/npu64k_fp_csm64/build/build_configuration_full.json'.
+Writing file '/home/jjt/arc_proj/npu64k_fp_csm64/build/verilog/RTL/build_info.v'.
+Writing file '/home/jjt/arc_proj/npu64k_fp_csm64/build/additional_makefiles/makefile_operating_system_abstraction.linux'.
+Writing file '/home/jjt/arc_proj/npu64k_fp_csm64/build/additional_makefiles/makefile_operating_system_abstraction.unix'.
+Writing file '/home/jjt/arc_proj/npu64k_fp_csm64/build/additional_makefiles/makefile_operating_system_abstraction.win32'.
+Writing file '/home/jjt/arc_proj/npu64k_fp_csm64/build/additional_makefiles/makefile_operating_system_abstraction.win64'.
+Writing file '/home/jjt/arc_proj/npu64k_fp_csm64/build/additional_makefiles/arc_copyright_notice.txt'.
+Writing file '/home/jjt/arc_proj/npu64k_fp_csm64/build/additional_makefiles/makefile_rules_verilog'.
+Writing file '/home/jjt/arc_proj/npu64k_fp_csm64/build/additional_makefiles/makefile_header_verilog'.
+Writing file '/home/jjt/arc_proj/npu64k_fp_csm64/build/makefile'.
+Writing file '/home/jjt/arc_proj/npu64k_fp_csm64/build/hex_conv.pl'.
+Making file executable '/home/jjt/arc_proj/npu64k_fp_csm64/build/hex_conv.pl'.
+Writing file '/home/jjt/arc_proj/npu64k_fp_csm64/build/additional_makefiles/makefile_interface_vcs_verilog'.
+Writing file '/home/jjt/arc_proj/npu64k_fp_csm64/build/scripts/arc_vcs_pli_table'.
+Writing file '/home/jjt/arc_proj/npu64k_fp_csm64/build/vcs_run'.
+Making file executable '/home/jjt/arc_proj/npu64k_fp_csm64/build/vcs_run'.
+Writing file '/home/jjt/arc_proj/npu64k_fp_csm64/build/scripts/pdisp_a6k_pli_table'.
+Writing file '/home/jjt/arc_proj/npu64k_fp_csm64/build/dat/library.list'.
+Writing file '/home/jjt/arc_proj/npu64k_fp_csm64/build/dat/board.hier'.
+Writing file '/home/jjt/arc_proj/npu64k_fp_csm64/build/dat/board.mg'.
+Writing file '/home/jjt/arc_proj/npu64k_fp_csm64/build/verilog/RTL/config/NPX6_config.in'.
+  Copy /home/jjt/arc_proj/npu64k_fp_csm64/build/verilog/RTL/include/const.def to /home/jjt/arc_proj/npu64k_fp_csm64/build/verilog/RTL/const.def
+
+*** Building HDL ***
+
+
+*** BEGIN Checking constraints for System.NPX6 ***
+Pre-processing VPP source files for NPX6 (System.NPX6) ...
+NPX6:non-macro vppfiles = config/manifest.vpp
+VPP: ./config/manifest.vpp                       => /home/jjt/arc_proj/npu64k_fp_csm64/build/verilog/RTL/manifest.v
+Pre-processing VPP source files for NPX6 (System.NPX6) ...
+*** END Checking constraints for System.NPX6 ***
+
+*** BEGIN Building RTL (Verilog preprocessing) for System.NPX6 ***
+Pre-processing VPP source files for NPX6 (System.NPX6) ...
+NPX6:non-macro vppfiles = config/manifest.vpp
+VPP: ./config/manifest.vpp                       => /home/jjt/arc_proj/npu64k_fp_csm64/build/verilog/RTL/manifest.v
+NPX6:copyfiles = rtl/npu64k_fp_csm64_0.tar.xz
+Copying non-preprocessed Copy source files for NPX6 (System.NPX6) ...
+  Copy /home/jjt/ARC/ARC_NPX6/DWC_ARC_NPX6_2_00a-IP-Libraries/NPX6_v2.0.0.iplib/com/arc/hardware/NPX6/1_0/verilog_child/./rtl/npu64k_fp_csm64_0.tar.xz to /home/jjt/arc_proj/npu64k_fp_csm64/build/npu64k_fp_csm64_0.tar.xz
+Pre-processing VPP source files for NPX6 (System.NPX6) ...
+NPX6:vpp_commands = vpp/makefile.vpp
+VPP: ./vpp/makefile.vpp                          => /home/jjt/arc_proj/npu64k_fp_csm64/build/makefile
+Create file /home/jjt/arc_proj/npu64k_fp_csm64/build/verilog/RTL/NPX6_undefined
+*** END Building RTL (Verilog preprocessing) for System.NPX6 ***
+Writing file '/home/jjt/arc_proj/npu64k_fp_csm64/build/bcr_contents.txt'.
+Writing file '/home/jjt/arc_proj/npu64k_fp_csm64/build/bcr_contents.txt'.
+
+***** Build Finished: October 28, 2024 at 10:48:46 AM CST *****
+

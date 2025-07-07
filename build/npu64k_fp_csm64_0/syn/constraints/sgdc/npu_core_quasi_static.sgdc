@@ -1,0 +1,7 @@
+current_design npu_core 
+quasi_static -name "test_mode"
+test_mode -name "test_mode" -value 1
+quasi_static -name "clusternum"
+quasi_static -name "nl2arc0_intvbase_in"
+quasi_static -name "nl2arc1_intvbase_in"
+quasi_static -name "arct_dbg_prot_sel"

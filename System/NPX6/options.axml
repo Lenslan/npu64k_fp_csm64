@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<com.arc.data.inst.OptionInstList>
+    <com.arc.data.inst.SimpleOptionInst _name_="entry" name="npu_cfg">
+        <java.lang.String _name_="value"><![CDATA[npu64k_fp_csm64_0]]></java.lang.String>
+    </com.arc.data.inst.SimpleOptionInst>
+    <com.arc.data.inst.SimpleOptionInst _name_="entry" name="npu_slice_num">
+        <java.lang.Integer _name_="value" value="16"/>
+    </com.arc.data.inst.SimpleOptionInst>
+    <com.arc.data.inst.SimpleOptionInst _name_="entry" name="npu_has_float">
+        <java.lang.Boolean _name_="value" value="true"/>
+    </com.arc.data.inst.SimpleOptionInst>
+    <com.arc.data.inst.SimpleOptionInst _name_="entry" name="npu_slice_mac">
+        <java.lang.Integer _name_="value" value="4096"/>
+    </com.arc.data.inst.SimpleOptionInst>
+    <com.arc.data.inst.SimpleOptionInst _name_="entry" name="npu_csm_size">
+        <java.lang.Integer _name_="value" value="64"/>
+    </com.arc.data.inst.SimpleOptionInst>
+    <com.arc.data.inst.SimpleOptionInst _name_="entry" name="npu_safety_level">
+        <java.lang.String _name_="value"><![CDATA[ASIL-B]]></java.lang.String>
+    </com.arc.data.inst.SimpleOptionInst>
+</com.arc.data.inst.OptionInstList>

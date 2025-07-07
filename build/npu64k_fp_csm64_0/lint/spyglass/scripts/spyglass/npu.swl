@@ -1,0 +1,7 @@
+
+##waive -rule "SDC_214" -comment "FC/RTLA SDC grammar is not fully recognized by SPYGLASS"
+waive -rule "ReserveName" -comment "The Reserved Name is used in structure"
+waive -rule "W240" -comment "Caused by configuration combination"
+
+waive -rule "ImproperRangeIndex-ML" -msg "Index 'evt_vm_sel_r' of width '4' is larger than the *" -comment "EVT_VM_SEL is 4 bits but only 8 VM support in Victoria2"
+waive -rule "Ar_resetcross01" -msg "Unsynchronized reset crossing detected from Flop*Reset: 'NULL'*" -comment "Some register doesn't have reset"

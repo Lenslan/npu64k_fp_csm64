@@ -1,0 +1,40 @@
+#===============================================================================
+# SYNOPSYS CONFIDENTIAL - This is an unpublished, confidential and proprietary
+# work of Synopsys, Inc., and may be subject to patent, copyright, trade secret,
+# and/or other intellectual property or contractual protection.This work may
+# only be used in accordance with the terms and conditions of a written license
+# agreement with Synopsys, Inc.  All other use or distribution of this work is
+# strictly prohibited.
+#-------------------------------------------------------------------------------
+# Versions     :
+# 2017.07 June 25th, 2017
+#   Waiver known cdc_abstract error
+# 2018.03 January 30th, 2018
+#   Waiver dftMandatory_Constraint_Check
+# 2019.01-1 May 20th, 2019
+#   Copy of 2019.01
+# 2019.09 September 23rd, 2019
+#   Remove waiver to known cdc_abstract error
+#   Add waiver to known incorrect SGDCWRN_127 warnings
+# 2020.05 May 26th, 2020
+#   Add waiver for ReportDeprecatedRules & CdcAttributeSetup
+#===============================================================================
+waive \
+  -rule    "dftMandatory_Constraint_Check" \
+  -msg     "One or more mandatory constraints missing in module '*'. Please see summary report in the reported file" \
+  -comment "Reports missing scan chains declarations, which do not exist at RTL level"
+
+waive \
+  -rule    "SGDCWRN_127" \
+  -msg     "Found incorrect waiver spec at line * of file *. If you meant to add a comment please use proper syntax (--)" \
+  -comment "Known SpyGlass/GuideWare bug (multiple STARs, including STAR 9001517202)"
+
+waive \
+  -rule    "ReportDeprecatedRules" \
+  -msg     "The rule 'Reset_check05' will be deprecated. 'The rule Reset_check05 will be deprecated in the future release starting April 2018.'" \
+  -comment "Not an error.(P10175280-62274)"
+
+waive \
+  -rule    "CdcAttributeSetup" \
+  -msg     "'cdc_attribute' constraint is not used '*'" \
+  -comment "Not an error.(P10175280-63112)"

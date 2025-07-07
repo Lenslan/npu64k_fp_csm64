@@ -1,0 +1,338 @@
+`define npuarc_HAS_RTT              1
+`define npuarc_RTT_PROGRAMMING_IF   1
+`define npuarc_RTT_PGMINT_OPTION    1
+`define npuarc_RTT_FEATURE_LEVEL 0
+`define npuarc_RTT_IMPL_SMALL   1
+`define npuarc_RTT_IMPL_MEDIUM  0
+`define npuarc_RTT_IMPL_FULL    0
+`define npuarc_RTT_MUX_OPTION       0
+`define npuarc_RTT_CTI_SYNC      0
+`define npuarc_RTT_ADDR_MSB         31
+`define npuarc_RTT_ADDR_BITS        32
+`define npuarc_RTT_ADDR_RANGE       31:0
+`define npuarc_DMP_FIFO_RANGE   3:0
+`define npuarc_DMP_FIFO_DEPTH   4
+`define npuarc_DMP_FIFO_MSB     3
+`define npuarc_DMP_GRAD_ENTRIES   4
+`define npuarc_DMP_GRAD_TAG_RANGE 1:0  
+`define npuarc_DMP_GRAD_TAG_BITS  2
+`define npuarc_IS_HS 1
+`define npuarc_DUAL_ISSUE  0
+`define npuarc_NMI_OPTION 0
+`define npuarc_HAS_MPU              1
+`define npuarc_BCR_REG_BITS         12
+`define npuarc_SAFETY_ISO   0
+`define npuarc_SAFETY_ISO_EXP   0
+`define npuarc_SAFETY_DBG_EXP   0
+`define npuarc_IRQ_DUAL_RAIL    0
+`define npuarc_ALTCLKEN_OPTION 0
+ `define npuarc_IC_ECC_SIZE       1
+ `define npuarc_IC_BANKS          2
+ `define npuarc_IFU_128_OPTION    0
+ `define npuarc_SYNDROME_MSB      5
+`define npuarc_POWER_DOMAINS    0
+`define npuarc_EXPORT_RAM_PG    1
+`define npuarc_HAS_DVFS         0
+`define npuarc_PD1_CLK_GATE_CTRL 0
+`define npuarc_IC_ECC_OPTION     3
+`define npuarc_ICCM0_ECC_OPTION  0
+`define npuarc_ICCM1_ECC_OPTION  0
+`define npuarc_MMU_ECC_OPTION    2
+`define npuarc_DC_ECC_OPTION     3
+`define npuarc_DCCM_ECC_OPTION   3
+`define npuarc_VEC_ECC_OPTION    0
+`define npuarc_VEC_MAX_FETCH_SIZE 0
+`define npuarc_ECC_OPTION_ADDR   0
+`define npuarc_ECC_SYNDROME_OPTION 1
+`define npuarc_ECC_EXPORT_DB_SB_ONLY 1
+`define npuarc_ECC_EXPORT_ERROR_PER_RAM 1
+`define npuarc_ALL_01_DET          ((3 == 3) || (3 == 3) || (2 == 2) || (3 == 3) || (0 == 3) || (0 == 3) || (0 == 3))
+`define npuarc_CORE_HAS_SAFETY  0
+`define npuarc_MCIP_SAFETY 0
+`define npuarc_DEF_DIV2REF 1
+`define npuarc_SCANTEST_RAM_BYPASS_MUX 0
+`define npuarc_DMP_BE_MSB     7
+`define npuarc_DMP_DATA_MSB   63
+`define npuarc_DMP_DATA_BITS  63+1
+`define npuarc_DMP_BE_RANGE   7:0
+`define npuarc_DMP_DATA_RANGE 63:0
+`define npuarc_HAS_DMP_PERIPHERAL0   0
+`define npuarc_HAS_DMP_PERIPHERAL1   0
+`define npuarc_HAS_DMP_PERIPHERAL 0
+`define npuarc_HAS_DMP_MEMORY       0
+`define npuarc_AUX_VOLATILE_BASE             15
+`define npuarc_AUX_VOLATILE_LIMIT            0
+`define npuarc_AUX_VOLATILE_STRICT_ORDERING  1
+`define npuarc_AUX_VOLATILE_DISABLE          0
+`define npuarc_BYTE_ORDER 0
+`define npuarc_CLOCK_GATING      1
+`define npuarc_UNIT_CGATE_OPTION 1
+`define npuarc_HAS_FPU              0
+`define npuarc_FPU_DP_OPTION        0
+`define npuarc_FPU_HP_OPTION        0
+`define npuarc_FPU_FMA_OPTION       0
+`define npuarc_H_FLAG               0
+`define npuarc_ISIZE_2_BYTES    2'd0
+`define npuarc_ISIZE_4_BYTES    2'd1
+`define npuarc_ISIZE_6_BYTES    2'd2
+`define npuarc_ISIZE_8_BYTES    2'd3
+`define npuarc_ISIZE_LSB        0
+`define npuarc_ISIZE_MSB        1
+`define npuarc_ISIZE_RANGE      1:0
+`define npuarc_BR_HAS_TOS_QUEUE 1
+`define npuarc_BR_SAVE_TOS      1
+`define npuarc_BR_INFO_ENTRIES  7
+`define npuarc_BR_TOSQ_BITS     3
+`define npuarc_BR_INFO_BUF_SIZE     3
+`define npuarc_BR_TOSQ_ENTRIES  5
+`define npuarc_BR_INFO_SIZE     6
+`define npuarc_BR_INFO_MSB      5
+`define npuarc_BR_INFO_LSB      0
+`define npuarc_BR_INFO_RANGE    5:0
+`define npuarc_ZNCV_RANGE           11:8
+`define npuarc_V_FLAG               8
+`define npuarc_Z_FLAG               11
+`define npuarc_ADDR_RANGE           31:0
+`define npuarc_RGF_ADDR_RANGE       5:0
+`define npuarc_PC_SIZE            32
+`define npuarc_PC_BITS              31
+`define npuarc_PC_RANGE             31:1
+`define npuarc_BR_TYPE_BITS     3
+`define npuarc_BR_TYPE_MSB      2
+`define npuarc_BR_TYPE_LSB      0
+`define npuarc_BR_TYPE_RANGE    2:0
+`define npuarc_FCH_EXCPN_RANGE  2:0
+`define npuarc_MPU_ECR_MR_MSB         3
+`define npuarc_MPU_ECR_MR_BITS        4
+`define npuarc_MPU_ECR_MR_UNUSED      4
+`define npuarc_MPU_ECR_MR_RANGE       3:0
+`define npuarc_MPU_ECR_VT_BITS        2
+`define npuarc_MPU_ECR_VT_RANGE       9:8
+`define npuarc_MPU_ECR_EC_BITS        16
+`define npuarc_MPU_ECR_EC_RANGE       31:16
+`define npuarc_MPU_ECR_MR_NONE        255
+`define npuarc_MPY_OPTION           9
+`define npuarc_LL64_OPTION    1
+`define npuarc_ACC_OPTION     1
+`define npuarc_GRADUATE_FLAGS 1
+`define npuarc_FIRQ_OPTION           0
+`define npuarc_NUMBER_OF_LEVELS      3
+`define npuarc_HAS_JTAG 0
+`define npuarc_ENDIAN little
+`define npuarc_ADDR_WIDTH 32
+`define npuarc_MEM_BUS_WIDTH           64
+`define npuarc_LL64_OPTION             1
+`define npuarc_MEM_BUS_OPTION          4
+`define npuarc_MEM_BUS_OPTION_BVCI     0
+`define npuarc_MEM_BUS_OPTION_AHB      1
+`define npuarc_MEM_BUS_OPTION_AHBLITE  2
+`define npuarc_MEM_BUS_OPTION_AXI      4
+`define npuarc_NUM_MST 0
+`define npuarc_DC_IO_COHERENCY     0
+  `define npuarc_SNOOP_PROT           axi
+`define npuarc_SNOOP_IDW            16
+`define npuarc_SNOOP0_PREF     snp0_
+`define npuarc_SNOOP1_PREF     snp1_
+`define npuarc_SNOOP2_PREF     snp2_
+`define npuarc_SNOOP3_PREF     snp3_
+`define npuarc_HAS_ACTIONPOINTS     1
+`define npuarc_APS_FEATURE          0
+`define npuarc_DATA_RANGE           31:0
+`define npuarc_DATA_SIZE            32
+`define npuarc_HAS_INTERRUPTS       1
+`define npuarc_NUMBER_OF_INTERRUPTS 39
+`define npuarc_EXTERNAL_PINS_DUAL_RAIL 0
+`define npuarc_INTERRUPT_INPUTS_0_INDEX 17
+`define npuarc_INTERRUPT_INPUTS_1_INDEX 19
+`define npuarc_INTERRUPT_INPUTS_2_INDEX 21
+`define npuarc_INTERRUPT_INPUTS_3_INDEX 22
+`define npuarc_INTERRUPT_INPUTS_4_INDEX 23
+`define npuarc_INTERRUPT_INPUTS_5_INDEX 24
+`define npuarc_INTERRUPT_INPUTS_6_INDEX 25
+`define npuarc_INTERRUPT_INPUTS_7_INDEX 26
+`define npuarc_INTERRUPT_INPUTS_8_INDEX 27
+`define npuarc_INTERRUPT_INPUTS_9_INDEX 28
+`define npuarc_INTERRUPT_INPUTS_10_INDEX 29
+`define npuarc_INTERRUPT_INPUTS_11_INDEX 30
+`define npuarc_INTERRUPT_INPUTS_12_INDEX 31
+`define npuarc_INTERRUPT_INPUTS_13_INDEX 32
+`define npuarc_INTERRUPT_INPUTS_14_INDEX 33
+`define npuarc_INTERRUPT_INPUTS_15_INDEX 34
+`define npuarc_INTERRUPT_INPUTS_16_INDEX 35
+`define npuarc_INTERRUPT_INPUTS_17_INDEX 36
+`define npuarc_INTERRUPT_INPUTS_18_INDEX 37
+`define npuarc_INTERRUPT_INPUTS_19_INDEX 38
+`define npuarc_INTERRUPT_INPUTS_20_INDEX 39
+`define npuarc_INTERRUPT_INPUTS_21_INDEX 40
+`define npuarc_INTERRUPT_INPUTS_22_INDEX 41
+`define npuarc_INTERRUPT_INPUTS_23_INDEX 42
+`define npuarc_INTERRUPT_INPUTS_24_INDEX 43
+`define npuarc_INTERRUPT_INPUTS_25_INDEX 44
+`define npuarc_INTERRUPT_INPUTS_26_INDEX 45
+`define npuarc_INTERRUPT_INPUTS_27_INDEX 46
+`define npuarc_INTERRUPT_INPUTS_28_INDEX 47
+`define npuarc_INTERRUPT_INPUTS_29_INDEX 48
+`define npuarc_INTERRUPT_INPUTS_30_INDEX 49
+`define npuarc_INTERRUPT_INPUTS_31_INDEX 50
+`define npuarc_INTERRUPT_INPUTS_32_INDEX 51
+`define npuarc_INTERRUPT_INPUTS_33_INDEX 52
+`define npuarc_INTERRUPT_INPUTS_34_INDEX 53
+`define npuarc_INTERRUPT_INPUTS_35_INDEX 54
+`define npuarc_INTERRUPT_INPUTS 36
+`define npuarc_INTERRUPT_OUTPUTS   0
+`define npuarc_HAS_RTT            1
+ `define npuarc_RTT_FEATURE_LEVEL 0
+ `define npuarc_RTT_PGMINT_OPTION 1
+`define npuarc_AUX_REG_BITS         12
+`define npuarc_AUX_REG_RANGE        11:0
+`define npuarc_HAS_DMA            0
+`define npuarc_HAS_XY  0
+`define npuarc_HAS_XY_DMA 0
+`define npuarc_ANY_DMA 0
+`define npuarc_HS_LITTLE_ENDIAN        0
+`define npuarc_HS_BIG_ENDIAN           1
+`define npuarc_ADDR_MSB             31
+`define npuarc_CCM_DW               64
+`define npuarc_CCM_IW               16
+`define npuarc_CCM_ALSB             3
+`define npuarc_BIST_OPTION    0
+`define npuarc_PIPE_EDC_OPTION   0
+`define npuarc_TIE_SIGNALS_0_NAME wdt_ext_timeout_ack_r
+`define npuarc_TIE_SIGNALS_0_RANGE
+`define npuarc_TIE_SIGNALS_1_NAME wdt_ext_event0_in
+`define npuarc_TIE_SIGNALS_1_RANGE
+`define npuarc_TIE_SIGNALS_2_NAME wdt_ext_event0_stop_in
+`define npuarc_TIE_SIGNALS_2_RANGE
+`define npuarc_TIE_SIGNALS_3_NAME  alt_clk_en
+`define npuarc_TIE_SIGNALS_3_RANGE
+`define npuarc_TIE_SIGNALS_4_NAME  dbg_cache_rst_disable
+`define npuarc_TIE_SIGNALS_4_RANGE
+`define npuarc_TIE_SIGNALS_5_NAME  dccm_dmi_priority
+`define npuarc_TIE_SIGNALS_5_RANGE
+`define npuarc_TIE_SIGNALS_6_NAME  mem_sd
+`define npuarc_TIE_SIGNALS_6_RANGE
+`define npuarc_TIE_SIGNALS_7_NAME  mem_ds
+`define npuarc_TIE_SIGNALS_7_RANGE
+`define npuarc_TIE_SIGNALS 8
+`define npuarc_TIE_PD_SIGNALS 0
+`define npuarc_STUB_SIGNALS_0_NAME dbg_rerr
+`define npuarc_STUB_SIGNALS_0_RANGE
+`define npuarc_STUB_SIGNALS_1_NAME debug_reset
+`define npuarc_STUB_SIGNALS_1_RANGE
+`define npuarc_STUB_SIGNALS_2_NAME watchdog_reset
+`define npuarc_STUB_SIGNALS_2_RANGE
+`define npuarc_STUB_SIGNALS_3_NAME wdt_ext_timeout_r
+`define npuarc_STUB_SIGNALS_3_RANGE
+`define npuarc_STUB_SIGNALS_4_NAME wdt_reset
+`define npuarc_STUB_SIGNALS_4_RANGE
+`define npuarc_STUB_SIGNALS_5_NAME wdt_reset_wdt_clk
+`define npuarc_STUB_SIGNALS_5_RANGE
+`define npuarc_STUB_SIGNALS_6_NAME    sys_tf_halt_r  
+`define npuarc_STUB_SIGNALS_6_RANGE
+ `define npuarc_STUB_SIGNALS_7_NAME   fs_dc_tag_ecc_sb_error_r
+ `define npuarc_STUB_SIGNALS_7_RANGE
+ `define npuarc_STUB_SIGNALS_8_NAME   fs_dc_tag_ecc_db_error_r
+ `define npuarc_STUB_SIGNALS_8_RANGE
+ `define npuarc_STUB_SIGNALS_9_NAME   fs_dc_data_ecc_sb_error_r
+ `define npuarc_STUB_SIGNALS_9_RANGE
+ `define npuarc_STUB_SIGNALS_10_NAME   fs_dc_data_ecc_db_error_r
+ `define npuarc_STUB_SIGNALS_10_RANGE
+ `define npuarc_STUB_SIGNALS_11_NAME   fs_dccm_ecc_sb_error_r
+ `define npuarc_STUB_SIGNALS_11_RANGE
+ `define npuarc_STUB_SIGNALS_12_NAME   fs_dccm_ecc_db_error_r
+ `define npuarc_STUB_SIGNALS_12_RANGE
+ `define npuarc_STUB_SIGNALS_13_NAME   fs_itlb_ecc_sb_error_r
+ `define npuarc_STUB_SIGNALS_13_RANGE
+ `define npuarc_STUB_SIGNALS_14_NAME   fs_itlb_ecc_db_error_r
+ `define npuarc_STUB_SIGNALS_14_RANGE
+ `define npuarc_STUB_SIGNALS_15_NAME   fs_dtlb_ecc_sb_error_r
+ `define npuarc_STUB_SIGNALS_15_RANGE
+ `define npuarc_STUB_SIGNALS_16_NAME   fs_dtlb_ecc_db_error_r
+ `define npuarc_STUB_SIGNALS_16_RANGE
+ `define npuarc_STUB_SIGNALS_17_NAME   fs_ic_tag_ecc_sb_error_r
+ `define npuarc_STUB_SIGNALS_17_RANGE
+ `define npuarc_STUB_SIGNALS_18_NAME   fs_ic_tag_ecc_db_error_r
+ `define npuarc_STUB_SIGNALS_18_RANGE
+ `define npuarc_STUB_SIGNALS_19_NAME   fs_ic_data_ecc_sb_error_r
+ `define npuarc_STUB_SIGNALS_19_RANGE
+ `define npuarc_STUB_SIGNALS_20_NAME   fs_ic_data_ecc_db_error_r
+ `define npuarc_STUB_SIGNALS_20_RANGE
+`define npuarc_STUB_SIGNALS 21
+`define npuarc_STUB_HSK_SIGNALS 0
+`define npuarc_INTVBASE_PRESET       0
+`define  npuarc_INTVBASE_EXT         1 // for external pin to configure intv base addr
+`define npuarc_HAS_ICCM0             0
+`define npuarc_HAS_ICCM1             0
+`define npuarc_ICCM0_BASE            0
+`define npuarc_ICCM1_BASE            1      
+`define npuarc_HAS_ICACHE           1
+`define npuarc_HAS_DCACHE           1
+`define npuarc_DC_BSIZE             64
+`define npuarc_DC_BUS_DATA_WIDTH    128
+`define npuarc_IC_BSIZE             64
+`define npuarc_HAS_DCCM             1
+`define npuarc_DCCM_BASE            7
+`define npuarc_HAS_MMU              1
+`define npuarc_DC_UNCACHED_REGION   0
+`define npuarc_PADDR_SIZE           40
+`define npuarc_PADDR_RANGE          39:0
+`define npuarc_RGF_NUM_BANKS        1
+`define npuarc_RGF_RAM_MACRO        1
+`define npuarc_RGF_FLIP_FLOPS       0
+`define npuarc_HAS_SMART            1
+`define npuarc_SMART_IMPLEMENTATION 0
+`define npuarc_HAS_TIMER_0          1
+`define npuarc_HAS_TIMER_1          0
+`define npuarc_HAS_AON_TIMER_0    1
+`define npuarc_HAS_AON_TIMER_1    0
+`define npuarc_HAS_AON_INTERRUPTS 1
+`define npuarc_HAS_AON_WDT        1
+`define npuarc_IRQ_E                39
+`define npuarc_HAS_RTC              1
+`define npuarc_RGF_IMPL             0
+`define npuarc_HAS_DEBUG            1
+`define npuarc_DBG_APB_OPTION       1
+`define npuarc_APB_ATB_CLK_INTERFACE       0
+`define npuarc_BR_BANKS             2
+`define npuarc_ICCM0_SIZE           4096
+`define npuarc_ICCM1_SIZE           4096
+`define npuarc_DCCM_SIZE            32768
+`define npuarc_ICCM0_DMI            0
+`define npuarc_ICCM1_DMI            0
+`define npuarc_DCCM_DMI             1
+`define npuarc_CCM_AW               24
+`define npuarc_ADDR_SIZE            32
+`define npuarc_HALT_ON_RESET        1
+`define npuarc_ATOMIC_OPTION        1
+`define npuarc_DMI_BUS_OPTION 0
+`define npuarc_DMI_BUS_WIDTH 64
+`define npuarc_DMI_PORTS 1
+`define npuarc_NUM_SLV 0
+`define npuarc_HAS_SMP                0
+`define npuarc_HAS_BIU                0
+`define npuarc_HAS_WATCHDOG           1
+`define npuarc_HAS_PCT              1
+`define npuarc_PCT_COUNTERS         8
+`define npuarc_PCT_INTERRUPT        1
+`define npuarc_HAS_PCT_COUNTERS     1
+`define npuarc_MSS_CLK0_NAME        clk 
+`define npuarc_MSS_CLK0_DEF_DIV2REF 1
+`define npuarc_MSS_CLK0_EN_NUM      0
+`define npuarc_MSS_CLK1_NAME        wdt_clk
+`define npuarc_MSS_CLK1_DEF_DIV2REF 1
+`define npuarc_MSS_CLK1_EN_NUM      0
+`define npuarc_MSS_CLK_NUM          2
+`define npuarc_LQWQ_COMBINED   1
+`define npuarc_AUX_VOLATILE_UPDATED  1
+`define npuarc_HAS_VEC_UNIT              0
+`define npuarc_HAS_VCCM                  0
+`define npuarc_VCCM_SIZE            4096
+`define npuarc_VEC_DMI              0
+`define npuarc_VCCM_DMI             0
+`define npuarc_HAS_DSP              0
+`define npuarc_IFU_MCP_DISABLE      1
+`define npuarc_SYNC_LEGACY_IMPL    0
+`define npuarc_SYNC_CDC_LEVELS  2
+`define npuarc_SYNC_VERIF_EN    0
+`define npuarc_SYNC_SVA_TYPE    0
+`define npuarc_SYNC_TMR_CDC     0

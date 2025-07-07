@@ -1,0 +1,406 @@
+MYDIR := $(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))
+SELF  := $(realpath $(lastword $(MAKEFILE_LIST)))
+RLS   ?= ${NPU_HOME}/build
+NPP_HOME ?= ${$WROOT_DIR}
+include $(RLS)/build_config.mk
+
+#Note: Options to be passed by the caller
+#NPU_SLICE_NUM ?= 1
+
+# 0: vcs 1: xcelium 2: modelsim
+NPU_RTL_SIMULATOR ?= 0
+RTL_SIMULATOR     ?= $(NPU_RTL_SIMULATOR)
+
+# Compile the code needed to program the accelerators, else just run on ARC HS
+COMPILE_ACCL ?= 1
+NPU_MLI_TAPI_EN ?= 1
+
+# Name of the test. Implies the test entry point is in file $(NPU_TEST).cpp
+NPU_TEST ?= test
+VPX_TEST := $(shell find . -name "vpx_test.cpp" | sed 's%.*/%%' | sed 's%\.cpp%%')
+TEST     := $(NPU_TEST)
+
+# Testbench simulator
+SIMV_DIR ?= ${RLS}/sim
+DUMP_WAVEFORM ?= 0
+DUMP_SAIF     ?= 0
+VERDI         ?= 0
+ifneq (${VERDI_HOME},)
+VERDI         := 1
+endif
+TB_MDB        ?= 0
+GUI           ?= 0
+RUN_USER_OPTS ?=
+CCT_REGR_EN   ?= 0
+TB_BASE_TEST  ?= 0
+ifneq ($(DUMP_SAIF),0)
+  RUN_USER_OPTS += +POWER_FSDB=$(DUMP_SAIF)
+  #RUN_USER_OPTS += +saif_opt+upf_naming
+endif
+
+# Compile the code needed to program the accelerators, else just run on ARC HS
+COMPILE_ACCL = 0
+
+
+###############################################################################
+ARCH = $(RLS)/npx_apis/arch
+DEFS = -DRTL_ARC=1 -DRTL_FAST_SIM=1
+
+INCS  = -I$(ARCH)/shared/common -I$(ARCH)/shared/common/tensor_api_impl
+INCS += -I$(ARCH)/tensor_api
+INCS += -I$(ARCH)/npu_arc/model -I$(ARCH)/npu_arc/project_npu_arc/build/User
+INCS += -I$(ARCH)/npu_conv/common -I$(ARCH)/npu_conv/common/tensor_api_impl
+INCS += -I$(ARCH)/npu_act/common -I$(ARCH)/npu_act/common/tensor_api_impl
+INCS += -I$(ARCH)/npu_slice/common
+INCS += -I$(ARCH)/npu_top/common
+INCS += -I$(ARCH)/arcsync/common
+INCS += -I${RLS}/tests/ccts
+
+ifneq ($(TB_MDB),0)
+# Host Link options when MDB is connected to the cores
+HOSTLINK = 1
+# Hostlink flags
+HL_FLG   = -DHOSTLINK
+else
+HOSTLINK = 0
+HL_FLG   = -Hhostlib=
+endif
+
+#TCF = $(ARCH)/npu_arc/project_npu_arc/build/tool_config/arc.tcf
+TCF  = $(RLS)/config/tcf/arc.tcf
+TCF1 = $(RLS)/config/tcf/arc1.tcf
+
+CXX_OPTIM  = -O3 -g
+#CXX_OPTIM += -fexceptions
+CXX_OPTIM += -fno-exceptions -Hpurge 
+CXX_WARN   = -Wall -Wno-cast-align -Wconstant-conversion -Wno-missing-braces
+
+CXX_CFLAGS = -tcf $(TCF) $(DEFS) $(INCS) $(CXX_WARN) -Mb $(HL_FLG) -Hnocopyr -Hnosdata -Hkeepasm -Hanno $(CXX_OPTIM) -DNDEBUG -DNPU_MLI_TAPI_EN=$(NPU_MLI_TAPI_EN)
+CXX_LFLAGS = $(DEFS) $(INCS) $(CXX_WARN) -Mb $(HL_FLG) -Hnocopyr -Hnosdata -Hkeepasm -Hanno $(CXX_OPTIM) -DNDEBUG
+#CXX_LFLAGS += -Wl,-s
+
+CXX = ccac -std=c++17
+
+OUT = elf
+OBJ = o
+
+OUT_DIR = outs
+HEX_DIR = hexs
+OBJ_DIR = objs
+TRC_DIR = arc_logs
+
+SRCS  = $(ARCH)/tensor_api/tensor_hw_config.cpp
+ifeq ($(COMPILE_ACCL),1)
+SRCS += $(ARCH)/npu_arc/model/arc_program.cpp
+SRCS += $(ARCH)/npu_act/common/npu_act_lib.cpp
+SRCS += $(ARCH)/npu_conv/common/npu_conv_hlapi.cpp
+SRCS += $(ARCH)/tensor_api/tensor_conv.cpp
+SRCS += $(ARCH)/tensor_api/tensor_dma.cpp
+SRCS += $(ARCH)/tensor_api/tensor_gtoa.cpp
+SRCS += $(ARCH)/tensor_api/tensor.cpp
+endif
+
+ACCL_OBJS = $(patsubst $(ARCH)/%.cpp,objs/%.o,$(SRCS))
+
+# Simulation
+ifeq ($(RTL_SIMULATOR),0)
+# vcs setup
+VCS_RUN_USER_OPTS ?= $(RUN_USER_OPTS)
+SIMV = $(SIMV_DIR)/simv
+SIMV_LOG = simv.log
+  ifeq ($(CCT_REGR_EN),1)
+SIMV_LOG = $(ARGUMENT).log
+  endif
+SIMV_OPTS  = -l $(SIMV_LOG)
+SIMV_OPTS += +SIM_MON_EN=1
+  ifneq (${VERDI_HOME},)
+SIMV_OPTS += +fsdb+mda=on +fsdb+struct=on +fsdb+autoflush
+  endif
+SIMV_OPTS += -ucli -do ${RLS}/tests/bin/run_npu_top.tcl
+  ifeq ($(TB_VIP),1)
+    ifeq ($(TB_BASE_TEST),1)
+SIMV_OPTS += +UVM_TESTNAME=npu_top_base_test
+    endif
+  else
+SIMV_OPTS += -sv_root . -sv_lib host
+  endif
+
+  ifeq ($(COV_EN),1)
+COV_SEED = $$RANDOM
+COV_NAME  ?= $(shell basename $(PWD)_$(COV_SEED))
+    ifeq ($(CCT_REGR_EN),0)
+SIMV_OPTS +=  -cm_name $(COV_NAME) -cm line+tgl+cond+fsm+branch+assert -cm_log /dev/null
+    endif
+  endif
+VCS_RUN_OPTS := $(SIMV_OPTS) $(shell cat vcs_run.opt)
+endif
+
+ifeq ($(RTL_SIMULATOR),1)
+# xc setup
+SIMV = $(SIMV_DIR)/xcelium.d
+SIMV_LOG = simv.log
+XRUN_OPTS  = -logfile $(SIMV_LOG) -sv
+SIMV_OPTS += -licqueue -xverbose
+SIMV_OPTS += +SIM_MON_EN=1
+#ifeq ($(VERDI),1)
+#SIMV_OPTS += +fsdb+mda=on +fsdb+struct=on
+#endif
+#SIMV_OPTS += -ucli -do ${RLS}/tests/bin/run_npu_top.tcl
+#RUN_OPTS := $(SIMV_OPTS) $(shell cat vcs_run.opt)
+XRUN_OPTS += -R -top worklib.npu_tb_top
+RUN_OPTS  ?= -64bit -sv_root . -sv_lib host.so $(SIMV_OPTS)
+RUN_OPTS  += -loadpli1 debpli:novas_pli_boot -loadpli1 libarc-nc-pli-verilog:register_arc_user_tasks -loadpli1 libarc-nc-hmsl-pli-verilog:register_arc_user_tasks
+  ifneq (${VERDI_HOME},)
+XRUN_OPTS += +fsdb+mda=on +fsdb+struct=on +fsdb+autoflush
+#XRUN_OPTS += -xmsimargs '+fsdb+mda=on +fsdb+struct=on +fsdb+autoflush'
+  endif
+RUN_OPTS  += +XM_HEX=test.hex +MAX_CYCLE=40000000 +SIM_MON_EN=1
+TEST_ARGS := $(shell cat vcs_run.opt)
+  ifeq ($(TB_MDB),0)
+RUN_OPTS  += $(XRUN_OPTS)
+  endif
+RUN_OPTS  += $(TEST_ARGS)
+endif
+
+ifeq ($(RTL_SIMULATOR),2)
+# vsim setup
+SIMV = $(SIMV_DIR)/worklib
+SIMV_LOG = simv.log
+SIMV_OPTS  = -l $(SIMV_LOG)
+SIMV_OPTS += -suppress vopt-7033,vsim-3999,vopt-13314,vsim-12070,vsim-8451
+RUN_OPTS  ?= -64 -c -sv_root . -sv_lib host $(SIMV_OPTS) -libverbose -pli $(NPU_VCS_PLI)/libarc-mti-pli-verilog.so -pli $(NPU_VCS_PLI)/libarc-mti-hmsl-pli-verilog.so
+RUN_OPTS  += -do ${RLS}/tests/bin/run_npu_top.tcl
+  ifneq (${VERDI_HOME},)
+RUN_OPTS  += -pli ${VERDI_HOME}/share/PLI/MODELSIM/linux64/novas_fli.so +fsdb+autoflush
+  endif
+RUN_OPTS  += +XM_HEX=test.hex +MAX_CYCLE=40000000 +SIM_MON_EN=1
+TEST_ARGS := $(shell cat vcs_run.opt)
+RUN_OPTS  += $(TEST_ARGS)
+endif
+
+# export common flags
+export DUMP_WAVEFORM
+export SIMV
+export GUI
+export TB_MDB
+
+###############################################################################
+.PHONY: hex clean run
+
+all: hex
+
+hex: $(NPU_TEST).hex $(ACCL_OBJS)
+
+clean:
+	@-rm -f sim.report
+	@-rm -rf *.log *.cmd *.key *fsdb* *.simv* xcelium* transcript worklib
+
+print_vars:
+	@echo "MYDIR 		 = $(MYDIR)"
+	@echo "SELF 		 = $(SELF)"
+	@echo "CURDIR 		 = $(CURDIR)"
+	@echo "TST_NAME 	 = $(TST_NAME)"
+	@echo "IS_ACCL_TST 	 = $(IS_ACCL_TST)"
+	@echo "IS_ARC_TST 	 = $(IS_ARC_TST)"
+	@echo "IS_ASYNC_TST  = $(IS_ASYNC_TST)"
+	@echo "KNOWN_TST 	 = $(KNOWN_TST)"
+	@echo "VCS_RUN_OPTS	 = $(VCS_RUN_OPTS)"
+	@echo "COMPILE_ACCL	 = $(COMPILE_ACCL)"
+	@echo "DUMP_WAVEFORM = $(DUMP_WAVEFORM)"
+	@echo "DUMP_SAIF     = $(DUMP_SAIF)"
+	@echo "VERDI         = $(VERDI)"
+	@echo "TB_MDB        = $(TB_MDB)"
+	@echo "HOSTLINK 	 = $(HOSTLINK)"
+	@echo "GUI           = $(GUI)"
+
+###############################################################################
+# build tests
+build: host.so hex
+# -host dpi
+HOST_TEST ?= host.cpp
+SIMULATOR_INC ?= ${VCS_HOME}/include
+ifeq ($(RTL_SIMULATOR),1)
+  SIMULATOR_INC := $(dir $(shell which xrun))../../tools/include
+endif
+ifeq ($(RTL_SIMULATOR),2)
+  SIMULATOR_INC := $(MTI_HOME)/include
+endif
+
+host.so: $(HOST_TEST)
+	g++ -g -DHOST_DPI -DNPU_RTL_SIMULATOR=$(RTL_SIMULATOR) -DTB_MDB=$(TB_MDB) $(HOST_INCS) -I$(SIMULATOR_INC) -I$(SIMV_DIR) -I$(ARCH)/shared/common -I$(ARCH)/arcsync/common -I$(MYDIR)/utils/host \
+	    -fPIC -fpermissive -Wall -Wno-int-to-pointer-cast -fPIC -shared $< -o $@
+
+# -test hexes
+$(OBJ_DIR)/%.$(OBJ): $(ARCH)/%.cpp
+	@mkdir -p $(patsubst %.$(OBJ),%,$@)
+	$(CXX) $(CXX_CFLAGS) -c $< -o $@
+
+$(OBJ_DIR)/%.$(OBJ):  %.cpp
+	@-[ ! -d $(OBJ_DIR) ] && mkdir -p $(OBJ_DIR)
+	$(CXX) $(CXX_CFLAGS) -c $< -o $@
+
+$(OUT_DIR)/$(NPU_TEST).$(OUT): $(OBJ_DIR)/$(NPU_TEST).$(OBJ) $(ACCL_OBJS)
+	mkdir -p $(OUT_DIR)
+	$(CXX) -o $(OUT_DIR)/l2.$(OUT) $^ $(CXX_LFLAGS) -tcf $(TCF)
+ifneq ($(DUO_L2ARC),0)
+	$(CXX) -o $(OUT_DIR)/l2_1.$(OUT) $^ $(CXX_LFLAGS) -tcf $(TCF1)
+endif
+	( \
+	slc=0 ; \
+	while [[ $$slc -lt ${NPU_SLICE_NUM} ]] ; do \
+	    $(CXX) -o $(OUT_DIR)/sl$$slc.$(OUT) $^ $(CXX_LFLAGS) -tcf $(RLS)/config/tcf/sl$$slc.tcf ; \
+	    ((slc = slc + 1)) ; \
+	done ; \
+	)
+	touch $@
+
+$(addsuffix .$(OBJ), $(NPU_TEST) $(VPX_TEST)): $(OBJ_DIR)/%.$(OBJ)
+
+$(NPU_TEST).hex: $(patsubst %, $(HEX_DIR)/%.hex, $(NPU_TEST) $(VPX_TEST))
+	cat $^ >& $@
+	cp -f $@ ./init_mem.hex
+	${RLS}/tests/bin/hex2sv.pl $@
+
+$(HEX_DIR)/$(NPU_TEST).hex: $(OUT_DIR)/$(NPU_TEST).$(OUT)
+	@-[ ! -d $(HEX_DIR) ] && mkdir -p $(HEX_DIR)
+	elf2hex $(OUT_DIR)/l2.$(OUT) -q -o $(HEX_DIR)/l2.hex
+ifneq ($(DUO_L2ARC),0)
+	elf2hex $(OUT_DIR)/l2_1.$(OUT) -q -o $(HEX_DIR)/l2_1.hex
+endif
+	( \
+	slc=0 ; \
+	while [[ $$slc -lt ${NPU_SLICE_NUM} ]] ; do \
+	    elf2hex $(OUT_DIR)/sl$$slc.$(OUT) -q -o $(HEX_DIR)/sl$$slc.hex ; \
+	    ((slc = slc + 1)) ; \
+	done ; \
+	)
+ifneq ($(DUO_L2ARC),0)
+	cat  $(HEX_DIR)/{l2.hex,l2_1.hex}  $(HEX_DIR)/sl*.hex >& $@
+else
+	cat  $(HEX_DIR)/l2.hex             $(HEX_DIR)/sl*.hex >& $@
+endif
+
+$(HEX_DIR)/$(VPX_TEST).hex:  $(OUT_DIR)/$(VPX_TEST).$(OUT)
+	@-[ ! -d $(HEX_DIR) ] && mkdir -p $(HEX_DIR)
+	( \
+	core=0; \
+	while [[ $$core -lt 2 ]] ; do \
+	    elf2hex $(OUT_DIR)/vpx_c$$core.$(OUT) -q -o $(HEX_DIR)/vpx_c$$core.hex ; \
+	    ((core = core + 1)) ; \
+	done ; \
+	)
+	cat $(HEX_DIR)/vpx_c*.hex >& $@
+
+# run tests
+ifneq ($(TB_MDB),0)
+run: run-mdb
+else
+run: run-hex
+endif
+
+# -vcs
+ifeq ($(RTL_SIMULATOR),0)
+run-hex: sim-prep $(SIMV) $(addsuffix .hex, $(TEST)) $(TRC_DIR)
+  ifeq ($(COV_EN),1)
+	#${NPU_HOME}/verif/bin/arcsync_api_parser.py -d .
+  endif
+	$(SIMV) $(VCS_RUN_OPTS) $(REGR_OPTS) ${VCS_RUN_USER_OPTS} $(SIMV_USER_OPTS)
+  ifneq ($(DUMP_SAIF),0)
+	fsdb2saif power.fsdb -flatten_genhier -o power.saif
+	gzip -9 power.saif
+  endif
+	${RLS}/tests/bin/check_sim_result.sh $(SIMV_LOG)
+
+cpy_rascal: ${RLS}/verif/ccts/utils/rascal.env
+	cp -vf $< rascal.env
+	sed -i "19i Path      = ." rascal.env
+	sed -i "25i Append    = +vcs+lic+wait -lca -tf_sv_string $(SIMV_OPTS)" rascal.env
+# Prepare rascal file for MDB, used to launch VCS
+sim-prep: $(TRC_DIR) ${SIMV}
+  ifneq ($(TB_MDB),0)
+	-rm -f ./{npu_top.simv*,rascal.env,mdb.cmd}
+	ln -sf ${SIMV_DIR}/simv                   ./npu_tb_top.simv
+  ifeq ($(COV_EN),1)
+	ln -sf ${SIMV_DIR}/simv.vdb               ./npu_tb_top.simv.vdb
+  endif
+	ln -sf ${SIMV_DIR}/simv.daidir            ./npu_tb_top.simv.daidir
+	cp -vf ${RLS}/tests/ccts/utils/rascal.env ./rascal.env
+	cp -f  ${RLS}/tests/ccts/utils/mdb.cmd    ./mdb.cmd
+	sed -i "s|_SIMULATOR_|vcs|g"                                   ./rascal.env
+	sed -i "s|_MODEL_|npu_tb_top|g"                                ./rascal.env
+	sed -i "s|_USER_|user|g"                                       ./rascal.env
+	sed -i "s|_APPEND_|+vcs+lic+wait -tf_sv_string $(SIMV_OPTS)|g" ./rascal.env
+	sed -i "/_DOFILE_/d"                                           ./rascal.env
+  endif
+npp-sim-prep: $(TRC_DIR)
+  ifneq ($(TB_MDB),0)
+	-rm -f ./{*.simv*,rascal.env,mdb.cmd}
+	ln -sf $(NPP_HOME)/verif/sim/run/simv/simv             ./core_chip.simv
+	ln -sf $(NPP_HOME)/verif/sim/run/simv/simv.daidir      ./core_chip.simv.daidir
+	ln -sf $(NPP_HOME)/verif/sim/tb/rascal/rascal.env      ./rascal.env
+	ln -sf ${RLS}/tests/ccts/utils/mdb.cmd                 ./mdb.cmd
+  else
+	echo "Nothing to do for $@ when TB_MDB=$(TB_MDB)"
+  endif
+npp-run-mdb: npp-sim-prep
+	${RLS}/tests/ccts/utils/mdb_sim_run.sh
+endif
+
+
+#- xcelium
+ifeq ($(RTL_SIMULATOR),1)
+TDIR  := $(shell pwd)
+run-hex: sim-prep $(addsuffix .hex, $(TEST))
+	xrun $(RUN_OPTS) $(RUN_USER_OPTS) -input ${RLS}/tests/bin/run_npu_top.tcl
+	${RLS}/tests/bin/check_sim_result.sh $(SIMV_LOG)
+# Prepare rascal file for MDB, used to launch VCS
+sim-prep: $(TRC_DIR)
+	@echo "TDIR: $(TDIR)"
+	ln -sf ${SIMV} ./
+ifneq ($(TB_MDB),0)
+	@-rm -f ./{rascal.env,mdb.cmd}
+	cp -vf ${RLS}/tests/ccts/utils/rascal.env                      ./rascal.env
+	cp -f  ${RLS}/tests/ccts/utils/mdb.cmd                         ./mdb.cmd
+	sed -i "s|_SIMULATOR_|xm|g"                                    ./rascal.env
+	sed -i "s|_MODEL_|npu_tb_top|g"                                ./rascal.env
+	sed -i "s|_USER_|worklib|g"                                    ./rascal.env
+	sed -i "s|_APPEND_|$(RUN_OPTS)|g"                              ./rascal.env
+	sed -i "s|_DOFILE_|${RLS}/tests/bin/run_npu_top.tcl|g"         ./rascal.env
+	cd xcelium.d/run.d && ln -sf $(TDIR)/{rascal.env,mdb.cmd,vcs_run.opt,outs,host.so} ./
+endif
+endif
+#echo "INCLUDE $$CDS_INST_DIR/tools/inca/files/cds.lib" > cds.lib
+#echo "DEFINE user          xcelium.d"                 >> cds.lib
+
+#- Modelsim
+ifeq ($(RTL_SIMULATOR),2)
+run-hex: sim-prep $(addsuffix .hex, $(TEST))
+	vsim npu_tb_top -lib worklib $(RUN_OPTS) $(RUN_USER_OPTS)
+	${RLS}/tests/bin/check_sim_result.sh $(SIMV_LOG)
+# Prepare rascal file for MDB, used to launch VCS
+sim-prep: $(TRC_DIR)
+	ln -sf ${SIMV} ./
+ifneq ($(TB_MDB),0)
+	@-rm -f ./{rascal.env,mdb.cmd}
+	cp -vf ${RLS}/tests/ccts/utils/rascal.env              ./rascal.env
+	cp -f  ${RLS}/tests/ccts/utils/mdb.cmd                 ./mdb.cmd
+	sed -i "s|_SIMULATOR_|modelsim|g"                      ./rascal.env
+	sed -i "s|_MODEL_|npu_tb_top|g"                        ./rascal.env
+	sed -i "s|_USER_|user|g"                               ./rascal.env
+	sed -i "s|_APPEND_|-lib worklib $(RUN_OPTS)|g"         ./rascal.env
+	sed -i "/_DOFILE_/d"                                   ./rascal.env
+endif
+endif
+
+
+# mdb simulation
+run-mdb: sim-prep
+ifeq ($(RTL_SIMULATOR),1)
+	cd xcelium.d/run.d && ${RLS}/tests/ccts/utils/mdb_sim_run.sh
+else
+	${RLS}/tests/ccts/utils/mdb_sim_run.sh
+endif
+	#@echo "${RLS}/tests/ccts/utils/mdb_sim_run.sh"
+
+$(TRC_DIR):
+	mkdir -p $@

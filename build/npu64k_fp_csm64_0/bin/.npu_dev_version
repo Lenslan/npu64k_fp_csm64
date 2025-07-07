@@ -1,0 +1,8 @@
+NPU Git version
+  npu branch = release/victoria2_ga
+  npu hash   = ed27dc7aaa3f2f225bc948f8ae1580dbdae89d36
+  npu date   = 2024-06-17 02:33:15 -0700
+NPU_DEPS Git version
+  npu_deps branch = release/victoria2_ga
+  npu_deps hash   = 93f5f528cbdbef066a9cb400f9b6f4463762b3a6
+  npu_deps date   = 2024-05-14 06:41:49 -0700

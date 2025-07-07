@@ -1,0 +1,136 @@
+# Spyglass Project File
+set top_module   core_archipelago
+if { [info exists ::env(TOP_MODULE)] } {
+    set top_module $::env(TOP_MODULE)
+}
+
+set syn_manifest $::env(NPU_HOME_RLS)/syn/spg_manifest
+set syn_sdc      $::env(NPU_HOME_RLS)/syn/constraints/$top_module.sdc
+puts "INFO: top_module   = ${top_module}"
+puts "INFO: syn_manifest = ${syn_manifest}"
+puts "INFO: syn_sdc      = ${syn_sdc}"
+
+
+#Put here top name
+set_option top $top_module
+set_option projectwdir        "spyglass_work"
+
+## Specify SpyGlass Methodology
+puts "#################################################################"
+set GuideWareDir $env(SPYGLASS_HOME)/GuideWare/2022.06/block/rtl_handoff
+if {[file exists "$GuideWareDir"] ==1} {
+  set_option current_methodology "${GuideWareDir}"
+  puts "Using GuideWare 2022.06"
+}
+
+
+puts "#################################################################"
+puts "# You are running spyglass"
+puts "#################################################################"
+puts ""
+# Adding engineering council rules..
+set sec_rules_file "./scripts/spyglass/spyglass_engineering_council_rules_2022_12.tcl"
+if [file exists "$sec_rules_file"] {
+    source $sec_rules_file
+}
+
+set waiver_file "./scripts/spyglass/spyglass_engineering_council_waivers_2022_12.swl"
+read_file -type waiver $waiver_file 
+
+
+# Adding waiver file for IFX for fixing STAR 9001447622, Maggie reviewed and suggested to waive SDC_02 and SDC_09 Warnings for IFX on 2/4/2109.
+# Read Local Waiver File containing ARC Specific Waivers.
+set waiver_file "./scripts/spyglass/ARC_waivers.swl"
+read_file -type waiver $waiver_file
+
+# adding waiver file for npu
+set npu_waiver_file "./scripts/spyglass/npu.swl"
+if [file exists $npu_waiver_file] {
+  read_file -type awl $npu_waiver_file
+}
+
+# Local options like incdir etc
+set local_option_file "./scripts/spyglass/local_setup_options.tcl"
+if [file exists $local_option_file] {
+  source $local_option_file
+}
+
+set sglib_file "./scripts/spyglass/sglib_list.f"
+if {[file exists ${sglib_file}] && ([file size ${sglib_file}] > 0)} {
+    source ${sglib_file}
+} else {
+    set stop_unit_file "./scripts/spyglass/stop_units.tcl"
+    if [file exists $stop_unit_file] {
+        source $stop_unit_file
+    }
+}
+
+set_option enableSV09 yes; 
+set_option turbo yes
+set_option handlememory yes
+##adding extra options to support hammerhead 
+set_option allow_non_lrm yes;
+
+##set_option define NO_RAM_CHECKER
+##set_option define SYNTHESIS
+
+set_option dw yes
+## possible solution for Clock_Inf03a  where clk_ungated is just a wire from clk
+#has huge hit on runttime -commenting  out for now
+#set_parameter use_inferred_clocks yes
+
+# parallel run optoins
+set_option use_multi_threads {synthesis}
+if { [info exists ::env(NCORES_HOST)] } {
+  set_option sgsyn_max_core_count $::env(NCORES_HOST)
+} else {
+  set_option sgsyn_max_core_count 4
+}
+
+# options
+set_option mthresh 8192
+#set_option define NPU_FPGA_NOT_REPLACE_CLKGATE
+
+read_file -type sourcelist $syn_manifest;
+set_parameter sdc_domain_mode sta_compliant
+set_parameter enable_generated_clocks yes
+##set_parameter reset_synchronize_cells "*cdc_sync*"
+set_option sdc_generate_cfp yes
+set_option sdc2sgdc yes
+set_option sdc2sgdcfile "./${top_module}_dump.sgdc"
+read_file -type sgdc ./scripts/spyglass/${top_module}.sgdc ./scripts/spyglass/${top_module}_resets.sgdc ./scripts/spyglass/${top_module}_quasi_static.sgdc
+
+set rtla_tech "12"
+if { [info exists ::env(RTLA_TECH)] } {
+    set rtla_tech $::env(RTLA_TECH)
+}
+if { ${rtla_tech} eq "12"} {
+  read_file -type gateslibdb /remote/arc/arc6000/libext/stdcell/12FFC_CPODE/ts12_ffc_lvt_gate_16nm_hpc_ehd/latest/liberty/logic_synth/ts12ncfllogl16edh096f_ffg0p88v125c.db
+  read_file -type gateslibdb /remote/arc/arc6000/libext/stdcell/12FFC_CPODE/ts12_ffc_lvt_gate_16nm_hpc_ehd/latest/liberty/logic_synth/ts12ncfllogl16edh096f_ffgnp0p88v0c.db
+  read_file -type gateslibdb /remote/arc/arc6000/libext/stdcell/12FFC_CPODE/ts12_ffc_lvt_gate_16nm_hpc_ehd/latest/liberty/logic_synth/ts12ncfllogl16edh096f_ffgnp0p88v125c.db
+  read_file -type gateslibdb /remote/arc/arc6000/libext/stdcell/12FFC_CPODE/ts12_ffc_lvt_gate_16nm_hpc_ehd/latest/liberty/logic_synth/ts12ncfllogl16edh096f_ffgnp0p88vn40c.db
+  read_file -type gateslibdb /remote/arc/arc6000/libext/stdcell/12FFC_CPODE/ts12_ffc_lvt_gate_16nm_hpc_ehd/latest/liberty/logic_synth/ts12ncfllogl16edh096f_ssgnp0p72v0c.db
+  read_file -type gateslibdb /remote/arc/arc6000/libext/stdcell/12FFC_CPODE/ts12_ffc_lvt_gate_16nm_hpc_ehd/latest/liberty/logic_synth/ts12ncfllogl16edh096f_ssgnp0p72v125c.db
+  read_file -type gateslibdb /remote/arc/arc6000/libext/stdcell/12FFC_CPODE/ts12_ffc_lvt_gate_16nm_hpc_ehd/latest/liberty/logic_synth/ts12ncfllogl16edh096f_ssgnp0p72vn40c.db
+  read_file -type gateslibdb /remote/arc/arc6000/libext/stdcell/12FFC_CPODE/ts12_ffc_lvt_gate_16nm_hpc_ehd/latest/liberty/logic_synth/ts12ncfllogl16edh096f_tt0p8v25c.db
+  read_file -type gateslibdb /remote/arc/arc6000/libext/stdcell/12FFC_CPODE/ts12_ffc_lvt_gate_16nm_hpc_ehd/latest/liberty/logic_synth/ts12ncfllogl16edh096f_tt0p8v85c.db
+} else {
+#  puts "ERROR: rtla_tech=${rtla_tech} is not supported for now"
+#  exit 1
+}
+
+#if [file exists ./${top_module}.sgdc] {
+#  set_parameter enable_generated_clocks yes
+#  read_file -type sgdc ./${top_module}.sgdc ./scripts/spyglass/resets.sgdc ./scripts/spyglass/quasi_static.sgdc
+#} else {
+#  set_parameter sdc_domain_mode sta_compliant
+#  set_parameter enable_generated_clocks yes
+#  set_option sdc_generate_cfp yes
+#  set_option sdc2sgdc yes
+#  set_option sdc2sgdcfile "./${top_module}_dump.sgdc"
+#  #read_file -type sgdc ./scripts/spyglass/${top_module}.sgdc ./scripts/spyglass/${top_module}_resets.sgdc ./scripts/spyglass/${top_module}_quasi_static.sgdc
+#}
+
+#read_file -type sdc "./constraints/cpu_top.sdc"
+##write_report summary
+

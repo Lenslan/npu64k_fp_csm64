@@ -1,0 +1,271 @@
+/// Parameter definition
+
+
+  `define BUS_ECC_ALL_ZERO_ALL_ONE    0
+
+  `define ALB_MSS_FAB_CDC_FIFO_EN    0
+
+  `define SEC_MODES_OPTION    0
+
+`define DMI_BURST_OPTION 0
+
+
+`define ALB_MSS_FAB_LATL2 0
+`define ALB_MSS_FAB_SYS_ADDR_WIDTH 40
+`define ALB_MSS_FAB_MST_NUM 7
+`define ALB_MSS_FAB_SLV_NUM    4
+`define ALB_MSS_FAB_AHB_B2B   1
+
+`define ALB_MSS_FAB_BYP_DEPTH  16
+
+//masters
+
+`define ALB_MSS_FAB_MST0_PREF     npu_mst0_axi_
+`define ALB_MSS_FAB_MST0_CLK_NAME clk
+`define ALB_MSS_FAB_MST0_CLK_EN   
+`define ALB_MSS_FAB_MST0_SUPPORT_RATIO 0
+`define ALB_MSS_FAB_MST0_PROT     axi4
+`define ALB_MSS_FAB_MST0_AW       40
+`define ALB_MSS_FAB_MST0_DW       64
+`define ALB_MSS_FAB_MST0_RW       rw
+`define ALB_MSS_FAB_MST0_BW       4
+`define ALB_MSS_FAB_MST0_EXCL     1
+`define ALB_MSS_FAB_MST0_LOCK     1
+`define ALB_MSS_FAB_MST0_ENDIAN   little
+`define ALB_MSS_FAB_MST0_ID_WIDTH 5
+`define ALB_MSS_FAB_MST0_BUS_ECC     0
+`define ALB_MSS_FAB_MST0_BUS_ECC_PROT   32
+`define ALB_MSS_FAB_MST0_BUS_PARITY       1
+`define ALB_MSS_FAB_MST0_BUS_ECC_W          0
+`define ALB_MSS_FAB_MST0_BUS_ADDR_PTY_W      0
+
+
+`define ALB_MSS_FAB_MST1_PREF     npu_mst1_axi_
+`define ALB_MSS_FAB_MST1_CLK_NAME clk
+`define ALB_MSS_FAB_MST1_CLK_EN   
+`define ALB_MSS_FAB_MST1_SUPPORT_RATIO 0
+`define ALB_MSS_FAB_MST1_PROT     axi4
+`define ALB_MSS_FAB_MST1_AW       40
+`define ALB_MSS_FAB_MST1_DW       512
+`define ALB_MSS_FAB_MST1_RW       rw
+`define ALB_MSS_FAB_MST1_BW       4
+`define ALB_MSS_FAB_MST1_EXCL     1
+`define ALB_MSS_FAB_MST1_LOCK     1
+`define ALB_MSS_FAB_MST1_ENDIAN   little
+`define ALB_MSS_FAB_MST1_ID_WIDTH 5
+`define ALB_MSS_FAB_MST1_BUS_ECC     0
+`define ALB_MSS_FAB_MST1_BUS_ECC_PROT   32
+`define ALB_MSS_FAB_MST1_BUS_PARITY       1
+`define ALB_MSS_FAB_MST1_BUS_ECC_W          0
+`define ALB_MSS_FAB_MST1_BUS_ADDR_PTY_W      0
+
+
+`define ALB_MSS_FAB_MST2_PREF     npu_mst2_axi_
+`define ALB_MSS_FAB_MST2_CLK_NAME clk
+`define ALB_MSS_FAB_MST2_CLK_EN   
+`define ALB_MSS_FAB_MST2_SUPPORT_RATIO 0
+`define ALB_MSS_FAB_MST2_PROT     axi4
+`define ALB_MSS_FAB_MST2_AW       40
+`define ALB_MSS_FAB_MST2_DW       512
+`define ALB_MSS_FAB_MST2_RW       rw
+`define ALB_MSS_FAB_MST2_BW       4
+`define ALB_MSS_FAB_MST2_EXCL     1
+`define ALB_MSS_FAB_MST2_LOCK     1
+`define ALB_MSS_FAB_MST2_ENDIAN   little
+`define ALB_MSS_FAB_MST2_ID_WIDTH 5
+`define ALB_MSS_FAB_MST2_BUS_ECC     0
+`define ALB_MSS_FAB_MST2_BUS_ECC_PROT   32
+`define ALB_MSS_FAB_MST2_BUS_PARITY       1
+`define ALB_MSS_FAB_MST2_BUS_ECC_W          0
+`define ALB_MSS_FAB_MST2_BUS_ADDR_PTY_W      0
+
+
+`define ALB_MSS_FAB_MST3_PREF     npu_mst3_axi_
+`define ALB_MSS_FAB_MST3_CLK_NAME clk
+`define ALB_MSS_FAB_MST3_CLK_EN   
+`define ALB_MSS_FAB_MST3_SUPPORT_RATIO 0
+`define ALB_MSS_FAB_MST3_PROT     axi4
+`define ALB_MSS_FAB_MST3_AW       40
+`define ALB_MSS_FAB_MST3_DW       512
+`define ALB_MSS_FAB_MST3_RW       rw
+`define ALB_MSS_FAB_MST3_BW       4
+`define ALB_MSS_FAB_MST3_EXCL     1
+`define ALB_MSS_FAB_MST3_LOCK     1
+`define ALB_MSS_FAB_MST3_ENDIAN   little
+`define ALB_MSS_FAB_MST3_ID_WIDTH 5
+`define ALB_MSS_FAB_MST3_BUS_ECC     0
+`define ALB_MSS_FAB_MST3_BUS_ECC_PROT   32
+`define ALB_MSS_FAB_MST3_BUS_PARITY       1
+`define ALB_MSS_FAB_MST3_BUS_ECC_W          0
+`define ALB_MSS_FAB_MST3_BUS_ADDR_PTY_W      0
+
+
+`define ALB_MSS_FAB_MST4_PREF     npu_mst4_axi_
+`define ALB_MSS_FAB_MST4_CLK_NAME clk
+`define ALB_MSS_FAB_MST4_CLK_EN   
+`define ALB_MSS_FAB_MST4_SUPPORT_RATIO 0
+`define ALB_MSS_FAB_MST4_PROT     axi4
+`define ALB_MSS_FAB_MST4_AW       40
+`define ALB_MSS_FAB_MST4_DW       512
+`define ALB_MSS_FAB_MST4_RW       rw
+`define ALB_MSS_FAB_MST4_BW       4
+`define ALB_MSS_FAB_MST4_EXCL     1
+`define ALB_MSS_FAB_MST4_LOCK     1
+`define ALB_MSS_FAB_MST4_ENDIAN   little
+`define ALB_MSS_FAB_MST4_ID_WIDTH 5
+`define ALB_MSS_FAB_MST4_BUS_ECC     0
+`define ALB_MSS_FAB_MST4_BUS_ECC_PROT   32
+`define ALB_MSS_FAB_MST4_BUS_PARITY       1
+`define ALB_MSS_FAB_MST4_BUS_ECC_W          0
+`define ALB_MSS_FAB_MST4_BUS_ADDR_PTY_W      0
+
+
+`define ALB_MSS_FAB_MST5_PREF     host_axi_
+`define ALB_MSS_FAB_MST5_CLK_NAME clk
+`define ALB_MSS_FAB_MST5_CLK_EN   
+`define ALB_MSS_FAB_MST5_SUPPORT_RATIO 1
+`define ALB_MSS_FAB_MST5_PROT     axi4
+`define ALB_MSS_FAB_MST5_AW       40
+`define ALB_MSS_FAB_MST5_DW       64
+`define ALB_MSS_FAB_MST5_RW       rw
+`define ALB_MSS_FAB_MST5_BW       4
+`define ALB_MSS_FAB_MST5_EXCL     1
+`define ALB_MSS_FAB_MST5_LOCK     1
+`define ALB_MSS_FAB_MST5_ENDIAN   little
+`define ALB_MSS_FAB_MST5_ID_WIDTH 1
+`define ALB_MSS_FAB_MST5_BUS_ECC     0
+`define ALB_MSS_FAB_MST5_BUS_ECC_PROT   32
+`define ALB_MSS_FAB_MST5_BUS_PARITY       1
+`define ALB_MSS_FAB_MST5_BUS_ECC_W          0
+`define ALB_MSS_FAB_MST5_BUS_ADDR_PTY_W      0
+
+
+`define ALB_MSS_FAB_MST6_PREF     bri4tb_
+`define ALB_MSS_FAB_MST6_CLK_NAME clk
+`define ALB_MSS_FAB_MST6_CLK_EN   
+`define ALB_MSS_FAB_MST6_SUPPORT_RATIO 1
+`define ALB_MSS_FAB_MST6_PROT     axi
+`define ALB_MSS_FAB_MST6_AW       40
+`define ALB_MSS_FAB_MST6_DW       32
+`define ALB_MSS_FAB_MST6_RW       rw
+`define ALB_MSS_FAB_MST6_BW       4
+`define ALB_MSS_FAB_MST6_EXCL     0
+`define ALB_MSS_FAB_MST6_LOCK     0
+`define ALB_MSS_FAB_MST6_ENDIAN   little
+`define ALB_MSS_FAB_MST6_ID_WIDTH 4
+`define ALB_MSS_FAB_MST6_BUS_ECC     0
+`define ALB_MSS_FAB_MST6_BUS_ECC_PROT   32
+`define ALB_MSS_FAB_MST6_BUS_PARITY       0
+`define ALB_MSS_FAB_MST6_BUS_ECC_W          0
+`define ALB_MSS_FAB_MST6_BUS_ADDR_PTY_W      0
+
+//slaves
+
+`define ALB_MSS_FAB_SLV0_PREF     npu_dmi0_axi_
+`define ALB_MSS_FAB_SLV0_CLK_NAME clk
+`define ALB_MSS_FAB_SLV0_CLK_EN   
+`define ALB_MSS_FAB_SLV0_SUPPORT_RATIO 0
+`define ALB_MSS_FAB_SLV0_PROT     axi4
+`define ALB_MSS_FAB_SLV0_DW       512
+`define ALB_MSS_FAB_SLV0_AW       40
+`define ALB_MSS_FAB_SLV0_ENDIAN   little
+`define ALB_MSS_FAB_SLV0_RESP     1
+`define ALB_MSS_FAB_SLV0_ID_WIDTH 16
+`define ALB_MSS_FAB_SLV0_NUM_REG  1
+`define ALB_MSS_FAB_SLV0_REG_W    0
+`define ALB_MSS_FAB_SLV0_REG0_BASE_ADDR  917504 // 0xe0000
+`define ALB_MSS_FAB_SLV0_REG0_APER_WIDTH 28
+`define ALB_MSS_FAB_SLV0_CONFLICT_FREE        0
+
+`define ALB_MSS_FAB_SLV0_BUS_ECC     0
+`define ALB_MSS_FAB_SLV0_BUS_ECC_PROT   32
+`define ALB_MSS_FAB_SLV0_BUS_PARITY       1
+`define ALB_MSS_FAB_SLV0_BUS_ECC_W          112
+`define ALB_MSS_FAB_SLV0_BUS_ADDR_PTY_W      5
+
+`define ALB_MSS_FAB_SLV1_PREF     npu_cfg_axi_
+`define ALB_MSS_FAB_SLV1_CLK_NAME clk
+`define ALB_MSS_FAB_SLV1_CLK_EN   
+`define ALB_MSS_FAB_SLV1_SUPPORT_RATIO 0
+`define ALB_MSS_FAB_SLV1_PROT     axi4
+`define ALB_MSS_FAB_SLV1_DW       32
+`define ALB_MSS_FAB_SLV1_AW       40
+`define ALB_MSS_FAB_SLV1_ENDIAN   little
+`define ALB_MSS_FAB_SLV1_RESP     1
+`define ALB_MSS_FAB_SLV1_ID_WIDTH 16
+`define ALB_MSS_FAB_SLV1_NUM_REG  1
+`define ALB_MSS_FAB_SLV1_REG_W    0
+`define ALB_MSS_FAB_SLV1_REG0_BASE_ADDR  983040 // 0xf0000
+`define ALB_MSS_FAB_SLV1_REG0_APER_WIDTH 20
+`define ALB_MSS_FAB_SLV1_CONFLICT_FREE        0
+
+`define ALB_MSS_FAB_SLV1_BUS_ECC     0
+`define ALB_MSS_FAB_SLV1_BUS_ECC_PROT   32
+`define ALB_MSS_FAB_SLV1_BUS_PARITY       1
+`define ALB_MSS_FAB_SLV1_BUS_ECC_W          7
+`define ALB_MSS_FAB_SLV1_BUS_ADDR_PTY_W      5
+
+`define ALB_MSS_FAB_SLV2_PREF     arcsync_axi_
+`define ALB_MSS_FAB_SLV2_CLK_NAME clk
+`define ALB_MSS_FAB_SLV2_CLK_EN   
+`define ALB_MSS_FAB_SLV2_SUPPORT_RATIO 0
+`define ALB_MSS_FAB_SLV2_PROT     axi4
+`define ALB_MSS_FAB_SLV2_DW       64
+`define ALB_MSS_FAB_SLV2_AW       40
+`define ALB_MSS_FAB_SLV2_ENDIAN   little
+`define ALB_MSS_FAB_SLV2_RESP     1
+`define ALB_MSS_FAB_SLV2_ID_WIDTH 16
+`define ALB_MSS_FAB_SLV2_NUM_REG  1
+`define ALB_MSS_FAB_SLV2_REG_W    0
+`define ALB_MSS_FAB_SLV2_REG0_BASE_ADDR  868352 // 0xd4000
+`define ALB_MSS_FAB_SLV2_REG0_APER_WIDTH 24
+`define ALB_MSS_FAB_SLV2_CONFLICT_FREE        0
+
+`define ALB_MSS_FAB_SLV2_BUS_ECC     0
+`define ALB_MSS_FAB_SLV2_BUS_ECC_PROT   32
+`define ALB_MSS_FAB_SLV2_BUS_PARITY       1
+`define ALB_MSS_FAB_SLV2_BUS_ECC_W          14
+`define ALB_MSS_FAB_SLV2_BUS_ADDR_PTY_W      5
+
+`define ALB_MSS_FAB_SLV3_PREF     mss_mem_
+`define ALB_MSS_FAB_SLV3_CLK_NAME mss_clk
+`define ALB_MSS_FAB_SLV3_CLK_EN   
+`define ALB_MSS_FAB_SLV3_SUPPORT_RATIO 0
+`define ALB_MSS_FAB_SLV3_PROT     ibp
+`define ALB_MSS_FAB_SLV3_DW       128
+`define ALB_MSS_FAB_SLV3_AW       32
+`define ALB_MSS_FAB_SLV3_ENDIAN   little
+`define ALB_MSS_FAB_SLV3_RESP     1
+`define ALB_MSS_FAB_SLV3_ID_WIDTH 0
+`define ALB_MSS_FAB_SLV3_NUM_REG  1
+`define ALB_MSS_FAB_SLV3_REG_W    1
+`define ALB_MSS_FAB_SLV3_REG0_BASE_ADDR  0 // 0x0
+`define ALB_MSS_FAB_SLV3_REG0_APER_WIDTH 32
+`define ALB_MSS_FAB_SLV3_CONFLICT_FREE        0
+
+`define ALB_MSS_FAB_SLV3_BUS_ECC     0
+`define ALB_MSS_FAB_SLV3_BUS_ECC_PROT   32
+`define ALB_MSS_FAB_SLV3_BUS_PARITY       0
+`define ALB_MSS_FAB_SLV3_BUS_ECC_W          0
+`define ALB_MSS_FAB_SLV3_BUS_ADDR_PTY_W      0
+//memory hole in region
+`define ALB_MSS_FAB_UNUSED_REGION_NUM   0
+
+`define MSS_ONLY_ASSERTION_EN
+`define MSS_ASSERTION_ON
+
+//System mapping from Fabric perspective
+`define NPU_DMI0_AXI_0_BASE 0xe0000000
+`define NPU_DMI0_AXI_0_SIZE 0x10000000
+`define NPU_CFG_AXI_0_BASE 0xf0000000
+`define NPU_CFG_AXI_0_SIZE 0x100000
+`define ARCSYNC_AXI_0_BASE 0xd4000000
+`define ARCSYNC_AXI_0_SIZE 0x1000000
+`define MSS_MEM_0_BASE 0x0000
+`define MSS_MEM_0_SIZE 0x100000000
+
+// CCM system address with the specific name
+
+`define HAS_DEFAULT_SLAVE 1
+`define ALB_MSS_CCM_BASE 262144
+

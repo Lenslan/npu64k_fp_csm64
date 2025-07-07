@@ -1,0 +1,173 @@
+#ifndef MEM_MAP_DEFINES
+#define MEM_MAP_DEFINES
+
+#include "npu_config.hpp"
+
+#define NUM_L1ARC        NPU_SLICE_NUM
+#define NUM_CLUSTER      ARCSYNC_NUM_CLUSTER
+#define NUM_CORE_PER_CLUSTER      ARCSYNC_MAX_CORES_PER_CL
+#define NUM_GRP          NPU_NUM_GRP
+#define NUM_SLC_IN_GRP   NPU_NUM_SLC_PER_GRP
+#define NUM_L2ARC        DUO_L2ARC ? 2 : (NPU_HAS_L2ARC ? 1 : 0)
+#define NPX_DMI_BASE               0xe0000000
+#define CFG_DMI_BASE               0xf0000000
+#define ARCSYNC_BASE               (0xd4000000)
+#define CLN1P0_CFG_BASE            (CFG_DMI_BASE + 0x0)
+
+//local CPU core address map
+#define LOCAL_PERI_BASE             0xF0000000
+//L2 local peripheral
+#define L2_DM_OFFSET                0x0
+#define L2_ISTU0_MMIO_OFFSET        0x080000
+#define L2_OSTU0_MMIO_OFFSET        0x081000
+#define L2_ISTU1_MMIO_OFFSET        0x082000
+#define L2_OSTU1_MMIO_OFFSET        0x083000
+#define L2_ISTU2_MMIO_OFFSET        0x084000
+#define L2_OSTU2_MMIO_OFFSET        0x085000
+#define L2_ISTU3_MMIO_OFFSET        0x086000
+#define L2_OSTU3_MMIO_OFFSET        0x087000
+
+#define L2_PERI_DM_BASE             (LOCAL_PERI_BASE + L2_DM_OFFSET        )
+#define L2_ISTU0_MMIO_BASE          (LOCAL_PERI_BASE + L2_ISTU0_MMIO_OFFSET)
+#define L2_OSTU0_MMIO_BASE          (LOCAL_PERI_BASE + L2_OSTU0_MMIO_OFFSET)
+#define L2_ISTU1_MMIO_BASE          (LOCAL_PERI_BASE + L2_ISTU1_MMIO_OFFSET)
+#define L2_OSTU1_MMIO_BASE          (LOCAL_PERI_BASE + L2_OSTU1_MMIO_OFFSET)
+#define L2_ISTU2_MMIO_BASE          (LOCAL_PERI_BASE + L2_ISTU2_MMIO_OFFSET)
+#define L2_OSTU2_MMIO_BASE          (LOCAL_PERI_BASE + L2_OSTU2_MMIO_OFFSET)
+#define L2_ISTU3_MMIO_BASE          (LOCAL_PERI_BASE + L2_ISTU3_MMIO_OFFSET)
+#define L2_OSTU4_MMIO_BASE          (LOCAL_PERI_BASE + L2_OSTU3_MMIO_OFFSET)
+//L1 local peripheral
+#define L1_DM_OFFSET                0x0
+#define L1_IDMA_MMIO_OFFSET         0x080000
+#define L1_ODMA_MMIO_OFFSET         0x081000
+#define L1_CONV_MMIO_OFFSET         0x082000
+#define L1_GTOA_MMIO_OFFSET         0x083000
+#define L1_SFTY_MMIO_OFFSET         0x084000
+#define L1_AM_OFFSET                0x100000
+#define L1_VM_OFFSET                0x200000
+
+#define L1_PERI_DM_BASE             (LOCAL_PERI_BASE + L1_DM_OFFSET       )
+#define L1_PERI_IDMA_MMIO_BASE      (LOCAL_PERI_BASE + L1_IDMA_MMIO_OFFSET)
+#define L1_PERI_ODMA_MMIO_BASE      (LOCAL_PERI_BASE + L1_ODMA_MMIO_OFFSET)
+#define L1_PERI_CONV_MMIO_BASE      (LOCAL_PERI_BASE + L1_CONV_MMIO_OFFSET)
+#define L1_PERI_GTOA_MMIO_BASE      (LOCAL_PERI_BASE + L1_GTOA_MMIO_OFFSET)
+#define L1_PERI_SFTY_MMIO_BASE      (LOCAL_PERI_BASE + L1_SFTY_MMIO_OFFSET)
+#define L1_PERI_AM_BASE             (LOCAL_PERI_BASE + L1_AM_OFFSET       )
+#define L1_PERI_VM_BASE             (LOCAL_PERI_BASE + L1_VM_OFFSET       )
+//End CPU core address map
+//
+//Inter Cluster address map
+//Global SCMs(IC0)
+#define INTER_CLST0_BASE            0xB0000000
+#define IC_NPU0_SCM_BASE            (INTER_CLST0_BASE + 0x1000000 * 0)
+#define IC_NPU1_SCM_BASE            (INTER_CLST0_BASE + 0x1000000 * 1)
+//...
+
+//Global control(IC1)
+#define INTER_CLST1_BASE            0xD0000000
+#define IC_NPU0_L2_PERI_BASE        (INTER_CLST1_BASE + 0x400000 * 0)
+#define IC_NPU1_L2_PERI_BASE        (INTER_CLST1_BASE + 0x400000 * 1)
+//...
+#define IC_ARCSYNC_MMIO_BASE        (INTER_CLST1_BASE + 0x400000 * 16)
+
+//Local Cluster address map
+#define LOCAL_CLST0_BASE            0xE0000000
+#define GET_LC_SL_PERI_BASE(x)      (LOCAL_CLST0_BASE + 0x400000 * (x%NPU_NUM_SLC_PER_GRP + 4*(x/NPU_NUM_SLC_PER_GRP)))
+#define LC_SL0_PERI_BASE            GET_LC_SL_PERI_BASE(0)
+#define LC_SL1_PERI_BASE            GET_LC_SL_PERI_BASE(1)
+#define LC_SL2_PERI_BASE            GET_LC_SL_PERI_BASE(2)
+#define LC_SL3_PERI_BASE            GET_LC_SL_PERI_BASE(3)
+#define LC_SL4_PERI_BASE            GET_LC_SL_PERI_BASE(4)
+#define LC_SL5_PERI_BASE            GET_LC_SL_PERI_BASE(5)
+#define LC_SL6_PERI_BASE            GET_LC_SL_PERI_BASE(6)
+#define LC_SL7_PERI_BASE            GET_LC_SL_PERI_BASE(7)
+#define LC_SL8_PERI_BASE            GET_LC_SL_PERI_BASE(8)
+#define LC_SL9_PERI_BASE            GET_LC_SL_PERI_BASE(9)
+#define LC_SL10_PERI_BASE           GET_LC_SL_PERI_BASE(10)
+#define LC_SL11_PERI_BASE           GET_LC_SL_PERI_BASE(11)
+#define LC_SL12_PERI_BASE           GET_LC_SL_PERI_BASE(12)
+#define LC_SL13_PERI_BASE           GET_LC_SL_PERI_BASE(13)
+#define LC_SL14_PERI_BASE           GET_LC_SL_PERI_BASE(14)
+#define LC_SL15_PERI_BASE           GET_LC_SL_PERI_BASE(15)
+#define LC_SL16_PERI_BASE           GET_LC_SL_PERI_BASE(16)
+#define LC_SL17_PERI_BASE           GET_LC_SL_PERI_BASE(17)
+#define LC_SL18_PERI_BASE           GET_LC_SL_PERI_BASE(18)
+#define LC_SL19_PERI_BASE           GET_LC_SL_PERI_BASE(19)
+#define LC_SL20_PERI_BASE           GET_LC_SL_PERI_BASE(20)
+#define LC_SL21_PERI_BASE           GET_LC_SL_PERI_BASE(21)
+#define LC_SL22_PERI_BASE           GET_LC_SL_PERI_BASE(22)
+#define LC_SL23_PERI_BASE           GET_LC_SL_PERI_BASE(23)
+#define LC_L2_PERI_BASE             (LOCAL_CLST0_BASE + 0x400000 * 24)
+#define LC_CLN_AUX_BASE             (LOCAL_CLST0_BASE + 0x400000 * 25) //+0x6400000
+#define LC_CSM_BASE                 (LOCAL_CLST0_BASE + 0x08000000)
+//#define LC_CSM_BASE                 0xD0000000
+
+#define LC_L2_PERI_DM_BASE          (LC_L2_PERI_BASE + L2_DM_OFFSET        )
+#define LC_L2_ISTU0_MMIO_BASE       (LC_L2_PERI_BASE + L2_ISTU0_MMIO_OFFSET)
+#define LC_L2_OSTU0_MMIO_BASE       (LC_L2_PERI_BASE + L2_OSTU0_MMIO_OFFSET)
+#define LC_L2_ISTU1_MMIO_BASE       (LC_L2_PERI_BASE + L2_ISTU1_MMIO_OFFSET)
+#define LC_L2_OSTU1_MMIO_BASE       (LC_L2_PERI_BASE + L2_OSTU1_MMIO_OFFSET)
+
+#define LC_L2_PERI_DM_BASE          (LC_L2_PERI_BASE + L2_DM_OFFSET        )
+#define LC_L2_ISTU0_MMIO_BASE       (LC_L2_PERI_BASE + L2_ISTU0_MMIO_OFFSET)
+#define LC_L2_OSTU0_MMIO_BASE       (LC_L2_PERI_BASE + L2_OSTU0_MMIO_OFFSET)
+#define LC_L2_ISTU1_MMIO_BASE       (LC_L2_PERI_BASE + L2_ISTU1_MMIO_OFFSET)
+#define LC_L2_OSTU1_MMIO_BASE       (LC_L2_PERI_BASE + L2_OSTU1_MMIO_OFFSET)
+#define LC_L2_ISTU2_MMIO_BASE       (LC_L2_PERI_BASE + L2_ISTU2_MMIO_OFFSET)
+#define LC_L2_OSTU2_MMIO_BASE       (LC_L2_PERI_BASE + L2_OSTU2_MMIO_OFFSET)
+#define LC_L2_ISTU3_MMIO_BASE       (LC_L2_PERI_BASE + L2_ISTU3_MMIO_OFFSET)
+#define LC_L2_OSTU4_MMIO_BASE       (LC_L2_PERI_BASE + L2_OSTU3_MMIO_OFFSET)
+//SLICE 0
+#define LC_SL0_PERI_DM_BASE         (LC_SL0_PERI_BASE + L1_DM_OFFSET       )
+#define LC_SL0_IDMA_MMIO_BASE       (LC_SL0_PERI_BASE + L1_IDMA_MMIO_OFFSET)
+#define LC_SL0_ODMA_MMIO_BASE       (LC_SL0_PERI_BASE + L1_ODMA_MMIO_OFFSET)
+#define LC_SL0_CONV_MMIO_BASE       (LC_SL0_PERI_BASE + L1_CONV_MMIO_OFFSET)
+#define LC_SL0_GTOA_MMIO_BASE       (LC_SL0_PERI_BASE + L1_GTOA_MMIO_OFFSET)
+#define LC_SL0_SFTY_MMIO_BASE       (LC_SL0_PERI_BASE + L1_SFTY_MMIO_OFFSET)
+#define LC_SL0_AM_BASE              (LC_SL0_PERI_BASE + L1_AM_OFFSET       )
+#define LC_SL0_VM_BASE              (LC_SL0_PERI_BASE + L1_VM_OFFSET       )
+//SLICE 1
+#define LC_SL1_PERI_DM_BASE         (LC_SL1_PERI_BASE + L1_DM_OFFSET       )
+#define LC_SL1_IDMA_MMIO_BASE       (LC_SL1_PERI_BASE + L1_IDMA_MMIO_OFFSET)
+#define LC_SL1_ODMA_MMIO_BASE       (LC_SL1_PERI_BASE + L1_ODMA_MMIO_OFFSET)
+#define LC_SL1_CONV_MMIO_BASE       (LC_SL1_PERI_BASE + L1_CONV_MMIO_OFFSET)
+#define LC_SL1_GTOA_MMIO_BASE       (LC_SL1_PERI_BASE + L1_GTOA_MMIO_OFFSET)
+#define LC_SL1_SFTY_MMIO_BASE       (LC_SL1_PERI_BASE + L1_SFTY_MMIO_OFFSET)
+#define LC_SL1_AM_BASE              (LC_SL1_PERI_BASE + L1_AM_OFFSET       )
+#define LC_SL1_VM_BASE              (LC_SL1_PERI_BASE + L1_VM_OFFSET       )
+//SLICE ...
+
+
+
+// cln auxs 
+#define CLN1P0_CLUSTER_BUILD            (0x00)
+#define CLN1P0_CLNR_ADDR_ADDR           (0x04)
+#define CLN1P0_CLNR_DATA                (0x08)
+#define CLN1P0_CLNR_DATA_NXT            (0x0C)
+#define CLN1P0_GLOBAL_CLK_GATE_DIS      (0x10)
+#define CLN1P0_CLNR_BCR_0               (0x14)
+#define CLN1P0_CLNR_BCR_1               (0x18)
+#define CLN1P0_CLNR_BCR_2               (0x1C)
+#define CLN1P0_CLNR_SCM_BCR_0           (0x20)
+#define CLN1P0_CLNR_SCM_BCR_1           (0x24)
+
+#define CLN1P0_CLN_MST_NOC_0_0_ADDR     (0x124)
+#define CLN1P0_CLN_MST_NOC_0_0_SIZE     (0x125)
+#define CLN1P0_CLN_MST_NOC_0_1_ADDR     (0xA00)
+
+#define CLN1P0_CLNR_SHMEM_ADDR          (0x0C8)
+#define CLN1P0_CLNR_SHMEM_SIZE          (0x0C9)
+
+#define CLN1P0_CLNR_MST_CCM_0_0_ADDR    (0x300)
+#define CLN1P0_CLNR_MST_CCM_0_0_SIZE    (0x301)
+#define CLN1P0_CLNR_MST_CCM_1_0_ADDR    (0x308)
+#define CLN1P0_CLNR_MST_CCM_1_0_SIZE    (0x309)
+
+// ARCSYNC AUX REG
+#define CORE_CTRL_STATUS      (0x2000)
+#define CLUSTER_CTRL_STATUS      (0x1000)
+
+#define CORE_STATUS_OFFSET     (20)
+#define CORE_RST_OFFSET        (24)
+
+#endif

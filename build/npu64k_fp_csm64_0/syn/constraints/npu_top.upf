@@ -1,0 +1,1147 @@
+
+if {![info exists DESIGN_NAME]} {
+  set DESIGN_NAME npu_top
+}
+
+##### common #####
+
+create_supply_set npu_top_AON_SS
+create_supply_net VDD
+create_supply_net VSS
+create_supply_port VDD
+create_supply_port VSS
+connect_supply_net VDD -ports {VDD}
+connect_supply_net VSS -ports {VSS}
+create_supply_set npu_top_AON_SS -function {power VDD} -update
+create_supply_set npu_top_AON_SS -function {ground VSS} -update
+
+create_power_domain TOP -supply {primary npu_top_AON_SS} \
+                        -supply {default_isolation npu_top_AON_SS} \
+                        -supply {extra_supplies ""} \
+
+create_power_domain AON -supply {primary npu_top_AON_SS} \
+                        -supply {default_isolation npu_top_AON_SS} \
+                        -supply {extra_supplies ""} \
+                        -elements { \
+                                  u_npu_core/u_npu_core_aon \
+                                  }
+
+add_power_state npu_top_AON_SS -state ON {-supply_expr {power == `{FULL_ON, 1.1} && ground == `{FULL_ON, 0.0}} -simstate NORMAL}
+add_power_state npu_top_AON_SS -state OFF {-supply_expr {power == `{OFF} && ground == `{FULL_ON, 0.0}} -simstate CORRUPT}
+
+##### per slice #####
+set_scope u_l1core0
+if { [info exists ::env(NPU_HOME)] } {
+    load_upf $::env(NPU_HOME)/build/syn/constraints/npu_slice_top.upf
+} else {
+    load_upf $::env(NPU_HOME_RLS)/syn/constraints/npu_slice_top.upf
+}
+set_scope ..
+
+connect_supply_net npu_top_AON_SS.power   -ports {u_l1core0/VDD}
+connect_supply_net npu_top_AON_SS.ground  -ports {u_l1core0/VSS}
+set_scope u_l1core1
+if { [info exists ::env(NPU_HOME)] } {
+    load_upf $::env(NPU_HOME)/build/syn/constraints/npu_slice_top.upf
+} else {
+    load_upf $::env(NPU_HOME_RLS)/syn/constraints/npu_slice_top.upf
+}
+set_scope ..
+
+connect_supply_net npu_top_AON_SS.power   -ports {u_l1core1/VDD}
+connect_supply_net npu_top_AON_SS.ground  -ports {u_l1core1/VSS}
+set_scope u_l1core2
+if { [info exists ::env(NPU_HOME)] } {
+    load_upf $::env(NPU_HOME)/build/syn/constraints/npu_slice_top.upf
+} else {
+    load_upf $::env(NPU_HOME_RLS)/syn/constraints/npu_slice_top.upf
+}
+set_scope ..
+
+connect_supply_net npu_top_AON_SS.power   -ports {u_l1core2/VDD}
+connect_supply_net npu_top_AON_SS.ground  -ports {u_l1core2/VSS}
+set_scope u_l1core3
+if { [info exists ::env(NPU_HOME)] } {
+    load_upf $::env(NPU_HOME)/build/syn/constraints/npu_slice_top.upf
+} else {
+    load_upf $::env(NPU_HOME_RLS)/syn/constraints/npu_slice_top.upf
+}
+set_scope ..
+
+connect_supply_net npu_top_AON_SS.power   -ports {u_l1core3/VDD}
+connect_supply_net npu_top_AON_SS.ground  -ports {u_l1core3/VSS}
+set_scope u_l1core4
+if { [info exists ::env(NPU_HOME)] } {
+    load_upf $::env(NPU_HOME)/build/syn/constraints/npu_slice_top.upf
+} else {
+    load_upf $::env(NPU_HOME_RLS)/syn/constraints/npu_slice_top.upf
+}
+set_scope ..
+
+connect_supply_net npu_top_AON_SS.power   -ports {u_l1core4/VDD}
+connect_supply_net npu_top_AON_SS.ground  -ports {u_l1core4/VSS}
+set_scope u_l1core5
+if { [info exists ::env(NPU_HOME)] } {
+    load_upf $::env(NPU_HOME)/build/syn/constraints/npu_slice_top.upf
+} else {
+    load_upf $::env(NPU_HOME_RLS)/syn/constraints/npu_slice_top.upf
+}
+set_scope ..
+
+connect_supply_net npu_top_AON_SS.power   -ports {u_l1core5/VDD}
+connect_supply_net npu_top_AON_SS.ground  -ports {u_l1core5/VSS}
+set_scope u_l1core6
+if { [info exists ::env(NPU_HOME)] } {
+    load_upf $::env(NPU_HOME)/build/syn/constraints/npu_slice_top.upf
+} else {
+    load_upf $::env(NPU_HOME_RLS)/syn/constraints/npu_slice_top.upf
+}
+set_scope ..
+
+connect_supply_net npu_top_AON_SS.power   -ports {u_l1core6/VDD}
+connect_supply_net npu_top_AON_SS.ground  -ports {u_l1core6/VSS}
+set_scope u_l1core7
+if { [info exists ::env(NPU_HOME)] } {
+    load_upf $::env(NPU_HOME)/build/syn/constraints/npu_slice_top.upf
+} else {
+    load_upf $::env(NPU_HOME_RLS)/syn/constraints/npu_slice_top.upf
+}
+set_scope ..
+
+connect_supply_net npu_top_AON_SS.power   -ports {u_l1core7/VDD}
+connect_supply_net npu_top_AON_SS.ground  -ports {u_l1core7/VSS}
+set_scope u_l1core8
+if { [info exists ::env(NPU_HOME)] } {
+    load_upf $::env(NPU_HOME)/build/syn/constraints/npu_slice_top.upf
+} else {
+    load_upf $::env(NPU_HOME_RLS)/syn/constraints/npu_slice_top.upf
+}
+set_scope ..
+
+connect_supply_net npu_top_AON_SS.power   -ports {u_l1core8/VDD}
+connect_supply_net npu_top_AON_SS.ground  -ports {u_l1core8/VSS}
+set_scope u_l1core9
+if { [info exists ::env(NPU_HOME)] } {
+    load_upf $::env(NPU_HOME)/build/syn/constraints/npu_slice_top.upf
+} else {
+    load_upf $::env(NPU_HOME_RLS)/syn/constraints/npu_slice_top.upf
+}
+set_scope ..
+
+connect_supply_net npu_top_AON_SS.power   -ports {u_l1core9/VDD}
+connect_supply_net npu_top_AON_SS.ground  -ports {u_l1core9/VSS}
+set_scope u_l1core10
+if { [info exists ::env(NPU_HOME)] } {
+    load_upf $::env(NPU_HOME)/build/syn/constraints/npu_slice_top.upf
+} else {
+    load_upf $::env(NPU_HOME_RLS)/syn/constraints/npu_slice_top.upf
+}
+set_scope ..
+
+connect_supply_net npu_top_AON_SS.power   -ports {u_l1core10/VDD}
+connect_supply_net npu_top_AON_SS.ground  -ports {u_l1core10/VSS}
+set_scope u_l1core11
+if { [info exists ::env(NPU_HOME)] } {
+    load_upf $::env(NPU_HOME)/build/syn/constraints/npu_slice_top.upf
+} else {
+    load_upf $::env(NPU_HOME_RLS)/syn/constraints/npu_slice_top.upf
+}
+set_scope ..
+
+connect_supply_net npu_top_AON_SS.power   -ports {u_l1core11/VDD}
+connect_supply_net npu_top_AON_SS.ground  -ports {u_l1core11/VSS}
+set_scope u_l1core12
+if { [info exists ::env(NPU_HOME)] } {
+    load_upf $::env(NPU_HOME)/build/syn/constraints/npu_slice_top.upf
+} else {
+    load_upf $::env(NPU_HOME_RLS)/syn/constraints/npu_slice_top.upf
+}
+set_scope ..
+
+connect_supply_net npu_top_AON_SS.power   -ports {u_l1core12/VDD}
+connect_supply_net npu_top_AON_SS.ground  -ports {u_l1core12/VSS}
+set_scope u_l1core13
+if { [info exists ::env(NPU_HOME)] } {
+    load_upf $::env(NPU_HOME)/build/syn/constraints/npu_slice_top.upf
+} else {
+    load_upf $::env(NPU_HOME_RLS)/syn/constraints/npu_slice_top.upf
+}
+set_scope ..
+
+connect_supply_net npu_top_AON_SS.power   -ports {u_l1core13/VDD}
+connect_supply_net npu_top_AON_SS.ground  -ports {u_l1core13/VSS}
+set_scope u_l1core14
+if { [info exists ::env(NPU_HOME)] } {
+    load_upf $::env(NPU_HOME)/build/syn/constraints/npu_slice_top.upf
+} else {
+    load_upf $::env(NPU_HOME_RLS)/syn/constraints/npu_slice_top.upf
+}
+set_scope ..
+
+connect_supply_net npu_top_AON_SS.power   -ports {u_l1core14/VDD}
+connect_supply_net npu_top_AON_SS.ground  -ports {u_l1core14/VSS}
+set_scope u_l1core15
+if { [info exists ::env(NPU_HOME)] } {
+    load_upf $::env(NPU_HOME)/build/syn/constraints/npu_slice_top.upf
+} else {
+    load_upf $::env(NPU_HOME_RLS)/syn/constraints/npu_slice_top.upf
+}
+set_scope ..
+
+connect_supply_net npu_top_AON_SS.power   -ports {u_l1core15/VDD}
+connect_supply_net npu_top_AON_SS.ground  -ports {u_l1core15/VSS}
+
+##### supply sets #####
+create_supply_set npu_core_PD_SS
+create_supply_set npu_core_PD_SS -function {ground npu_top_AON_SS.ground} -update
+create_supply_net npu_core_VDD -resolve parallel
+create_supply_set npu_core_PD_SS -function {power npu_core_VDD} -update
+
+###### power domains #####
+create_power_domain PD_CORE -supply {primary npu_core_PD_SS} \
+                             -supply {default_isolation npu_top_AON_SS} \
+                             -supply {extra_supplies_0 "npu_top_AON_SS"} \
+                             -elements {u_npu_core/u_npu_core_pd}
+
+##### set & map isolation #####
+
+###isolate output from slice 0
+set_isolation npu_top_PD_SLI0_out -domain u_l1core0/PD_SLI \
+                                     -clamp_value 0 \
+                                     -source u_l1core0/npu_l1core_PD_SS \
+                                     -applies_to outputs \
+                                     -isolation_signal sl0nl1arc_isolate_n \
+                                     -isolation_sense low \
+                                     -isolation_supply_set npu_top_AON_SS \
+                                     -location parent
+map_isolation_cell npu_top_PD_SLI0_out -domain u_l1core0/PD_SLI -lib_cells {HDPSVT08_ISOS1CL0_4}
+
+###isolate default high output from slice 0
+set_isolation npu_top_PD_SLI0_out_hi -domain u_l1core0/PD_SLI \
+                                     -clamp_value 1 \
+                                     -elements { \
+                                               u_l1core0/dbg_as_ack_a \
+                                               u_l1core0/dbg_as_presp[0] \
+                                               u_l1core0/sys_halt_r \
+                                               } \
+                                     -source u_l1core0/npu_l1core_PD_SS \
+                                     -applies_to outputs \
+                                     -isolation_signal sl0nl1arc_isolate \
+                                     -isolation_sense high \
+                                     -isolation_supply_set npu_top_AON_SS \
+                                     -location parent
+map_isolation_cell npu_top_PD_SLI0_out_hi -domain u_l1core0/PD_SLI -lib_cells {HDPSVT08_ISOS0CL1_4}
+###isolate output from slice 1
+set_isolation npu_top_PD_SLI1_out -domain u_l1core1/PD_SLI \
+                                     -clamp_value 0 \
+                                     -source u_l1core1/npu_l1core_PD_SS \
+                                     -applies_to outputs \
+                                     -isolation_signal sl1nl1arc_isolate_n \
+                                     -isolation_sense low \
+                                     -isolation_supply_set npu_top_AON_SS \
+                                     -location parent
+map_isolation_cell npu_top_PD_SLI1_out -domain u_l1core1/PD_SLI -lib_cells {HDPSVT08_ISOS1CL0_4}
+
+###isolate default high output from slice 1
+set_isolation npu_top_PD_SLI1_out_hi -domain u_l1core1/PD_SLI \
+                                     -clamp_value 1 \
+                                     -elements { \
+                                               u_l1core1/dbg_as_ack_a \
+                                               u_l1core1/dbg_as_presp[0] \
+                                               u_l1core1/sys_halt_r \
+                                               } \
+                                     -source u_l1core1/npu_l1core_PD_SS \
+                                     -applies_to outputs \
+                                     -isolation_signal sl1nl1arc_isolate \
+                                     -isolation_sense high \
+                                     -isolation_supply_set npu_top_AON_SS \
+                                     -location parent
+map_isolation_cell npu_top_PD_SLI1_out_hi -domain u_l1core1/PD_SLI -lib_cells {HDPSVT08_ISOS0CL1_4}
+###isolate output from slice 2
+set_isolation npu_top_PD_SLI2_out -domain u_l1core2/PD_SLI \
+                                     -clamp_value 0 \
+                                     -source u_l1core2/npu_l1core_PD_SS \
+                                     -applies_to outputs \
+                                     -isolation_signal sl2nl1arc_isolate_n \
+                                     -isolation_sense low \
+                                     -isolation_supply_set npu_top_AON_SS \
+                                     -location parent
+map_isolation_cell npu_top_PD_SLI2_out -domain u_l1core2/PD_SLI -lib_cells {HDPSVT08_ISOS1CL0_4}
+
+###isolate default high output from slice 2
+set_isolation npu_top_PD_SLI2_out_hi -domain u_l1core2/PD_SLI \
+                                     -clamp_value 1 \
+                                     -elements { \
+                                               u_l1core2/dbg_as_ack_a \
+                                               u_l1core2/dbg_as_presp[0] \
+                                               u_l1core2/sys_halt_r \
+                                               } \
+                                     -source u_l1core2/npu_l1core_PD_SS \
+                                     -applies_to outputs \
+                                     -isolation_signal sl2nl1arc_isolate \
+                                     -isolation_sense high \
+                                     -isolation_supply_set npu_top_AON_SS \
+                                     -location parent
+map_isolation_cell npu_top_PD_SLI2_out_hi -domain u_l1core2/PD_SLI -lib_cells {HDPSVT08_ISOS0CL1_4}
+###isolate output from slice 3
+set_isolation npu_top_PD_SLI3_out -domain u_l1core3/PD_SLI \
+                                     -clamp_value 0 \
+                                     -source u_l1core3/npu_l1core_PD_SS \
+                                     -applies_to outputs \
+                                     -isolation_signal sl3nl1arc_isolate_n \
+                                     -isolation_sense low \
+                                     -isolation_supply_set npu_top_AON_SS \
+                                     -location parent
+map_isolation_cell npu_top_PD_SLI3_out -domain u_l1core3/PD_SLI -lib_cells {HDPSVT08_ISOS1CL0_4}
+
+###isolate default high output from slice 3
+set_isolation npu_top_PD_SLI3_out_hi -domain u_l1core3/PD_SLI \
+                                     -clamp_value 1 \
+                                     -elements { \
+                                               u_l1core3/dbg_as_ack_a \
+                                               u_l1core3/dbg_as_presp[0] \
+                                               u_l1core3/sys_halt_r \
+                                               } \
+                                     -source u_l1core3/npu_l1core_PD_SS \
+                                     -applies_to outputs \
+                                     -isolation_signal sl3nl1arc_isolate \
+                                     -isolation_sense high \
+                                     -isolation_supply_set npu_top_AON_SS \
+                                     -location parent
+map_isolation_cell npu_top_PD_SLI3_out_hi -domain u_l1core3/PD_SLI -lib_cells {HDPSVT08_ISOS0CL1_4}
+###isolate output from slice 4
+set_isolation npu_top_PD_SLI4_out -domain u_l1core4/PD_SLI \
+                                     -clamp_value 0 \
+                                     -source u_l1core4/npu_l1core_PD_SS \
+                                     -applies_to outputs \
+                                     -isolation_signal sl4nl1arc_isolate_n \
+                                     -isolation_sense low \
+                                     -isolation_supply_set npu_top_AON_SS \
+                                     -location parent
+map_isolation_cell npu_top_PD_SLI4_out -domain u_l1core4/PD_SLI -lib_cells {HDPSVT08_ISOS1CL0_4}
+
+###isolate default high output from slice 4
+set_isolation npu_top_PD_SLI4_out_hi -domain u_l1core4/PD_SLI \
+                                     -clamp_value 1 \
+                                     -elements { \
+                                               u_l1core4/dbg_as_ack_a \
+                                               u_l1core4/dbg_as_presp[0] \
+                                               u_l1core4/sys_halt_r \
+                                               } \
+                                     -source u_l1core4/npu_l1core_PD_SS \
+                                     -applies_to outputs \
+                                     -isolation_signal sl4nl1arc_isolate \
+                                     -isolation_sense high \
+                                     -isolation_supply_set npu_top_AON_SS \
+                                     -location parent
+map_isolation_cell npu_top_PD_SLI4_out_hi -domain u_l1core4/PD_SLI -lib_cells {HDPSVT08_ISOS0CL1_4}
+###isolate output from slice 5
+set_isolation npu_top_PD_SLI5_out -domain u_l1core5/PD_SLI \
+                                     -clamp_value 0 \
+                                     -source u_l1core5/npu_l1core_PD_SS \
+                                     -applies_to outputs \
+                                     -isolation_signal sl5nl1arc_isolate_n \
+                                     -isolation_sense low \
+                                     -isolation_supply_set npu_top_AON_SS \
+                                     -location parent
+map_isolation_cell npu_top_PD_SLI5_out -domain u_l1core5/PD_SLI -lib_cells {HDPSVT08_ISOS1CL0_4}
+
+###isolate default high output from slice 5
+set_isolation npu_top_PD_SLI5_out_hi -domain u_l1core5/PD_SLI \
+                                     -clamp_value 1 \
+                                     -elements { \
+                                               u_l1core5/dbg_as_ack_a \
+                                               u_l1core5/dbg_as_presp[0] \
+                                               u_l1core5/sys_halt_r \
+                                               } \
+                                     -source u_l1core5/npu_l1core_PD_SS \
+                                     -applies_to outputs \
+                                     -isolation_signal sl5nl1arc_isolate \
+                                     -isolation_sense high \
+                                     -isolation_supply_set npu_top_AON_SS \
+                                     -location parent
+map_isolation_cell npu_top_PD_SLI5_out_hi -domain u_l1core5/PD_SLI -lib_cells {HDPSVT08_ISOS0CL1_4}
+###isolate output from slice 6
+set_isolation npu_top_PD_SLI6_out -domain u_l1core6/PD_SLI \
+                                     -clamp_value 0 \
+                                     -source u_l1core6/npu_l1core_PD_SS \
+                                     -applies_to outputs \
+                                     -isolation_signal sl6nl1arc_isolate_n \
+                                     -isolation_sense low \
+                                     -isolation_supply_set npu_top_AON_SS \
+                                     -location parent
+map_isolation_cell npu_top_PD_SLI6_out -domain u_l1core6/PD_SLI -lib_cells {HDPSVT08_ISOS1CL0_4}
+
+###isolate default high output from slice 6
+set_isolation npu_top_PD_SLI6_out_hi -domain u_l1core6/PD_SLI \
+                                     -clamp_value 1 \
+                                     -elements { \
+                                               u_l1core6/dbg_as_ack_a \
+                                               u_l1core6/dbg_as_presp[0] \
+                                               u_l1core6/sys_halt_r \
+                                               } \
+                                     -source u_l1core6/npu_l1core_PD_SS \
+                                     -applies_to outputs \
+                                     -isolation_signal sl6nl1arc_isolate \
+                                     -isolation_sense high \
+                                     -isolation_supply_set npu_top_AON_SS \
+                                     -location parent
+map_isolation_cell npu_top_PD_SLI6_out_hi -domain u_l1core6/PD_SLI -lib_cells {HDPSVT08_ISOS0CL1_4}
+###isolate output from slice 7
+set_isolation npu_top_PD_SLI7_out -domain u_l1core7/PD_SLI \
+                                     -clamp_value 0 \
+                                     -source u_l1core7/npu_l1core_PD_SS \
+                                     -applies_to outputs \
+                                     -isolation_signal sl7nl1arc_isolate_n \
+                                     -isolation_sense low \
+                                     -isolation_supply_set npu_top_AON_SS \
+                                     -location parent
+map_isolation_cell npu_top_PD_SLI7_out -domain u_l1core7/PD_SLI -lib_cells {HDPSVT08_ISOS1CL0_4}
+
+###isolate default high output from slice 7
+set_isolation npu_top_PD_SLI7_out_hi -domain u_l1core7/PD_SLI \
+                                     -clamp_value 1 \
+                                     -elements { \
+                                               u_l1core7/dbg_as_ack_a \
+                                               u_l1core7/dbg_as_presp[0] \
+                                               u_l1core7/sys_halt_r \
+                                               } \
+                                     -source u_l1core7/npu_l1core_PD_SS \
+                                     -applies_to outputs \
+                                     -isolation_signal sl7nl1arc_isolate \
+                                     -isolation_sense high \
+                                     -isolation_supply_set npu_top_AON_SS \
+                                     -location parent
+map_isolation_cell npu_top_PD_SLI7_out_hi -domain u_l1core7/PD_SLI -lib_cells {HDPSVT08_ISOS0CL1_4}
+###isolate output from slice 8
+set_isolation npu_top_PD_SLI8_out -domain u_l1core8/PD_SLI \
+                                     -clamp_value 0 \
+                                     -source u_l1core8/npu_l1core_PD_SS \
+                                     -applies_to outputs \
+                                     -isolation_signal sl8nl1arc_isolate_n \
+                                     -isolation_sense low \
+                                     -isolation_supply_set npu_top_AON_SS \
+                                     -location parent
+map_isolation_cell npu_top_PD_SLI8_out -domain u_l1core8/PD_SLI -lib_cells {HDPSVT08_ISOS1CL0_4}
+
+###isolate default high output from slice 8
+set_isolation npu_top_PD_SLI8_out_hi -domain u_l1core8/PD_SLI \
+                                     -clamp_value 1 \
+                                     -elements { \
+                                               u_l1core8/dbg_as_ack_a \
+                                               u_l1core8/dbg_as_presp[0] \
+                                               u_l1core8/sys_halt_r \
+                                               } \
+                                     -source u_l1core8/npu_l1core_PD_SS \
+                                     -applies_to outputs \
+                                     -isolation_signal sl8nl1arc_isolate \
+                                     -isolation_sense high \
+                                     -isolation_supply_set npu_top_AON_SS \
+                                     -location parent
+map_isolation_cell npu_top_PD_SLI8_out_hi -domain u_l1core8/PD_SLI -lib_cells {HDPSVT08_ISOS0CL1_4}
+###isolate output from slice 9
+set_isolation npu_top_PD_SLI9_out -domain u_l1core9/PD_SLI \
+                                     -clamp_value 0 \
+                                     -source u_l1core9/npu_l1core_PD_SS \
+                                     -applies_to outputs \
+                                     -isolation_signal sl9nl1arc_isolate_n \
+                                     -isolation_sense low \
+                                     -isolation_supply_set npu_top_AON_SS \
+                                     -location parent
+map_isolation_cell npu_top_PD_SLI9_out -domain u_l1core9/PD_SLI -lib_cells {HDPSVT08_ISOS1CL0_4}
+
+###isolate default high output from slice 9
+set_isolation npu_top_PD_SLI9_out_hi -domain u_l1core9/PD_SLI \
+                                     -clamp_value 1 \
+                                     -elements { \
+                                               u_l1core9/dbg_as_ack_a \
+                                               u_l1core9/dbg_as_presp[0] \
+                                               u_l1core9/sys_halt_r \
+                                               } \
+                                     -source u_l1core9/npu_l1core_PD_SS \
+                                     -applies_to outputs \
+                                     -isolation_signal sl9nl1arc_isolate \
+                                     -isolation_sense high \
+                                     -isolation_supply_set npu_top_AON_SS \
+                                     -location parent
+map_isolation_cell npu_top_PD_SLI9_out_hi -domain u_l1core9/PD_SLI -lib_cells {HDPSVT08_ISOS0CL1_4}
+###isolate output from slice 10
+set_isolation npu_top_PD_SLI10_out -domain u_l1core10/PD_SLI \
+                                     -clamp_value 0 \
+                                     -source u_l1core10/npu_l1core_PD_SS \
+                                     -applies_to outputs \
+                                     -isolation_signal sl10nl1arc_isolate_n \
+                                     -isolation_sense low \
+                                     -isolation_supply_set npu_top_AON_SS \
+                                     -location parent
+map_isolation_cell npu_top_PD_SLI10_out -domain u_l1core10/PD_SLI -lib_cells {HDPSVT08_ISOS1CL0_4}
+
+###isolate default high output from slice 10
+set_isolation npu_top_PD_SLI10_out_hi -domain u_l1core10/PD_SLI \
+                                     -clamp_value 1 \
+                                     -elements { \
+                                               u_l1core10/dbg_as_ack_a \
+                                               u_l1core10/dbg_as_presp[0] \
+                                               u_l1core10/sys_halt_r \
+                                               } \
+                                     -source u_l1core10/npu_l1core_PD_SS \
+                                     -applies_to outputs \
+                                     -isolation_signal sl10nl1arc_isolate \
+                                     -isolation_sense high \
+                                     -isolation_supply_set npu_top_AON_SS \
+                                     -location parent
+map_isolation_cell npu_top_PD_SLI10_out_hi -domain u_l1core10/PD_SLI -lib_cells {HDPSVT08_ISOS0CL1_4}
+###isolate output from slice 11
+set_isolation npu_top_PD_SLI11_out -domain u_l1core11/PD_SLI \
+                                     -clamp_value 0 \
+                                     -source u_l1core11/npu_l1core_PD_SS \
+                                     -applies_to outputs \
+                                     -isolation_signal sl11nl1arc_isolate_n \
+                                     -isolation_sense low \
+                                     -isolation_supply_set npu_top_AON_SS \
+                                     -location parent
+map_isolation_cell npu_top_PD_SLI11_out -domain u_l1core11/PD_SLI -lib_cells {HDPSVT08_ISOS1CL0_4}
+
+###isolate default high output from slice 11
+set_isolation npu_top_PD_SLI11_out_hi -domain u_l1core11/PD_SLI \
+                                     -clamp_value 1 \
+                                     -elements { \
+                                               u_l1core11/dbg_as_ack_a \
+                                               u_l1core11/dbg_as_presp[0] \
+                                               u_l1core11/sys_halt_r \
+                                               } \
+                                     -source u_l1core11/npu_l1core_PD_SS \
+                                     -applies_to outputs \
+                                     -isolation_signal sl11nl1arc_isolate \
+                                     -isolation_sense high \
+                                     -isolation_supply_set npu_top_AON_SS \
+                                     -location parent
+map_isolation_cell npu_top_PD_SLI11_out_hi -domain u_l1core11/PD_SLI -lib_cells {HDPSVT08_ISOS0CL1_4}
+###isolate output from slice 12
+set_isolation npu_top_PD_SLI12_out -domain u_l1core12/PD_SLI \
+                                     -clamp_value 0 \
+                                     -source u_l1core12/npu_l1core_PD_SS \
+                                     -applies_to outputs \
+                                     -isolation_signal sl12nl1arc_isolate_n \
+                                     -isolation_sense low \
+                                     -isolation_supply_set npu_top_AON_SS \
+                                     -location parent
+map_isolation_cell npu_top_PD_SLI12_out -domain u_l1core12/PD_SLI -lib_cells {HDPSVT08_ISOS1CL0_4}
+
+###isolate default high output from slice 12
+set_isolation npu_top_PD_SLI12_out_hi -domain u_l1core12/PD_SLI \
+                                     -clamp_value 1 \
+                                     -elements { \
+                                               u_l1core12/dbg_as_ack_a \
+                                               u_l1core12/dbg_as_presp[0] \
+                                               u_l1core12/sys_halt_r \
+                                               } \
+                                     -source u_l1core12/npu_l1core_PD_SS \
+                                     -applies_to outputs \
+                                     -isolation_signal sl12nl1arc_isolate \
+                                     -isolation_sense high \
+                                     -isolation_supply_set npu_top_AON_SS \
+                                     -location parent
+map_isolation_cell npu_top_PD_SLI12_out_hi -domain u_l1core12/PD_SLI -lib_cells {HDPSVT08_ISOS0CL1_4}
+###isolate output from slice 13
+set_isolation npu_top_PD_SLI13_out -domain u_l1core13/PD_SLI \
+                                     -clamp_value 0 \
+                                     -source u_l1core13/npu_l1core_PD_SS \
+                                     -applies_to outputs \
+                                     -isolation_signal sl13nl1arc_isolate_n \
+                                     -isolation_sense low \
+                                     -isolation_supply_set npu_top_AON_SS \
+                                     -location parent
+map_isolation_cell npu_top_PD_SLI13_out -domain u_l1core13/PD_SLI -lib_cells {HDPSVT08_ISOS1CL0_4}
+
+###isolate default high output from slice 13
+set_isolation npu_top_PD_SLI13_out_hi -domain u_l1core13/PD_SLI \
+                                     -clamp_value 1 \
+                                     -elements { \
+                                               u_l1core13/dbg_as_ack_a \
+                                               u_l1core13/dbg_as_presp[0] \
+                                               u_l1core13/sys_halt_r \
+                                               } \
+                                     -source u_l1core13/npu_l1core_PD_SS \
+                                     -applies_to outputs \
+                                     -isolation_signal sl13nl1arc_isolate \
+                                     -isolation_sense high \
+                                     -isolation_supply_set npu_top_AON_SS \
+                                     -location parent
+map_isolation_cell npu_top_PD_SLI13_out_hi -domain u_l1core13/PD_SLI -lib_cells {HDPSVT08_ISOS0CL1_4}
+###isolate output from slice 14
+set_isolation npu_top_PD_SLI14_out -domain u_l1core14/PD_SLI \
+                                     -clamp_value 0 \
+                                     -source u_l1core14/npu_l1core_PD_SS \
+                                     -applies_to outputs \
+                                     -isolation_signal sl14nl1arc_isolate_n \
+                                     -isolation_sense low \
+                                     -isolation_supply_set npu_top_AON_SS \
+                                     -location parent
+map_isolation_cell npu_top_PD_SLI14_out -domain u_l1core14/PD_SLI -lib_cells {HDPSVT08_ISOS1CL0_4}
+
+###isolate default high output from slice 14
+set_isolation npu_top_PD_SLI14_out_hi -domain u_l1core14/PD_SLI \
+                                     -clamp_value 1 \
+                                     -elements { \
+                                               u_l1core14/dbg_as_ack_a \
+                                               u_l1core14/dbg_as_presp[0] \
+                                               u_l1core14/sys_halt_r \
+                                               } \
+                                     -source u_l1core14/npu_l1core_PD_SS \
+                                     -applies_to outputs \
+                                     -isolation_signal sl14nl1arc_isolate \
+                                     -isolation_sense high \
+                                     -isolation_supply_set npu_top_AON_SS \
+                                     -location parent
+map_isolation_cell npu_top_PD_SLI14_out_hi -domain u_l1core14/PD_SLI -lib_cells {HDPSVT08_ISOS0CL1_4}
+###isolate output from slice 15
+set_isolation npu_top_PD_SLI15_out -domain u_l1core15/PD_SLI \
+                                     -clamp_value 0 \
+                                     -source u_l1core15/npu_l1core_PD_SS \
+                                     -applies_to outputs \
+                                     -isolation_signal sl15nl1arc_isolate_n \
+                                     -isolation_sense low \
+                                     -isolation_supply_set npu_top_AON_SS \
+                                     -location parent
+map_isolation_cell npu_top_PD_SLI15_out -domain u_l1core15/PD_SLI -lib_cells {HDPSVT08_ISOS1CL0_4}
+
+###isolate default high output from slice 15
+set_isolation npu_top_PD_SLI15_out_hi -domain u_l1core15/PD_SLI \
+                                     -clamp_value 1 \
+                                     -elements { \
+                                               u_l1core15/dbg_as_ack_a \
+                                               u_l1core15/dbg_as_presp[0] \
+                                               u_l1core15/sys_halt_r \
+                                               } \
+                                     -source u_l1core15/npu_l1core_PD_SS \
+                                     -applies_to outputs \
+                                     -isolation_signal sl15nl1arc_isolate \
+                                     -isolation_sense high \
+                                     -isolation_supply_set npu_top_AON_SS \
+                                     -location parent
+map_isolation_cell npu_top_PD_SLI15_out_hi -domain u_l1core15/PD_SLI -lib_cells {HDPSVT08_ISOS0CL1_4}
+
+###isolate output from core
+set_isolation npu_top_PD_CORE_out   -domain PD_CORE \
+                                     -clamp_value 0 \
+                                     -source npu_core_PD_SS \
+                                     -applies_to outputs \
+                                     -isolation_signal nl2arc_isolate_n \
+                                     -isolation_sense low \
+                                     -isolation_supply_set npu_top_AON_SS \
+                                     -location parent
+map_isolation_cell npu_top_PD_CORE_out -domain PD_CORE -lib_cells {HDPSVT08_ISOS1CL0_4}
+
+###isolate default high output from npu core
+set_isolation npu_top_PD_CORE_out_hi -domain PD_CORE \
+                                     -clamp_value 1 \
+                                     -elements { \
+                                               u_npu_core/u_npu_core_pd/arct_syn_ack_a \
+                                               u_npu_core/u_npu_core_pd/arct_syn_presp[0] \
+                                               u_npu_core/u_npu_core_pd/nl2arc0_ack_a \
+                                               u_npu_core/u_npu_core_pd/nl2arc0_presp[0] \
+                                               u_npu_core/u_npu_core_pd/nl2arc1_ack_a \
+                                               u_npu_core/u_npu_core_pd/nl2arc1_presp[0] \
+                                               u_npu_core/u_npu_core_pd/nl2arc0_sys_halt_r \
+                                               u_npu_core/u_npu_core_pd/nl2arc1_sys_halt_r \
+                                               } \
+                                     -source npu_core_PD_SS \
+                                     -applies_to outputs \
+                                     -isolation_signal nl2arc_isolate \
+                                     -isolation_sense high \
+                                     -isolation_supply_set npu_top_AON_SS \
+                                     -location parent
+map_isolation_cell npu_top_PD_CORE_out_hi -domain PD_CORE -lib_cells {HDPSVT08_ISOS0CL1_4}
+
+
+##### power switch #####
+
+create_power_switch npu_top_PD_CORE_SW \
+  -domain PD_CORE \
+  -output_supply_port {vout npu_core_VDD} \
+  -input_supply_port {vin npu_top_AON_SS.power} \
+  -control_port {ctrl nl2arc_pd_logic} \
+  -on_state {ON vin {!ctrl}} \
+  -off_state {OFF {ctrl}}
+map_power_switch npu_top_PD_CORE_SW -domain PD_CORE -lib_cells {HDPSVT08_PGATDRV_15}
+
+##### power state #####
+
+add_power_state npu_core_PD_SS -state OFF {-supply_expr {power == `{OFF} && ground == `{FULL_ON, 0.0}} -simstate CORRUPT}
+add_power_state npu_core_PD_SS -state ON {-supply_expr {power == `{FULL_ON, 1.1} && ground == `{FULL_ON, 0.0}} -simstate NORMAL}
+
+create_power_state_group NPU_TOP
+set add_power_state_cmd "add_power_state -group NPU_TOP -state ON {-logic_expr { npu_top_AON_SS == ON && npu_core_PD_SS == ON"
+set add_power_state_cmd [concat $add_power_state_cmd " && u_l1core0/SLICE == ON"]
+set add_power_state_cmd [concat $add_power_state_cmd " && u_l1core1/SLICE == ON"]
+set add_power_state_cmd [concat $add_power_state_cmd " && u_l1core2/SLICE == ON"]
+set add_power_state_cmd [concat $add_power_state_cmd " && u_l1core3/SLICE == ON"]
+set add_power_state_cmd [concat $add_power_state_cmd " && u_l1core4/SLICE == ON"]
+set add_power_state_cmd [concat $add_power_state_cmd " && u_l1core5/SLICE == ON"]
+set add_power_state_cmd [concat $add_power_state_cmd " && u_l1core6/SLICE == ON"]
+set add_power_state_cmd [concat $add_power_state_cmd " && u_l1core7/SLICE == ON"]
+set add_power_state_cmd [concat $add_power_state_cmd " && u_l1core8/SLICE == ON"]
+set add_power_state_cmd [concat $add_power_state_cmd " && u_l1core9/SLICE == ON"]
+set add_power_state_cmd [concat $add_power_state_cmd " && u_l1core10/SLICE == ON"]
+set add_power_state_cmd [concat $add_power_state_cmd " && u_l1core11/SLICE == ON"]
+set add_power_state_cmd [concat $add_power_state_cmd " && u_l1core12/SLICE == ON"]
+set add_power_state_cmd [concat $add_power_state_cmd " && u_l1core13/SLICE == ON"]
+set add_power_state_cmd [concat $add_power_state_cmd " && u_l1core14/SLICE == ON"]
+set add_power_state_cmd [concat $add_power_state_cmd " && u_l1core15/SLICE == ON"]
+set add_power_state_cmd [concat $add_power_state_cmd "}}"]
+eval $add_power_state_cmd
+
+set add_power_state_cmd "add_power_state -group NPU_TOP -update -state PM1 {-logic_expr { npu_top_AON_SS == ON && npu_core_PD_SS == OFF"
+set add_power_state_cmd [concat $add_power_state_cmd " && u_l1core0/SLICE == PM1"]
+set add_power_state_cmd [concat $add_power_state_cmd " && u_l1core1/SLICE == PM1"]
+set add_power_state_cmd [concat $add_power_state_cmd " && u_l1core2/SLICE == PM1"]
+set add_power_state_cmd [concat $add_power_state_cmd " && u_l1core3/SLICE == PM1"]
+set add_power_state_cmd [concat $add_power_state_cmd " && u_l1core4/SLICE == PM1"]
+set add_power_state_cmd [concat $add_power_state_cmd " && u_l1core5/SLICE == PM1"]
+set add_power_state_cmd [concat $add_power_state_cmd " && u_l1core6/SLICE == PM1"]
+set add_power_state_cmd [concat $add_power_state_cmd " && u_l1core7/SLICE == PM1"]
+set add_power_state_cmd [concat $add_power_state_cmd " && u_l1core8/SLICE == PM1"]
+set add_power_state_cmd [concat $add_power_state_cmd " && u_l1core9/SLICE == PM1"]
+set add_power_state_cmd [concat $add_power_state_cmd " && u_l1core10/SLICE == PM1"]
+set add_power_state_cmd [concat $add_power_state_cmd " && u_l1core11/SLICE == PM1"]
+set add_power_state_cmd [concat $add_power_state_cmd " && u_l1core12/SLICE == PM1"]
+set add_power_state_cmd [concat $add_power_state_cmd " && u_l1core13/SLICE == PM1"]
+set add_power_state_cmd [concat $add_power_state_cmd " && u_l1core14/SLICE == PM1"]
+set add_power_state_cmd [concat $add_power_state_cmd " && u_l1core15/SLICE == PM1"]
+set add_power_state_cmd [concat $add_power_state_cmd "}}"]
+eval $add_power_state_cmd
+
+set add_power_state_cmd "add_power_state -group NPU_TOP -update -state PM2 {-logic_expr { npu_top_AON_SS == ON && npu_core_PD_SS == ON"
+set add_power_state_cmd [concat $add_power_state_cmd " && ("]
+set add_power_state_cmd [concat $add_power_state_cmd " u_l1core0/SLICE == PM1 "]
+set add_power_state_cmd [concat $add_power_state_cmd " || u_l1core1/SLICE == PM1 "]
+set add_power_state_cmd [concat $add_power_state_cmd " || u_l1core2/SLICE == PM1 "]
+set add_power_state_cmd [concat $add_power_state_cmd " || u_l1core3/SLICE == PM1 "]
+set add_power_state_cmd [concat $add_power_state_cmd " || u_l1core4/SLICE == PM1 "]
+set add_power_state_cmd [concat $add_power_state_cmd " || u_l1core5/SLICE == PM1 "]
+set add_power_state_cmd [concat $add_power_state_cmd " || u_l1core6/SLICE == PM1 "]
+set add_power_state_cmd [concat $add_power_state_cmd " || u_l1core7/SLICE == PM1 "]
+set add_power_state_cmd [concat $add_power_state_cmd " || u_l1core8/SLICE == PM1 "]
+set add_power_state_cmd [concat $add_power_state_cmd " || u_l1core9/SLICE == PM1 "]
+set add_power_state_cmd [concat $add_power_state_cmd " || u_l1core10/SLICE == PM1 "]
+set add_power_state_cmd [concat $add_power_state_cmd " || u_l1core11/SLICE == PM1 "]
+set add_power_state_cmd [concat $add_power_state_cmd " || u_l1core12/SLICE == PM1 "]
+set add_power_state_cmd [concat $add_power_state_cmd " || u_l1core13/SLICE == PM1 "]
+set add_power_state_cmd [concat $add_power_state_cmd " || u_l1core14/SLICE == PM1 "]
+set add_power_state_cmd [concat $add_power_state_cmd " || u_l1core15/SLICE == PM1 "]
+set add_power_state_cmd [concat $add_power_state_cmd ")"]
+set add_power_state_cmd [concat $add_power_state_cmd "}}"]
+eval $add_power_state_cmd
+
+set add_power_state_cmd "add_power_state -group NPU_TOP -update -state OFF {-logic_expr { npu_top_AON_SS == OFF && npu_core_PD_SS == OFF"
+set add_power_state_cmd [concat $add_power_state_cmd "}}"]
+eval $add_power_state_cmd
+
+##### supply to srams #####
+connect_supply_net npu_core_VDD          -ports {u_npu_core/u_npu_core_pd/u_npu_group0/u_cln_grp_inst/u_cln_inst/u_dbank*_top/g_scm_dbank_sram_all*u_scm_dbank_sram_all/g*u_scm_dbank_sram_wrapper/g*u_scm_dbank_sram/scm_dbank_sram*scm_dbank_sram_l/u_mem/VDDPI}
+connect_supply_net npu_top_AON_SS.power  -ports {u_npu_core/u_npu_core_pd/u_npu_group0/u_cln_grp_inst/u_cln_inst/u_dbank*_top/g_scm_dbank_sram_all*u_scm_dbank_sram_all/g*u_scm_dbank_sram_wrapper/g*u_scm_dbank_sram/*/u_mem/VDD}
+connect_supply_net npu_top_AON_SS.ground -ports {u_npu_core/u_npu_core_pd/u_npu_group0/u_cln_grp_inst/u_cln_inst/u_dbank*_top/g_scm_dbank_sram_all*u_scm_dbank_sram_all/g*u_scm_dbank_sram_wrapper/g*u_scm_dbank_sram/*/u_mem/VSS}
+connect_supply_net npu_core_VDD          -ports {u_npu_core/u_npu_core_pd/u_npu_group1/u_cln_grp_inst/u_cln_inst/u_dbank*_top/g_scm_dbank_sram_all*u_scm_dbank_sram_all/g*u_scm_dbank_sram_wrapper/g*u_scm_dbank_sram/scm_dbank_sram*scm_dbank_sram_l/u_mem/VDDPI}
+connect_supply_net npu_top_AON_SS.power  -ports {u_npu_core/u_npu_core_pd/u_npu_group1/u_cln_grp_inst/u_cln_inst/u_dbank*_top/g_scm_dbank_sram_all*u_scm_dbank_sram_all/g*u_scm_dbank_sram_wrapper/g*u_scm_dbank_sram/*/u_mem/VDD}
+connect_supply_net npu_top_AON_SS.ground -ports {u_npu_core/u_npu_core_pd/u_npu_group1/u_cln_grp_inst/u_cln_inst/u_dbank*_top/g_scm_dbank_sram_all*u_scm_dbank_sram_all/g*u_scm_dbank_sram_wrapper/g*u_scm_dbank_sram/*/u_mem/VSS}
+connect_supply_net npu_core_VDD          -ports {u_npu_core/u_npu_core_pd/u_npu_group2/u_cln_grp_inst/u_cln_inst/u_dbank*_top/g_scm_dbank_sram_all*u_scm_dbank_sram_all/g*u_scm_dbank_sram_wrapper/g*u_scm_dbank_sram/scm_dbank_sram*scm_dbank_sram_l/u_mem/VDDPI}
+connect_supply_net npu_top_AON_SS.power  -ports {u_npu_core/u_npu_core_pd/u_npu_group2/u_cln_grp_inst/u_cln_inst/u_dbank*_top/g_scm_dbank_sram_all*u_scm_dbank_sram_all/g*u_scm_dbank_sram_wrapper/g*u_scm_dbank_sram/*/u_mem/VDD}
+connect_supply_net npu_top_AON_SS.ground -ports {u_npu_core/u_npu_core_pd/u_npu_group2/u_cln_grp_inst/u_cln_inst/u_dbank*_top/g_scm_dbank_sram_all*u_scm_dbank_sram_all/g*u_scm_dbank_sram_wrapper/g*u_scm_dbank_sram/*/u_mem/VSS}
+connect_supply_net npu_core_VDD          -ports {u_npu_core/u_npu_core_pd/u_npu_group3/u_cln_grp_inst/u_cln_inst/u_dbank*_top/g_scm_dbank_sram_all*u_scm_dbank_sram_all/g*u_scm_dbank_sram_wrapper/g*u_scm_dbank_sram/scm_dbank_sram*scm_dbank_sram_l/u_mem/VDDPI}
+connect_supply_net npu_top_AON_SS.power  -ports {u_npu_core/u_npu_core_pd/u_npu_group3/u_cln_grp_inst/u_cln_inst/u_dbank*_top/g_scm_dbank_sram_all*u_scm_dbank_sram_all/g*u_scm_dbank_sram_wrapper/g*u_scm_dbank_sram/*/u_mem/VDD}
+connect_supply_net npu_top_AON_SS.ground -ports {u_npu_core/u_npu_core_pd/u_npu_group3/u_cln_grp_inst/u_cln_inst/u_dbank*_top/g_scm_dbank_sram_all*u_scm_dbank_sram_all/g*u_scm_dbank_sram_wrapper/g*u_scm_dbank_sram/*/u_mem/VSS}
+connect_supply_net npu_core_VDD            -ports {u_npu_core/u_npu_core_pd/u_l2arc_grp/u_npu_l2_arc0/ialb_cpu_top/u_alb_srams/*/*/u_mem/VDDPI}
+connect_supply_net npu_top_AON_SS.power    -ports {u_npu_core/u_npu_core_pd/u_l2arc_grp/u_npu_l2_arc0/ialb_cpu_top/u_alb_srams/*/*/u_mem/VDD}
+connect_supply_net npu_top_AON_SS.ground   -ports {u_npu_core/u_npu_core_pd/u_l2arc_grp/u_npu_l2_arc0/ialb_cpu_top/u_alb_srams/*/*/u_mem/VSS}
+connect_supply_net npu_core_VDD            -ports {u_npu_core/u_npu_core_pd/u_l2arc_grp/u_npu_l2_arc1/ialb_cpu_top/u_alb_srams/*/*/u_mem/VDDPI}
+connect_supply_net npu_top_AON_SS.power    -ports {u_npu_core/u_npu_core_pd/u_l2arc_grp/u_npu_l2_arc1/ialb_cpu_top/u_alb_srams/*/*/u_mem/VDD}
+connect_supply_net npu_top_AON_SS.ground   -ports {u_npu_core/u_npu_core_pd/u_l2arc_grp/u_npu_l2_arc1/ialb_cpu_top/u_alb_srams/*/*/u_mem/VSS}
+
+##### ports driven by AON #####
+
+set_port_attributes -ports { \
+                            sl0_clk \
+                            sl0_rst_a \
+                            sl0nl1arc_isolate_n \
+                            sl0nl1arc_isolate \
+                            sl0nl1arc_pd_mem \
+                            sl0nl1arc_pd_logic \
+                            sl0nl1arc_pwr_dwn_a \
+                            sl1_clk \
+                            sl1_rst_a \
+                            sl1nl1arc_isolate_n \
+                            sl1nl1arc_isolate \
+                            sl1nl1arc_pd_mem \
+                            sl1nl1arc_pd_logic \
+                            sl1nl1arc_pwr_dwn_a \
+                            sl2_clk \
+                            sl2_rst_a \
+                            sl2nl1arc_isolate_n \
+                            sl2nl1arc_isolate \
+                            sl2nl1arc_pd_mem \
+                            sl2nl1arc_pd_logic \
+                            sl2nl1arc_pwr_dwn_a \
+                            sl3_clk \
+                            sl3_rst_a \
+                            sl3nl1arc_isolate_n \
+                            sl3nl1arc_isolate \
+                            sl3nl1arc_pd_mem \
+                            sl3nl1arc_pd_logic \
+                            sl3nl1arc_pwr_dwn_a \
+                            sl4_clk \
+                            sl4_rst_a \
+                            sl4nl1arc_isolate_n \
+                            sl4nl1arc_isolate \
+                            sl4nl1arc_pd_mem \
+                            sl4nl1arc_pd_logic \
+                            sl4nl1arc_pwr_dwn_a \
+                            sl5_clk \
+                            sl5_rst_a \
+                            sl5nl1arc_isolate_n \
+                            sl5nl1arc_isolate \
+                            sl5nl1arc_pd_mem \
+                            sl5nl1arc_pd_logic \
+                            sl5nl1arc_pwr_dwn_a \
+                            sl6_clk \
+                            sl6_rst_a \
+                            sl6nl1arc_isolate_n \
+                            sl6nl1arc_isolate \
+                            sl6nl1arc_pd_mem \
+                            sl6nl1arc_pd_logic \
+                            sl6nl1arc_pwr_dwn_a \
+                            sl7_clk \
+                            sl7_rst_a \
+                            sl7nl1arc_isolate_n \
+                            sl7nl1arc_isolate \
+                            sl7nl1arc_pd_mem \
+                            sl7nl1arc_pd_logic \
+                            sl7nl1arc_pwr_dwn_a \
+                            sl8_clk \
+                            sl8_rst_a \
+                            sl8nl1arc_isolate_n \
+                            sl8nl1arc_isolate \
+                            sl8nl1arc_pd_mem \
+                            sl8nl1arc_pd_logic \
+                            sl8nl1arc_pwr_dwn_a \
+                            sl9_clk \
+                            sl9_rst_a \
+                            sl9nl1arc_isolate_n \
+                            sl9nl1arc_isolate \
+                            sl9nl1arc_pd_mem \
+                            sl9nl1arc_pd_logic \
+                            sl9nl1arc_pwr_dwn_a \
+                            sl10_clk \
+                            sl10_rst_a \
+                            sl10nl1arc_isolate_n \
+                            sl10nl1arc_isolate \
+                            sl10nl1arc_pd_mem \
+                            sl10nl1arc_pd_logic \
+                            sl10nl1arc_pwr_dwn_a \
+                            sl11_clk \
+                            sl11_rst_a \
+                            sl11nl1arc_isolate_n \
+                            sl11nl1arc_isolate \
+                            sl11nl1arc_pd_mem \
+                            sl11nl1arc_pd_logic \
+                            sl11nl1arc_pwr_dwn_a \
+                            sl12_clk \
+                            sl12_rst_a \
+                            sl12nl1arc_isolate_n \
+                            sl12nl1arc_isolate \
+                            sl12nl1arc_pd_mem \
+                            sl12nl1arc_pd_logic \
+                            sl12nl1arc_pwr_dwn_a \
+                            sl13_clk \
+                            sl13_rst_a \
+                            sl13nl1arc_isolate_n \
+                            sl13nl1arc_isolate \
+                            sl13nl1arc_pd_mem \
+                            sl13nl1arc_pd_logic \
+                            sl13nl1arc_pwr_dwn_a \
+                            sl14_clk \
+                            sl14_rst_a \
+                            sl14nl1arc_isolate_n \
+                            sl14nl1arc_isolate \
+                            sl14nl1arc_pd_mem \
+                            sl14nl1arc_pd_logic \
+                            sl14nl1arc_pwr_dwn_a \
+                            sl15_clk \
+                            sl15_rst_a \
+                            sl15nl1arc_isolate_n \
+                            sl15nl1arc_isolate \
+                            sl15nl1arc_pd_mem \
+                            sl15nl1arc_pd_logic \
+                            sl15nl1arc_pwr_dwn_a \
+                            grp0_rst_a \
+                            grp0_clk_en_a \
+                            grp0_pwr_dwn_a \
+                            grp1_rst_a \
+                            grp1_clk_en_a \
+                            grp1_pwr_dwn_a \
+                            grp2_rst_a \
+                            grp2_clk_en_a \
+                            grp2_pwr_dwn_a \
+                            grp3_rst_a \
+                            grp3_clk_en_a \
+                            grp3_pwr_dwn_a \
+                            nl2arc_pwr_dwn_a \
+                            nl2arc0_pwr_dwn_a \
+                            nl2arc1_pwr_dwn_a \
+                            npu_cfg_clk \
+                            npu_cfg_rst_a \
+                            npu_noc_clk \
+                            npu_noc_rst_a \
+                            npu_mst0_axi_arready \
+                            npu_mst0_axi_rvalid \
+                            npu_mst0_axi_rid \
+                            npu_mst0_axi_rdata \
+                            npu_mst0_axi_rresp \
+                            npu_mst0_axi_rlast \
+                            npu_mst0_axi_awready \
+                            npu_mst0_axi_wready \
+                            npu_mst0_axi_bvalid \
+                            npu_mst0_axi_bid \
+                            npu_mst0_axi_bresp \
+                            npu_mst1_axi_arready \
+                            npu_mst1_axi_rvalid \
+                            npu_mst1_axi_rid \
+                            npu_mst1_axi_rdata \
+                            npu_mst1_axi_rresp \
+                            npu_mst1_axi_rlast \
+                            npu_mst1_axi_awready \
+                            npu_mst1_axi_wready \
+                            npu_mst1_axi_bvalid \
+                            npu_mst1_axi_bid \
+                            npu_mst1_axi_bresp \
+                            npu_mst2_axi_arready \
+                            npu_mst2_axi_rvalid \
+                            npu_mst2_axi_rid \
+                            npu_mst2_axi_rdata \
+                            npu_mst2_axi_rresp \
+                            npu_mst2_axi_rlast \
+                            npu_mst2_axi_awready \
+                            npu_mst2_axi_wready \
+                            npu_mst2_axi_bvalid \
+                            npu_mst2_axi_bid \
+                            npu_mst2_axi_bresp \
+                            npu_mst3_axi_arready \
+                            npu_mst3_axi_rvalid \
+                            npu_mst3_axi_rid \
+                            npu_mst3_axi_rdata \
+                            npu_mst3_axi_rresp \
+                            npu_mst3_axi_rlast \
+                            npu_mst3_axi_awready \
+                            npu_mst3_axi_wready \
+                            npu_mst3_axi_bvalid \
+                            npu_mst3_axi_bid \
+                            npu_mst3_axi_bresp \
+                            npu_mst4_axi_arready \
+                            npu_mst4_axi_rvalid \
+                            npu_mst4_axi_rid \
+                            npu_mst4_axi_rdata \
+                            npu_mst4_axi_rresp \
+                            npu_mst4_axi_rlast \
+                            npu_mst4_axi_awready \
+                            npu_mst4_axi_wready \
+                            npu_mst4_axi_bvalid \
+                            npu_mst4_axi_bid \
+                            npu_mst4_axi_bresp \
+                            npu_dmi0_axi_arvalid \
+                            npu_dmi0_axi_arid \
+                            npu_dmi0_axi_araddr \
+                            npu_dmi0_axi_arcache \
+                            npu_dmi0_axi_arprot \
+                            npu_dmi0_axi_arlock \
+                            npu_dmi0_axi_arburst \
+                            npu_dmi0_axi_arlen \
+                            npu_dmi0_axi_arsize \
+                            npu_dmi0_axi_rready \
+                            npu_dmi0_axi_awvalid \
+                            npu_dmi0_axi_awid \
+                            npu_dmi0_axi_awaddr \
+                            npu_dmi0_axi_awcache \
+                            npu_dmi0_axi_awprot \
+                            npu_dmi0_axi_awlock \
+                            npu_dmi0_axi_awburst \
+                            npu_dmi0_axi_awlen \
+                            npu_dmi0_axi_awsize \
+                            npu_dmi0_axi_wvalid \
+                            npu_dmi0_axi_wdata \
+                            npu_dmi0_axi_wstrb \
+                            npu_dmi0_axi_wlast \
+                            npu_dmi0_axi_bready \
+                            npu_cfg_axi_arvalid \
+                            npu_cfg_axi_arid \
+                            npu_cfg_axi_araddr \
+                            npu_cfg_axi_arcache \
+                            npu_cfg_axi_arprot \
+                            npu_cfg_axi_arlock \
+                            npu_cfg_axi_arburst \
+                            npu_cfg_axi_arlen \
+                            npu_cfg_axi_arsize \
+                            npu_cfg_axi_rready \
+                            npu_cfg_axi_awvalid \
+                            npu_cfg_axi_awid \
+                            npu_cfg_axi_awaddr \
+                            npu_cfg_axi_awcache \
+                            npu_cfg_axi_awprot \
+                            npu_cfg_axi_awlock \
+                            npu_cfg_axi_awburst \
+                            npu_cfg_axi_awlen \
+                            npu_cfg_axi_awsize \
+                            npu_cfg_axi_wvalid \
+                            npu_cfg_axi_wdata \
+                            npu_cfg_axi_wstrb \
+                            npu_cfg_axi_wlast \
+                            npu_cfg_axi_bready \
+                            test_mode \
+                            npu_core_clk \
+                            npu_core_rst_a \
+                            test_mode \
+                           } -driver_supply npu_top_AON_SS
+set_port_attributes -ports { \
+                            npu_mst0_axi_arvalid \
+                            npu_mst0_axi_arid \
+                            npu_mst0_axi_araddr \
+                            npu_mst0_axi_arcache \
+                            npu_mst0_axi_arprot \
+                            npu_mst0_axi_arlock \
+                            npu_mst0_axi_arburst \
+                            npu_mst0_axi_arlen \
+                            npu_mst0_axi_arsize \
+                            npu_mst0_axi_rready \
+                            npu_mst0_axi_awvalid \
+                            npu_mst0_axi_awid \
+                            npu_mst0_axi_awaddr \
+                            npu_mst0_axi_awcache \
+                            npu_mst0_axi_awprot \
+                            npu_mst0_axi_awlock \
+                            npu_mst0_axi_awburst \
+                            npu_mst0_axi_awlen \
+                            npu_mst0_axi_awsize \
+                            npu_mst0_axi_wvalid \
+                            npu_mst0_axi_wdata \
+                            npu_mst0_axi_wstrb \
+                            npu_mst0_axi_wlast \
+                            npu_mst0_axi_bready \
+                            npu_mst1_axi_arvalid \
+                            npu_mst1_axi_arid \
+                            npu_mst1_axi_araddr \
+                            npu_mst1_axi_arcache \
+                            npu_mst1_axi_arprot \
+                            npu_mst1_axi_arlock \
+                            npu_mst1_axi_arburst \
+                            npu_mst1_axi_arlen \
+                            npu_mst1_axi_arsize \
+                            npu_mst1_axi_rready \
+                            npu_mst1_axi_awvalid \
+                            npu_mst1_axi_awid \
+                            npu_mst1_axi_awaddr \
+                            npu_mst1_axi_awcache \
+                            npu_mst1_axi_awprot \
+                            npu_mst1_axi_awlock \
+                            npu_mst1_axi_awburst \
+                            npu_mst1_axi_awlen \
+                            npu_mst1_axi_awsize \
+                            npu_mst1_axi_wvalid \
+                            npu_mst1_axi_wdata \
+                            npu_mst1_axi_wstrb \
+                            npu_mst1_axi_wlast \
+                            npu_mst1_axi_bready \
+                            npu_mst2_axi_arvalid \
+                            npu_mst2_axi_arid \
+                            npu_mst2_axi_araddr \
+                            npu_mst2_axi_arcache \
+                            npu_mst2_axi_arprot \
+                            npu_mst2_axi_arlock \
+                            npu_mst2_axi_arburst \
+                            npu_mst2_axi_arlen \
+                            npu_mst2_axi_arsize \
+                            npu_mst2_axi_rready \
+                            npu_mst2_axi_awvalid \
+                            npu_mst2_axi_awid \
+                            npu_mst2_axi_awaddr \
+                            npu_mst2_axi_awcache \
+                            npu_mst2_axi_awprot \
+                            npu_mst2_axi_awlock \
+                            npu_mst2_axi_awburst \
+                            npu_mst2_axi_awlen \
+                            npu_mst2_axi_awsize \
+                            npu_mst2_axi_wvalid \
+                            npu_mst2_axi_wdata \
+                            npu_mst2_axi_wstrb \
+                            npu_mst2_axi_wlast \
+                            npu_mst2_axi_bready \
+                            npu_mst3_axi_arvalid \
+                            npu_mst3_axi_arid \
+                            npu_mst3_axi_araddr \
+                            npu_mst3_axi_arcache \
+                            npu_mst3_axi_arprot \
+                            npu_mst3_axi_arlock \
+                            npu_mst3_axi_arburst \
+                            npu_mst3_axi_arlen \
+                            npu_mst3_axi_arsize \
+                            npu_mst3_axi_rready \
+                            npu_mst3_axi_awvalid \
+                            npu_mst3_axi_awid \
+                            npu_mst3_axi_awaddr \
+                            npu_mst3_axi_awcache \
+                            npu_mst3_axi_awprot \
+                            npu_mst3_axi_awlock \
+                            npu_mst3_axi_awburst \
+                            npu_mst3_axi_awlen \
+                            npu_mst3_axi_awsize \
+                            npu_mst3_axi_wvalid \
+                            npu_mst3_axi_wdata \
+                            npu_mst3_axi_wstrb \
+                            npu_mst3_axi_wlast \
+                            npu_mst3_axi_bready \
+                            npu_mst4_axi_arvalid \
+                            npu_mst4_axi_arid \
+                            npu_mst4_axi_araddr \
+                            npu_mst4_axi_arcache \
+                            npu_mst4_axi_arprot \
+                            npu_mst4_axi_arlock \
+                            npu_mst4_axi_arburst \
+                            npu_mst4_axi_arlen \
+                            npu_mst4_axi_arsize \
+                            npu_mst4_axi_rready \
+                            npu_mst4_axi_awvalid \
+                            npu_mst4_axi_awid \
+                            npu_mst4_axi_awaddr \
+                            npu_mst4_axi_awcache \
+                            npu_mst4_axi_awprot \
+                            npu_mst4_axi_awlock \
+                            npu_mst4_axi_awburst \
+                            npu_mst4_axi_awlen \
+                            npu_mst4_axi_awsize \
+                            npu_mst4_axi_wvalid \
+                            npu_mst4_axi_wdata \
+                            npu_mst4_axi_wstrb \
+                            npu_mst4_axi_wlast \
+                            npu_mst4_axi_bready \
+                            npu_dmi0_axi_arready \
+                            npu_dmi0_axi_rvalid \
+                            npu_dmi0_axi_rid \
+                            npu_dmi0_axi_rdata \
+                            npu_dmi0_axi_rresp \
+                            npu_dmi0_axi_rlast \
+                            npu_dmi0_axi_awready \
+                            npu_dmi0_axi_wready \
+                            npu_dmi0_axi_bvalid \
+                            npu_dmi0_axi_bid \
+                            npu_dmi0_axi_bresp \
+                            npu_cfg_axi_arready \
+                            npu_cfg_axi_rvalid \
+                            npu_cfg_axi_rid \
+                            npu_cfg_axi_rdata \
+                            npu_cfg_axi_rresp \
+                            npu_cfg_axi_rlast \
+                            npu_cfg_axi_awready \
+                            npu_cfg_axi_wready \
+                            npu_cfg_axi_bvalid \
+                            npu_cfg_axi_bid \
+                            npu_cfg_axi_bresp \
+                           } -receiver_supply npu_top_AON_SS
+

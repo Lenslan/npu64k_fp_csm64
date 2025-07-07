@@ -1,0 +1,19 @@
+include ${NPU_HOME}/build/build_config.mk
+export NCONFIG ?= npu4k_vm512_csm1
+
+all: build-rdf
+
+ifneq ($(NPU_CSM_SIZE),0)
+build-rdf:
+	cd $(BUILD_PRJ) && make -f ${NPU_HOME}/iplib/packing/syn_rtla/cln.mk build arcrams ndm
+
+rebuild-rdf:
+	cd $(BUILD_PRJ) && make -f ${NPU_HOME}/iplib/packing/syn_rtla/cln.mk arcrams ndm
+
+patch:
+	cd $(BUILD_PRJ) && make -f ${NPU_HOME}/iplib/packing/syn_rtla/cln.mk patch
+
+else
+build-rdf rebuild-rdf patch:
+	@echo "Info: nothing to do in $@ due to NPU_CSM_SIZE=$(NPU_CSM_SIZE)"
+endif

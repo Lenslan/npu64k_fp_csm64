@@ -1,0 +1,136 @@
+// Library ARCv2HS-3.5.999999999
+// *SYNOPSYS CONFIDENTIAL*
+// 
+// This is an unpublished, proprietary work of Synopsys, Inc., and is fully 
+// protected under copyright and trade secret laws.  You may not view, use, 
+// disclose, copy, or distribute this file or any information contained herein 
+// except pursuant to a valid written license from Synopsys.
+
+// Certain materials incorporated herein are copyright (C) 2010 - 2011,
+// The University Court of the University of Edinburgh. All Rights Reserved.
+
+assign acode[`npuarc_RF_WA0_RANGE] = rf_wa0;  // generated code
+assign acode[`npuarc_RF_WENB0_RANGE] = rf_wenb0;  // generated code
+assign acode[`npuarc_RF_WENB0_64_RANGE] = rf_wenb0_64;  // generated code
+assign acode[`npuarc_CC_BYP_64_HAZ_RANGE] = cc_byp_64_haz;  // generated code
+assign acode[`npuarc_HAS_LIMM_RANGE] = has_limm;  // generated code
+assign acode[`npuarc_IS_16BIT_RANGE] = is_16bit;  // generated code
+assign acode[`npuarc_SR_OP_RANGE] = sr_op;  // generated code
+assign acode[`npuarc_LOOP_OP_RANGE] = loop_op;  // generated code
+assign acode[`npuarc_LOCKED_RANGE] = locked;  // generated code
+assign acode[`npuarc_WA0_LPC_RANGE] = wa0_lpc;  // generated code
+assign acode[`npuarc_DSLOT_RANGE] = dslot;  // generated code
+assign acode[`npuarc_SLEEP_OP_RANGE] = sleep_op;  // generated code
+assign acode[`npuarc_ACC_WENB_RANGE] = acc_wenb;  // generated code
+assign acode[`npuarc_WRITES_ACC_RANGE] = writes_acc;  // generated code
+assign acode[`npuarc_LR_OP_RANGE] = lr_op;  // generated code
+assign acode[`npuarc_JUMP_RANGE] = jump;  // generated code
+assign acode[`npuarc_LOAD_RANGE] = load;  // generated code
+assign acode[`npuarc_PREF_RANGE] = pref;  // generated code
+assign acode[`npuarc_STORE_RANGE] = store;  // generated code
+assign acode[`npuarc_UOP_PROL_RANGE] = uop_prol;  // generated code
+assign acode[`npuarc_RF_WA1_RANGE] = rf_wa1;  // generated code
+assign acode[`npuarc_RF_WENB1_RANGE] = rf_wenb1;  // generated code
+assign acode[`npuarc_RF_WENB1_64_RANGE] = rf_wenb1_64;  // generated code
+assign acode[`npuarc_SIGNED_OP_RANGE] = signed_op;  // generated code
+assign acode[`npuarc_DOUBLE_SIZE_RANGE] = double_size;  // generated code
+assign acode[`npuarc_HALF_SIZE_RANGE] = half_size;  // generated code
+assign acode[`npuarc_BYTE_SIZE_RANGE] = byte_size;  // generated code
+assign acode[`npuarc_RTIE_OP_RANGE] = rtie_op;  // generated code
+assign acode[`npuarc_ENTER_OP_RANGE] = enter_op;  // generated code
+assign acode[`npuarc_LEAVE_OP_RANGE] = leave_op;  // generated code
+assign acode[`npuarc_TRAP_OP_RANGE] = trap_op;  // generated code
+assign acode[`npuarc_SYNC_OP_RANGE] = sync_op;  // generated code
+assign acode[`npuarc_BRK_OP_RANGE] = brk_op;  // generated code
+assign acode[`npuarc_INVALID_INSTR_RANGE] = invalid_instr;  // generated code
+assign acode[`npuarc_RGF_LINK_RANGE] = rgf_link;  // generated code
+assign acode[`npuarc_PROD_SIGN_RANGE] = prod_sign;  // generated code
+assign acode[`npuarc_MACU_RANGE] = macu;  // generated code
+assign acode[`npuarc_QUAD_OP_RANGE] = quad_op;  // generated code
+assign acode[`npuarc_ACC_OP_RANGE] = acc_op;  // generated code
+assign acode[`npuarc_VECTOR_OP_RANGE] = vector_op;  // generated code
+assign acode[`npuarc_DUAL_OP_RANGE] = dual_op;  // generated code
+assign acode[`npuarc_MPY_OP_RANGE] = mpy_op;  // generated code
+assign acode[`npuarc_Z_WEN_RANGE] = z_wen;  // generated code
+assign acode[`npuarc_N_WEN_RANGE] = n_wen;  // generated code
+assign acode[`npuarc_C_WEN_RANGE] = c_wen;  // generated code
+assign acode[`npuarc_V_WEN_RANGE] = v_wen;  // generated code
+assign acode[`npuarc_KERNEL_OP_RANGE] = kernel_op;  // generated code
+assign acode[`npuarc_FLAG_OP_RANGE] = flag_op;  // generated code
+assign acode[`npuarc_BCC_RANGE] = bcc;  // generated code
+assign acode[`npuarc_LINK_RANGE] = link;  // generated code
+assign acode[`npuarc_BRCC_BBIT_RANGE] = brcc_bbit;  // generated code
+assign acode[`npuarc_CACHE_BYP_RANGE] = cache_byp;  // generated code
+assign acode[`npuarc_SLOW_OP_RANGE] = slow_op;  // generated code
+assign acode[`npuarc_FAST_OP_RANGE] = fast_op;  // generated code
+assign acode[`npuarc_DIV_OP_RANGE] = div_op;  // generated code
+assign acode[`npuarc_BTAB_OP_RANGE] = btab_op;  // generated code
+assign acode[`npuarc_EI_OP_RANGE] = ei_op;  // generated code
+assign acode[`npuarc_IN_ESLOT_RANGE] = in_eslot;  // generated code
+assign acode[`npuarc_REL_BRANCH_RANGE] = rel_branch;  // generated code
+assign acode[`npuarc_ILLEGAL_OPERAND_RANGE] = illegal_operand;  // generated code
+assign acode[`npuarc_SWAP_OP_RANGE] = swap_op;  // generated code
+assign acode[`npuarc_SETCC_OP_RANGE] = setcc_op;  // generated code
+assign acode[`npuarc_CC_FIELD_RANGE] = cc_field;  // generated code
+assign acode[`npuarc_Q_FIELD_RANGE] = q_field;  // generated code
+assign acode[`npuarc_DEST_CR_IS_EXT_RANGE] = dest_cr_is_ext;  // generated code
+assign acode[`npuarc_ADD_OP_RANGE] = add_op;  // generated code
+assign acode[`npuarc_AND_OP_RANGE] = and_op;  // generated code
+assign acode[`npuarc_OR_OP_RANGE] = or_op;  // generated code
+assign acode[`npuarc_XOR_OP_RANGE] = xor_op;  // generated code
+assign acode[`npuarc_MOV_OP_RANGE] = mov_op;  // generated code
+assign acode[`npuarc_WITH_CARRY_RANGE] = with_carry;  // generated code
+assign acode[`npuarc_SIMPLE_SHIFT_OP_RANGE] = simple_shift_op;  // generated code
+assign acode[`npuarc_LEFT_SHIFT_RANGE] = left_shift;  // generated code
+assign acode[`npuarc_ROTATE_OP_RANGE] = rotate_op;  // generated code
+assign acode[`npuarc_INV_SRC1_RANGE] = inv_src1;  // generated code
+assign acode[`npuarc_INV_SRC2_RANGE] = inv_src2;  // generated code
+assign acode[`npuarc_BIT_OP_RANGE] = bit_op;  // generated code
+assign acode[`npuarc_MASK_OP_RANGE] = mask_op;  // generated code
+assign acode[`npuarc_SRC2_MASK_SEL_RANGE] = src2_mask_sel;  // generated code
+assign acode[`npuarc_UOP_COMMIT_RANGE] = uop_commit;  // generated code
+assign acode[`npuarc_UOP_EPIL_RANGE] = uop_epil;  // generated code
+assign acode[`npuarc_UOP_EXCPN_RANGE] = uop_excpn;  // generated code
+assign acode[`npuarc_PREDICATE_RANGE] = predicate;  // generated code
+assign acode[`npuarc_RF_RENB0_RANGE] = rf_renb0;  // generated code
+assign acode[`npuarc_RF_RENB1_RANGE] = rf_renb1;  // generated code
+assign acode[`npuarc_RF_RENB0_64_RANGE] = rf_renb0_64;  // generated code
+assign acode[`npuarc_RF_RENB1_64_RANGE] = rf_renb1_64;  // generated code
+assign acode[`npuarc_RF_RA0_RANGE] = rf_ra0;  // generated code
+assign acode[`npuarc_RF_RA1_RANGE] = rf_ra1;  // generated code
+assign acode[`npuarc_JLI_SRC0_RANGE] = jli_src0;  // generated code
+assign acode[`npuarc_UOP_INST_RANGE] = uop_inst;  // generated code
+assign acode[`npuarc_VEC_SHIMM_RANGE] = vec_shimm;  // generated code
+assign acode[`npuarc_IPROT_VIOL_RANGE] = iprot_viol;  // generated code
+assign acode[`npuarc_DMB_OP_RANGE] = dmb_op;  // generated code
+assign acode[`npuarc_DMB_TYPE_RANGE] = dmb_type;  // generated code
+assign acode[`npuarc_FORCE_CIN_RANGE] = force_cin;  // generated code
+assign acode[`npuarc_OPD3_SEL_RANGE] = opd3_sel;  // generated code
+assign acode[`npuarc_MULTI_OP_RANGE] = multi_op;  // generated code
+assign acode[`npuarc_ABS_OP_RANGE] = abs_op;  // generated code
+assign acode[`npuarc_MIN_OP_RANGE] = min_op;  // generated code
+assign acode[`npuarc_MAX_OP_RANGE] = max_op;  // generated code
+assign acode[`npuarc_NORM_OP_RANGE] = norm_op;  // generated code
+assign acode[`npuarc_LDI_SRC0_RANGE] = ldi_src0;  // generated code
+assign acode[`npuarc_PRE_ADDR_RANGE] = pre_addr;  // generated code
+assign acode[`npuarc_STIMM_OP_RANGE] = stimm_op;  // generated code
+assign acode[`npuarc_SRC2_SH1_RANGE] = src2_sh1;  // generated code
+assign acode[`npuarc_SRC2_SH2_RANGE] = src2_sh2;  // generated code
+assign acode[`npuarc_SRC2_SH3_RANGE] = src2_sh3;  // generated code
+assign acode[`npuarc_BARREL_SHIFT_OP_RANGE] = barrel_shift_op;  // generated code
+assign acode[`npuarc_OPDS_IN_X1_RANGE] = opds_in_x1;  // generated code
+assign acode[`npuarc_AGU_USES_R0_RANGE] = agu_uses_r0;  // generated code
+assign acode[`npuarc_OPDS_IN_SA_RANGE] = opds_in_sa;  // generated code
+assign acode[`npuarc_LIMM0_64_RANGE] = limm0_64;  // generated code
+assign acode[`npuarc_LIMM1_64_RANGE] = limm1_64;  // generated code
+assign acode[`npuarc_MAY_GRADUATE_RANGE] = may_graduate;  // generated code
+assign acode[`npuarc_AGU_USES_R1_RANGE] = agu_uses_r1;  // generated code
+assign acode[`npuarc_READS_ACC_RANGE] = reads_acc;  // generated code
+assign acode[`npuarc_DSYNC_OP_RANGE] = dsync_op;  // generated code
+assign acode[`npuarc_SRC2_SHIFTS_RANGE] = src2_shifts;  // generated code
+assign acode[`npuarc_SEL_SHIMM_RANGE] = sel_shimm;  // generated code
+assign acode[`npuarc_SHIMM_RANGE] = shimm;  // generated code
+assign acode[`npuarc_LIMM_R0_RANGE] = limm_r0;  // generated code
+assign acode[`npuarc_LIMM_R1_RANGE] = limm_r1;  // generated code
+assign acode[`npuarc_OFFSET_RANGE] = offset;  // generated code
+

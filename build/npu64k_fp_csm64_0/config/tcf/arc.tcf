@@ -1,0 +1,3993 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config_list>
+  <tool_config version="1.0.99" mwdt_version="U-2022.12" />
+  <configuration name="BCRs" filename="bcr_contents.txt">
+    <string><![CDATA[
+	0x4	0x54		IDENTITY
+	0x18	0x70000000	AUX_DCCM
+	0x5e	0xf0000002	AUX_VOLATILE
+	0x60	0x2		BCR_VER
+	0x68	0x11		VECBASE_AC_BUILD
+	0x6d	0x803		MPU_BUILD
+	0x6e	0x102		RF_BUILD
+	0x6f	0x4e1984a	MMU_BUILD
+	0x72	0x10226105	D_CACHE_BUILD
+	0x74	0x140704	DCCM_BUILD
+	0x75	0x506		TIMER_BUILD
+	0x76	0x605		AP_BUILD
+	0x77	0x236204	I_CACHE_BUILD
+	0x7b	0x23206		MULTIPLY_BUILD
+	0x7c	0x3		SWAP_BUILD
+	0x7d	0x3		NORM_BUILD
+	0x7e	0x2		MINMAX_BUILD
+	0x7f	0x303		BARREL_BUILD
+	0xc0	0xa91106	BPU_BUILD
+	0xc1	0x23e47402	ISA_CONFIG
+	0xc5	0x2		STACK_REGION_BUILD
+	0xc7	0x50b4505	ERP_BUILD
+	0xcf	0x40000107	CLUSTER_BUILD
+	0xe7	0x10008101	BIU_BUILD
+	0xec	0x703cec11	NPU_BUILD
+	0xee	0xc0004402	EWDT_BUILD
+	0xf2	0x80108		RTT_BUILD
+	0xf3	0x2242702	IRQ_BUILD
+	0xf5	0x80503		PCT_BUILD
+	0xf6	0x7f0002	CC_BUILD
+	0xf8	0x11101		ISA_PROFILE
+	0xf9	0x30302		MICRO_ARCH_BUILD
+	0xff	0x20004		SMART_BUILD
+	0x20b	0x3		DATA_MEM_ATTR
+	0x298	0x0		CLUSTER_ID
+]]></string>
+  </configuration>
+  <configuration name="build_version_info" filename="build_version_info.txt">
+    <string><![CDATA[
+Version Information:
+    ARChitect T-2022.09
+    IP Libraries:
+        ARCv2HS            v3.5.999999999
+        ARC Debug          v2.1.15
+        ARC xCAM           v4.3.22
+        ARC_Trace          v3.0.999999999
+        ARConnect          v3.0.16
+        ARCv2_ZEBU_RDF     v2.1.2
+        ARCv2CC            v3.2.999999999
+        ARCv2HS_CCT        v1.1.999999999
+        ARCv2MSS           v2.1.999999999
+        Atrenta Spyglass Flow  v2.1.4
+        Basic Core Modules  v1.0.11
+        FastMath           v1.0.7
+        Implementation     v1.1.1
+        NPU                v8.8.8
+        NPUID              v1.0.0
+        safety             v1.1.999999999
+        Synopsys Based Reference Design Flow  v9.1.42
+        Synopsys Clock Gate Replacement Flow  v3.0.18
+        Synopsys Embed-it Integrator Flow  v7.1.69
+        Synopsys SMS Integrator Flow  v3.0.4
+        Technology Library Data  v0.0.1
+        Tool Configuration  v1.0.99
+]]></string>
+  </configuration>
+  <configuration name="mw_compiler" filename="ccac.arg">
+    <string><![CDATA[
+	-arcv2hs
+	-core4
+	-uarch_rev=3:2
+	-Xcode_density
+	-HL
+	-Xatomic
+	-Xll64
+	-Xunaligned
+	-Xdiv_rem=radix4
+	-Xswap
+	-Xbitscan
+	-Xmpy_option=qmpyh
+	-Xshift_assist
+	-Xbarrel_shifter
+	-Xtimer0
+	-Xrtc
+	-Xstack_check
+	-dcache=32768,64,2,a
+	-Hld_cycles=2
+	-DDCCM_SYSTEM_BASE_CORE0=0x42000000
+]]></string>
+  </configuration>
+  <configuration name="mw_debugger" filename="mdb.arg">
+    <string><![CDATA[
+	-arcv2hs 
+	-core4 
+	-uarch_rev=3:2 
+	-Xcode_density 
+	-rgf_num_banks=1 
+	-rgf_num_wr_ports=2 
+	-Xatomic 
+	-Xll64 
+	-Xunaligned 
+	-Xdiv_rem=radix4 
+	-Xswap 
+	-Xbitscan 
+	-Xmpy_option=qmpyh 
+	-Xshift_assist 
+	-Xbarrel_shifter 
+	-Xtimer0 
+	-Xtimer0_level=0 
+	-Xrtc 
+	-action_points=8 
+	-Xstack_check 
+	-volatile_base=15 
+	-volatile_limit=0 
+	-volatile_strict_ordering 
+	-bpu_bc_entries=512 
+	-bpu_pt_entries=8192 
+	-bpu_rs_entries=4 
+	-bpu_bc_full_tag=1 
+	-bpu_tosq_entries=5 
+	-bpu_fb_entries=1 
+	-smart_version=4 
+	-smart_stack_entries=128 
+	-mpuv3 
+	-mpu_regions=8 
+	-mmuv4 
+	-mmu_pgsz=4K 
+	-mmu_ntlb_entries=256 
+	-mmu_stlb_entries=16 
+	-mmu_super_pgsz=2M 
+	-mmu_pae40 
+	-mmu_sasid 
+	-interrupts=39 
+	-interrupt_priorities=3 
+	-ext_interrupts=36 
+	-interrupt_base=0x0 
+	-intvbase_ext 
+	-dcache=32768,64,2,a 
+	-dcache_version=5 
+	-dcache_feature=2 
+	-dcache_mem_cycles=2 
+	-icache=32768,64,4,a 
+	-icache_version=4 
+	-icache_feature=2 
+	-dccm_size=0x8000 
+	-dccm_base=0x70000000 
+	-dccm_mem_cycles=2 
+	-watchdog_num=1 
+	-watchdog_parity 
+	-watchdog_clk 
+	-watchdog_size0=32 
+	-watchdog_win0 
+	-error_prot_ver=5 
+	-dccm_prot=ecc_01 
+	-dccm_prot_level=data_only 
+	-ic_prot=ecc_01 
+	-ic_prot_level=data_only 
+	-dc_prot=ecc_01 
+	-dc_prot_level=data_only 
+	-mmu_prot=ecc_01 
+	-mmu_prot_level=data_only 
+	-Xpct_counters=8 
+	-Xpct_interrupt 
+	-cluster_version=7 
+	-clock_gating 
+]]></string>
+  </configuration>
+  <configuration name="nSIM" filename="nsim.props">
+    <string><![CDATA[
+	nsim_isa_family=av2hs
+	nsim_isa_core=4
+	arcver=0x54
+	nsim_isa_uarch_rev_major=3
+	nsim_isa_uarch_rev_minor=2
+	nsim_isa_code_density_option=2
+	nsim_isa_rgf_num_banks=1
+	nsim_isa_rgf_num_regs=32
+	nsim_isa_rgf_num_wr_ports=2
+	nsim_isa_big_endian=0
+	nsim_isa_lpc_size=32
+	nsim_isa_pc_size=32
+	nsim_isa_addr_size=32
+	nsim_isa_atomic_option=1
+	nsim_isa_ll64_option=1
+	nsim_isa_unaligned_option=1
+	nsim_isa_div_rem_option=2
+	nsim_isa_swap_option=1
+	nsim_isa_bitscan_option=1
+	nsim_isa_mpy_option=9
+	nsim_isa_shift_option=3
+	nsim_isa_enable_timer_0=1
+	nsim_isa_timer_0_int_level=0
+	nsim_isa_rtc_option=1
+	nsim_isa_num_actionpoints=8
+	nsim_isa_stack_checking=1
+	nsim_isa_volatile_base=15
+	nsim_isa_volatile_limit=0
+	nsim_isa_volatile_disable=0
+	nsim_isa_volatile_strict_ordering=1
+	nsim_bpu_bc_entries=512
+	nsim_bpu_pt_entries=8192
+	nsim_bpu_rs_entries=4
+	nsim_bpu_bc_full_tag=1
+	nsim_bpu_tosq_entries=5
+	nsim_bpu_fb_entries=1
+	nsim_isa_smart_version=4
+	nsim_isa_smart_stack_entries=128
+	mpu_regions=8
+	mpu_version=3
+	nsim_mmu=4
+	mmu_pagesize=4K
+	mmu_ntlb_ways=4
+	mmu_ntlb_sets=64
+	mmu_stlb_entries=16
+	mmu_super_pagesize=2M
+	mmu_pae40_enabled=1
+	mmu_sasid=1
+	nsim_isa_number_of_interrupts=39
+	nsim_isa_number_of_levels=3
+	nsim_isa_number_of_external_interrupts=36
+	nsim_isa_intvbase_preset=0x0
+	nsim_isa_intvbase_ext=1
+	dcache=32768,64,2,a
+	nsim_isa_dc_version=5
+	nsim_isa_dc_feature_level=2
+	nsim_isa_dc_mem_cycles=2
+	icache=32768,64,4,a
+	nsim_isa_ic_version=4
+	nsim_isa_ic_feature_level=2
+	dccm_size=0x8000
+	dccm_base=0x70000000
+	nsim_isa_dccm_mem_cycles=2
+	nsim_isa_enhanced_watchdog_num=1
+	nsim_isa_enhanced_watchdog_parity=1
+	nsim_isa_enhanced_watchdog_clk=1
+	nsim_isa_enhanced_watchdog_size0=32
+	nsim_isa_enhanced_watchdog_win0=1
+	nsim_isa_error_prot=5
+	nsim_isa_error_prot_dccm=5
+	nsim_isa_error_prot_icache=5
+	nsim_isa_error_prot_dcache=5
+	nsim_isa_error_prot_mmu=5
+	nsim_isa_pct_counters=8
+	nsim_isa_pct_interrupt=1
+	nsim_cluster_version=7
+	nsim_isa_clock_gating=1
+]]></string>
+  </configuration>
+  <configuration name="IDE" filename="ide.props">
+    <string><![CDATA[
+	processor.family=5
+	processor.core_version=4
+	processor.family_name=arcv2hs
+	processor.uarch_rev_major=3
+	processor.uarch_rev_minor=2
+	processor.Xcode_density=1
+	processor.rgf_num_banks=1
+	processor.rgf_num_wr_ports=2
+	processor.endian=little
+	processor.lpc_size=32
+	processor.pc_size=32
+	processor.addr_size=32
+	processor.Xatomic=1
+	processor.Xll64=1
+	processor.Xunaligned=1
+	processor.Xdiv_rem=radix4
+	processor.Xswap=1
+	processor.Xbitscan=1
+	processor.Xmpy_option=qmpyh
+	processor.Xshift_assist=1
+	processor.Xbarrel_shifter=1
+	processor.Xtimer0=1
+	processor.Xtimer0_level=0
+	processor.Xrtc=1
+	processor.action_points=8
+	processor.Xstack_check=1
+	processor.volatile_base=15
+	processor.volatile_limit=0
+	processor.volatile_strict_ordering=1
+	processor.bpu_bc_entries=512
+	processor.bpu_pt_entries=8192
+	processor.bpu_rs_entries=4
+	processor.bpu_bc_full_tag=1
+	processor.bpu_tosq_entries=5
+	processor.bpu_fb_entries=1
+	processor.smart_version=4
+	processor.smart_stack_entries=128
+	processor.mpuv3=1
+	processor.mpu.regions=8
+	processor.mmuv4=1
+	processor.mmu_pgsz=4K
+	processor.mmu_ntlb_entries=256
+	processor.mmu_stlb_entries=16
+	processor.mmu_super_pgsz=2M
+	processor.mmu_pae40=1
+	processor.mmu_sasid=1
+	processor.interrupts=39
+	processor.interrupt_priorities=3
+	processor.ext_interrupts=36
+	processor.interrupt_base=0x0
+	processor.intvbase_ext=1
+	processor.dcache.size=32768
+	processor.dcache.line_size=64
+	processor.dcache.ways=2
+	processor.dcache_version=5
+	processor.dcache_feature=2
+	processor.dcache_mem_cycles=2
+	processor.Hld_cycles=2
+	processor.icache.size=32768
+	processor.icache.line_size=64
+	processor.icache.ways=4
+	processor.icache_version=4
+	processor.icache_feature=2
+	processor.dccm_size=0x8000
+	processor.dccm_base=0x70000000
+	processor.dccm_mem_cycles=2
+	processor.dccm_sys_base=0x42000000
+	processor.preprocessor_macro1=DCCM_SYSTEM_BASE_CORE0=0x42000000
+	processor.watchdog_num=1
+	processor.watchdog_parity=1
+	processor.watchdog_clk=1
+	processor.watchdog_size0=32
+	processor.watchdog_win0=1
+	processor.error_prot_ver=5
+	processor.dccm_prot=ecc_01
+	processor.dccm_prot_level=data_only
+	processor.ic_prot=ecc_01
+	processor.ic_prot_level=data_only
+	processor.dc_prot=ecc_01
+	processor.dc_prot_level=data_only
+	processor.mmu_prot=ecc_01
+	processor.mmu_prot_level=data_only
+	processor.Xpct_counters=8
+	processor.Xpct_interrupt=1
+	processor.cluster_version=7
+	processor.clock_gating=1
+	processor.tcf_include1=apexextensions.h
+	processor.tcf_include2=alb_mss_clkctrl_regmap.h
+	processor.tcf_include3=alb_mss_fab_system_memmap.h
+	processor.tcf_include4=pct_defines.h
+	processor.tcf_include5=core_config.h
+]]></string>
+  </configuration>
+  <configuration name="architect" filename="build_configuration.txt">
+    <string><![CDATA[
+######## IP Libraries: ########
+# ARCv2HS, v3.5.999999999                /mnt/jlrao/nn/npu_deps/p4/iplibs/npu_arc/arcv2hs/ip_library
+# ARC Debug, v2.1.15                     /slowfs/us01dwarc039/archive_arcprojects/Releases/ARC_Debug/2.1.15/ARC_Debug_v2.1.15.iplib
+# ARC xCAM, v4.3.22                      /global/apps/architect_2022.09/ARChitect/lib/ARC_xCAM.iplib
+# ARC_Trace, v3.0.999999999              /mnt/jlrao/nn/npu_deps/p4/iplibs/npu_arc/arc_trace/ip_library
+# ARConnect, v3.0.16                     /slowfs/us01dwarc039/archive_arcprojects/Releases/ARConnect/3.0.16/ARConnect_v3.0.16.iplib
+# ARCv2_ZEBU_RDF, v2.1.2                 /slowfs/us01dwarc039/archive_arcprojects/Releases/ARCv2_ZEBU_RDF/2.1.2/ARCv2_ZEBU_RDF_v2.1.2.iplib
+# ARCv2CC, v3.2.999999999                /mnt/jlrao/nn/npu_deps/p4/iplibs/npu_arc/arcv2cc/ip_library
+# ARCv2HS_CCT, v1.1.999999999            /mnt/jlrao/nn/npu_deps/p4/iplibs/npu_arc/ccths/ip_library
+# ARCv2MSS, v2.1.999999999               /mnt/jlrao/nn/npu_deps/p4/iplibs/npu_arc/arcv2mss/ip_library
+# Atrenta Spyglass Flow, v2.1.4          /u/brunola/arc_src/RDF/ARC_RDF_SpyGlass/main/dev/ip_library
+# Basic Core Modules, v1.0.11            /slowfs/us01dwarc039/archive_arcprojects/Releases/basic_core_modules/1.0.11/BCM_v1.0.11.iplib
+# FastMath, v1.0.7                       /slowfs/us01dwarc039/archive_arcprojects/Releases/ARCv2_FastMath/1.0.8/ARCv2_FastMath_v1.0.8.iplib
+# Implementation, v1.1.1                 /mnt/jlrao/nn/npu_deps/p4/iplibs/npu_arc/implementation/ip_library
+# NPU, v8.8.8                            /mnt/jlrao/nn/npu_deps/npu_arc/npu_stub/build/NPU/ip_library
+# NPUID, v1.0.0                          /mnt/jlrao/nn/npu/arch/npu_arc/NPUID
+# safety, v1.1.999999999                 /mnt/jlrao/nn/npu_deps/p4/iplibs/npu_arc/arc_safety/ip_library
+# Synopsys Based Reference Design Flow, v9.1.42 /u/brunola/arc_src/RDF/ARC_RDF_Synopsys/main/dev_fc/ip_library
+# Synopsys Clock Gate Replacement Flow, v3.0.18 /u/brunola/arc_src/RDF/ARC_RDF_CGR/main/dev/ip_library
+# Synopsys Embed-it Integrator Flow, v7.1.69 /u/brunola/arc_src/RDF/ARC_RDF_SEIF/main/dev/ip_library
+# Synopsys SMS Integrator Flow, v3.0.4   /u/brunola/arc_src/RDF/ARC_RDF_SMS/main/dev/ip_library
+# Technology Library Data, v0.0.1        /remote/arc/arc6000/libext/stdcell_iplibs/Synopsys_TSMC
+# Tool Configuration, v1.0.99            /slowfs/us01dwt3p189/Releases/CGEN/1.0.99/tool_configuration_v1.0.99.iplib
+
+######## project_npu_arc_se_ad1k_N64_mem_ecc_pg1 --- com.arc.templates.project.Empty.1_0 ########
+
+# BuildHTMLDocs --- Creates custom HTML documentation in the 'docs' directory.
+-build_html_docs false
+
+# BuildSoftware --- Creates software under the Software directory.
+-build_software false
+
+# BuildTestCode --- Creates test source code under the 'tests' directory.
+-build_test_code true
+
+# BuildScripts --- Creates synthesis scripts and configuration files, which are required for hierarchy generation.
+-build_scripts true
+
+# BuildHDL --- Creates the behavioural and synthesisable HDL source code.
+-build_hdl true
+
+# CompileTestCode --- Compiles and assembles the test code.
+-compile_test_code false
+
+# GenerateStructuralHDL --- Generate the necessary structural HDL
+-generate_structural_hdl true
+
+# CompileForHDLSimulation --- Compile the HDL ready for simulation, using the selected Simulator.
+-compile_hdl_for_simulation true
+
+# BuildXCAM --- 
+# When true, build the XCAM cycle accurate model from HDL.
+# This happens only when the VTOC component (in the XCAM library) has been added to the design.
+# 
+-build_xcam false
+
+# RunARCsyn --- Synthesize design using ARCsyn
+-run_arcsyn false
+
+# RunSEIF --- Run Synopsys Embedit Integrator Flow to generate configured memory instances
+-run_seif false
+
+# RunARCrams --- Run ARCrams on the current build, this will stitch in vendor supplied RAM models and update the synthesis and simulation environment to use the models.
+-run_arcrams false
+
+# RunARCformal --- Formal Verification using ARCformal
+-run_arcformal false
+
+# RunARCpower --- Run the Power Analysis using RTL simulation to derive the activity
+-run_arcpower false
+
+# compile_iss_user_extensions --- Build ISS extensions for any APEX components in the current design using their C Models.
+-compile_iss_user_extensions false
+
+# compile_translated_iss_extensions --- Converts APEX extensions from Verilog to C++ and compiles the model for the ISS.
+-compile_translated_iss_extensions false
+
+# compile_nsim_user_extensions --- Build nSIM extensions for any APEX components in the current design using their C Models.
+-compile_nsim_user_extension false
+
+# compile_translated_nsim_extensions --- Converts APEX extensions from Verilog to C++ and compiles the model for nSIM.
+-compile_translated_nsim_extensions false
+
+
+######## System --- com.arc.hardware.System.1_0 ########
+
+# Create System
+-create com.arc.hardware.System.1_0 System
+
+# Testbench --- 
+# Only the rascal testbench is supported, and is required by ARCtest.
+# 	
+-testbench rascal
+
+# SynthesisLevel --- 
+# Sets the top level module name for synthesis.  
+# 
+# If not using core_sys: for single-core designs, cpu_isle is used; for multicore designs, archipelago is used.
+# 	
+-synthesislevel cpu_isle/archipelago
+
+# GateLevelSim --- When selected the gate level sim test code and scripts would be installed to run ARCgatesim
+-gatesim true
+
+# UserLibraryName --- The name for your HDL library
+-library_name user
+
+# OPTION_SimulatorName --- The name of the simulator you wish to use
+-simulator vcs
+
+# sim64 --- When selected, the 64-bit version of the simulator is used.  Be sure you have the 64-bit-capable simulator installed  and $ARCHITECT_ROOT/lib/linux_x86_64/ added to your LD_LIBRARY_PATH.
+# The setting of this option affects the content of the generated makefile_interface_*_verilog, where * is the simulator name.
+-sim64 true
+
+# verilog_2001 --- Enable Verilog 2001 file-io syntax (if false: use pli)
+-verilog_2001 true
+
+# export_srams_to --- Where to place srams, if not cpu_top
+-export_srams_to none
+
+# copy_prefix --- 
+# A Copy Prefix P causes creation of a separate copy of the entire Verilog build where each Verilog filename, module, and `define is prefixed with P and copied to a separate directory named P.
+# 	
+-copy_prefix npuarc_
+
+# always_instantiate_core --- 
+# In SMP, a core is instantiated for each instance.
+# With this option, even if there is just one core, it is instantiated, and thus
+# has a unique prefix for its ports.
+# 
+-always_instantiate_core false
+
+
+######## ARC NPX --- com.arc.hardware.NPU.NPX_NPU.1_0 ########
+
+# Create ARC NPX
+-create com.arc.hardware.NPU.NPX_NPU.1_0 "System.ARC NPX"
+
+# skip_build --- (arc_dev) Customers cannot see this option.  If set, this component is not built.  This saves time if you've already built the design and no subsequent change requires this component to be rebuilt.
+-skip_build false
+
+# npu_slice_num --- Instantiate multiple NPU Slice Accelerators.
+-npu_slice_num 12
+
+# npu_has_powerdomains --- (arc_dev) Power domain.
+-npu_has_powerdomains true
+
+# npu_has_mmu --- Add a Memory Management Units with 40bit PAE on the ARC HS control cores.
+-npu_has_mmu true
+
+# npu_arc_trace --- ARC Trace, 0=none, 1=coresight
+-npu_arc_trace true
+
+# npu_has_jtag --- (arc_dev) Add npu JTAG interface
+-npu_has_jtag false
+
+# npu_def_div2ref --- (arc_dev) Internal option
+-npu_def_div2ref 1
+
+# npu_axi_initiators --- Number of AXI inititors connecting to the external interconnect.
+-npu_axi_initiators 5
+
+# npu_axi_targets --- Number of AXI target connecting to the external interconnect.
+-npu_axi_targets 1
+
+# npu_axi_target_id_width --- AXI id width connecting to the external interconnect.
+-npu_axi_target_id_width 16
+
+# npu_axi_data_width --- AXI inititors/Targets bus width to/from the external interconnect.
+-npu_axi_data_width 512
+
+# npu_stu_chan_num --- Sets the number of AXI interfaces and the number of physical channels in the STU.
+-npu_stu_chan_num 8
+
+# npu_stu_has_cdc --- If cdc in stu.
+-npu_stu_has_cdc true
+
+# npu_stu_buffer_size --- Sets the number of NPU unified STU channel buffer size.
+-npu_stu_buffer_size 2048
+
+# npu_dev_gtoa_rf_mux_orbus --- arc_dev
+-npu_dev_gtoa_rf_mux_orbus true
+
+# npu_dev_gtoa_has_alu1 --- arc_dev
+-npu_dev_gtoa_has_alu1 true
+
+# npu_dev_cfg_host_axi_initiators --- (arc_dev) Hidden for now.
+-npu_dev_cfg_host_axi_initiators true
+
+# rtt_coresight_option --- (arc_dev) Hidden for now.
+-rtt_coresight_option true
+
+# rtt_sytm_option --- (arc_dev) Hidden for now.
+-rtt_sytm_option false
+
+# rtt_using_axi --- (arc_dev) Hidden for now.
+-rtt_using_axi true
+
+# rtt_using_ahb --- (arc_dev) Hidden for now.
+-rtt_using_ahb false
+
+# arc_rtt_core_num --- Hidden for now.
+-arc_rtt_core_num 0
+
+# arc_rtt_mem_bus_width --- Pending.
+-arc_rtt_mem_bus_width 64
+
+# has_on_chip_mem --- (arc_dev) Hidden for now.
+-has_on_chip_mem false
+
+# has_nexus_if --- (arc_dev) Hidden for now.
+-has_nexus_if false
+
+# external_trace_if --- Hidden for now.
+-external_trace_if 0
+
+# npu_safety_level --- (arc_dev) ASIL
+-npu_safety_level QM
+
+# npu_mem_ecc --- (arc_dev) The choice is between no ECC or single-error correction and double-error detection (SECDED).
+-npu_mem_ecc SECDED_01
+
+# npu_bus_ecc --- (arc_dev) The choice is between no ECC or 64 bit ECC/32 bit ECC.
+-npu_bus_ecc 0
+
+# npu_bus_parity_mode --- (arc_dev) The choice is between 0-Even or 1-Odd.
+-npu_bus_parity_mode 1
+
+# npu_slice_mac --- (arc_dev) Number of MAC in the convolution accelerator of the slice.
+-npu_slice_mac 4096
+
+# npu_reorder_buffer_size --- (arc_dev) Number of Bytes for Reorder BUffer in the slice.
+-npu_reorder_buffer_size 0
+
+# npu_slice_mem --- Memory size specified as AM size + VM size, both in KB 
+-npu_slice_mem AM128_VM512
+
+# npu_num_grp --- (arc_dev) Pending.
+-npu_num_grp 1
+
+# npu_slice_vm_banks --- (arc_dev) Num of vm banks.
+-npu_slice_vm_banks 32
+
+# mdb_tb --- (arc_dev) Pending.
+-mdb_tb false
+
+# npu_csm_banks --- (arc_dev) Num of csm banks.
+-npu_csm_banks 32
+
+# npu_csm_size --- (arc_dev) Size of the L2 shared memory (CSM), in bytes.
+-npu_csm_size 16777216
+
+# arcsync_num_cluster --- An instance of NPX6-<n>K counts as 1 cluster, so does VPX5x<n> or a host CPU
+-arcsync_num_cluster 1
+
+# npu_has_float --- (arc_dev) Pending.
+-npu_has_float true
+
+# npu_slice_float_en --- A FP enable flag for slices in an NPX, 1-bit per slcie
+-npu_slice_float_en 16777215
+
+# npu_has_l2arc --- with L2arc for npu1k
+-npu_has_l2arc true
+
+# npu_ver --- The version number of NPX
+-npu_ver 18
+
+# arcsync_def_div2ref --- (arc_dev) Internal option
+-arcsync_def_div2ref 1
+
+# arcsync_max_cores_per_cl --- Pending.
+-arcsync_max_cores_per_cl 4
+
+# arcsync_num_atomic_cnt --- Pending.
+-arcsync_num_atomic_cnt 64
+
+# arcsync_virt_machines --- Pending.
+-arcsync_virt_machines 8
+
+# arcsync_has_pmu --- (arc_dev) Pending.
+-arcsync_has_pmu false
+
+# arcsync_num_core_cl0 --- Must be <= arcsync_max_cores_per_cl
+-arcsync_num_core_cl0 0
+
+# arcsync_type_cl0 --- This option impacts the I/O pins exported out of ARCsync for that cluster interface
+-arcsync_type_cl0 0
+
+# arcsync_itf_stub_cl0 --- Interface
+-arcsync_itf_stub_cl0 0
+
+# arcsync_pfx_cl0 --- Prefix
+-arcsync_pfx_cl0 ""
+
+
+######## ARC Trace --- com.arc.hardware.ARC_Trace.1_0 ########
+
+# Create ARC Trace
+-create com.arc.hardware.ARC_Trace.1_0 "System.ARC Trace"
+
+# rtt_coresight_option --- Enables the CoreSight ATB interface to offload trace data.
+-rtt_coresight_option true
+
+# rtt_src_arb_pipeline --- SRC ARB Pipeline Option
+-rtt_src_arb_pipeline false
+
+# rtt_cti_pipeline --- This adds pipeline stages to CTI ports to ease timing.
+-rtt_cti_pipeline 2
+
+# rtt_num_filters --- Sets the Number of ARC trace Address Filters.
+-rtt_num_filters 4
+
+# rtt_atb_ratio --- Sets the clock ratio for the ATB offload port.
+-rtt_atb_ratio 1
+
+# atdata_width --- ATB trace port data width
+-atdata_width 64
+
+# swe_atdata_width --- NPU Softwrae Event's ATB trace port data width
+-swe_atdata_width 64
+
+# rtt_has_npu --- Enable this option for generating the Trace RTL for NPU
+-rtt_has_npu true
+
+# rtt_num_npu_slices --- Number of NPU slices
+-rtt_num_npu_slices 16
+
+# rtt_npu_stu_port --- NPU's STU Port to Trace.
+-rtt_npu_stu_port true
+
+# has_nexus_if --- Enables the Nexus interface to offload trace data.
+-has_nexus_if false
+
+# has_on_chip_mem --- Enables the offload of trace data to on-chip memory.
+-has_on_chip_mem false
+
+# ram_type --- Specifies the type of internal memories.
+-ram_type 2_PORT
+
+# rtt_cstm_var_wdt --- Enable a variable length CSTM.
+-rtt_cstm_var_wdt true
+
+# rtt_power_domains --- Adds isolation signal inputs/power switch controls for use in UPF flow when configuring power domains.
+-rtt_power_domains false
+
+
+######## ARCv2HS CCT --- cct.HS.1_0 ########
+
+# Create ARCv2HS CCT
+-create cct.HS.1_0 "System.ARCv2HS CCT"
+
+# cct --- 
+# 	Option used to add a CCT to the design for command-line builds
+# 	Without this architect can't add this component to a build
+# 	via a cmdline -create command.  
+# 	with old scripts.
+# 	
+-cct true
+
+# no_hostlink --- 
+# This prevents the inclusion of the hostlink library when compiling
+# C or C++ programs.  The resultant executable, if it contains printfs,
+# will print to an internal fixed buffer __mwwrite_buf.  
+# Other hostlink operations that require debugger assistance, such as file
+# opens, will fail.
+# 
+# Hostlink references incur memory cycles at unpredictable times and 
+# so can perturb cycle-timing results.  Without hostlink,
+# the debugger will not in any way interfere with the target while it is running.  
+# Therefore this option is useful for simulation in which you want precisely the
+# same cycle timing to occur each time you run, or for accurate power consumption results.
+# 	
+-cct_no_hostlink false
+
+
+######## BusFabric --- com.arc.hardware.ARCv2MSS.BusFabric.1_0 ########
+
+# Create BusFabric
+-create com.arc.hardware.ARCv2MSS.BusFabric.1_0 System.BusFabric
+
+# alb_mss_fab_ahb_b2b --- This option is used to choose selcet two ahb-lite slave implementationsWhen selecting true, ahb-lite slave can support back2back transaction for ahb-lite burst. 
+-alb_mss_fab_ahb_b2b true
+
+# alb_mss_fab_def_div2ref --- This specifies the clock division factor at reset. It is used for mss clock controller to generate mss fabric clock, and the value N means mss fabric is running at (1/N) x ref_clk.
+-alb_mss_fab_def_div2ref 1
+
+# alb_mss_fab_lat --- This specifies the maximum latency in the master latency units.
+-alb_mss_fab_lat 0
+
+# alb_mss_fab_lat_rd --- This specifies the maximum read latency in the master latency units.
+-alb_mss_fab_lat_rd 0
+
+# alb_mss_fab_lat_wr --- This specifies the maximum write latency in the master latency units.
+-alb_mss_fab_lat_wr 0
+
+# alb_mss_fab_cdc_fifo_en --- This enables CDC FIFO from core clock domain to MSS clock domain.
+-alb_mss_fab_cdc_fifo_en false
+
+# alb_mss_fab_def_lat --- This specifies the latency after reset for the master latency units.
+-alb_mss_fab_def_lat 0
+
+# alb_mss_fab_def_lat_rd --- This specifies the read latency after reset for the master latency units.
+-alb_mss_fab_def_lat_rd 0
+
+# alb_mss_fab_def_lat_wr --- This specifies the write latency after reset for the master latency units.
+-alb_mss_fab_def_lat_wr 0
+
+# alb_mss_fab_def_wr_bw --- This specifies the write channel bandwidth parameter after reset for the master bandwidth control units.
+-alb_mss_fab_def_wr_bw 0
+
+# alb_mss_fab_def_rd_bw --- This specifies the read channel bandwidth parameter after reset for the master bandwidth control units.
+-alb_mss_fab_def_rd_bw 0
+
+# alb_mss_ccm_base --- This specifies the base address at which the ICCM and DCCM DMIs will be placed in the memory map. The address should be divided by 4KB i.e. do not specify the lower 12 bits of the address.
+-alb_mss_ccm_base 0x4_0000
+
+
+######## ClkCtrl --- com.arc.hardware.ARCv2MSS.ClkCtrl.1_0 ########
+
+# Create ClkCtrl
+-create com.arc.hardware.ARCv2MSS.ClkCtrl.1_0 System.ClkCtrl
+
+# alb_mss_clkctrl_base_addr --- This specifies the clock controller base address in the memory map, divided by 4KB i.e. do not specify the lower 12 bits of the address.
+-alb_mss_clkctrl_base_addr 0xc_0000
+
+# alb_mss_clkctrl_bypass_mode --- If true then all clock dividers/gaters in the clock controller are bypassed, clock ratio is not supported and the division options/registers are overriden
+-alb_mss_clkctrl_bypass_mode false
+
+# alb_mss_sim_timeout_limit --- This specifies the TIMEOUT value for CCT simulation. If you want to disable this TIMEOUT control, set it's value to 0 (by default), otherwise, set the appropriate values according to simulation requirement
+-alb_mss_sim_timeout_limit 0
+
+
+######## Cluster --- com.arc.hardware.CC.Cluster.1_0 ########
+
+# Create Cluster
+-create com.arc.hardware.CC.Cluster.1_0 System.Cluster
+
+# cc_def_div2ref --- This specifies the clock division factor at reset. This option is irrelevant to any RTL featuresIt is only used for ARCv2MSS clock controller to generate HS Cluster clock in ARChitect simulation environment, and the value N means this HS Cluster is running at (1/N) x ref_clk.
+-cc_def_div2ref 1
+
+# cluster_id --- This number uniquely identifies this cluster from all other clusters.  It is placed in the CLUSTER_ID auxiliary register visible in each core of the cluster.
+-cluster_id 0
+
+# vector_proc_profile --- Any scalar HS core(s) within cluster will use the vector unit compatible scalar instruction set.
+-vector_proc_profile false
+
+# cc_allow_csm_l2_share_memory --- The memory inside L2 cache can be shared with CSM to accommodate different applications
+-cc_allow_csm_l2_share_memory false
+
+# cc_safety_level --- This specifies the level of protection.applied to flops with the design
+# 0=no protection, 1=ASIL-B, 2=reserved, 3=ASIL-D
+-cc_safety_level 0
+
+# cc_bus_ecc_all_01 --- This specifies the level of protection.applied to flops with the design
+# 0=no protection, 1=ASIL-B, 2=reserved, 3=ASIL-D
+-cc_bus_ecc_all_01 false
+
+# cc_support_bus_ecc --- This option indicates whether BUS-ECC are supported for master/slave interfaces of ARC cluster with AXI protocol.
+-cc_support_bus_ecc false
+
+# cc_bus_ecc_data_option --- SECDED32 = BUS-ECC protection per 32-bit data; SECDED64= BUS-ECC protection per 64-bit data.
+-cc_bus_ecc_data_option SECDED32
+
+# cc_bus_ecc_parity_option --- This option indicates whether ODD parity or EVEN parity will be used for control/address signals on AXI bus when BUS-ECC enabled
+-cc_bus_ecc_parity_option Odd
+
+# cc_add_ppb_duncach --- Add zero, one or two levels of pipeline stages for the data non-cacheable transactions from each core. This may be helpful for large clusters and hierarchical layout to assist timing closure at high frequency, but adds cycle latency.
+-cc_add_ppb_duncach 0
+
+# cc_add_ppb_dcach --- Add zero, one or two levels of pipeline stages for the data cacheable transactions from each core. This may be helpful for large clusters and hierarchical layout to assist timing closure at high frequency, but adds cycle latency.
+-cc_add_ppb_dcach 1
+
+# cc_add_ppb_per --- Add zero, one or two levels of pipeline stages for the data peripheral transactions from each core. This may be helpful for large clusters and hierarchical layout to assist timing closure at high frequency, but adds cycle latency.
+-cc_add_ppb_per 0
+
+# cc_add_ppb_ifetch --- Add zero, one or two levels of pipeline stages for the instruction fetch transactions from each core. This may be helpful for large clusters and hierarchical layout to assist timing closure at high frequency, but adds cycle latency.
+-cc_add_ppb_ifetch 0
+
+# cc_add_ppb_scu --- Add zero, one or two levels of pipeline stages for the transactions from Shared Coherent Unit (SCU) to downstream L2 Cache (if L2 Cache has been configured) or memory bus initiator port (if L2 Cache has not been configured). This may be helpful for large clusters and hierarchical layout to assist timing closure at high frequency, but adds cycle latency. Please note this option is only relevant when Shared Coherent Unit (SCU) has been configured.
+-cc_add_ppb_scu 0
+
+# cc_add_ppb_snp --- Add zero, one or two levels of pipeline stages for the snooping transactions from Shared Coherent Unit (SCU) to each core. This may be helpful for large clusters and hierarchical layout to assist timing closure at high frequency, but adds cycle latency. Please note this option is only relevant when Shared Coherent Unit (SCU) has been configured.
+-cc_add_ppb_snp 0
+
+# cc_add_ppb_l2c --- Add zero, one or two levels of pipeline stages for the L2 Cache-miss transactions to BIU memory bus initiator port. This may be helpful for large clusters and hierarchical layout to assist timing closure at high frequency, but adds cycle latency. Please note this option is only relevant when L2 Cache has been configured.
+-cc_add_ppb_l2c 0
+
+# cc_vccm_wbuf_depth --- This specifies number of shared wide buffer entries to handle combined STU/VCCM_DMI transactions for accessing vector memory, which is per VPX core base.
+-cc_vccm_wbuf_depth 2
+
+# cc_uaux_num --- This specifies the number of Cluster_uAUX interfaces. For example: if specifies 4, there will be Cluster_uAUX0/Cluster_uAUX1/Cluster_uAUX2/Cluster_uAUX3 configured out
+-cc_uaux_num 0
+
+# cc_xnn_uaux_num --- This specifies the number of Cluster_Extension_uAUX interfaces. For example: if specifies 4, there will be Cluster_Extension_uAUX0/Cluster_Extension_uAUX1/Cluster_Extension_uAUX2/Cluster_Extension_uAUX3 configured out
+-cc_xnn_uaux_num 0
+
+# export_core_srams_to --- Normally, CPU  SRAMs (alb_srams)  are located in alb_cpu_top or in vec_srams submodule of the  Vector Unit (which is located under alb_cpu_top), Set this option to hs_cluster_top to move alb_srams to hs_cluster_top_core_proxy  or  to  archipelago to move to highest possible  level.This option does not change location of  vec_rams to move them elsewhere When a hierarchical implementation of the RTL build  is planned, do not configure this  option to archipelago
+-export_core_srams_to none
+
+# export_cluster_srams_to --- Normally, L2 (slc_srams) , CDMA and CSM SRAMs  (llm_srams)  are placed in slc_top , dma_server and  llm_top hierarhcy.Set this option to  hs_cluster_top/archipelago to move them to the top-levels of those modules instead.
+-export_cluster_srams_to none
+
+# instances --- Description to follow
+-instances 1
+
+# unique_name --- Description to follow
+-unique_name ""
+
+
+######## Bus interface unit --- com.arc.hardware.CC.Bus_interface_unit.1_0 ########
+
+# Create Bus interface unit
+-create com.arc.hardware.CC.Bus_interface_unit.1_0 "System.Cluster.Bus interface unit"
+
+# biu_xnn_dmi_bus_num --- This specifies the number of XNN DMI busses. 
+-biu_xnn_dmi_bus_num 0
+
+# biu_xnn_dmi_bus_add_pipe_stage --- Place one more pipeline stage on XNN DMI port. This may be helpful for large clusters and hierarchical layout to assist timing closure at high frequency, but adds cycle latency.
+-biu_xnn_dmi_bus_add_pipe_stage false
+
+# biu_mem_bus_num --- This specifies the number of memory busses. 
+# This option is ignored if a System-level cache is present, as the number of busses is computed automatically.
+-biu_mem_bus_num 1
+
+# biu_mem_bus_option --- Protocol to connect to external memory. Please NOTE that BVCI is supported only for single core builds.
+-biu_mem_bus_option AXI
+
+# biu_mem_bus_data_w --- This specifies the data width of the memory busses
+-biu_mem_bus_data_w 64
+
+# biu_mem_bus_add_pipe_stage --- Place one more pipeline stage on memory initiator port. This may be helpful for large clusters and hierarchical layout to assist timing closure at high frequency, but adds cycle latency.
+-biu_mem_bus_add_pipe_stage false
+
+# biu_mem_dedicated_bus --- True: Each core have dedicated memory initiator ports group; False: Only one group of memory initiator ports for entire cluster shared by all cores.
+-biu_mem_dedicated_bus false
+
+# biu_per_bus_num --- This option is only valid when any of the connected core has component dmp_peripheral configured on.
+-biu_per_bus_num 0
+
+# biu_ibp2axi_zerodeep --- True: BIU force zero-deep FIFOs in IBP2AXI bridge ; False: BIU not force zero-deep FIFOs in IBP2AXI bridge. 
+#  Please note that when value is true, the corresponding interface not support clock ratio(-alb_mss_fab_def_div2ref 1).
+-biu_ibp2axi_zerodeep false
+
+# biu_dmi_bus_num --- This option is only valid when any of the connected core has iccm0_dmi/iccm1_dmi/dccm_dmi configured on. Option 0: No target bus interface for ICCMs and DCCMs; Option 1: All cores ICCMs and DCCMs share same target bus interface; Option 2: All cores ICCMs have dedicated target bus interface, and all cores DCCMs have another dedicated target bus interface.
+-biu_dmi_bus_num 1
+
+# biu_dmi_bus_option --- This specifies the protocol of the DMI busses. Please NOTE that BVCI is supported only for single core builds.
+-biu_dmi_bus_option AXI
+
+# biu_dmi_bus_data_w --- This specifies the data width of the DMI busses
+-biu_dmi_bus_data_w 64
+
+# biu_dmi_bus_axi_idw --- This speciries the AXI ID width of the DMI busses. This option is only valid when the DMI port is configured as AXI protocol.
+-biu_dmi_bus_axi_idw 16
+
+# biu_dmi_add_pipe_stage --- Place one more pipeline stage on DMI bus bridge. This may be helpful for large clusters and hierarchical layout to assist timing closure at high frequency, but adds cycle latency.
+-biu_dmi_add_pipe_stage false
+
+# biu_has_vdmi_bus --- This specifies whether external DMI interface of VCCM is configured.
+-biu_has_vdmi_bus false
+
+# biu_vdmi_bus_width --- This specifies data width of VCCM DMI interface
+-biu_vdmi_bus_width 64
+
+# biu_vdmi_axi_idw --- This specifies ID width of VCCM DMI interface
+-biu_vdmi_axi_idw 8
+
+# biu_udmi_bus_num --- Option 1 , all slave components within HS cluster are accessed via one unified slave interface, including ICCM0/ICCM1/DCCM/VMEM of each processor core, STU (streaming transfer unit), CSM, as well as the IOC bus. Option 0, there are dedicated DMI interfaces (such as DMI port, VMEM DMI port, STU_DMI, CSM_DMI) and dedicated IOC bus for slave accessing.
+-biu_udmi_bus_num 0
+
+# biu_udmi_bus_option --- This specifies the protocol of the unified slave port.
+-biu_udmi_bus_option AXI
+
+# biu_udmi_bus_data_w --- This specifies the data width of the unified slave port.
+-biu_udmi_bus_data_w 64
+
+# biu_udmi_bus_axi_idw --- This speciries the AXI ID width of the unified slave port. This option is only valid when it's configured as AXI protocol.
+-biu_udmi_bus_axi_idw 16
+
+# biu_udmi_add_pipe_stage --- Place one more pipeline stage on unified slave bus bridge. This may be helpful for large clusters and hierarchical layout to assist timing closure at high frequency, but adds cycle latency.
+-biu_udmi_add_pipe_stage false
+
+# biu_ioc_bus_num --- This specifies the number of I/O coherency busses. NOTE: the bus protocol and data width of IOC port is specified by -biu_mem_bus_option
+-biu_ioc_bus_num 0
+
+# biu_xnn_ioc_bus_num --- This specifies the number of I/O coherency busses dedicated for ARC internal components, e.g., CNN2.0. NOTE: the bus protocol and data width of IOC port is specified by -biu_mem_bus_option
+-biu_xnn_ioc_bus_num 0
+
+# biu_ioc_add_pipe_stage --- Place one more pipeline stage on IOC bus bridge. This may be helpful for large clusters and hierarchical layout to assist timing closure at high frequency, but adds cycle latency.
+-biu_ioc_add_pipe_stage false
+
+# biu_ioc_bus_axi_idw --- This specifies the AXI ID width of the IOC bus. This option is only valid when the IOC port is configured as AXI protocol.
+-biu_ioc_bus_axi_idw 16
+
+# biu_ioc_ahbl_ebt --- This option only relevant when the IOC port is configured as AHB-Lite protocol. True: the incoming AHB-Lite burst (INCR4/INCR8/INCR16/WRAP4/WRAP8/WRAP16) transactions could be early terminated, hence the AHB-Lite transaction will always be split into single-beat internal bus transaction, the performance is low. False: the incoming AHB-Lite burst (INCR4/INCR8/INCR16/WRAP4/WRAP8/WRAP16) transactions will never be early terminated, hence the AHB-Lite transaction will be converted into burst internal bus transaction as much as possible, the performance is high.
+-biu_ioc_ahbl_ebt true
+
+# biu_disable_unit_clkg --- Configure this option to be 1 will remove the BIU unit-level clock gating to easy timing closure
+-biu_disable_unit_clkg 0
+
+# skip_build --- Customers cannot see this option.  If set, this component is not built.  This saves time if you've already built the design and no subsequent change requires this component to be rebuilt.
+-skip_build false
+
+
+######## CPUisle --- com.arc.hardware.HS.CPU_isle.1_0 ########
+
+# Create CPUisle
+-create com.arc.hardware.HS.CPU_isle.1_0 System.Cluster.CPUisle
+
+# unique_name --- verilog module modifier prefix
+-unique_name ""
+
+# ArcNum --- The processor number as read back in the ARCNUM field of the IDENTITY register.
+-arc_num 0
+
+# instances --- 
+# The number of instantiations of this core.
+# 
+-instances 1
+
+# instance_signal_prefix --- 
+# [arc_dev] Specifies the prefix used for each instance, when multiple instances are created.  If N is in the text, N is replaced by the instance number; otherwise the instance number is appended.
+# 
+-instance_signal_prefix c
+
+# skip_vpp --- 
+# This is a secret option, not seen by customers.
+# If you check this, we won't VPP most of the *.vpp files.
+# This can speed up re-build if you've already built them and not
+# changed the core options.
+# Use at your own risk.
+# 	
+-skip_vpp false
+
+# CPUFloorplan --- Floorplan giving relative placement of the RAMs  for the given configuration of ARCv3HS or ARCv2HS or ARCv2EM in this CPUisle
+-cpu_floorplan HS36_base
+
+# userCPUFloorplanPath --- Pathname of user floorplan for the CPU when using a hierarchical implementation
+-usercpufloorplan_path ""
+
+# pinLocationConstraintsFile --- Pathname+filename of the physical pin location constraints file or just "side1" (all pins on l.h.s) or "side2" (pins on top only) or "side3" (pins on r.h.s. only) or "side4" (pins on bottom only) to get a template file generated
+-pin_location_constraints_file ""
+
+
+######## ARCv2HS --- com.arc.hardware.HS.ARCv2HS.1_0 ########
+
+# Create ARCv2HS
+-create com.arc.hardware.HS.ARCv2HS.1_0 System.Cluster.CPUisle.ARCv2HS
+
+# halt_on_reset --- This defines whether the core is halted initially on reset.
+-halt_on_reset true
+
+# byte_order --- This defines the endianness of the core.
+-byte_order little
+
+# atomic_option --- This option enables the LLOCK/SCOND (and LLOCKD/SCONDD if ll64_option) instructions
+-atomic_option true
+
+# div_rem_option --- The DIV/REM option adds non-blocking multi-cycle implementation of integer divide/remainder functions. Added instructions are DIV, DIVU (integer divide), REM and REMU (integer divide remainder).radix4_enhanced takes 3 to 19 cycles per operation.
+-div_rem_option radix4_enhanced
+
+# mpy_option --- The Multiplier ISA option allows selection between several multiplier configurations to tradeoff performance with silicon area. Cycle count for all multiply options is fixed:  4 clocks latency with sustained throughput of 1 clock per instruction, including back-to-back multiply-accumulate operations.
+# Note that some vector-add/sub operations are included with certain multiply options, in order to enhance performance of light DSP code.
+# <pre>
+# 
+# 
+#  option         Instructions
+#  ----------     -------------------------------
+#       
+#  none                       None 
+#  mpy                        MPYW/U, MPY/U, MPYH/U
+#  plus_dmpy      mpy       + DMACH, DMPYH, MAC, 
+#                             VADD2H,..
+#  plus_macd      plus_dmpy + MACD, MPYD, 
+#                             VMPY2H,...
+#  plus_qmacw     plus_macd + DMACWH, DMPYWH,
+#                             QMACH, QMPYH,
+#                             VADD2,...
+# </pre>
+# 
+-mpy_option plus_qmacw
+
+# stack_checking --- Stack checking is a mechanism for checking stack accesses and raising an exception when a stack overflow or underflow is detected.
+-stack_checking true
+
+# ll64_option --- This enables support for Load and Store instructions that transfer register pairs to/from memory.
+-ll64_option true
+
+# intvbase_preset --- This sets the upper 22 bits of the interrupt vector base configuration register, VECBASE_AC_BUILD.  On reset, that register is loaded into the interrupt vector base address register, INT_VECTOR_BASE.  Because this value is the upper 22 bits, the vector base is aligned to a 1K-byte boundary.
+-intvbase_preset 0x0
+
+# intvbase_ext --- Set this option to drive the upper 22 bits of the interrupt base vector externally, using signal intvbase_in.
+-intvbase_ext true
+
+# nmi_option --- Set this option to enable non-maskable interrupt. Set to 1 for single core build with NMI and with no cluster components.Set to 2 for multi-core or single-core build with NMI and with cluster components. 
+-nmi_option 0
+
+# rgf_num_regs --- This defines the size (in 32b registers) of the processor register file.
+-rgf_num_regs 32
+
+# rgf_num_banks --- two or more register banks are useful when Fast IRQ option is selected, but multiple banks may be selected even without Fast IRQ.
+-rgf_num_banks 1
+
+# infer_alu_adder --- infer: datapath is described as behavioral code: A + B
+# instantiate: datapath is instantiated as a detailed multi-stage code of a carry-lookahead adder.  It is generally preferable to use the infer option when using DesignWare library components and add directives for your target synthesizer.
+-infer_alu_adder instantiate
+
+# infer_mpy_wtree --- infer: datapath is described as behavioral code: A * B
+# instantiate: datapath is instantiated as a detailed multi-stage code of a Wallace Tree multiplier.   It is preferable  to use the instantiate option; the infer option is intended for simulation only.
+-infer_mpy_wtree instantiate
+
+# sync_legacy_impl --- Use RTL flop based CDC model as CDC synchronization cell, else use CDC sync cells
+-sync_legacy_impl false
+
+# sync_cdc_levels --- Number of flops used for CDC synchronization
+-sync_cdc_levels 2
+
+# sync_tmr_cdc --- (arc_dev hidden) Use ASIL certified CDC synchronization.
+-sync_tmr_cdc false
+
+# sync_verif_en --- (arc_dev hidden)  Synchronization missampling control (Simulation verification)     Default value = 1     0 => no sampling errors modeled,     1 => when DW_MODEL_MISSAMPLES defined, randomly insert 0 to 1 cycle delay     2 => when DW_MODEL_MISSAMPLES defined, randomly insert 0 to 1.5 cycle delay     3 => when DW_MODEL_MISSAMPLES defined, randomly insert 0 to 3 cycle delay     4 => when DW_MODEL_MISSAMPLES defined, randomly insert 0 to 0.5 cycle delay     Note: Use `define DW_MODEL_MISSAMPLES to define the Verilog macro           that turns on missample modeling in a Verilog HDL file.  Use           +define+DW_MODEL_MISSAMPLES simulator command line option to turn           on missample modeleng from the simulator command. 
+-sync_verif_en 0
+
+# sync_sva_type --- (arc_dev hidden) 0 = no SVA used	  1 = use handshake SVAs 2 = use gray code SVAs 
+-sync_sva_type 0
+
+# aux_volatile_base --- Sets the initial base memory region (inclusive) assignment for volatile system memory
+-aux_volatile_base 15
+
+# aux_volatile_limit --- Sets the initial upper limit (exclusive) memory region assignment for volatile system memory
+-aux_volatile_limit 0
+
+# aux_volatile_disable --- Sets the initial value of Disable Volatile Region bit (on reset)
+-aux_volatile_disable false
+
+# aux_volatile_strict_ordering --- Sets the initial value of Strict Ordering bit for the volatile region (on reset)
+-aux_volatile_strict_ordering true
+
+# bist_option --- (arc_dev hidden) MMB bus on cpu port and accessibility of memories through MMB bus for BIST.
+-bist_option false
+
+# scantest_ram_bypass_mux --- (arc_dev hidden) This mux is used to make logic trapped between flops and memory (aka shadow logic) to be covered by scantest without requiring advanced sequential ATPG on the memory to be applied. Will add delay to functional access time.Option obsoleted for customers. Use Tmax standalone option in ARCsyn for higher coverage on shadow logic instead
+-scantest_ram_bypass_mux false
+
+# logic_bist --- This option will OR LBIST_EN with test_mode
+-logic_bist false
+
+# power_domains --- Add power domains and propagates power-gate control signals to the top level. Also generates UPF constraints and commands in the low-power scripts
+-power_domains false
+
+# export_ram_pg --- (arc_dev hidden) Add top level inputs for the SD/DS pins of all memory even without power_domain
+-export_ram_pg true
+
+# pwr_up_on_int --- Place interrupt and timer logic in core's always-on power domain to support wake-up on interrupt or timer expiry
+-pwr_up_on_int true
+
+# dvfs --- Add logics to allow dynamic controlling of voltage and frequency and propagates the associated control signals to the top level
+-dvfs false
+
+# clock_gating --- This enables the insertion of architectural clock gate elements in the design. By enabling this option, the clocks to various parts of the design will be disabled when the logic they drive is not in use to save power.
+-clock_gating true
+
+# cpu_top_add_ppb_dccm_dmi --- Add a pipeline stage for DCCM DMI. This may be helpful for large clusters and hierarchical layout to assist timing closure at high frequency, but adds cycle latency.
+-cpu_top_add_ppb_dccm_dmi false
+
+# cpu_top_add_ppb_lqwq_mem --- Add a pipeline stage for LQWQ MEM. This may be helpful for large clusters and hierarchical layout to assist timing closure at high frequency, but adds cycle latency.
+-cpu_top_add_ppb_lqwq_mem false
+
+# cpu_top_add_ppb_lqwq_per0 --- Add a pipeline stage for LQWQ PER0. This may be helpful for large clusters and hierarchical layout to assist timing closure at high frequency, but adds cycle latency.
+-cpu_top_add_ppb_lqwq_per0 false
+
+# cpu_top_add_ppb_lqwq_per1 --- Add a pipeline stage for LQWQ PER1. This may be helpful for large clusters and hierarchical layout to assist timing closure at high frequency, but adds cycle latency.
+-cpu_top_add_ppb_lqwq_per1 false
+
+# cpu_top_add_ppb_dcache_rf --- Add a pipeline stage for DCACHE RF. This may be helpful for large clusters and hierarchical layout to assist timing closure at high frequency, but adds cycle latency.
+-cpu_top_add_ppb_dcache_rf false
+
+# cpu_top_add_ppb_dcache_cb --- Add a pipeline stage for DCACHE CB. This may be helpful for large clusters and hierarchical layout to assist timing closure at high frequency, but adds cycle latency.
+-cpu_top_add_ppb_dcache_cb false
+
+# cpu_top_add_ppb_iccm0_dmi --- Add a pipeline stage for ICCM0 DMI. This may be helpful for large clusters and hierarchical layout to assist timing closure at high frequency, but adds cycle latency.
+-cpu_top_add_ppb_iccm0_dmi false
+
+# cpu_top_add_ppb_iccm1_dmi --- Add a pipeline stage for ICCM1 DMI. This may be helpful for large clusters and hierarchical layout to assist timing closure at high frequency, but adds cycle latency.
+-cpu_top_add_ppb_iccm1_dmi false
+
+# cpu_top_add_ppb_icache_rf --- Add a pipeline stage for ICACHE RF. This may be helpful for large clusters and hierarchical layout to assist timing closure at high frequency, but adds cycle latency.
+-cpu_top_add_ppb_icache_rf false
+
+# has_biu --- (arc_dev hidden) Use internal BIU instead of the cluster BIU. 
+-has_biu false
+
+# br_bc_entries --- The number of entries in the branch cache of the branch prediction unit. An entry can store information about 2 branch or jump instructions. More entries means that the branch predictor can keep track of more branch instructions at the same time.
+-br_bc_entries 512
+
+# br_pt_entries --- The number of 2-bit predictors in the branch prediction unit to predict the direction (taken or not taken) of conditional branches. The prediction algorithm is Gshare. More entries means more bits of global branch history can be tracked for more branch or jump instructions at the same time.
+-br_pt_entries 8192
+
+# br_rs_entries --- The number of entries in the return address stack of the branch prediction unit. For subroutine calls and returns the return address is predicted using this stack. More entries means deeper subroutine nesting levels can be predicted accurately.
+-br_rs_entries 4
+
+# br_bc_tag_size --- If a partial tag is used, this option sets the size of that tag. The chance of aliasing declines exponentially with the size of the tag and in a lot of applications a small tag works fine.
+-br_bc_tag_size 4
+
+# br_dbg_option --- BPU Debug capability: 0-Does not support BPU Debug capability, 1-Support BPU Debug capability
+-br_dbg_option 0
+
+# br_tosq_entries --- The Top-Of-Stack queue keeps track of subroutine calls and returns that are in progress at the same time in the processor. A small number saves hardware, a large number gives highest performance even when there are dense subroutine call and return patterns.
+-br_tosq_entries 5
+
+# br_fb_entries --- The size of the instruction buffer that stores instructions that have been fetched but not yet issued to the processor. A larger buffer allows better performance on complex branch and jump patterns at the expense of hardware. For example, the value 4 configures 4 dual fetch blocks for a total of 8 fetch blocks.
+-br_fb_entries 1
+
+# lpb_num --- This specifies the size of loop buffer. 1 indicates the loop buffer has same size as the fetch buffer. A larger buffer number allows better power saving on longer loop at the expense of hardwareFor instruction lp, lpcc, dbnz, access from loop buffer instead of icache, iccm, external bus and bpu.After detection of the loop, capture these instructions of the loop in the loop buffer.These instructions will be sent to fetch buffer
+-lpb_num 0
+
+# ifu_mcp_disable --- Allows the 2-cycle path constraints (MCP's) in IFU to be dropped (except for  ICCM0/ICCM1). Removes the need to model justifcation for certain MCP's in path exceptions verification flows e.g Spyglass Txv. Fishtail etc 
+-ifu_mcp_disable true
+
+# ifu_1cycle_option --- This option adds registers to the output of IFU memories, breaking the 2 cycle memory paths (memories must be 1 cycle when true). Use ths option if the IFU is intended to be synthesized with 1 cycle constraints.
+-ifu_1cycle_option true
+
+# ecc_option_addr --- This specifies error checking for on-chip rams.
+# Include Memory address for Error Protection
+-ecc_option_addr false
+
+# pipe_edc_option --- This specifies error detection for pipeline components.
+# PC's, GPr, ERP_CTRL aux
+-pipe_edc_option false
+
+# ecc_syndrome_option --- This outputs the syndrome bits in addition to  single-bit and double-bit errors to the safety monitor.
+# This output can be associated with the double bit error signal
+-ecc_syndrome_option true
+
+# ecc_export_db_sb_only --- This outputs the single-bit and double-bit errors only to the IP interface in case syndrome bits are not required.
+# In that case there are no associated syndrome bits to identify soure of single/double bit errors
+-ecc_export_db_sb_only true
+
+# ecc_export_error_per_ram --- This outputs the consolidated single-bit and double-bit error per each memory to the IP interface. Errors generated per each bank are consolidated to single error per memory.
+# To set this option to true, ecc_syndrome_option and ecc_export_db_sb_only should be true
+-ecc_export_error_per_ram true
+
+# grad_entries --- Graduation entries track post-commit instructions awaiting result retirement. For example, long non-blocking instructions such as divide or certain deeply pipelined APEX instructions.
+-grad_entries 8
+
+# uaux_option --- Include a user auxiliary register interface
+-uaux_option false
+
+# backdoor_ccm --- Include a backdoor model for ICCMs and DCCM.  This provides memory access from the debugger without consuming simulation time.  The backdoor models are disabled `ifdef SYNTHESIS and can also be manually disabled by defining DISABLE_BACKDOOR_CCM when compiling.Do not use this option if you intend to change the bas address of the ICCM during simulation, as the backdoor model cannot keep track of such changes.Do not use this option if you have two ICCMs at the same address.
+-backdoor_ccm false
+
+
+######## Actionpoints --- com.arc.hardware.HS.Actionpoints.1_0 ########
+
+# Create Actionpoints
+-create com.arc.hardware.HS.Actionpoints.1_0 System.Cluster.CPUisle.ARCv2HS.Actionpoints
+
+# num_actionpoints --- This is the number of trigger events available.
+-num_actionpoints 8
+
+# aps_feature --- Selects Actionpoint feature set
+-aps_feature min
+
+
+######## DCCM --- com.arc.hardware.HS.DCCM.1_0 ########
+
+# Create DCCM
+-create com.arc.hardware.HS.DCCM.1_0 System.Cluster.CPUisle.ARCv2HS.DCCM
+
+# dccm_size --- This defines the size of the Data Closely Coupled Memory (DCCM) in bytes
+-dccm_size 32768
+
+# dccm_base --- Sets the initial memory region assignment for DCCM base address
+-dccm_base 7
+
+# dccm_dmi --- This enables external access through a DMI (direct memory interface) port.
+-dccm_dmi true
+
+# dccm_dmi_partial_ecc --- This enables the partial write support through a DMI (direct memory interface) port.
+-dccm_dmi_partial_ecc true
+
+# dccm_mem_cycles --- This defines the number of cycles dedicated to the each DCCM Memory bank.
+-dccm_mem_cycles 2
+
+# dccm_mem_posedge --- This option clocks the DCCM memory banks on the positive edge of the clock
+-dccm_mem_posedge true
+
+# dccm_mem_banks --- This option selects the number of DCCM memory banks
+-dccm_mem_banks 4
+
+# dccm_ecc_option --- This specifies error checking for on-chip DCCM rams.
+# SECDED means single-error correction and double-error detection.
+-dccm_ecc_option SECDED_01
+
+
+######## Data Cache --- com.arc.hardware.HS.Data_Cache.1_0 ########
+
+# Create Data Cache
+-create com.arc.hardware.HS.Data_Cache.1_0 "System.Cluster.CPUisle.ARCv2HS.Data Cache"
+
+# dc_size --- This defines the total size of the Data Cache in bytes.
+-dc_size 32768
+
+# dc_bsize --- This defines the cache line length in bytes.
+-dc_bsize 64
+
+# dc_bus_data_width --- This defines the cache bus width for refills and evictions.
+-dc_bus_data_width 128
+
+# dc_mem_cycles --- This defines the number of cycles dedicated to the Data Cache data memories.
+-dc_mem_cycles 2
+
+# dc_mem_posedge --- This option clocks the Data Cache memories on the positive edge of the clock
+-dc_mem_posedge true
+
+# dc_ecc_option --- This specifies error checking for DCACHE Tag, Data rams.
+# SECDED means single-error correction and double-error detection.
+-dc_ecc_option SECDED_01
+
+
+######## Debug Interface --- com.arc.hardware.HS.Debug_Interface.1_0 ########
+
+# Create Debug Interface
+-create com.arc.hardware.HS.Debug_Interface.1_0 "System.Cluster.CPUisle.ARCv2HS.Debug Interface"
+
+# dbg_en_option --- Adds an enable pin to the existing debug interface
+-dbg_en_option false
+
+# dbg_apb_option --- Adds an additional APB debug port alongside the BVCI one
+-dbg_apb_option true
+
+# dbg_apb_ratio --- Sets the clock ratio for the APB debug port to core clock
+-dbg_apb_ratio 1
+
+
+######## EventManager --- EventManager.1_0 ########
+
+# Create EventManager
+-create EventManager.1_0 System.Cluster.CPUisle.ARCv2HS.EventManager
+
+# apex_access_ctrl --- 
+# User Mode Permission sets user-mode access control for this APEX.
+# <br>
+# Always - accessible in user mode.
+# <br>
+# Never - accessible in kernel mode.
+# <br>
+# XPU-Bit Controlled - accessible by user if the relevant XPU bit is on.
+# 
+-apex_access_ctrl Always
+
+# xpubit --- 
+# The XPU bit number for this extension.
+# 
+-xpubit 0
+
+
+######## Instruction Cache --- com.arc.hardware.HS.Instruction_Cache.1_0 ########
+
+# Create Instruction Cache
+-create com.arc.hardware.HS.Instruction_Cache.1_0 "System.Cluster.CPUisle.ARCv2HS.Instruction Cache"
+
+# ic_size --- This defines the total size of the instruction cache in bytes.
+-ic_size 32768
+
+# ic_ways --- This defines the number of cache ways
+-ic_ways 4
+
+# ic_bsize --- This defines the cache line length in bytes.
+-ic_bsize 64
+
+# ic_disable_on_reset --- The instruction cache may be enabled immediately after reset, depending on this option.  If this option is set to true, the instruction cache is disabled and instruction fetches bypass the cache, accessing system memory directly.
+-ic_disable_on_reset false
+
+# ic_ecc_option --- This specifies error checking for ICACHE Tag, Data rams.
+# SECDED means single-error correction and double-error detection.
+-ic_ecc_option SECDED_01
+
+# ic_full_size_line_buffer --- This option sets the size of the line buffer for Icache miss handling. That is by default the Icache fetch size (16 Bytes in HS processors, 32 Bytes in EV processors). When set to TRUE this line buffer is made full size and equal to the Icache line size.
+-ic_full_size_line_buffer false
+
+
+######## Interrupt Controller --- com.arc.hardware.HS.Interrupt_Controller.1_0 ########
+
+# Create Interrupt Controller
+-create com.arc.hardware.HS.Interrupt_Controller.1_0 "System.Cluster.CPUisle.ARCv2HS.Interrupt Controller"
+
+# number_of_interrupts --- This is the total number of interrupts available to the core.  Some interrupts are allocated statically to a specific interrupt line (for example, timer interrupts).  For more information on Interrupt and register-file options, see DesignWare ARCv2 ISA Programmers Reference Manual.
+-number_of_interrupts 39
+
+# number_of_levels --- Priority levels in the interrupt controller.
+-number_of_levels 3
+
+# external_interrupts --- This is the total number of interrupt pins available for external system components.  This parameter must be less than the total number of interrupts.  You might get more pins than asked for if other components connect to fixed interrupt slots.
+-external_interrupts 36
+
+# firq_option --- This enables the fast-interrupts option, (priority level 0 interrupts), which uses an alternate register bank (if configured) instead of saving the context to memory.
+-firq_option false
+
+
+######## Memory Management Unit --- com.arc.hardware.HS.Memory_Management_Unit.1_0 ########
+
+# Create Memory Management Unit
+-create com.arc.hardware.HS.Memory_Management_Unit.1_0 "System.Cluster.CPUisle.ARCv2HS.Memory Management Unit"
+
+# mmu_ecc_option --- This specifies error checking for on-chip MMU rams.
+# SECDED means single-error correction and double-error detection.
+-mmu_ecc_option SECDED_01
+
+# mmu_itlb_num_entries --- This is the number of micro ITLB entries.
+-mmu_itlb_num_entries 4
+
+# mmu_dtlb_num_entries --- This is the number of micro DTLB entries.
+-mmu_dtlb_num_entries 8
+
+# mmu_ntlb_num_entries --- This is the number of joint TLB normal page entries.
+-mmu_ntlb_num_entries 256
+
+# mmu_page_size_sel0 --- This is the page size of each joint TLB normal page.
+-mmu_page_size_sel0 4K
+
+# mmu_stlb_num_entries --- This is the number of joint TLB super page entries.
+-mmu_stlb_num_entries 16
+
+# mmu_page_size_sel1 --- This is the page size of each joint TLB super page.
+-mmu_page_size_sel1 2M
+
+# mmu_pae_enabled --- If enabled, PAE provides for a 40-bit physical memory address.
+-mmu_pae_enabled true
+
+# mmu_shared_lib --- If enabled, the shared-library ASID feature is supported.
+-mmu_shared_lib true
+
+# mmu_1cycle_option --- This option adds registers to the output of MMU memories, breaking the 3 and 2 cycle paths from memory (memories must be 1 cycle when true). Use ths option if the MMU is intended to be synthesized with 1 cycle constraints.
+-mmu_1cycle_option true
+
+
+######## Memory Protection Unit --- com.arc.hardware.HS.Memory_Protection_Unit.1_0 ########
+
+# Create Memory Protection Unit
+-create com.arc.hardware.HS.Memory_Protection_Unit.1_0 "System.Cluster.CPUisle.ARCv2HS.Memory Protection Unit"
+
+# mpu_num_regions --- Number of configured memory regions.
+-mpu_num_regions 8
+
+
+######## Performance Monitor --- com.arc.hardware.HS.Performance_Monitor.1_0 ########
+
+# Create Performance Monitor
+-create com.arc.hardware.HS.Performance_Monitor.1_0 "System.Cluster.CPUisle.ARCv2HS.Performance Monitor"
+
+# pct_counters --- Number of counters for performance monitoring.
+-pct_counters 8
+
+# pct_interrupt --- When a counter overflows, an interrupt is generated.
+-pct_interrupt true
+
+
+######## Real-time Counter --- com.arc.hardware.HS.Real_time_Counter.1_0 ########
+
+# Create Real-time Counter
+-create com.arc.hardware.HS.Real_time_Counter.1_0 "System.Cluster.CPUisle.ARCv2HS.Real-time Counter"
+
+######## Real-time trace producer --- com.arc.hardware.HS.Real_time_trace_producer.1_0 ########
+
+# Create Real-time trace producer
+-create com.arc.hardware.HS.Real_time_trace_producer.1_0 "System.Cluster.CPUisle.ARCv2HS.Real-time trace producer"
+
+# rtt_feature_level --- 'small' means that program trace only is available.  `medium' adds data trace.
+-rtt_feature_level small
+
+# rtt_mux_option --- Support builds with less RTT producers than the number of cores.Currently only valid for 4:2 muxing
+-rtt_mux_option false
+
+# rtt_cti_sync --- Support CTI synchronized to ATCLK
+-rtt_cti_sync false
+
+
+######## SmaRT --- com.arc.hardware.HS.SmaRT.1_0 ########
+
+# Create SmaRT
+-create com.arc.hardware.HS.SmaRT.1_0 System.Cluster.CPUisle.ARCv2HS.SmaRT
+
+# smart_stack_entries --- This specifies the number of entries in the trace buffer.
+-smart_stack_entries 128
+
+# smart_implementation --- Flip-flop = FF-based design.  Memory = memory-based design (provides better density for larger trace buffers).
+-smart_implementation flip-flop
+
+
+######## Timer 0 --- com.arc.hardware.HS.Timer_0.1_0 ########
+
+# Create Timer 0
+-create com.arc.hardware.HS.Timer_0.1_0 "System.Cluster.CPUisle.ARCv2HS.Timer 0"
+
+# timer_0_int_level --- This sets the interrupt level (and implicitly the priority: level 0 is highest) of timer 0.
+-timer_0_int_level 0
+
+
+######## Watchdog Timer --- com.arc.hardware.HS.Watchdog_Timer.1_0 ########
+
+# Create Watchdog Timer
+-create com.arc.hardware.HS.Watchdog_Timer.1_0 "System.Cluster.CPUisle.ARCv2HS.Watchdog Timer"
+
+# watchdog_clk --- Specifies whether the timer should be driven from a separate clock.
+-watchdog_clk true
+
+# watchdog_clk_freq --- Specifies the frequency in MHz of the independent asynchronous clock to Watchdog Timer.
+-watchdog_clk_freq 200
+
+# watchdog_parity --- Enables parity checking across all registers
+-watchdog_parity true
+
+# wdt_wr_en --- Add output to indicate the valid period of window mode
+-wdt_wr_en false
+
+# watchdog_num --- Select the number of watchdog timers built.
+-watchdog_num 1
+
+# watchdog_size --- Specifies the bit width of timer's internal counter.
+-watchdog_size 32
+
+# watchdog_win0 --- Enable windowing functionality
+-watchdog_win0 true
+
+# watchdog_ext_input0 --- (arc_dev hidden) Enables external timeout interface
+-watchdog_ext_input0 false
+
+# watchdog_size1 --- Specifies the bit width of timer's internal counter.
+-watchdog_size1 32
+
+# watchdog_win1 --- Enable windowing functionality
+-watchdog_win1 true
+
+# watchdog_ext_input1 --- (arc_dev hidden) Enables external timeout interface
+-watchdog_ext_input1 false
+
+# watchdog_size2 --- Specifies the bit width of timer's internal counter.
+-watchdog_size2 32
+
+# watchdog_ext_input2 --- (arc_dev hidden) Enables external timeout interface
+-watchdog_ext_input2 false
+
+# watchdog_size3 --- Specifies the bit width of timer's internal counter.
+-watchdog_size3 32
+
+# watchdog_ext_input3 --- (arc_dev hidden) Enables external timeout interface
+-watchdog_ext_input3 false
+
+
+######## Implementation --- com.arc.hardware.implementation.1_0 ########
+
+# Create Implementation
+-create com.arc.hardware.implementation.1_0 System.Implementation
+
+# ClockSpeed --- Target clock speed of the system
+-clock_speed 800
+
+# ClockSkew --- The clock skew for the system
+-clock_skew 0.2
+
+# HoldMargin --- Margin for hold time checks
+-hold_margin 0.05
+
+# Floorplan --- Floorplan giving relative placement of the RAMs (or hard macro cpus for 2nd tier floorplan) for the given configuration
+-floorplan HS36_base
+
+# JTAGFrequency --- Select the frequency of the JTAG clock Tck (in MHz).
+# 
+# The JTAG clock speed has to be less than 1/2 of the cpu clock otherwise the signals on the BVCI interface are not guaranteed to be valid.
+# 
+# NOTE: The RTL simulations will work when the JTAG clock frequency is set to half the CPU clock, however this may not be the case when simulating at gate level due to delays on the IO pads.
+# 
+# The default is set to 10 MHz so that there is no conflict when simulating with an ARCangel3 at 30MHz. (30 > 10*2)
+# 
+# The speed of simulation can be greatly increased by using a faster JTAG clock, but a dependency will warn if it exceeds 1/2 of the cpu clock.
+# 
+-jtag_tclk 200
+
+# execution_trace_level --- 
+# This traces committed instructions as they execute, and gathers statistics
+# visible in the debugger for counting instructions & cycle delays.
+# At the "stats" level ony the statistics are gathered and no trace is printed.
+# "file" is equivalent to "full", but the results go to a trace .txt file instead.
+# 
+-execution_trace_level stats
+
+# tb_trace --- 
+# Enable instruction execution trace.
+# This is available to arc_dev licensees (internal developers) only.
+# It applies only to EM cores and has no effect with HS cores.
+# 
+-tb_trace false
+
+# zero_based_arcnum --- 
+# In a multicore build, number ARCs from 0.
+# If this is not selected, arcs are numbered from 1.
+# (This provides the initial value to the arcnum signal.)
+# 
+-zero_based_arcnum true
+
+# unique_clk --- 
+# In a multicore build, each CPU has by default its own unique clk input pin from top-level down to CPU instance.
+# Setting this option to false forces the clock net  going to each CPU's clock input pin to be the same,  effectively driving all multicore components from same top-level clock pin
+# 
+-unique_clk false
+
+# generate_ipxact --- 
+# Generate ipxact.xml file describing the CPUisle or archipelago frontier
+# 
+-generate_ipxact true
+
+# ipxact_include_aux_regs --- 
+# Include aux register descriptions in the generated ipxact.
+# 
+-ipxact_include_aux_regs true
+
+# ipxact_relative_path_names --- 
+# Use relative path names for Verilog files in the ipxact.
+# Otherwise, absolute path names are used.
+# 
+-ipxact_relative_path_names true
+
+# generate_dita_files --- 
+# Include aux register descriptions in the generated ipxact.
+# 
+-generate_dita_files false
+
+# additional_ipxact --- Name additional Verilog .v files in the RTL directory for which you want ipxact.  Separate multiple files by commas or spaces.  Exclude the .v extension.
+-additional_ipxact ""
+
+# ralf2rtl --- 
+# Use ralf2rtl to generate Verilog for .ralf files.
+# 
+-ralf2rtl true
+
+
+######## SRAMCtrl --- com.arc.hardware.ARCv2MSS.SRAMCtrl.1_0 ########
+
+# Create SRAMCtrl
+-create com.arc.hardware.ARCv2MSS.SRAMCtrl.1_0 System.SRAMCtrl
+
+# alb_mss_mem_region_num --- The number of regions supported in SRAMCtrl component
+-alb_mss_mem_region_num 1
+
+# alb_mss_mem0_base_addr --- This specifies the base address of memory region 0 in the memory map, divided by 4KB i.e. do no specify the lower 12 bits of the address.
+-alb_mss_mem0_base_addr 0
+
+# alb_mss_mem0_size --- This specifies the memory size of memory region 0.
+-alb_mss_mem0_size 2GB
+
+# alb_mss_mem0_attr --- This specifies the memory access attribute of memory region 0.
+-alb_mss_mem0_attr Read-Write
+
+# alb_mss_mem0_secure --- This specifies the memory secure attribute of memory region 0.
+-alb_mss_mem0_secure Non-Secure
+
+# alb_mss_mem0_lat --- This specifies the maximum latency of memory region 0 .
+-alb_mss_mem0_lat 0
+
+# alb_mss_mem0_def_lat --- This specifies the latency after reset of memory region 0.
+-alb_mss_mem0_def_lat 0
+
+# alb_mss_mem0_lat_rd --- This specifies the maximum read latency of memory region 0 .
+-alb_mss_mem0_lat_rd 0
+
+# alb_mss_mem0_def_lat_rd --- This specifies the read latency after reset of memory region 0.
+-alb_mss_mem0_def_lat_rd 0
+
+# alb_mss_mem0_lat_wr --- This specifies the maximum write latency of memory region 0 .
+-alb_mss_mem0_lat_wr 0
+
+# alb_mss_mem0_def_lat_wr --- This specifies the write latency after reset of memory region 0.
+-alb_mss_mem0_def_lat_wr 0
+
+# alb_mss_mem1_def_lat --- This specifies the latency after reset of memory region 1.
+-alb_mss_mem1_def_lat 0
+
+# alb_mss_mem2_def_lat --- This specifies the latency after reset of memory region 2.
+-alb_mss_mem2_def_lat 0
+
+# alb_mss_mem3_def_lat --- This specifies the latency after reset of memory region 3.
+-alb_mss_mem3_def_lat 0
+
+# alb_mss_mem_is_default_slave --- If true then all transactions without destination will be routed here.
+-alb_mss_mem_is_default_slave true
+
+# alb_mss_mem_default_space --- This specifies the memory space width of the system.
+-alb_mss_mem_default_space 32
+
+# alb_mss_mem_wr_rsp_ahead --- If true then write response of SRAMCtrl is returned ahead at the same cycle of wr_last so that AHB protocol can achieve its best write performance. Notes: It's recommended that this option should only enabled when the master accessing the memory is AHB type and attempts to obtain the best write performance. For AXI protocol, please disable it to avoid the protocol violation
+-alb_mss_mem_wr_rsp_ahead false
+
+# alb_mss_mem_conflict_free --- If true then all masters can access the memory simultaneously without confliction. It is especially used in some benchmarking scenarios and not recommended for regular CCT tests
+-alb_mss_mem_conflict_free false
+
+# pss_runtime_debug --- If true then add a PSS message address and PSS print address in memory model.
+-pss_runtime_debug false
+
+# pss_license_check --- If true then will check PSS license.
+-pss_license_check false
+
+# pss_msg_addr --- This specifies the PSS message address for PSS runtime debug
+-pss_msg_addr 0x0
+
+# alb_mss_mem_data_width --- This specifies the memory data width
+-alb_mss_mem_data_width 64
+
+
+######## Tool Configuration --- cgen.1_0 ########
+
+# Create Tool Configuration
+-create cgen.1_0 "System.Tool Configuration"
+
+# mwdt_version --- Selects the MetaWare version to be used with the TCF file.
+# Change from the "default" setting to an older or newer toolset version if you want the TCF file to be used with an older or newer version of the MetaWare tools.
+-mwdt_version U-2022.12
+
+# code_base_addr --- 
+# The base address to assign to the executable code segment in the linker command file when there is no ICCM in the build.  If not set here, the value 0 or the location of the interrupt vectors may be used as a default.  This value is ignored when there is an ICCM.
+# 
+-code_base_addr 0xffffffff
+
+# data_base_addr --- 
+# The base address to assign to the data segment in the linker command file when the data is not being mapped to a DCCM.  This value is ignored when the data segment is mapped to a DCCM, as in that case the base address of the DCCM memory is used.
+# 
+# A value of 0xffffffff means that the data segment will not be mapped to any specific address.
+# 
+-data_base_addr 0xffffffff
+
+# ucdata_base_addr --- 
+# The base address to assign to the .ucdata section used to contain data designated _Uncached.  The region must not overlap the address ranges where code and data will be mapped in the TCF linker command file.
+# 
+-ucdata_base_addr 0xffffffff
+
+# ucdata_mem_size --- 
+# The size of the memory region to reserve for the .ucdata section
+# 
+-ucdata_mem_size 0
+
+# underscores_in_numbers --- Use underscores in hex numbers to improve readability.
+-underscores_in_numbers false
+
+# lcf_ccm_fill --- Linker command file fills CCM data memory for use with -Bzerobss
+-lcf_ccm_fill true
+
+# tcf_rebrand_name --- Alternate branding name for TCF (not used)
+-rebrand_name ""
+
+
+]]></string>
+  </configuration>
+  <configuration name="assembler_defines" filename="core_config.s">
+    <string><![CDATA[
+.ifndef __core_config_s
+	.define __core_config_s, 1
+	.define _TOOL_CONFIG_VER, 10099
+	;--------  NOTE: Start of BCR/CIR Macros ------------------
+	; The initial macros with "_bcr_" or "_cir_" in the macro name
+	; may appear and disappear as different hardware releases change the
+	; layout of configuration registers. Additionally, the semantics of
+	; a "bcr" or "cir" macro value is subject to change.
+	; For these reasons it is recommended to avoid dependency on macros
+	; which have "_bcr_" or "_cir_" in the name (and request alternative
+	; macros as needed).
+	;----------------------------------------------------------
+	.define	core_config_cir_identity,0x00000054
+	.define	core_config_cir_identity_chipid,0
+	.define	core_config_cir_identity_arcnum,0
+	.define	core_config_cir_identity_arcver,84
+	.define	core_config_cir_identity_family,5
+	.define	core_config_cir_identity_corever,4
+	.define	core_config_cir_aux_dccm,0x70000000
+	.define	core_config_cir_aux_volatile,0xf0000002
+	.define	core_config_cir_aux_volatile_base_region,15
+	.define	core_config_cir_aux_volatile_limit_region,0
+	.define	core_config_cir_aux_volatile_s,1
+	.define	core_config_cir_aux_volatile_d,0
+	.define	core_config_bcr_bcr_ver,0x00000002
+	.define	core_config_bcr_bcr_ver_version,2
+	.define	core_config_bcr_vecbase_ac_build,0x00000011
+	.define	core_config_bcr_vecbase_ac_build_version,4
+	.define	core_config_bcr_vecbase_ac_build_vector_config,1
+	.define	core_config_bcr_vecbase_ac_build_addr,0
+	.define	core_config_bcr_mpu_build,0x00000803
+	.define	core_config_bcr_mpu_build_ecc,0
+	.define	core_config_bcr_mpu_build_i,0
+	.define	core_config_bcr_mpu_build_s,0
+	.define	core_config_bcr_mpu_build_regions,8
+	.define	core_config_bcr_mpu_build_version,3
+	.define	core_config_bcr_rf_build,0x00000102
+	.define	core_config_bcr_rf_build_version,2
+	.define	core_config_bcr_rf_build_p,1
+	.define	core_config_bcr_rf_build_e,0
+	.define	core_config_bcr_rf_build_r,0
+	.define	core_config_bcr_rf_build_b,0
+	.define	core_config_bcr_rf_build_d,0
+	.define	core_config_bcr_mmu_build,0x04e1984a
+	.define	core_config_bcr_mmu_build_version,4
+	.define	core_config_bcr_mmu_build_sl,1
+	.define	core_config_bcr_mmu_build_psz1,12
+	.define	core_config_bcr_mmu_build_psz0,3
+	.define	core_config_bcr_mmu_build_dl,0
+	.define	core_config_bcr_mmu_build_ct,0
+	.define	core_config_bcr_mmu_build_pae,1
+	.define	core_config_bcr_mmu_build_ja,2
+	.define	core_config_bcr_mmu_build_je,0
+	.define	core_config_bcr_mmu_build_jes,1
+	.define	core_config_bcr_mmu_build_itlb,1
+	.define	core_config_bcr_mmu_build_dtlb,2
+	.define	core_config_bcr_d_cache_build,0x10226105
+	.define	core_config_bcr_d_cache_build_version,5
+	.define	core_config_bcr_d_cache_build_assoc,1
+	.define	core_config_bcr_d_cache_build_capacity,6
+	.define	core_config_bcr_d_cache_build_bsize,2
+	.define	core_config_bcr_d_cache_build_fl,2
+	.define	core_config_bcr_d_cache_build_ioc,0
+	.define	core_config_bcr_d_cache_build_cp,0
+	.define	core_config_bcr_d_cache_build_u,0
+	.define	core_config_bcr_d_cache_build_cycles,2
+	.define	core_config_bcr_dccm_build,0x00140704
+	.define	core_config_bcr_dccm_build_w,0
+	.define	core_config_bcr_dccm_build_cycles,2
+	.define	core_config_bcr_dccm_build_interleave,0
+	.define	core_config_bcr_dccm_build_size1,0
+	.define	core_config_bcr_dccm_build_size0,7
+	.define	core_config_bcr_dccm_build_version,4
+	.define	core_config_bcr_timer_build,0x00000506
+	.define	core_config_bcr_timer_build_sp1,0
+	.define	core_config_bcr_timer_build_sp0,0
+	.define	core_config_bcr_timer_build_p1,0
+	.define	core_config_bcr_timer_build_p0,0
+	.define	core_config_bcr_timer_build_st1,0
+	.define	core_config_bcr_timer_build_st0,0
+	.define	core_config_bcr_timer_build_rtc,1
+	.define	core_config_bcr_timer_build_rtsc_ver,0
+	.define	core_config_bcr_timer_build_rtsc,0
+	.define	core_config_bcr_timer_build_t0,1
+	.define	core_config_bcr_timer_build_t1,0
+	.define	core_config_bcr_timer_build_version,6
+	.define	core_config_bcr_ap_build,0x00000605
+	.define	core_config_bcr_ap_build_version,5
+	.define	core_config_bcr_ap_build_type,6
+	.define	core_config_bcr_i_cache_build,0x00236204
+	.define	core_config_bcr_i_cache_build_version,4
+	.define	core_config_bcr_i_cache_build_assoc,2
+	.define	core_config_bcr_i_cache_build_capacity,6
+	.define	core_config_bcr_i_cache_build_bsize,3
+	.define	core_config_bcr_i_cache_build_fl,2
+	.define	core_config_bcr_i_cache_build_d,0
+	.define	core_config_bcr_multiply_build,0x00023206
+	.define	core_config_bcr_multiply_build_version16x16,2
+	.define	core_config_bcr_multiply_build_dsp,3
+	.define	core_config_bcr_multiply_build_cyc,0
+	.define	core_config_bcr_multiply_build_type,2
+	.define	core_config_bcr_multiply_build_version32x32,6
+	.define	core_config_bcr_swap_build,0x00000003
+	.define	core_config_bcr_swap_build_version,3
+	.define	core_config_bcr_norm_build,0x00000003
+	.define	core_config_bcr_norm_build_version,3
+	.define	core_config_bcr_minmax_build,0x00000002
+	.define	core_config_bcr_minmax_build_version,2
+	.define	core_config_bcr_barrel_build,0x00000303
+	.define	core_config_bcr_barrel_build_version,3
+	.define	core_config_bcr_barrel_build_shift_option,3
+	.define	core_config_bcr_bpu_build,0x00a91106
+	.define	core_config_bcr_bpu_build_version,6
+	.define	core_config_bcr_bpu_build_bce,1
+	.define	core_config_bcr_bpu_build_pte,2
+	.define	core_config_bcr_bpu_build_rse,0
+	.define	core_config_bcr_bpu_build_ft,1
+	.define	core_config_bcr_bpu_build_ts,20
+	.define	core_config_bcr_bpu_build_tqe,2
+	.define	core_config_bcr_bpu_build_fbe,0
+	.define	core_config_bcr_bpu_build_bdb,0
+	.define	core_config_bcr_isa_config,0x23e47402
+	.define	core_config_bcr_isa_config_res1,0
+	.define	core_config_bcr_isa_config_d,2
+	.define	core_config_bcr_isa_config_res2,0
+	.define	core_config_bcr_isa_config_f,0
+	.define	core_config_bcr_isa_config_c,3
+	.define	core_config_bcr_isa_config_l,1
+	.define	core_config_bcr_isa_config_n,1
+	.define	core_config_bcr_isa_config_a,1
+	.define	core_config_bcr_isa_config_b,0
+	.define	core_config_bcr_isa_config_addr_size,4
+	.define	core_config_bcr_isa_config_lpc_size,7
+	.define	core_config_bcr_isa_config_pc_size,4
+	.define	core_config_bcr_isa_config_version,2
+	.define	core_config_bcr_stack_region_build,0x00000002
+	.define	core_config_bcr_erp_build,0x050b4505
+	.define	core_config_bcr_erp_build_l,0
+	.define	core_config_bcr_erp_build_wd,0
+	.define	core_config_bcr_erp_build_c,0
+	.define	core_config_bcr_erp_build_app,0
+	.define	core_config_bcr_erp_build_mmu,5
+	.define	core_config_bcr_erp_build_pipe_edc,0
+	.define	core_config_bcr_erp_build_vccm,0
+	.define	core_config_bcr_erp_build_rf,0
+	.define	core_config_bcr_erp_build_pc,0
+	.define	core_config_bcr_erp_build_ic,5
+	.define	core_config_bcr_erp_build_dc,5
+	.define	core_config_bcr_erp_build_ip,0
+	.define	core_config_bcr_erp_build_dp,5
+	.define	core_config_bcr_erp_build_version,5
+	.define	core_config_bcr_cluster_build,0x40000107
+	.define	core_config_bcr_cluster_build_scu_trace,0
+	.define	core_config_bcr_cluster_build_gate,1
+	.define	core_config_bcr_cluster_build_sm,0
+	.define	core_config_bcr_cluster_build_sf,0
+	.define	core_config_bcr_cluster_build_per,0
+	.define	core_config_bcr_cluster_build_c,0
+	.define	core_config_bcr_cluster_build_num_entries,0
+	.define	core_config_bcr_cluster_build_sclk,0
+	.define	core_config_bcr_cluster_build_cc_wbuf,0
+	.define	core_config_bcr_cluster_build_num_cores,1
+	.define	core_config_bcr_cluster_build_version,7
+	.define	core_config_bcr_biu_build,0x10008101
+	.define	core_config_bcr_biu_build_separate_clk,0
+	.define	core_config_bcr_biu_build_bus_ecc_parity_option,1
+	.define	core_config_bcr_biu_build_bus_ecc_data_option,0
+	.define	core_config_bcr_biu_build_bus_ecc_en,0
+	.define	core_config_bcr_biu_build_uslv_access_per1,0
+	.define	core_config_bcr_biu_build_uslv_ioc_full_coh,0
+	.define	core_config_bcr_biu_build_uslv_support_ioc,0
+	.define	core_config_bcr_biu_build_uslv_bus,0
+	.define	core_config_bcr_biu_build_dmi_bus,1
+	.define	core_config_bcr_biu_build_ioc_bus,0
+	.define	core_config_bcr_biu_build_per_bus,0
+	.define	core_config_bcr_biu_build_mem_bus,1
+	.define	core_config_bcr_biu_build_version,1
+	.define	core_config_bcr_npu_build,0x703cec11
+	.define	core_config_bcr_npu_build_version,17
+	.define	core_config_bcr_npu_build_sl,12
+	.define	core_config_bcr_npu_build_ecc,1
+	.define	core_config_bcr_npu_build_l2,1
+	.define	core_config_bcr_npu_build_l1,1
+	.define	core_config_bcr_npu_build_mc,4
+	.define	core_config_bcr_npu_build_evt,1
+	.define	core_config_bcr_npu_build_vm,4
+	.define	core_config_bcr_npu_build_am,3
+	.define	core_config_bcr_ewdt_build,0xc0004402
+	.define	core_config_bcr_ewdt_build_separate_clock,1
+	.define	core_config_bcr_ewdt_build_parity_check,1
+	.define	core_config_bcr_ewdt_build_ext_input,0
+	.define	core_config_bcr_ewdt_build_timer_size,1
+	.define	core_config_bcr_ewdt_build_window,1
+	.define	core_config_bcr_ewdt_build_num_timers,0
+	.define	core_config_bcr_ewdt_build_version,2
+	.define	core_config_bcr_rtt_build,0x00080108
+	.define	core_config_bcr_rtt_build_prod_src_num,0
+	.define	core_config_bcr_rtt_build_fl,0
+	.define	core_config_bcr_rtt_build_pi,1
+	.define	core_config_bcr_rtt_build_version,8
+	.define	core_config_bcr_irq_build,0x02242702
+	.define	core_config_bcr_irq_build_raz,0
+	.define	core_config_bcr_irq_build_nmi,0
+	.define	core_config_bcr_irq_build_f,0
+	.define	core_config_bcr_irq_build_p,2
+	.define	core_config_bcr_irq_build_exts,36
+	.define	core_config_bcr_irq_build_irqs,39
+	.define	core_config_bcr_irq_build_version,2
+	.define	core_config_bcr_pct_build,0x00080503
+	.define	core_config_bcr_pct_build_version,3
+	.define	core_config_bcr_pct_build_s,1
+	.define	core_config_bcr_pct_build_i,1
+	.define	core_config_bcr_pct_build_c,8
+	.define	core_config_bcr_cc_build,0x007f0002
+	.define	core_config_bcr_cc_build_version,2
+	.define	core_config_bcr_cc_build_cc,127
+	.define	core_config_bcr_isa_profile,0x00011101
+	.define	core_config_bcr_isa_profile_g4,0
+	.define	core_config_bcr_isa_profile_g3,1
+	.define	core_config_bcr_isa_profile_g2,1
+	.define	core_config_bcr_isa_profile_g1,1
+	.define	core_config_bcr_isa_profile_version,1
+	.define	core_config_bcr_micro_arch_build,0x00030302
+	.define	core_config_bcr_micro_arch_build_minor_rev,2
+	.define	core_config_bcr_micro_arch_build_major_rev,3
+	.define	core_config_bcr_micro_arch_build_product_family,3
+	.define	core_config_bcr_micro_arch_build_reserved,0
+	.define	core_config_bcr_smart_build,0x00020004
+	.define	core_config_bcr_smart_build_version,4
+	.define	core_config_bcr_smart_build_stack_size,128
+	.define	core_config_cir_data_mem_attr,0x00000003
+	.define	core_config_cir_cluster_id,0x00000000
+	.define	core_config_cir_cluster_id_cluster_num,0
+	;------------- End of BCR/CIR Macros ---------------------
+	.define	core_config_family,5
+	.define	core_config_core_version,4
+	.define	core_config_family_name,"arcv2hs"
+	.define	core_config_uarch_rev_major,3
+	.define	core_config_uarch_rev_minor,2
+	.define	core_config_early_and_late_basic_alu,1
+	.define	core_config_code_density,1
+	.define	core_config_rgf_num_banks,1
+	.define	core_config_rgf_num_wr_ports,2
+	.define	core_config_endian,"little"
+	.define	core_config_endian_little,1
+	.define	core_config_endian_big,0
+	.define	core_config_lpc_size,32
+	.define	core_config_pc_size,32
+	.define	core_config_addr_size,32
+	.define	core_config_atomic,1
+	.define	core_config_ll64,1
+	.define	core_config_unaligned,1
+	.define	core_config_div_rem,"radix4"
+	.define	core_config_div_rem_radix4,1
+	.define	core_config_swap,1
+	.define	core_config_bitscan,1
+	.define	core_config_mpy_option,"qmpyh"
+	.define	core_config_mpy_option_num,9
+	.define	core_config_shift_assist,1
+	.define	core_config_barrel_shifter,1
+	.define	core_config_timer0,1
+	.define	core_config_timer0_level,0
+	.define	core_config_timer0_vector,16
+	.define	core_config_rtc,1
+	.define	core_config_action_points,8
+	.define	core_config_stack_check,1
+	.define	core_config_volatile_base,15
+	.define	core_config_volatile_limit,0
+	.define	core_config_volatile_strict_ordering,1
+	.define	core_config_bpu_bc_entries,512
+	.define	core_config_bpu_pt_entries,8192
+	.define	core_config_bpu_rs_entries,4
+	.define	core_config_bpu_bc_full_tag,1
+	.define	core_config_bpu_bc_tag_size,20
+	.define	core_config_bpu_tosq_entries,5
+	.define	core_config_bpu_fb_entries,1
+	.define	core_config_smart_version,4
+	.define	core_config_smart_stack_entries,128
+	.define	core_config_mpu_present,1
+	.define	core_config_mpu_version,3
+	.define	core_config_mpuv3,1
+	.define	core_config_mpu_regions,8
+	.define	core_config_mmu_version,4
+	.define	core_config_mmuv4_present,1
+	.define	core_config_mmuv4,1
+	.define	core_config_mmu_pgsz,4096
+	.define	core_config_mmu_pgsz_KM,"4K"
+	.define	core_config_mmu_ntlb_entries,256
+	.define	core_config_mmu_stlb_entries,16
+	.define	core_config_mmu_super_pgsz,2097152
+	.define	core_config_mmu_super_pgsz_KM,"2M"
+	.define	core_config_mmu_pae40,1
+	.define	core_config_mmu_sasid,1
+	.define	core_config_interrupts_present,1
+	.define	core_config_interrupts_number,39
+	.define	core_config_interrupts_priorities,3
+	.define	core_config_interrupts_externals,36
+	.define	core_config_interrupts,39
+	.define	core_config_interrupt_priorities,3
+	.define	core_config_ext_interrupts,36
+	.define	core_config_interrupts_base,0x0
+	.define	core_config_intvbase_ext,1
+	.define	core_config_dcache_present,1
+	.define	core_config_dcache_size,32768
+	.define	core_config_dcache_line_size,64
+	.define	core_config_dcache_ways,2
+	.define	core_config_dcache_version,5
+	.define	core_config_dcache_feature,2
+	.define	core_config_dcache_mem_cycles,2
+	.define	core_config_icache_present,1
+	.define	core_config_icache_size,32768
+	.define	core_config_icache_line_size,64
+	.define	core_config_icache_ways,4
+	.define	core_config_icache_version,4
+	.define	core_config_icache_feature,2
+	.define	core_config_dccm_present,1
+	.define	core_config_dccm_size,0x8000
+	.define	core_config_dccm_base,0x70000000
+	.define	core_config_dccm_mem_cycles,2
+	.define	core_config_dccm_dmi,1
+	.define	core_config_dccm_sys_base_core0,0x42000000
+	.define	core_config_dccm_sys_base,0x42000000
+	.define	core_config_watchdog_num,1
+	.define	core_config_watchdog_parity,1
+	.define	core_config_watchdog_clk,1
+	.define	core_config_watchdog_size0,32
+	.define	core_config_watchdog_win0,1
+	.define	core_config_watchdog_clk_freq,200
+	.define	core_config_error_prot_ver,5
+	.define	core_config_dccm_prot,"ecc_01"
+	.define	core_config_dccm_prot_level,"data_only"
+	.define	core_config_dccm_prot_val,5
+	.define	core_config_ic_prot,"ecc_01"
+	.define	core_config_ic_prot_level,"data_only"
+	.define	core_config_ic_prot_val,5
+	.define	core_config_dc_prot,"ecc_01"
+	.define	core_config_dc_prot_level,"data_only"
+	.define	core_config_dc_prot_val,5
+	.define	core_config_mmu_prot,"ecc_01"
+	.define	core_config_mmu_prot_level,"data_only"
+	.define	core_config_mmu_prot_val,5
+	.define	core_config_pct_counters,8
+	.define	core_config_pct_interrupt,1
+	.define	core_config_cluster_version,7
+	.define	core_config_cluster_num_cores,1
+	.define	core_config_clock_gating,1
+	.define	core_config_data_memory_initiator,0
+	.define	core_config_clock_speed,800
+.endif ; __core_config_s
+
+]]></string>
+  </configuration>
+  <configuration name="C_defines" filename="core_config.h">
+    <string><![CDATA[
+#ifndef core_config_h
+#define core_config_h
+    /* coverity[misra_c_2012_rule_21_1_violation] */
+    /* coverity[misra_c_2012_rule_21_2_violation] */
+#define __core_config_h
+
+    /* coverity[misra_c_2012_rule_21_1_violation] */
+    /* coverity[misra_c_2012_rule_21_2_violation] */
+#define _TOOL_CONFIG_VER 10099
+
+	/********  NOTE: Start of BCR/CIR Macros ******************
+	 * The initial macros with "_bcr_" or "_cir_" in the macro name
+	 * may appear and disappear as different hardware releases change the
+	 * layout of configuration registers. Additionally, the semantics of
+	 * a "bcr" or "cir" macro value is subject to change.
+	 * For these reasons it is recommended to avoid dependency on symbols
+	 * which have "_bcr_" or "_cir_" in the name (and request alternative
+	 * macros as needed).
+	 **********************************************************/
+	#define	core_config_cir_identity	0x00000054
+	#define	core_config_cir_identity_chipid	0
+	#define	core_config_cir_identity_arcnum	0
+	#define	core_config_cir_identity_arcver	84
+	#define	core_config_cir_identity_family	5
+	#define	core_config_cir_identity_corever	4
+	#define	core_config_cir_aux_dccm	0x70000000
+	#define	core_config_cir_aux_volatile	0xf0000002UL
+	#define	core_config_cir_aux_volatile_base_region	15
+	#define	core_config_cir_aux_volatile_limit_region	0
+	#define	core_config_cir_aux_volatile_s	1
+	#define	core_config_cir_aux_volatile_d	0
+	#define	core_config_bcr_bcr_ver	0x00000002
+	#define	core_config_bcr_bcr_ver_version	2
+	#define	core_config_bcr_vecbase_ac_build	0x00000011
+	#define	core_config_bcr_vecbase_ac_build_version	4
+	#define	core_config_bcr_vecbase_ac_build_vector_config	1
+	#define	core_config_bcr_vecbase_ac_build_addr	0
+	#define	core_config_bcr_mpu_build	0x00000803
+	#define	core_config_bcr_mpu_build_ecc	0
+	#define	core_config_bcr_mpu_build_i	0
+	#define	core_config_bcr_mpu_build_s	0
+	#define	core_config_bcr_mpu_build_regions	8
+	#define	core_config_bcr_mpu_build_version	3
+	#define	core_config_bcr_rf_build	0x00000102
+	#define	core_config_bcr_rf_build_version	2
+	#define	core_config_bcr_rf_build_p	1
+	#define	core_config_bcr_rf_build_e	0
+	#define	core_config_bcr_rf_build_r	0
+	#define	core_config_bcr_rf_build_b	0
+	#define	core_config_bcr_rf_build_d	0
+	#define	core_config_bcr_mmu_build	0x04e1984a
+	#define	core_config_bcr_mmu_build_version	4
+	#define	core_config_bcr_mmu_build_sl	1
+	#define	core_config_bcr_mmu_build_psz1	12
+	#define	core_config_bcr_mmu_build_psz0	3
+	#define	core_config_bcr_mmu_build_dl	0
+	#define	core_config_bcr_mmu_build_ct	0
+	#define	core_config_bcr_mmu_build_pae	1
+	#define	core_config_bcr_mmu_build_ja	2
+	#define	core_config_bcr_mmu_build_je	0
+	#define	core_config_bcr_mmu_build_jes	1
+	#define	core_config_bcr_mmu_build_itlb	1
+	#define	core_config_bcr_mmu_build_dtlb	2
+	#define	core_config_bcr_d_cache_build	0x10226105
+	#define	core_config_bcr_d_cache_build_version	5
+	#define	core_config_bcr_d_cache_build_assoc	1
+	#define	core_config_bcr_d_cache_build_capacity	6
+	#define	core_config_bcr_d_cache_build_bsize	2
+	#define	core_config_bcr_d_cache_build_fl	2
+	#define	core_config_bcr_d_cache_build_ioc	0
+	#define	core_config_bcr_d_cache_build_cp	0
+	#define	core_config_bcr_d_cache_build_u	0
+	#define	core_config_bcr_d_cache_build_cycles	2
+	#define	core_config_bcr_dccm_build	0x00140704
+	#define	core_config_bcr_dccm_build_w	0
+	#define	core_config_bcr_dccm_build_cycles	2
+	#define	core_config_bcr_dccm_build_interleave	0
+	#define	core_config_bcr_dccm_build_size1	0
+	#define	core_config_bcr_dccm_build_size0	7
+	#define	core_config_bcr_dccm_build_version	4
+	#define	core_config_bcr_timer_build	0x00000506
+	#define	core_config_bcr_timer_build_sp1	0
+	#define	core_config_bcr_timer_build_sp0	0
+	#define	core_config_bcr_timer_build_p1	0
+	#define	core_config_bcr_timer_build_p0	0
+	#define	core_config_bcr_timer_build_st1	0
+	#define	core_config_bcr_timer_build_st0	0
+	#define	core_config_bcr_timer_build_rtc	1
+	#define	core_config_bcr_timer_build_rtsc_ver	0
+	#define	core_config_bcr_timer_build_rtsc	0
+	#define	core_config_bcr_timer_build_t0	1
+	#define	core_config_bcr_timer_build_t1	0
+	#define	core_config_bcr_timer_build_version	6
+	#define	core_config_bcr_ap_build	0x00000605
+	#define	core_config_bcr_ap_build_version	5
+	#define	core_config_bcr_ap_build_type	6
+	#define	core_config_bcr_i_cache_build	0x00236204
+	#define	core_config_bcr_i_cache_build_version	4
+	#define	core_config_bcr_i_cache_build_assoc	2
+	#define	core_config_bcr_i_cache_build_capacity	6
+	#define	core_config_bcr_i_cache_build_bsize	3
+	#define	core_config_bcr_i_cache_build_fl	2
+	#define	core_config_bcr_i_cache_build_d	0
+	#define	core_config_bcr_multiply_build	0x00023206
+	#define	core_config_bcr_multiply_build_version16x16	2
+	#define	core_config_bcr_multiply_build_dsp	3
+	#define	core_config_bcr_multiply_build_cyc	0
+	#define	core_config_bcr_multiply_build_type	2
+	#define	core_config_bcr_multiply_build_version32x32	6
+	#define	core_config_bcr_swap_build	0x00000003
+	#define	core_config_bcr_swap_build_version	3
+	#define	core_config_bcr_norm_build	0x00000003
+	#define	core_config_bcr_norm_build_version	3
+	#define	core_config_bcr_minmax_build	0x00000002
+	#define	core_config_bcr_minmax_build_version	2
+	#define	core_config_bcr_barrel_build	0x00000303
+	#define	core_config_bcr_barrel_build_version	3
+	#define	core_config_bcr_barrel_build_shift_option	3
+	#define	core_config_bcr_bpu_build	0x00a91106
+	#define	core_config_bcr_bpu_build_version	6
+	#define	core_config_bcr_bpu_build_bce	1
+	#define	core_config_bcr_bpu_build_pte	2
+	#define	core_config_bcr_bpu_build_rse	0
+	#define	core_config_bcr_bpu_build_ft	1
+	#define	core_config_bcr_bpu_build_ts	20
+	#define	core_config_bcr_bpu_build_tqe	2
+	#define	core_config_bcr_bpu_build_fbe	0
+	#define	core_config_bcr_bpu_build_bdb	0
+	#define	core_config_bcr_isa_config	0x23e47402
+	#define	core_config_bcr_isa_config_res1	0
+	#define	core_config_bcr_isa_config_d	2
+	#define	core_config_bcr_isa_config_res2	0
+	#define	core_config_bcr_isa_config_f	0
+	#define	core_config_bcr_isa_config_c	3
+	#define	core_config_bcr_isa_config_l	1
+	#define	core_config_bcr_isa_config_n	1
+	#define	core_config_bcr_isa_config_a	1
+	#define	core_config_bcr_isa_config_b	0
+	#define	core_config_bcr_isa_config_addr_size	4
+	#define	core_config_bcr_isa_config_lpc_size	7
+	#define	core_config_bcr_isa_config_pc_size	4
+	#define	core_config_bcr_isa_config_version	2
+	#define	core_config_bcr_stack_region_build	0x00000002
+	#define	core_config_bcr_erp_build	0x050b4505
+	#define	core_config_bcr_erp_build_l	0
+	#define	core_config_bcr_erp_build_wd	0
+	#define	core_config_bcr_erp_build_c	0
+	#define	core_config_bcr_erp_build_app	0
+	#define	core_config_bcr_erp_build_mmu	5
+	#define	core_config_bcr_erp_build_pipe_edc	0
+	#define	core_config_bcr_erp_build_vccm	0
+	#define	core_config_bcr_erp_build_rf	0
+	#define	core_config_bcr_erp_build_pc	0
+	#define	core_config_bcr_erp_build_ic	5
+	#define	core_config_bcr_erp_build_dc	5
+	#define	core_config_bcr_erp_build_ip	0
+	#define	core_config_bcr_erp_build_dp	5
+	#define	core_config_bcr_erp_build_version	5
+	#define	core_config_bcr_cluster_build	0x40000107
+	#define	core_config_bcr_cluster_build_scu_trace	0
+	#define	core_config_bcr_cluster_build_gate	1
+	#define	core_config_bcr_cluster_build_sm	0
+	#define	core_config_bcr_cluster_build_sf	0
+	#define	core_config_bcr_cluster_build_per	0
+	#define	core_config_bcr_cluster_build_c	0
+	#define	core_config_bcr_cluster_build_num_entries	0
+	#define	core_config_bcr_cluster_build_sclk	0
+	#define	core_config_bcr_cluster_build_cc_wbuf	0
+	#define	core_config_bcr_cluster_build_num_cores	1
+	#define	core_config_bcr_cluster_build_version	7
+	#define	core_config_bcr_biu_build	0x10008101
+	#define	core_config_bcr_biu_build_separate_clk	0
+	#define	core_config_bcr_biu_build_bus_ecc_parity_option	1
+	#define	core_config_bcr_biu_build_bus_ecc_data_option	0
+	#define	core_config_bcr_biu_build_bus_ecc_en	0
+	#define	core_config_bcr_biu_build_uslv_access_per1	0
+	#define	core_config_bcr_biu_build_uslv_ioc_full_coh	0
+	#define	core_config_bcr_biu_build_uslv_support_ioc	0
+	#define	core_config_bcr_biu_build_uslv_bus	0
+	#define	core_config_bcr_biu_build_dmi_bus	1
+	#define	core_config_bcr_biu_build_ioc_bus	0
+	#define	core_config_bcr_biu_build_per_bus	0
+	#define	core_config_bcr_biu_build_mem_bus	1
+	#define	core_config_bcr_biu_build_version	1
+	#define	core_config_bcr_npu_build	0x703cec11
+	#define	core_config_bcr_npu_build_version	17
+	#define	core_config_bcr_npu_build_sl	12
+	#define	core_config_bcr_npu_build_ecc	1
+	#define	core_config_bcr_npu_build_l2	1
+	#define	core_config_bcr_npu_build_l1	1
+	#define	core_config_bcr_npu_build_mc	4
+	#define	core_config_bcr_npu_build_evt	1
+	#define	core_config_bcr_npu_build_vm	4
+	#define	core_config_bcr_npu_build_am	3
+	#define	core_config_bcr_ewdt_build	0xc0004402UL
+	#define	core_config_bcr_ewdt_build_separate_clock	1
+	#define	core_config_bcr_ewdt_build_parity_check	1
+	#define	core_config_bcr_ewdt_build_ext_input	0
+	#define	core_config_bcr_ewdt_build_timer_size	1
+	#define	core_config_bcr_ewdt_build_window	1
+	#define	core_config_bcr_ewdt_build_num_timers	0
+	#define	core_config_bcr_ewdt_build_version	2
+	#define	core_config_bcr_rtt_build	0x00080108
+	#define	core_config_bcr_rtt_build_prod_src_num	0
+	#define	core_config_bcr_rtt_build_fl	0
+	#define	core_config_bcr_rtt_build_pi	1
+	#define	core_config_bcr_rtt_build_version	8
+	#define	core_config_bcr_irq_build	0x02242702
+	#define	core_config_bcr_irq_build_raz	0
+	#define	core_config_bcr_irq_build_nmi	0
+	#define	core_config_bcr_irq_build_f	0
+	#define	core_config_bcr_irq_build_p	2
+	#define	core_config_bcr_irq_build_exts	36
+	#define	core_config_bcr_irq_build_irqs	39
+	#define	core_config_bcr_irq_build_version	2
+	#define	core_config_bcr_pct_build	0x00080503
+	#define	core_config_bcr_pct_build_version	3
+	#define	core_config_bcr_pct_build_s	1
+	#define	core_config_bcr_pct_build_i	1
+	#define	core_config_bcr_pct_build_c	8
+	#define	core_config_bcr_cc_build	0x007f0002
+	#define	core_config_bcr_cc_build_version	2
+	#define	core_config_bcr_cc_build_cc	127
+	#define	core_config_bcr_isa_profile	0x00011101
+	#define	core_config_bcr_isa_profile_g4	0
+	#define	core_config_bcr_isa_profile_g3	1
+	#define	core_config_bcr_isa_profile_g2	1
+	#define	core_config_bcr_isa_profile_g1	1
+	#define	core_config_bcr_isa_profile_version	1
+	#define	core_config_bcr_micro_arch_build	0x00030302
+	#define	core_config_bcr_micro_arch_build_minor_rev	2
+	#define	core_config_bcr_micro_arch_build_major_rev	3
+	#define	core_config_bcr_micro_arch_build_product_family	3
+	#define	core_config_bcr_micro_arch_build_reserved	0
+	#define	core_config_bcr_smart_build	0x00020004
+	#define	core_config_bcr_smart_build_version	4
+	#define	core_config_bcr_smart_build_stack_size	128
+	#define	core_config_cir_data_mem_attr	0x00000003
+	#define	core_config_cir_cluster_id	0x00000000
+	#define	core_config_cir_cluster_id_cluster_num	0
+	/************* End of BCR/CIR Macros **********************/
+	#define	core_config_family	5
+	#define	core_config_core_version	4
+	#define	core_config_family_name	"arcv2hs"
+	#define	core_config_uarch_rev_major	3
+	#define	core_config_uarch_rev_minor	2
+	#define	core_config_early_and_late_basic_alu	1
+	#define	core_config_code_density	1
+	#define	core_config_rgf_num_banks	1
+	#define	core_config_rgf_num_wr_ports	2
+	#define	core_config_endian	"little"
+	#define	core_config_endian_little	1
+	#define	core_config_endian_big	0
+	#define	core_config_lpc_size	32
+	#define	core_config_pc_size	32
+	#define	core_config_addr_size	32
+	#define	core_config_atomic	1
+	#define	core_config_ll64	1
+	#define	core_config_unaligned	1
+	#define	core_config_div_rem	"radix4"
+	#define	core_config_div_rem_radix4	1
+	#define	core_config_swap	1
+	#define	core_config_bitscan	1
+	#define	core_config_mpy_option	"qmpyh"
+	#define	core_config_mpy_option_num	9
+	#define	core_config_shift_assist	1
+	#define	core_config_barrel_shifter	1
+	#define	core_config_timer0	1
+	#define	core_config_timer0_level	0
+	#define	core_config_timer0_vector	16
+	#define	core_config_rtc	1
+	#define	core_config_action_points	8
+	#define	core_config_stack_check	1
+	#define	core_config_volatile_base	15
+	#define	core_config_volatile_limit	0
+	#define	core_config_volatile_strict_ordering	1
+	#define	core_config_bpu_bc_entries	512
+	#define	core_config_bpu_pt_entries	8192
+	#define	core_config_bpu_rs_entries	4
+	#define	core_config_bpu_bc_full_tag	1
+	#define	core_config_bpu_bc_tag_size	20
+	#define	core_config_bpu_tosq_entries	5
+	#define	core_config_bpu_fb_entries	1
+	#define	core_config_smart_version	4
+	#define	core_config_smart_stack_entries	128
+	#define	core_config_mpu_present	1
+	#define	core_config_mpu_version	3
+	#define	core_config_mpuv3	1
+	#define	core_config_mpu_regions	8
+	#define	core_config_mmu_version	4
+	#define	core_config_mmuv4_present	1
+	#define	core_config_mmuv4	1
+	#define	core_config_mmu_pgsz	4096
+	#define	core_config_mmu_pgsz_KM	"4K"
+	#define	core_config_mmu_ntlb_entries	256
+	#define	core_config_mmu_stlb_entries	16
+	#define	core_config_mmu_super_pgsz	2097152
+	#define	core_config_mmu_super_pgsz_KM	"2M"
+	#define	core_config_mmu_pae40	1
+	#define	core_config_mmu_sasid	1
+	#define	core_config_interrupts_present	1
+	#define	core_config_interrupts_number	39
+	#define	core_config_interrupts_priorities	3
+	#define	core_config_interrupts_externals	36
+	#define	core_config_interrupts	39
+	#define	core_config_interrupt_priorities	3
+	#define	core_config_ext_interrupts	36
+	#define	core_config_interrupts_base	0x0
+	#define	core_config_intvbase_ext	1
+	#define	core_config_dcache_present	1
+	#define	core_config_dcache_size	32768
+	#define	core_config_dcache_line_size	64
+	#define	core_config_dcache_ways	2
+	#define	core_config_dcache_version	5
+	#define	core_config_dcache_feature	2
+	#define	core_config_dcache_mem_cycles	2
+	#define	core_config_icache_present	1
+	#define	core_config_icache_size	32768
+	#define	core_config_icache_line_size	64
+	#define	core_config_icache_ways	4
+	#define	core_config_icache_version	4
+	#define	core_config_icache_feature	2
+	#define	core_config_dccm_present	1
+	#define	core_config_dccm_size	0x8000
+	#define	core_config_dccm_base	0x70000000
+	#define	core_config_dccm_mem_cycles	2
+	#define	core_config_dccm_dmi	1
+	#define	core_config_dccm_sys_base_core0	0x42000000
+	#define	core_config_dccm_sys_base	0x42000000
+	#define	core_config_watchdog_num	1
+	#define	core_config_watchdog_parity	1
+	#define	core_config_watchdog_clk	1
+	#define	core_config_watchdog_size0	32
+	#define	core_config_watchdog_win0	1
+	#define	core_config_watchdog_clk_freq	200
+	#define	core_config_error_prot_ver	5
+	#define	core_config_dccm_prot	"ecc_01"
+	#define	core_config_dccm_prot_level	"data_only"
+	#define	core_config_dccm_prot_val	5
+	#define	core_config_ic_prot	"ecc_01"
+	#define	core_config_ic_prot_level	"data_only"
+	#define	core_config_ic_prot_val	5
+	#define	core_config_dc_prot	"ecc_01"
+	#define	core_config_dc_prot_level	"data_only"
+	#define	core_config_dc_prot_val	5
+	#define	core_config_mmu_prot	"ecc_01"
+	#define	core_config_mmu_prot_level	"data_only"
+	#define	core_config_mmu_prot_val	5
+	#define	core_config_pct_counters	8
+	#define	core_config_pct_interrupt	1
+	#define	core_config_cluster_version	7
+	#define	core_config_cluster_num_cores	1
+	#define	core_config_clock_gating	1
+	#define	core_config_data_memory_initiator	0
+	#define	core_config_clock_speed	800
+#endif /* core_config_h */
+
+]]></string>
+  </configuration>
+  <configuration name="CPP_defines" filename="core_config.hpp">
+    <string><![CDATA[
+#ifndef core_config_hpp
+#define core_config_hpp
+
+#include <cstdint>
+
+    /* coverity[cert_dcl51_cpp_violation] */
+    /* coverity[autosar_cpp14_a16_0_1_violation] */
+    /* coverity[autosar_cpp14_a17_0_1_violation] */
+#define _TOOL_CONFIG_VER 10099
+
+namespace snps_arc {
+    namespace core_config {
+
+	/********  NOTE: Start of BCR/CIR Variables ******************
+	 * The initial variables with "kBcr" or "kCir" in the macro name
+	 * may appear and disappear as different hardware releases change the
+	 * layout of configuration registers. Additionally, the semantics of
+	 * a "kBcr" or "KCir" variable value is subject to change.
+	 * For these reasons it is recommended to avoid dependency on symbols
+	 * which have "kBcr" or "kCir" in the name (and request alternative
+	 * variables as needed).
+	 **********************************************************/
+	    /* value for identity */
+	static constexpr std::uint32_t kCirIdentity{0x00000054UL};
+	    /* value for identity.chipid */
+	static constexpr std::uint32_t kCirIdentityChipid{0UL};
+	    /* value for identity.arcnum */
+	static constexpr std::uint32_t kCirIdentityArcnum{0UL};
+	    /* value for identity.arcver */
+	static constexpr std::uint32_t kCirIdentityArcver{84UL};
+	    /* value for identity.family */
+	static constexpr std::uint32_t kCirIdentityFamily{5UL};
+	    /* value for identity.corever */
+	static constexpr std::uint32_t kCirIdentityCorever{4UL};
+	    /* value for aux_dccm */
+	static constexpr std::uint32_t kCirAuxDccm{0x70000000UL};
+	    /* value for aux_volatile */
+	static constexpr std::uint32_t kCirAuxVolatile{0xF0000002UL};
+	    /* value for aux_volatile.base_region */
+	static constexpr std::uint32_t kCirAuxVolatileBaseRegion{15UL};
+	    /* value for aux_volatile.limit_region */
+	static constexpr std::uint32_t kCirAuxVolatileLimitRegion{0UL};
+	    /* value for aux_volatile.s */
+	static constexpr std::uint32_t kCirAuxVolatileS{1UL};
+	    /* value for aux_volatile.d */
+	static constexpr std::uint32_t kCirAuxVolatileD{0UL};
+	    /* value for bcr_ver */
+	static constexpr std::uint32_t kBcrBcrVer{0x00000002UL};
+	    /* value for bcr_ver.version */
+	static constexpr std::uint32_t kBcrBcrVerVersion{2UL};
+	    /* value for vecbase_ac_build */
+	static constexpr std::uint32_t kBcrVecbaseAcBuild{0x00000011UL};
+	    /* value for vecbase_ac_build.version */
+	static constexpr std::uint32_t kBcrVecbaseAcBuildVersion{4UL};
+	    /* value for vecbase_ac_build.vector_config */
+	static constexpr std::uint32_t kBcrVecbaseAcBuildVectorConfig{1UL};
+	    /* value for vecbase_ac_build.addr */
+	static constexpr std::uint32_t kBcrVecbaseAcBuildAddr{0UL};
+	    /* value for mpu_build */
+	static constexpr std::uint32_t kBcrMpuBuild{0x00000803UL};
+	    /* value for mpu_build.ecc */
+	static constexpr std::uint32_t kBcrMpuBuildEcc{0UL};
+	    /* value for mpu_build.i */
+	static constexpr std::uint32_t kBcrMpuBuildI{0UL};
+	    /* value for mpu_build.s */
+	static constexpr std::uint32_t kBcrMpuBuildS{0UL};
+	    /* value for mpu_build.regions */
+	static constexpr std::uint32_t kBcrMpuBuildRegions{8UL};
+	    /* value for mpu_build.version */
+	static constexpr std::uint32_t kBcrMpuBuildVersion{3UL};
+	    /* value for rf_build */
+	static constexpr std::uint32_t kBcrRfBuild{0x00000102UL};
+	    /* value for rf_build.version */
+	static constexpr std::uint32_t kBcrRfBuildVersion{2UL};
+	    /* value for rf_build.p */
+	static constexpr std::uint32_t kBcrRfBuildP{1UL};
+	    /* value for rf_build.e */
+	static constexpr std::uint32_t kBcrRfBuildE{0UL};
+	    /* value for rf_build.r */
+	static constexpr std::uint32_t kBcrRfBuildR{0UL};
+	    /* value for rf_build.b */
+	static constexpr std::uint32_t kBcrRfBuildB{0UL};
+	    /* value for rf_build.d */
+	static constexpr std::uint32_t kBcrRfBuildD{0UL};
+	    /* value for mmu_build */
+	static constexpr std::uint32_t kBcrMmuBuild{0x04E1984AUL};
+	    /* value for mmu_build.version */
+	static constexpr std::uint32_t kBcrMmuBuildVersion{4UL};
+	    /* value for mmu_build.sl */
+	static constexpr std::uint32_t kBcrMmuBuildSl{1UL};
+	    /* value for mmu_build.psz1 */
+	static constexpr std::uint32_t kBcrMmuBuildPsz1{12UL};
+	    /* value for mmu_build.psz0 */
+	static constexpr std::uint32_t kBcrMmuBuildPsz0{3UL};
+	    /* value for mmu_build.dl */
+	static constexpr std::uint32_t kBcrMmuBuildDl{0UL};
+	    /* value for mmu_build.ct */
+	static constexpr std::uint32_t kBcrMmuBuildCt{0UL};
+	    /* value for mmu_build.pae */
+	static constexpr std::uint32_t kBcrMmuBuildPae{1UL};
+	    /* value for mmu_build.ja */
+	static constexpr std::uint32_t kBcrMmuBuildJa{2UL};
+	    /* value for mmu_build.je */
+	static constexpr std::uint32_t kBcrMmuBuildJe{0UL};
+	    /* value for mmu_build.jes */
+	static constexpr std::uint32_t kBcrMmuBuildJes{1UL};
+	    /* value for mmu_build.itlb */
+	static constexpr std::uint32_t kBcrMmuBuildItlb{1UL};
+	    /* value for mmu_build.dtlb */
+	static constexpr std::uint32_t kBcrMmuBuildDtlb{2UL};
+	    /* value for d_cache_build */
+	static constexpr std::uint32_t kBcrDCacheBuild{0x10226105UL};
+	    /* value for d_cache_build.version */
+	static constexpr std::uint32_t kBcrDCacheBuildVersion{5UL};
+	    /* value for d_cache_build.assoc */
+	static constexpr std::uint32_t kBcrDCacheBuildAssoc{1UL};
+	    /* value for d_cache_build.capacity */
+	static constexpr std::uint32_t kBcrDCacheBuildCapacity{6UL};
+	    /* value for d_cache_build.bsize */
+	static constexpr std::uint32_t kBcrDCacheBuildBsize{2UL};
+	    /* value for d_cache_build.fl */
+	static constexpr std::uint32_t kBcrDCacheBuildFl{2UL};
+	    /* value for d_cache_build.ioc */
+	static constexpr std::uint32_t kBcrDCacheBuildIoc{0UL};
+	    /* value for d_cache_build.cp */
+	static constexpr std::uint32_t kBcrDCacheBuildCp{0UL};
+	    /* value for d_cache_build.u */
+	static constexpr std::uint32_t kBcrDCacheBuildU{0UL};
+	    /* value for d_cache_build.cycles */
+	static constexpr std::uint32_t kBcrDCacheBuildCycles{2UL};
+	    /* value for dccm_build */
+	static constexpr std::uint32_t kBcrDccmBuild{0x00140704UL};
+	    /* value for dccm_build.w */
+	static constexpr std::uint32_t kBcrDccmBuildW{0UL};
+	    /* value for dccm_build.cycles */
+	static constexpr std::uint32_t kBcrDccmBuildCycles{2UL};
+	    /* value for dccm_build.interleave */
+	static constexpr std::uint32_t kBcrDccmBuildInterleave{0UL};
+	    /* value for dccm_build.size1 */
+	static constexpr std::uint32_t kBcrDccmBuildSize1{0UL};
+	    /* value for dccm_build.size0 */
+	static constexpr std::uint32_t kBcrDccmBuildSize0{7UL};
+	    /* value for dccm_build.version */
+	static constexpr std::uint32_t kBcrDccmBuildVersion{4UL};
+	    /* value for timer_build */
+	static constexpr std::uint32_t kBcrTimerBuild{0x00000506UL};
+	    /* value for timer_build.sp1 */
+	static constexpr std::uint32_t kBcrTimerBuildSp1{0UL};
+	    /* value for timer_build.sp0 */
+	static constexpr std::uint32_t kBcrTimerBuildSp0{0UL};
+	    /* value for timer_build.p1 */
+	static constexpr std::uint32_t kBcrTimerBuildP1{0UL};
+	    /* value for timer_build.p0 */
+	static constexpr std::uint32_t kBcrTimerBuildP0{0UL};
+	    /* value for timer_build.st1 */
+	static constexpr std::uint32_t kBcrTimerBuildSt1{0UL};
+	    /* value for timer_build.st0 */
+	static constexpr std::uint32_t kBcrTimerBuildSt0{0UL};
+	    /* value for timer_build.rtc */
+	static constexpr std::uint32_t kBcrTimerBuildRtc{1UL};
+	    /* value for timer_build.rtsc_ver */
+	static constexpr std::uint32_t kBcrTimerBuildRtscVer{0UL};
+	    /* value for timer_build.rtsc */
+	static constexpr std::uint32_t kBcrTimerBuildRtsc{0UL};
+	    /* value for timer_build.t0 */
+	static constexpr std::uint32_t kBcrTimerBuildT0{1UL};
+	    /* value for timer_build.t1 */
+	static constexpr std::uint32_t kBcrTimerBuildT1{0UL};
+	    /* value for timer_build.version */
+	static constexpr std::uint32_t kBcrTimerBuildVersion{6UL};
+	    /* value for ap_build */
+	static constexpr std::uint32_t kBcrApBuild{0x00000605UL};
+	    /* value for ap_build.version */
+	static constexpr std::uint32_t kBcrApBuildVersion{5UL};
+	    /* value for ap_build.type */
+	static constexpr std::uint32_t kBcrApBuildType{6UL};
+	    /* value for i_cache_build */
+	static constexpr std::uint32_t kBcrICacheBuild{0x00236204UL};
+	    /* value for i_cache_build.version */
+	static constexpr std::uint32_t kBcrICacheBuildVersion{4UL};
+	    /* value for i_cache_build.assoc */
+	static constexpr std::uint32_t kBcrICacheBuildAssoc{2UL};
+	    /* value for i_cache_build.capacity */
+	static constexpr std::uint32_t kBcrICacheBuildCapacity{6UL};
+	    /* value for i_cache_build.bsize */
+	static constexpr std::uint32_t kBcrICacheBuildBsize{3UL};
+	    /* value for i_cache_build.fl */
+	static constexpr std::uint32_t kBcrICacheBuildFl{2UL};
+	    /* value for i_cache_build.d */
+	static constexpr std::uint32_t kBcrICacheBuildD{0UL};
+	    /* value for multiply_build */
+	static constexpr std::uint32_t kBcrMultiplyBuild{0x00023206UL};
+	    /* value for multiply_build.version16x16 */
+	static constexpr std::uint32_t kBcrMultiplyBuildVersion16x16{2UL};
+	    /* value for multiply_build.dsp */
+	static constexpr std::uint32_t kBcrMultiplyBuildDsp{3UL};
+	    /* value for multiply_build.cyc */
+	static constexpr std::uint32_t kBcrMultiplyBuildCyc{0UL};
+	    /* value for multiply_build.type */
+	static constexpr std::uint32_t kBcrMultiplyBuildType{2UL};
+	    /* value for multiply_build.version32x32 */
+	static constexpr std::uint32_t kBcrMultiplyBuildVersion32x32{6UL};
+	    /* value for swap_build */
+	static constexpr std::uint32_t kBcrSwapBuild{0x00000003UL};
+	    /* value for swap_build.version */
+	static constexpr std::uint32_t kBcrSwapBuildVersion{3UL};
+	    /* value for norm_build */
+	static constexpr std::uint32_t kBcrNormBuild{0x00000003UL};
+	    /* value for norm_build.version */
+	static constexpr std::uint32_t kBcrNormBuildVersion{3UL};
+	    /* value for minmax_build */
+	static constexpr std::uint32_t kBcrMinmaxBuild{0x00000002UL};
+	    /* value for minmax_build.version */
+	static constexpr std::uint32_t kBcrMinmaxBuildVersion{2UL};
+	    /* value for barrel_build */
+	static constexpr std::uint32_t kBcrBarrelBuild{0x00000303UL};
+	    /* value for barrel_build.version */
+	static constexpr std::uint32_t kBcrBarrelBuildVersion{3UL};
+	    /* value for barrel_build.shift_option */
+	static constexpr std::uint32_t kBcrBarrelBuildShiftOption{3UL};
+	    /* value for bpu_build */
+	static constexpr std::uint32_t kBcrBpuBuild{0x00A91106UL};
+	    /* value for bpu_build.version */
+	static constexpr std::uint32_t kBcrBpuBuildVersion{6UL};
+	    /* value for bpu_build.bce */
+	static constexpr std::uint32_t kBcrBpuBuildBce{1UL};
+	    /* value for bpu_build.pte */
+	static constexpr std::uint32_t kBcrBpuBuildPte{2UL};
+	    /* value for bpu_build.rse */
+	static constexpr std::uint32_t kBcrBpuBuildRse{0UL};
+	    /* value for bpu_build.ft */
+	static constexpr std::uint32_t kBcrBpuBuildFt{1UL};
+	    /* value for bpu_build.ts */
+	static constexpr std::uint32_t kBcrBpuBuildTs{20UL};
+	    /* value for bpu_build.tqe */
+	static constexpr std::uint32_t kBcrBpuBuildTqe{2UL};
+	    /* value for bpu_build.fbe */
+	static constexpr std::uint32_t kBcrBpuBuildFbe{0UL};
+	    /* value for bpu_build.bdb */
+	static constexpr std::uint32_t kBcrBpuBuildBdb{0UL};
+	    /* value for isa_config */
+	static constexpr std::uint32_t kBcrIsaConfig{0x23E47402UL};
+	    /* value for isa_config.res1 */
+	static constexpr std::uint32_t kBcrIsaConfigRes1{0UL};
+	    /* value for isa_config.d */
+	static constexpr std::uint32_t kBcrIsaConfigD{2UL};
+	    /* value for isa_config.res2 */
+	static constexpr std::uint32_t kBcrIsaConfigRes2{0UL};
+	    /* value for isa_config.f */
+	static constexpr std::uint32_t kBcrIsaConfigF{0UL};
+	    /* value for isa_config.c */
+	static constexpr std::uint32_t kBcrIsaConfigC{3UL};
+	    /* value for isa_config.l */
+	static constexpr std::uint32_t kBcrIsaConfigL{1UL};
+	    /* value for isa_config.n */
+	static constexpr std::uint32_t kBcrIsaConfigN{1UL};
+	    /* value for isa_config.a */
+	static constexpr std::uint32_t kBcrIsaConfigA{1UL};
+	    /* value for isa_config.b */
+	static constexpr std::uint32_t kBcrIsaConfigB{0UL};
+	    /* value for isa_config.addr_size */
+	static constexpr std::uint32_t kBcrIsaConfigAddrSize{4UL};
+	    /* value for isa_config.lpc_size */
+	static constexpr std::uint32_t kBcrIsaConfigLpcSize{7UL};
+	    /* value for isa_config.pc_size */
+	static constexpr std::uint32_t kBcrIsaConfigPcSize{4UL};
+	    /* value for isa_config.version */
+	static constexpr std::uint32_t kBcrIsaConfigVersion{2UL};
+	    /* value for stack_region_build */
+	static constexpr std::uint32_t kBcrStackRegionBuild{0x00000002UL};
+	    /* value for erp_build */
+	static constexpr std::uint32_t kBcrErpBuild{0x050B4505UL};
+	    /* value for erp_build.l */
+	static constexpr std::uint32_t kBcrErpBuildL{0UL};
+	    /* value for erp_build.wd */
+	static constexpr std::uint32_t kBcrErpBuildWd{0UL};
+	    /* value for erp_build.c */
+	static constexpr std::uint32_t kBcrErpBuildC{0UL};
+	    /* value for erp_build.app */
+	static constexpr std::uint32_t kBcrErpBuildApp{0UL};
+	    /* value for erp_build.mmu */
+	static constexpr std::uint32_t kBcrErpBuildMmu{5UL};
+	    /* value for erp_build.pipe_edc */
+	static constexpr std::uint32_t kBcrErpBuildPipeEdc{0UL};
+	    /* value for erp_build.vccm */
+	static constexpr std::uint32_t kBcrErpBuildVccm{0UL};
+	    /* value for erp_build.rf */
+	static constexpr std::uint32_t kBcrErpBuildRf{0UL};
+	    /* value for erp_build.pc */
+	static constexpr std::uint32_t kBcrErpBuildPc{0UL};
+	    /* value for erp_build.ic */
+	static constexpr std::uint32_t kBcrErpBuildIc{5UL};
+	    /* value for erp_build.dc */
+	static constexpr std::uint32_t kBcrErpBuildDc{5UL};
+	    /* value for erp_build.ip */
+	static constexpr std::uint32_t kBcrErpBuildIp{0UL};
+	    /* value for erp_build.dp */
+	static constexpr std::uint32_t kBcrErpBuildDp{5UL};
+	    /* value for erp_build.version */
+	static constexpr std::uint32_t kBcrErpBuildVersion{5UL};
+	    /* value for cluster_build */
+	static constexpr std::uint32_t kBcrClusterBuild{0x40000107UL};
+	    /* value for cluster_build.scu_trace */
+	static constexpr std::uint32_t kBcrClusterBuildScuTrace{0UL};
+	    /* value for cluster_build.gate */
+	static constexpr std::uint32_t kBcrClusterBuildGate{1UL};
+	    /* value for cluster_build.sm */
+	static constexpr std::uint32_t kBcrClusterBuildSm{0UL};
+	    /* value for cluster_build.sf */
+	static constexpr std::uint32_t kBcrClusterBuildSf{0UL};
+	    /* value for cluster_build.per */
+	static constexpr std::uint32_t kBcrClusterBuildPer{0UL};
+	    /* value for cluster_build.c */
+	static constexpr std::uint32_t kBcrClusterBuildC{0UL};
+	    /* value for cluster_build.num_entries */
+	static constexpr std::uint32_t kBcrClusterBuildNumEntries{0UL};
+	    /* value for cluster_build.sclk */
+	static constexpr std::uint32_t kBcrClusterBuildSclk{0UL};
+	    /* value for cluster_build.cc_wbuf */
+	static constexpr std::uint32_t kBcrClusterBuildCcWbuf{0UL};
+	    /* value for cluster_build.num_cores */
+	static constexpr std::uint32_t kBcrClusterBuildNumCores{1UL};
+	    /* value for cluster_build.version */
+	static constexpr std::uint32_t kBcrClusterBuildVersion{7UL};
+	    /* value for biu_build */
+	static constexpr std::uint32_t kBcrBiuBuild{0x10008101UL};
+	    /* value for biu_build.separate_clk */
+	static constexpr std::uint32_t kBcrBiuBuildSeparateClk{0UL};
+	    /* value for biu_build.bus_ecc_parity_option */
+	static constexpr std::uint32_t kBcrBiuBuildBusEccParityOption{1UL};
+	    /* value for biu_build.bus_ecc_data_option */
+	static constexpr std::uint32_t kBcrBiuBuildBusEccDataOption{0UL};
+	    /* value for biu_build.bus_ecc_en */
+	static constexpr std::uint32_t kBcrBiuBuildBusEccEn{0UL};
+	    /* value for biu_build.uslv_access_per1 */
+	static constexpr std::uint32_t kBcrBiuBuildUslvAccessPer1{0UL};
+	    /* value for biu_build.uslv_ioc_full_coh */
+	static constexpr std::uint32_t kBcrBiuBuildUslvIocFullCoh{0UL};
+	    /* value for biu_build.uslv_support_ioc */
+	static constexpr std::uint32_t kBcrBiuBuildUslvSupportIoc{0UL};
+	    /* value for biu_build.uslv_bus */
+	static constexpr std::uint32_t kBcrBiuBuildUslvBus{0UL};
+	    /* value for biu_build.dmi_bus */
+	static constexpr std::uint32_t kBcrBiuBuildDmiBus{1UL};
+	    /* value for biu_build.ioc_bus */
+	static constexpr std::uint32_t kBcrBiuBuildIocBus{0UL};
+	    /* value for biu_build.per_bus */
+	static constexpr std::uint32_t kBcrBiuBuildPerBus{0UL};
+	    /* value for biu_build.mem_bus */
+	static constexpr std::uint32_t kBcrBiuBuildMemBus{1UL};
+	    /* value for biu_build.version */
+	static constexpr std::uint32_t kBcrBiuBuildVersion{1UL};
+	    /* value for npu_build */
+	static constexpr std::uint32_t kBcrNpuBuild{0x703CEC11UL};
+	    /* value for npu_build.version */
+	static constexpr std::uint32_t kBcrNpuBuildVersion{17UL};
+	    /* value for npu_build.sl */
+	static constexpr std::uint32_t kBcrNpuBuildSl{12UL};
+	    /* value for npu_build.ecc */
+	static constexpr std::uint32_t kBcrNpuBuildEcc{1UL};
+	    /* value for npu_build.l2 */
+	static constexpr std::uint32_t kBcrNpuBuildL2{1UL};
+	    /* value for npu_build.l1 */
+	static constexpr std::uint32_t kBcrNpuBuildL1{1UL};
+	    /* value for npu_build.mc */
+	static constexpr std::uint32_t kBcrNpuBuildMc{4UL};
+	    /* value for npu_build.evt */
+	static constexpr std::uint32_t kBcrNpuBuildEvt{1UL};
+	    /* value for npu_build.vm */
+	static constexpr std::uint32_t kBcrNpuBuildVm{4UL};
+	    /* value for npu_build.am */
+	static constexpr std::uint32_t kBcrNpuBuildAm{3UL};
+	    /* value for ewdt_build */
+	static constexpr std::uint32_t kBcrEwdtBuild{0xC0004402UL};
+	    /* value for ewdt_build.separate_clock */
+	static constexpr std::uint32_t kBcrEwdtBuildSeparateClock{1UL};
+	    /* value for ewdt_build.parity_check */
+	static constexpr std::uint32_t kBcrEwdtBuildParityCheck{1UL};
+	    /* value for ewdt_build.ext_input */
+	static constexpr std::uint32_t kBcrEwdtBuildExtInput{0UL};
+	    /* value for ewdt_build.timer_size */
+	static constexpr std::uint32_t kBcrEwdtBuildTimerSize{1UL};
+	    /* value for ewdt_build.window */
+	static constexpr std::uint32_t kBcrEwdtBuildWindow{1UL};
+	    /* value for ewdt_build.num_timers */
+	static constexpr std::uint32_t kBcrEwdtBuildNumTimers{0UL};
+	    /* value for ewdt_build.version */
+	static constexpr std::uint32_t kBcrEwdtBuildVersion{2UL};
+	    /* value for rtt_build */
+	static constexpr std::uint32_t kBcrRttBuild{0x00080108UL};
+	    /* value for rtt_build.prod_src_num */
+	static constexpr std::uint32_t kBcrRttBuildProdSrcNum{0UL};
+	    /* value for rtt_build.fl */
+	static constexpr std::uint32_t kBcrRttBuildFl{0UL};
+	    /* value for rtt_build.pi */
+	static constexpr std::uint32_t kBcrRttBuildPi{1UL};
+	    /* value for rtt_build.version */
+	static constexpr std::uint32_t kBcrRttBuildVersion{8UL};
+	    /* value for irq_build */
+	static constexpr std::uint32_t kBcrIrqBuild{0x02242702UL};
+	    /* value for irq_build.raz */
+	static constexpr std::uint32_t kBcrIrqBuildRaz{0UL};
+	    /* value for irq_build.nmi */
+	static constexpr std::uint32_t kBcrIrqBuildNmi{0UL};
+	    /* value for irq_build.f */
+	static constexpr std::uint32_t kBcrIrqBuildF{0UL};
+	    /* value for irq_build.p */
+	static constexpr std::uint32_t kBcrIrqBuildP{2UL};
+	    /* value for irq_build.exts */
+	static constexpr std::uint32_t kBcrIrqBuildExts{36UL};
+	    /* value for irq_build.irqs */
+	static constexpr std::uint32_t kBcrIrqBuildIrqs{39UL};
+	    /* value for irq_build.version */
+	static constexpr std::uint32_t kBcrIrqBuildVersion{2UL};
+	    /* value for pct_build */
+	static constexpr std::uint32_t kBcrPctBuild{0x00080503UL};
+	    /* value for pct_build.version */
+	static constexpr std::uint32_t kBcrPctBuildVersion{3UL};
+	    /* value for pct_build.s */
+	static constexpr std::uint32_t kBcrPctBuildS{1UL};
+	    /* value for pct_build.i */
+	static constexpr std::uint32_t kBcrPctBuildI{1UL};
+	    /* value for pct_build.c */
+	static constexpr std::uint32_t kBcrPctBuildC{8UL};
+	    /* value for cc_build */
+	static constexpr std::uint32_t kBcrCcBuild{0x007F0002UL};
+	    /* value for cc_build.version */
+	static constexpr std::uint32_t kBcrCcBuildVersion{2UL};
+	    /* value for cc_build.cc */
+	static constexpr std::uint32_t kBcrCcBuildCc{127UL};
+	    /* value for isa_profile */
+	static constexpr std::uint32_t kBcrIsaProfile{0x00011101UL};
+	    /* value for isa_profile.g4 */
+	static constexpr std::uint32_t kBcrIsaProfileG4{0UL};
+	    /* value for isa_profile.g3 */
+	static constexpr std::uint32_t kBcrIsaProfileG3{1UL};
+	    /* value for isa_profile.g2 */
+	static constexpr std::uint32_t kBcrIsaProfileG2{1UL};
+	    /* value for isa_profile.g1 */
+	static constexpr std::uint32_t kBcrIsaProfileG1{1UL};
+	    /* value for isa_profile.version */
+	static constexpr std::uint32_t kBcrIsaProfileVersion{1UL};
+	    /* value for micro_arch_build */
+	static constexpr std::uint32_t kBcrMicroArchBuild{0x00030302UL};
+	    /* value for micro_arch_build.minor_rev */
+	static constexpr std::uint32_t kBcrMicroArchBuildMinorRev{2UL};
+	    /* value for micro_arch_build.major_rev */
+	static constexpr std::uint32_t kBcrMicroArchBuildMajorRev{3UL};
+	    /* value for micro_arch_build.product_family */
+	static constexpr std::uint32_t kBcrMicroArchBuildProductFamily{3UL};
+	    /* value for micro_arch_build.reserved */
+	static constexpr std::uint32_t kBcrMicroArchBuildReserved{0UL};
+	    /* value for smart_build */
+	static constexpr std::uint32_t kBcrSmartBuild{0x00020004UL};
+	    /* value for smart_build.version */
+	static constexpr std::uint32_t kBcrSmartBuildVersion{4UL};
+	    /* value for smart_build.stack_size */
+	static constexpr std::uint32_t kBcrSmartBuildStackSize{128UL};
+	    /* value for data_mem_attr */
+	static constexpr std::uint32_t kCirDataMemAttr{0x00000003UL};
+	    /* value for cluster_id */
+	static constexpr std::uint32_t kCirClusterId{0x00000000UL};
+	    /* value for cluster_id.cluster_num */
+	static constexpr std::uint32_t kCirClusterIdClusterNum{0UL};
+	/************* End of BCR/CIR Macros **********************/
+	    /* value for family */
+	static constexpr std::uint32_t kFamily{5UL};
+	    /* value for core_version */
+	static constexpr std::uint32_t kCoreVersion{4UL};
+	    // coverity[autosar_cpp14_a3_9_1_violation]
+	    /* value for family_name */
+	static constexpr char const* const kFamilyName{"arcv2hs"};
+	    /* value for uarch_rev_major */
+	static constexpr std::uint32_t kUarchRevMajor{3UL};
+	    /* value for uarch_rev_minor */
+	static constexpr std::uint32_t kUarchRevMinor{2UL};
+	    /* value for early_and_late_basic_alu */
+	static constexpr std::uint32_t kEarlyAndLateBasicAlu{1UL};
+	    /* value for code_density */
+	static constexpr std::uint32_t kCodeDensity{1UL};
+	    /* value for rgf_num_banks */
+	static constexpr std::uint32_t kRgfNumBanks{1UL};
+	    /* value for rgf_num_wr_ports */
+	static constexpr std::uint32_t kRgfNumWrPorts{2UL};
+	    // coverity[autosar_cpp14_a3_9_1_violation]
+	    /* value for endian */
+	static constexpr char const* const kEndian{"little"};
+	    /* value for endian_little */
+	static constexpr std::uint32_t kEndianLittle{1UL};
+	    /* value for endian_big */
+	static constexpr std::uint32_t kEndianBig{0UL};
+	    /* value for lpc_size */
+	static constexpr std::uint32_t kLpcSize{32UL};
+	    /* value for pc_size */
+	static constexpr std::uint32_t kPcSize{32UL};
+	    /* value for addr_size */
+	static constexpr std::uint32_t kAddrSize{32UL};
+	    /* value for atomic */
+	static constexpr std::uint32_t kAtomic{1UL};
+	    /* value for ll64 */
+	static constexpr std::uint32_t kLl64{1UL};
+	    /* value for unaligned */
+	static constexpr std::uint32_t kUnaligned{1UL};
+	    // coverity[autosar_cpp14_a3_9_1_violation]
+	    /* value for div_rem */
+	static constexpr char const* const kDivRem{"radix4"};
+	    /* value for div_rem_radix4 */
+	static constexpr std::uint32_t kDivRemRadix4{1UL};
+	    /* value for swap */
+	static constexpr std::uint32_t kSwap{1UL};
+	    /* value for bitscan */
+	static constexpr std::uint32_t kBitscan{1UL};
+	    // coverity[autosar_cpp14_a3_9_1_violation]
+	    /* value for mpy_option */
+	static constexpr char const* const kMpyOption{"qmpyh"};
+	    /* value for mpy_option_num */
+	static constexpr std::uint32_t kMpyOptionNum{9UL};
+	    /* value for shift_assist */
+	static constexpr std::uint32_t kShiftAssist{1UL};
+	    /* value for barrel_shifter */
+	static constexpr std::uint32_t kBarrelShifter{1UL};
+	    /* value for timer0 */
+	static constexpr std::uint32_t kTimer0{1UL};
+	    /* value for timer0_level */
+	static constexpr std::uint32_t kTimer0Level{0UL};
+	    /* value for timer0.vector */
+	static constexpr std::uint32_t kTimer0Vector{16UL};
+	    /* value for rtc */
+	static constexpr std::uint32_t kRtc{1UL};
+	    /* value for action_points */
+	static constexpr std::uint32_t kActionPoints{8UL};
+	    /* value for stack_check */
+	static constexpr std::uint32_t kStackCheck{1UL};
+	    /* value for volatile_base */
+	static constexpr std::uint32_t kVolatileBase{15UL};
+	    /* value for volatile_limit */
+	static constexpr std::uint32_t kVolatileLimit{0UL};
+	    /* value for volatile_strict_ordering */
+	static constexpr std::uint32_t kVolatileStrictOrdering{1UL};
+	    /* value for bpu_bc_entries */
+	static constexpr std::uint32_t kBpuBcEntries{512UL};
+	    /* value for bpu_pt_entries */
+	static constexpr std::uint32_t kBpuPtEntries{8192UL};
+	    /* value for bpu_rs_entries */
+	static constexpr std::uint32_t kBpuRsEntries{4UL};
+	    /* value for bpu_bc_full_tag */
+	static constexpr std::uint32_t kBpuBcFullTag{1UL};
+	    /* value for bpu_bc_tag_size */
+	static constexpr std::uint32_t kBpuBcTagSize{20UL};
+	    /* value for bpu_tosq_entries */
+	static constexpr std::uint32_t kBpuTosqEntries{5UL};
+	    /* value for bpu_fb_entries */
+	static constexpr std::uint32_t kBpuFbEntries{1UL};
+	    /* value for smart_version */
+	static constexpr std::uint32_t kSmartVersion{4UL};
+	    /* value for smart_stack_entries */
+	static constexpr std::uint32_t kSmartStackEntries{128UL};
+	    /* value for mpu.present */
+	static constexpr std::uint32_t kMpuPresent{1UL};
+	    /* value for mpu_version */
+	static constexpr std::uint32_t kMpuVersion{3UL};
+	    /* value for mpuv3 */
+	static constexpr std::uint32_t kMpuv3{1UL};
+	    /* value for mpu.regions */
+	static constexpr std::uint32_t kMpuRegions{8UL};
+	    /* value for mmu_version */
+	static constexpr std::uint32_t kMmuVersion{4UL};
+	    /* value for mmuv4.present */
+	static constexpr std::uint32_t kMmuv4Present{1UL};
+	    /* value for mmuv4 */
+	static constexpr std::uint32_t kMmuv4{1UL};
+	    /* value for mmu_pgsz */
+	static constexpr std::uint32_t kMmuPgsz{4096UL};
+	    // coverity[autosar_cpp14_a3_9_1_violation]
+	    /* value for mmu_pgsz */
+	static constexpr char const* const kMmuPgsz_KM{"4K"};
+	    /* value for mmu_ntlb_entries */
+	static constexpr std::uint32_t kMmuNtlbEntries{256UL};
+	    /* value for mmu_stlb_entries */
+	static constexpr std::uint32_t kMmuStlbEntries{16UL};
+	    /* value for mmu_super_pgsz */
+	static constexpr std::uint32_t kMmuSuperPgsz{2097152UL};
+	    // coverity[autosar_cpp14_a3_9_1_violation]
+	    /* value for mmu_super_pgsz */
+	static constexpr char const* const kMmuSuperPgsz_KM{"2M"};
+	    /* value for mmu_pae40 */
+	static constexpr std::uint32_t kMmuPae40{1UL};
+	    /* value for mmu_sasid */
+	static constexpr std::uint32_t kMmuSasid{1UL};
+	    /* value for interrupts.present */
+	static constexpr std::uint32_t kInterruptsPresent{1UL};
+	    /* value for interrupts.number */
+	static constexpr std::uint32_t kInterruptsNumber{39UL};
+	    /* value for interrupts.priorities */
+	static constexpr std::uint32_t kInterruptsPriorities{3UL};
+	    /* value for interrupts.externals */
+	static constexpr std::uint32_t kInterruptsExternals{36UL};
+	    /* value for interrupts */
+	static constexpr std::uint32_t kInterrupts{39UL};
+	    /* value for interrupt_priorities */
+	static constexpr std::uint32_t kInterruptPriorities{3UL};
+	    /* value for ext_interrupts */
+	static constexpr std::uint32_t kExtInterrupts{36UL};
+	    /* value for interrupts.base */
+	static constexpr std::uint32_t kInterruptsBase{0x0UL};
+	    /* value for intvbase_ext */
+	static constexpr std::uint32_t kIntvbaseExt{1UL};
+	    /* value for dcache.present */
+	static constexpr std::uint32_t kDcachePresent{1UL};
+	    /* value for dcache.size */
+	static constexpr std::uint32_t kDcacheSize{32768UL};
+	    /* value for dcache.line_size */
+	static constexpr std::uint32_t kDcacheLineSize{64UL};
+	    /* value for dcache.ways */
+	static constexpr std::uint32_t kDcacheWays{2UL};
+	    /* value for dcache_version */
+	static constexpr std::uint32_t kDcacheVersion{5UL};
+	    /* value for dcache_feature */
+	static constexpr std::uint32_t kDcacheFeature{2UL};
+	    /* value for dcache_mem_cycles */
+	static constexpr std::uint32_t kDcacheMemCycles{2UL};
+	    /* value for icache.present */
+	static constexpr std::uint32_t kIcachePresent{1UL};
+	    /* value for icache.size */
+	static constexpr std::uint32_t kIcacheSize{32768UL};
+	    /* value for icache.line_size */
+	static constexpr std::uint32_t kIcacheLineSize{64UL};
+	    /* value for icache.ways */
+	static constexpr std::uint32_t kIcacheWays{4UL};
+	    /* value for icache_version */
+	static constexpr std::uint32_t kIcacheVersion{4UL};
+	    /* value for icache_feature */
+	static constexpr std::uint32_t kIcacheFeature{2UL};
+	    /* value for dccm.present */
+	static constexpr std::uint32_t kDccmPresent{1UL};
+	    /* value for dccm_size */
+	static constexpr std::uint32_t kDccmSize{0x8000UL};
+	    /* value for dccm_base */
+	static constexpr std::uint32_t kDccmBase{0x70000000UL};
+	    /* value for dccm_mem_cycles */
+	static constexpr std::uint32_t kDccmMemCycles{2UL};
+	    /* value for dccm_dmi */
+	static constexpr std::uint32_t kDccmDmi{1UL};
+	    /* value for dccm_sys_base_core0 */
+	static constexpr std::uint32_t kDccmSysBaseCore0{0x42000000UL};
+	    /* value for dccm_sys_base */
+	static constexpr std::uint32_t kDccmSysBase{0x42000000UL};
+	    /* value for watchdog_num */
+	static constexpr std::uint32_t kWatchdogNum{1UL};
+	    /* value for watchdog_parity */
+	static constexpr std::uint32_t kWatchdogParity{1UL};
+	    /* value for watchdog_clk */
+	static constexpr std::uint32_t kWatchdogClk{1UL};
+	    /* value for watchdog_size0 */
+	static constexpr std::uint32_t kWatchdogSize0{32UL};
+	    /* value for watchdog_win0 */
+	static constexpr std::uint32_t kWatchdogWin0{1UL};
+	    /* value for watchdog_clk_freq */
+	static constexpr std::uint32_t kWatchdogClkFreq{200UL};
+	    /* value for error_prot_ver */
+	static constexpr std::uint32_t kErrorProtVer{5UL};
+	    // coverity[autosar_cpp14_a3_9_1_violation]
+	    /* value for dccm_prot */
+	static constexpr char const* const kDccmProt{"ecc_01"};
+	    // coverity[autosar_cpp14_a3_9_1_violation]
+	    /* value for dccm_prot_level */
+	static constexpr char const* const kDccmProtLevel{"data_only"};
+	    /* value for dccm_prot_val */
+	static constexpr std::uint32_t kDccmProtVal{5UL};
+	    // coverity[autosar_cpp14_a3_9_1_violation]
+	    /* value for ic_prot */
+	static constexpr char const* const kIcProt{"ecc_01"};
+	    // coverity[autosar_cpp14_a3_9_1_violation]
+	    /* value for ic_prot_level */
+	static constexpr char const* const kIcProtLevel{"data_only"};
+	    /* value for ic_prot_val */
+	static constexpr std::uint32_t kIcProtVal{5UL};
+	    // coverity[autosar_cpp14_a3_9_1_violation]
+	    /* value for dc_prot */
+	static constexpr char const* const kDcProt{"ecc_01"};
+	    // coverity[autosar_cpp14_a3_9_1_violation]
+	    /* value for dc_prot_level */
+	static constexpr char const* const kDcProtLevel{"data_only"};
+	    /* value for dc_prot_val */
+	static constexpr std::uint32_t kDcProtVal{5UL};
+	    // coverity[autosar_cpp14_a3_9_1_violation]
+	    /* value for mmu_prot */
+	static constexpr char const* const kMmuProt{"ecc_01"};
+	    // coverity[autosar_cpp14_a3_9_1_violation]
+	    /* value for mmu_prot_level */
+	static constexpr char const* const kMmuProtLevel{"data_only"};
+	    /* value for mmu_prot_val */
+	static constexpr std::uint32_t kMmuProtVal{5UL};
+	    /* value for pct_counters */
+	static constexpr std::uint32_t kPctCounters{8UL};
+	    /* value for pct_interrupt */
+	static constexpr std::uint32_t kPctInterrupt{1UL};
+	    /* value for cluster_version */
+	static constexpr std::uint32_t kClusterVersion{7UL};
+	    /* value for cluster_num_cores */
+	static constexpr std::uint32_t kClusterNumCores{1UL};
+	    /* value for clock_gating */
+	static constexpr std::uint32_t kClockGating{1UL};
+	    /* value for data_memory_initiator */
+	static constexpr std::uint32_t kDataMemoryInitiator{0UL};
+	    /* value for clock_speed */
+	static constexpr std::uint32_t kClockSpeed{800UL};
+    } // namespace core_config
+
+} // namespace snps_arc
+
+#endif /* core_config_hpp */
+
+]]></string>
+  </configuration>
+  <configuration name="core" filename="core.props">
+    <string><![CDATA[
+	core_config.cir.identity=0x00000054
+	core_config.cir.identity.chipid=0
+	core_config.cir.identity.arcnum=0
+	core_config.cir.identity.arcver=84
+	core_config.cir.identity.family=5
+	core_config.cir.identity.corever=4
+	core_config.cir.aux_dccm=0x70000000
+	core_config.cir.aux_volatile=0xf0000002
+	core_config.cir.aux_volatile.base_region=15
+	core_config.cir.aux_volatile.limit_region=0
+	core_config.cir.aux_volatile.s=1
+	core_config.cir.aux_volatile.d=0
+	core_config.bcr.bcr_ver=0x00000002
+	core_config.bcr.bcr_ver.version=2
+	core_config.bcr.vecbase_ac_build=0x00000011
+	core_config.bcr.vecbase_ac_build.version=4
+	core_config.bcr.vecbase_ac_build.vector_config=1
+	core_config.bcr.vecbase_ac_build.addr=0
+	core_config.bcr.mpu_build=0x00000803
+	core_config.bcr.mpu_build.ecc=0
+	core_config.bcr.mpu_build.i=0
+	core_config.bcr.mpu_build.s=0
+	core_config.bcr.mpu_build.regions=8
+	core_config.bcr.mpu_build.version=3
+	core_config.bcr.rf_build=0x00000102
+	core_config.bcr.rf_build.version=2
+	core_config.bcr.rf_build.p=1
+	core_config.bcr.rf_build.e=0
+	core_config.bcr.rf_build.r=0
+	core_config.bcr.rf_build.b=0
+	core_config.bcr.rf_build.d=0
+	core_config.bcr.mmu_build=0x04e1984a
+	core_config.bcr.mmu_build.version=4
+	core_config.bcr.mmu_build.sl=1
+	core_config.bcr.mmu_build.psz1=12
+	core_config.bcr.mmu_build.psz0=3
+	core_config.bcr.mmu_build.dl=0
+	core_config.bcr.mmu_build.ct=0
+	core_config.bcr.mmu_build.pae=1
+	core_config.bcr.mmu_build.ja=2
+	core_config.bcr.mmu_build.je=0
+	core_config.bcr.mmu_build.jes=1
+	core_config.bcr.mmu_build.itlb=1
+	core_config.bcr.mmu_build.dtlb=2
+	core_config.bcr.d_cache_build=0x10226105
+	core_config.bcr.d_cache_build.version=5
+	core_config.bcr.d_cache_build.assoc=1
+	core_config.bcr.d_cache_build.capacity=6
+	core_config.bcr.d_cache_build.bsize=2
+	core_config.bcr.d_cache_build.fl=2
+	core_config.bcr.d_cache_build.ioc=0
+	core_config.bcr.d_cache_build.cp=0
+	core_config.bcr.d_cache_build.u=0
+	core_config.bcr.d_cache_build.cycles=2
+	core_config.bcr.dccm_build=0x00140704
+	core_config.bcr.dccm_build.w=0
+	core_config.bcr.dccm_build.cycles=2
+	core_config.bcr.dccm_build.interleave=0
+	core_config.bcr.dccm_build.size1=0
+	core_config.bcr.dccm_build.size0=7
+	core_config.bcr.dccm_build.version=4
+	core_config.bcr.timer_build=0x00000506
+	core_config.bcr.timer_build.sp1=0
+	core_config.bcr.timer_build.sp0=0
+	core_config.bcr.timer_build.p1=0
+	core_config.bcr.timer_build.p0=0
+	core_config.bcr.timer_build.st1=0
+	core_config.bcr.timer_build.st0=0
+	core_config.bcr.timer_build.rtc=1
+	core_config.bcr.timer_build.rtsc_ver=0
+	core_config.bcr.timer_build.rtsc=0
+	core_config.bcr.timer_build.t0=1
+	core_config.bcr.timer_build.t1=0
+	core_config.bcr.timer_build.version=6
+	core_config.bcr.ap_build=0x00000605
+	core_config.bcr.ap_build.version=5
+	core_config.bcr.ap_build.type=6
+	core_config.bcr.i_cache_build=0x00236204
+	core_config.bcr.i_cache_build.version=4
+	core_config.bcr.i_cache_build.assoc=2
+	core_config.bcr.i_cache_build.capacity=6
+	core_config.bcr.i_cache_build.bsize=3
+	core_config.bcr.i_cache_build.fl=2
+	core_config.bcr.i_cache_build.d=0
+	core_config.bcr.multiply_build=0x00023206
+	core_config.bcr.multiply_build.version16x16=2
+	core_config.bcr.multiply_build.dsp=3
+	core_config.bcr.multiply_build.cyc=0
+	core_config.bcr.multiply_build.type=2
+	core_config.bcr.multiply_build.version32x32=6
+	core_config.bcr.swap_build=0x00000003
+	core_config.bcr.swap_build.version=3
+	core_config.bcr.norm_build=0x00000003
+	core_config.bcr.norm_build.version=3
+	core_config.bcr.minmax_build=0x00000002
+	core_config.bcr.minmax_build.version=2
+	core_config.bcr.barrel_build=0x00000303
+	core_config.bcr.barrel_build.version=3
+	core_config.bcr.barrel_build.shift_option=3
+	core_config.bcr.bpu_build=0x00a91106
+	core_config.bcr.bpu_build.version=6
+	core_config.bcr.bpu_build.bce=1
+	core_config.bcr.bpu_build.pte=2
+	core_config.bcr.bpu_build.rse=0
+	core_config.bcr.bpu_build.ft=1
+	core_config.bcr.bpu_build.ts=20
+	core_config.bcr.bpu_build.tqe=2
+	core_config.bcr.bpu_build.fbe=0
+	core_config.bcr.bpu_build.bdb=0
+	core_config.bcr.isa_config=0x23e47402
+	core_config.bcr.isa_config.res1=0
+	core_config.bcr.isa_config.d=2
+	core_config.bcr.isa_config.res2=0
+	core_config.bcr.isa_config.f=0
+	core_config.bcr.isa_config.c=3
+	core_config.bcr.isa_config.l=1
+	core_config.bcr.isa_config.n=1
+	core_config.bcr.isa_config.a=1
+	core_config.bcr.isa_config.b=0
+	core_config.bcr.isa_config.addr_size=4
+	core_config.bcr.isa_config.lpc_size=7
+	core_config.bcr.isa_config.pc_size=4
+	core_config.bcr.isa_config.version=2
+	core_config.bcr.stack_region_build=0x00000002
+	core_config.bcr.erp_build=0x050b4505
+	core_config.bcr.erp_build.l=0
+	core_config.bcr.erp_build.wd=0
+	core_config.bcr.erp_build.c=0
+	core_config.bcr.erp_build.app=0
+	core_config.bcr.erp_build.mmu=5
+	core_config.bcr.erp_build.pipe_edc=0
+	core_config.bcr.erp_build.vccm=0
+	core_config.bcr.erp_build.rf=0
+	core_config.bcr.erp_build.pc=0
+	core_config.bcr.erp_build.ic=5
+	core_config.bcr.erp_build.dc=5
+	core_config.bcr.erp_build.ip=0
+	core_config.bcr.erp_build.dp=5
+	core_config.bcr.erp_build.version=5
+	core_config.bcr.cluster_build=0x40000107
+	core_config.bcr.cluster_build.scu_trace=0
+	core_config.bcr.cluster_build.gate=1
+	core_config.bcr.cluster_build.sm=0
+	core_config.bcr.cluster_build.sf=0
+	core_config.bcr.cluster_build.per=0
+	core_config.bcr.cluster_build.c=0
+	core_config.bcr.cluster_build.num_entries=0
+	core_config.bcr.cluster_build.sclk=0
+	core_config.bcr.cluster_build.cc_wbuf=0
+	core_config.bcr.cluster_build.num_cores=1
+	core_config.bcr.cluster_build.version=7
+	core_config.bcr.biu_build=0x10008101
+	core_config.bcr.biu_build.separate_clk=0
+	core_config.bcr.biu_build.bus_ecc_parity_option=1
+	core_config.bcr.biu_build.bus_ecc_data_option=0
+	core_config.bcr.biu_build.bus_ecc_en=0
+	core_config.bcr.biu_build.uslv_access_per1=0
+	core_config.bcr.biu_build.uslv_ioc_full_coh=0
+	core_config.bcr.biu_build.uslv_support_ioc=0
+	core_config.bcr.biu_build.uslv_bus=0
+	core_config.bcr.biu_build.dmi_bus=1
+	core_config.bcr.biu_build.ioc_bus=0
+	core_config.bcr.biu_build.per_bus=0
+	core_config.bcr.biu_build.mem_bus=1
+	core_config.bcr.biu_build.version=1
+	core_config.bcr.npu_build=0x703cec11
+	core_config.bcr.npu_build.version=17
+	core_config.bcr.npu_build.sl=12
+	core_config.bcr.npu_build.ecc=1
+	core_config.bcr.npu_build.l2=1
+	core_config.bcr.npu_build.l1=1
+	core_config.bcr.npu_build.mc=4
+	core_config.bcr.npu_build.evt=1
+	core_config.bcr.npu_build.vm=4
+	core_config.bcr.npu_build.am=3
+	core_config.bcr.ewdt_build=0xc0004402
+	core_config.bcr.ewdt_build.separate_clock=1
+	core_config.bcr.ewdt_build.parity_check=1
+	core_config.bcr.ewdt_build.ext_input=0
+	core_config.bcr.ewdt_build.timer_size=1
+	core_config.bcr.ewdt_build.window=1
+	core_config.bcr.ewdt_build.num_timers=0
+	core_config.bcr.ewdt_build.version=2
+	core_config.bcr.rtt_build=0x00080108
+	core_config.bcr.rtt_build.prod_src_num=0
+	core_config.bcr.rtt_build.fl=0
+	core_config.bcr.rtt_build.pi=1
+	core_config.bcr.rtt_build.version=8
+	core_config.bcr.irq_build=0x02242702
+	core_config.bcr.irq_build.raz=0
+	core_config.bcr.irq_build.nmi=0
+	core_config.bcr.irq_build.f=0
+	core_config.bcr.irq_build.p=2
+	core_config.bcr.irq_build.exts=36
+	core_config.bcr.irq_build.irqs=39
+	core_config.bcr.irq_build.version=2
+	core_config.bcr.pct_build=0x00080503
+	core_config.bcr.pct_build.version=3
+	core_config.bcr.pct_build.s=1
+	core_config.bcr.pct_build.i=1
+	core_config.bcr.pct_build.c=8
+	core_config.bcr.cc_build=0x007f0002
+	core_config.bcr.cc_build.version=2
+	core_config.bcr.cc_build.cc=127
+	core_config.bcr.isa_profile=0x00011101
+	core_config.bcr.isa_profile.g4=0
+	core_config.bcr.isa_profile.g3=1
+	core_config.bcr.isa_profile.g2=1
+	core_config.bcr.isa_profile.g1=1
+	core_config.bcr.isa_profile.version=1
+	core_config.bcr.micro_arch_build=0x00030302
+	core_config.bcr.micro_arch_build.minor_rev=2
+	core_config.bcr.micro_arch_build.major_rev=3
+	core_config.bcr.micro_arch_build.product_family=3
+	core_config.bcr.micro_arch_build.reserved=0
+	core_config.bcr.smart_build=0x00020004
+	core_config.bcr.smart_build.version=4
+	core_config.bcr.smart_build.stack_size=128
+	core_config.cir.data_mem_attr=0x00000003
+	core_config.cir.cluster_id=0x00000000
+	core_config.cir.cluster_id.cluster_num=0
+	core_config.family=5
+	core_config.core_version=4
+	core_config.family_name=arcv2hs
+	core_config.uarch_rev_major=3
+	core_config.uarch_rev_minor=2
+	core_config.early_and_late_basic_alu=1
+	core_config.code_density=1
+	core_config.rgf_num_banks=1
+	core_config.rgf_num_wr_ports=2
+	core_config.endian=little
+	core_config.endian_little=1
+	core_config.endian_big=0
+	core_config.lpc_size=32
+	core_config.pc_size=32
+	core_config.addr_size=32
+	core_config.atomic=1
+	core_config.ll64=1
+	core_config.unaligned=1
+	core_config.div_rem=radix4
+	core_config.div_rem_radix4=1
+	core_config.swap=1
+	core_config.bitscan=1
+	core_config.mpy_option=qmpyh
+	core_config.mpy_option_num=9
+	core_config.shift_assist=1
+	core_config.barrel_shifter=1
+	core_config.timer0=1
+	core_config.timer0_level=0
+	core_config.timer0.vector=16
+	core_config.rtc=1
+	core_config.action_points=8
+	core_config.stack_check=1
+	core_config.volatile_base=15
+	core_config.volatile_limit=0
+	core_config.volatile_strict_ordering=1
+	core_config.bpu_bc_entries=512
+	core_config.bpu_pt_entries=8192
+	core_config.bpu_rs_entries=4
+	core_config.bpu_bc_full_tag=1
+	core_config.bpu_bc_tag_size=20
+	core_config.bpu_tosq_entries=5
+	core_config.bpu_fb_entries=1
+	core_config.smart_version=4
+	core_config.smart_stack_entries=128
+	core_config.mpu.present=1
+	core_config.mpu_version=3
+	core_config.mpuv3=1
+	core_config.mpu.regions=8
+	core_config.mmu_version=4
+	core_config.mmuv4.present=1
+	core_config.mmuv4=1
+	core_config.mmu_pgsz=4K
+	core_config.mmu_ntlb_entries=256
+	core_config.mmu_stlb_entries=16
+	core_config.mmu_super_pgsz=2M
+	core_config.mmu_pae40=1
+	core_config.mmu_sasid=1
+	core_config.interrupts.present=1
+	core_config.interrupts.number=39
+	core_config.interrupts.priorities=3
+	core_config.interrupts.externals=36
+	core_config.interrupts=39
+	core_config.interrupt_priorities=3
+	core_config.ext_interrupts=36
+	core_config.interrupts.base=0x0
+	core_config.intvbase_ext=1
+	core_config.dcache.present=1
+	core_config.dcache.size=32768
+	core_config.dcache.line_size=64
+	core_config.dcache.ways=2
+	core_config.dcache_version=5
+	core_config.dcache_feature=2
+	core_config.dcache_mem_cycles=2
+	core_config.icache.present=1
+	core_config.icache.size=32768
+	core_config.icache.line_size=64
+	core_config.icache.ways=4
+	core_config.icache_version=4
+	core_config.icache_feature=2
+	core_config.dccm.present=1
+	core_config.dccm_size=0x8000
+	core_config.dccm_base=0x70000000
+	core_config.dccm_mem_cycles=2
+	core_config.dccm_dmi=1
+	core_config.dccm_sys_base_core0=0x42000000
+	core_config.dccm_sys_base=0x42000000
+	core_config.watchdog_num=1
+	core_config.watchdog_parity=1
+	core_config.watchdog_clk=1
+	core_config.watchdog_size0=32
+	core_config.watchdog_win0=1
+	core_config.watchdog_clk_freq=200
+	core_config.error_prot_ver=5
+	core_config.dccm_prot=ecc_01
+	core_config.dccm_prot_level=data_only
+	core_config.dccm_prot_val=5
+	core_config.ic_prot=ecc_01
+	core_config.ic_prot_level=data_only
+	core_config.ic_prot_val=5
+	core_config.dc_prot=ecc_01
+	core_config.dc_prot_level=data_only
+	core_config.dc_prot_val=5
+	core_config.mmu_prot=ecc_01
+	core_config.mmu_prot_level=data_only
+	core_config.mmu_prot_val=5
+	core_config.pct_counters=8
+	core_config.pct_interrupt=1
+	core_config.cluster_version=7
+	core_config.cluster_num_cores=1
+	core_config.clock_gating=1
+	core_config.data_memory_initiator=0
+	core_config.clock_speed=800
+]]></string>
+  </configuration>
+  <configuration name="gcc_compiler" filename="gcc.arg">
+    <string><![CDATA[
+	-mcpu=hs38
+	-mlittle-endian
+	-matomic
+	-mll64
+	-mdiv-rem
+	-mswap
+	-mnorm
+	-mmpy-option=9
+	-mbarrel-shifter
+	--param l1-cache-size=32768
+	--param l1-cache-line-size=64
+]]></string>
+  </configuration>
+  <configuration name="mw_compiler_core0" filename="ccac_core0.arg">
+    <string><![CDATA[
+	-DDCCM_SYSTEM_BASE=0x42000000
+]]></string>
+  </configuration>
+  <configuration name="mw_debugger_core0" filename="mdb_core0.arg">
+    <string><![CDATA[
+	-dccm_sys_base=0x42000000 
+]]></string>
+  </configuration>
+  <configuration name="nSIM_core0" filename="nSIM_core0.props">
+    <string><![CDATA[
+	dccm_sys_base=0x42000000
+]]></string>
+  </configuration>
+  <configuration name="linker_command_file" filename="link_cmd.txt">
+    <string><![CDATA[
+# SYSTEM memory regions indicate where external memory might be located.
+#   The TCF has no specific knowledge of whether SYSTEM regions contain 
+#   external memory or not.
+# CCMWRAP memory regions indicate unusable portions of the address space
+#   due to CCM memory wrapping into upper addresses beyond its size
+
+MEMORY {
+    SYSTEM0 : ORIGIN = 0x18000000, LENGTH = 0x01000000
+    DCCM    : ORIGIN = 0x70000000, LENGTH = 0x00008000
+#   CCMWRAP0: ORIGIN = 0x70008000, LENGTH = 0x0fff8000
+#   SYSTEM1 : ORIGIN = 0x80000000, LENGTH = 0x40000000
+#   MSS_CLK : ORIGIN = 0xc0000000, LENGTH = 0x00001000
+#   SYSTEM2 : ORIGIN = 0xc0001000, LENGTH = 0x3ffff000
+    }
+SECTIONS {
+    GROUP BLOCK(4) : {
+        .vectors (TEXT) SIZE(DEFINED _IVTSIZE?_IVTSIZE:364): {}
+	.text? : { *('.text$crt*') }
+        * (TEXT): {}
+    	* (LIT): {}
+	} > SYSTEM0
+
+    GROUP BLOCK(4): {
+	/* _SDA_BASE_ computed implicitly */
+        .sdata?: {}
+        .sbss?: {}
+        * (DATA): {}
+        * (BSS): {}
+       .stack ALIGN(4) SIZE(DEFINED _STACKSIZE?_STACKSIZE:65536): {}
+       _end = . ;
+       .heap? ALIGN(4) SIZE(DEFINED _HEAPSIZE?_HEAPSIZE:0): {}
+	} > SYSTEM0
+    }
+
+]]></string>
+  </configuration>
+  <configuration name="gnu_linker_command_file" filename="memory.x">
+    <string><![CDATA[
+MEMORY {
+    SYSTEM0  : ORIGIN = 0x00000000, LENGTH = 0x70000000
+    DCCM     : ORIGIN = 0x70000000, LENGTH = 0x00008000
+    CCMWRAP0 : ORIGIN = 0x70008000, LENGTH = 0x0fff8000
+    SYSTEM1  : ORIGIN = 0x80000000, LENGTH = 0x40000000
+    MSS_CLK  : ORIGIN = 0xc0000000, LENGTH = 0x00001000
+    SYSTEM2  : ORIGIN = 0xc0001000, LENGTH = 0x3ffff000
+    }
+REGION_ALIAS("startup", SYSTEM0)
+REGION_ALIAS("text", SYSTEM0)
+REGION_ALIAS("data", DCCM)
+REGION_ALIAS("sdata", DCCM)
+PROVIDE (__stack_top = (0x70007fff & -4 ));
+PROVIDE (__end_heap =  (0x70007fff ));
+]]></string>
+  </configuration>
+  <configuration name="apex_header" filename="apexextensions.h">
+    <string><![CDATA[
+
+/* **** DO NOT EDIT - this file is generated by ARChitect2 ****
+ *
+ * Description: Header file declaring the compiler extensions for apex components 
+ */
+
+#ifndef _apexextensions_H_
+#define _apexextensions_H_
+
+#ifdef __CPLUSPLUS__
+extern "C" {
+#endif
+
+#define APEX_EVENTMANAGER_PRESENT	1
+
+// User extension aux register EVT_CTRL
+#define AR_EVT_CTRL 0xf02
+#pragma Aux_register(0xf02, name=>"EVT_CTRL")
+
+// User extension aux register EVT_FILTER_LO
+#define AR_EVT_FILTER_LO 0xf04
+#pragma Aux_register(0xf04, name=>"EVT_FILTER_LO")
+
+// User extension aux register EVT_FILTER_HI
+#define AR_EVT_FILTER_HI 0xf05
+#pragma Aux_register(0xf05, name=>"EVT_FILTER_HI")
+
+// User extension aux register EVT_CNT_SEL
+#define AR_EVT_CNT_SEL 0xf0a
+#pragma Aux_register(0xf0a, name=>"EVT_CNT_SEL")
+
+// User extension aux register EVT_CNT_VAL
+#define AR_EVT_CNT_VAL 0xf0b
+#pragma Aux_register(0xf0b, name=>"EVT_CNT_VAL")
+
+// User extension aux register EVT_VM_SEL
+#define AR_EVT_VM_SEL 0xf00
+#pragma Aux_register(0xf00, name=>"EVT_VM_SEL")
+
+// User extension aux register EVT_VM_MAP
+#define AR_EVT_VM_MAP 0xf01
+#pragma Aux_register(0xf01, name=>"EVT_VM_MAP")
+
+// User extension aux register EVT_GRP_SEL
+#define AR_EVT_GRP_SEL 0xf07
+#pragma Aux_register(0xf07, name=>"EVT_GRP_SEL")
+
+// User extension aux register EVT_SID
+#define AR_EVT_SID 0xf08
+#pragma Aux_register(0xf08, name=>"EVT_SID")
+
+// User extension aux register EVT_SSID
+#define AR_EVT_SSID 0xf09
+#pragma Aux_register(0xf09, name=>"EVT_SSID")
+
+// User extension aux register EVT_IRQ
+#define AR_EVT_IRQ 0xf03
+#pragma Aux_register(0xf03, name=>"EVT_IRQ")
+
+// User extension instruction EVTMASKCHK
+extern long long EVTMASKCHK(long long);
+#pragma intrinsic(EVTMASKCHK,opcode=>7,sub_opcode=>0,blocking_cycles=> 3)
+
+// User extension instruction EVTMASKCHK
+extern long long EVTMASKCHK_f(long long);
+#pragma intrinsic(EVTMASKCHK_f,opcode=>7,sub_opcode=>0, set_flags => 1, flags => "zncv",blocking_cycles=> 3)
+
+// User extension instruction EVTMASKALL
+extern long long EVTMASKALL(long long);
+#pragma intrinsic(EVTMASKALL,opcode=>7,sub_opcode=>1,blocking_cycles=> 3)
+
+// User extension instruction EVTMASKALL
+extern long long EVTMASKALL_f(long long);
+#pragma intrinsic(EVTMASKALL_f,opcode=>7,sub_opcode=>1, set_flags => 1, flags => "zncv",blocking_cycles=> 3)
+
+// User extension instruction EVTMASKANY
+extern long long EVTMASKANY(long long);
+#pragma intrinsic(EVTMASKANY,opcode=>7,sub_opcode=>2,blocking_cycles=> 3)
+
+// User extension instruction EVTMASKANY
+extern long long EVTMASKANY_f(long long);
+#pragma intrinsic(EVTMASKANY_f,opcode=>7,sub_opcode=>2, set_flags => 1, flags => "zncv",blocking_cycles=> 3)
+
+// User extension instruction EVTMASKDECR
+extern long long EVTMASKDECR(long long);
+#pragma intrinsic(EVTMASKDECR,opcode=>7,sub_opcode=>3,blocking_cycles=> 3)
+
+// User extension instruction EVTMASKDECR
+extern long long EVTMASKDECR_f(long long);
+#pragma intrinsic(EVTMASKDECR_f,opcode=>7,sub_opcode=>3, set_flags => 1, flags => "zncv",blocking_cycles=> 3)
+
+// User extension instruction EVTMASKINCR
+extern long long EVTMASKINCR(long long);
+#pragma intrinsic(EVTMASKINCR,opcode=>7,sub_opcode=>4,blocking_cycles=> 3)
+
+// User extension instruction EVTMASKINCR
+extern long long EVTMASKINCR_f(long long);
+#pragma intrinsic(EVTMASKINCR_f,opcode=>7,sub_opcode=>4, set_flags => 1, flags => "zncv",blocking_cycles=> 3)
+
+// User extension instruction EVTMASKSEND
+extern long long EVTMASKSEND(long long);
+#pragma intrinsic(EVTMASKSEND,opcode=>7,sub_opcode=>5,blocking_cycles=> 3)
+
+// User extension instruction EVTMASKSEND
+extern long long EVTMASKSEND_f(long long);
+#pragma intrinsic(EVTMASKSEND_f,opcode=>7,sub_opcode=>5, set_flags => 1, flags => "zncv",blocking_cycles=> 3)
+
+// User extension instruction EVTVMCHK
+extern long long EVTVMCHK(long long);
+#pragma intrinsic(EVTVMCHK,opcode=>7,sub_opcode=>6,blocking_cycles=> 3)
+
+// User extension instruction EVTVMCHK
+extern long long EVTVMCHK_f(long long);
+#pragma intrinsic(EVTVMCHK_f,opcode=>7,sub_opcode=>6, set_flags => 1, flags => "zncv",blocking_cycles=> 3)
+
+
+#ifdef __CPLUSPLUS__
+}
+#endif
+
+#endif
+
+
+]]></string>
+  </configuration>
+  <configuration name="alb_mss_clkctrl_regmap.h" filename="alb_mss_clkctrl_regmap.h">
+    <string><![CDATA[
+/*************************************************************************/
+/**                                                                     **/
+/** Copyright (C) 2016-2017 Synopsys, Inc.                              **/
+/** All Rights Reserved.                                                **/
+/**                                                                     **/
+/** This Synopsys software and all associated documentation are         **/
+/** proprietary to Synopsys, Inc. and may only be used pursuant to the  **/
+/** terms and conditions of a written license agreement with Synopsys,  **/
+/** Inc. All other use, reproduction, modification, or distribution of  **/
+/** this Synopsys software or the associated documentation is strictly  **/
+/** prohibited.                                                         **/
+/**                                                                     **/
+/*************************************************************************/
+
+
+/* **** DO NOT EDIT - this file is generated by ARChitect2 ****
+ *
+ * Description: Header file declaring the compiler extensions for Clock control 
+ */
+#ifndef  _alb_mss_clkctrl_regmap_H_
+#define  _alb_mss_clkctrl_regmap_H_
+
+// Use -tcf_include= #include "alb_mss_fab_system_memmap.h"
+// Clock control registers
+#define MSS_CLKCTRL_CFG_CTRL_ADDR            (MSS_CLKCTRL_0_BASE+0x0)
+// clock divider registers
+#define MSS_CLKCTRL_CLK_DIV_ADDR      (MSS_CLKCTRL_0_BASE+0x4)
+#define MSS_CLKCTRL_WDT_CLK_DIV_ADDR      (MSS_CLKCTRL_0_BASE+0x8)
+#define MSS_CLKCTRL_RTT_CLK_DIV_ADDR      (MSS_CLKCTRL_0_BASE+0xc)
+#define MSS_CLKCTRL_MSS_CLK_DIV_ADDR      (MSS_CLKCTRL_0_BASE+0x10)
+// clock enable ratio and status registers
+// mbus_clk_en: rtt_clk <-> mss_clk; design rule: none (rtt_clk freq vs. mss_clk freq)
+#define MSS_CLKCTRL_MBUS_CLK_EN_RATIO_ADDR     (MSS_CLKCTRL_0_BASE+0x14)
+#define MSS_CLKCTRL_MBUS_CLK_EN_STAT_ADDR      (MSS_CLKCTRL_0_BASE+0x18)
+// mss_fab_mst0_clk_en: mss_clk <-> rtt_clk; design rule: none (mss_clk freq vs. rtt_clk freq)
+#define MSS_CLKCTRL_MSS_FAB_MST0_CLK_EN_RATIO_ADDR     (MSS_CLKCTRL_0_BASE+0x1c)
+#define MSS_CLKCTRL_MSS_FAB_MST0_CLK_EN_STAT_ADDR      (MSS_CLKCTRL_0_BASE+0x20)
+// mss_fab_mst1_clk_en: mss_clk <-> clk; design rule: none (mss_clk freq vs. clk freq)
+#define MSS_CLKCTRL_MSS_FAB_MST1_CLK_EN_RATIO_ADDR     (MSS_CLKCTRL_0_BASE+0x24)
+#define MSS_CLKCTRL_MSS_FAB_MST1_CLK_EN_STAT_ADDR      (MSS_CLKCTRL_0_BASE+0x28)
+// mss_fab_slv0_clk_en: mss_clk <-> mss_clk; design rule: none (mss_clk freq vs. mss_clk freq)
+#define MSS_CLKCTRL_MSS_FAB_SLV0_CLK_EN_RATIO_ADDR     (MSS_CLKCTRL_0_BASE+0x2c)
+#define MSS_CLKCTRL_MSS_FAB_SLV0_CLK_EN_STAT_ADDR      (MSS_CLKCTRL_0_BASE+0x30)
+// mss_fab_slv1_clk_en: mss_clk <-> clk; design rule: none (mss_clk freq vs. clk freq)
+#define MSS_CLKCTRL_MSS_FAB_SLV1_CLK_EN_RATIO_ADDR     (MSS_CLKCTRL_0_BASE+0x34)
+#define MSS_CLKCTRL_MSS_FAB_SLV1_CLK_EN_STAT_ADDR      (MSS_CLKCTRL_0_BASE+0x38)
+// mss_fab_slv2_clk_en: mss_clk <-> mss_clk; design rule: none (mss_clk freq vs. mss_clk freq)
+#define MSS_CLKCTRL_MSS_FAB_SLV2_CLK_EN_RATIO_ADDR     (MSS_CLKCTRL_0_BASE+0x3c)
+#define MSS_CLKCTRL_MSS_FAB_SLV2_CLK_EN_STAT_ADDR      (MSS_CLKCTRL_0_BASE+0x40)
+// lbus0_clk_en: clk <-> mss_clk; design rule: none (clk freq vs. mss_clk freq)
+#define MSS_CLKCTRL_LBUS0_CLK_EN_RATIO_ADDR     (MSS_CLKCTRL_0_BASE+0x44)
+#define MSS_CLKCTRL_LBUS0_CLK_EN_STAT_ADDR      (MSS_CLKCTRL_0_BASE+0x48)
+// dbus_clk_en: clk <-> mss_clk; design rule: none (clk freq vs. mss_clk freq)
+#define MSS_CLKCTRL_DBUS_CLK_EN_RATIO_ADDR     (MSS_CLKCTRL_0_BASE+0x4c)
+#define MSS_CLKCTRL_DBUS_CLK_EN_STAT_ADDR      (MSS_CLKCTRL_0_BASE+0x50)
+// lbus1_clk_en: clk <-> mss_clk; design rule: none (clk freq vs. mss_clk freq)
+#define MSS_CLKCTRL_LBUS1_CLK_EN_RATIO_ADDR     (MSS_CLKCTRL_0_BASE+0x54)
+#define MSS_CLKCTRL_LBUS1_CLK_EN_STAT_ADDR      (MSS_CLKCTRL_0_BASE+0x58)
+
+#define MSS_CLKCTRL_NMI_COUNTER              (MSS_CLKCTRL_0_BASE+0x5c)
+
+#endif
+]]></string>
+  </configuration>
+  <configuration name="system_memmap" filename="alb_mss_fab_system_memmap.h">
+    <string><![CDATA[
+/*************************************************************************/
+/**                                                                     **/
+/** Copyright (C) 2016-2017 Synopsys, Inc.                              **/
+/** All Rights Reserved.                                                **/
+/**                                                                     **/
+/** This Synopsys software and all associated documentation are         **/
+/** proprietary to Synopsys, Inc. and may only be used pursuant to the  **/
+/** terms and conditions of a written license agreement with Synopsys,  **/
+/** Inc. All other use, reproduction, modification, or distribution of  **/
+/** this Synopsys software or the associated documentation is strictly  **/
+/** prohibited.                                                         **/
+/**                                                                     **/
+/*************************************************************************/
+
+
+/* **** DO NOT EDIT - this file is generated by ARChitect2 ****
+ *
+ * Description: Header file declaring the compiler extensions for System Memory
+ */
+#ifndef  _alb_mss_fab_system_memmap_H_
+#define  _alb_mss_fab_system_memmap_H_
+// System memory map
+#define MSS_CLKCTRL_0_BASE 0xc0000000
+#define MSS_CLKCTRL_0_SIZE 0x1000
+#define SCCM_AXI_0_BASE 0x40000000
+#define SCCM_AXI_0_SIZE 0x1000000
+#define SCCM_AXI_1_BASE 0x41000000
+#define SCCM_AXI_1_SIZE 0x1000000
+#define SCCM_AXI_2_BASE 0x42000000
+#define SCCM_AXI_2_SIZE 0x1000000
+#define MSS_MEM_0_BASE 0x0000
+#define MSS_MEM_0_SIZE 0x100000000
+
+// CCM system address with the specific name
+#define ICCM0_SYS_BASE 0x40000000
+#define ICCM0_SYS_SIZE 0x1000000
+#define ICCM1_SYS_BASE 0x41000000
+#define ICCM1_SYS_SIZE 0x1000000
+#define DCCM_SYS_BASE 0x42000000
+#define DCCM_SYS_SIZE 0x1000000
+
+#define HAS_DEFAULT_SLAVE 1
+#endif
+]]></string>
+  </configuration>
+  <configuration name="pct_defines.h" filename="pct_defines.h">
+    <string><![CDATA[
+#ifndef pct_defines_h
+#define pct_defines_h
+
+#define EVT_NEVER	0	// never
+#define EVT_ALWAYS	1	// always
+#define EVT_IALL	2	// iall
+#define EVT_ISLEEP	3	// isleep
+#define EVT_IJMP	4	// ijmp
+#define EVT_IJMPC	5	// ijmpc
+#define EVT_IJMPU	6	// ijmpu
+#define EVT_IJMPD	7	// ijmpd
+#define EVT_IJMPTAK	8	// ijmptak
+#define EVT_ICALL	9	// icall
+#define EVT_ILR		10	// ilr
+#define EVT_ISR		11	// isr
+#define EVT_ILP		12	// ilp
+#define EVT_ILPEND	13	// ilpend
+#define EVT_ILPIN	14	// ilpin
+#define EVT_I2BYTE	15	// i2byte
+#define EVT_I4BYTE	16	// i4byte
+#define EVT_I2LBYTE	17	// i2lbyte
+#define EVT_I4LBYTE	18	// i4lbyte
+#define EVT_IMEMRD	19	// imemrd
+#define EVT_IMEMWR	20	// imemwr
+#define EVT_IMEMRDC	21	// imemrdc
+#define EVT_IMEMWRC	22	// imemwrc
+#define EVT_ITRAP	23	// itrap
+#define EVT_ISWI	24	// iswi
+#define EVT_ILLOCK	25	// illock
+#define EVT_ISCOND	26	// iscond
+#define EVT_IALLJMP	27	// ialljmp
+#define EVT_IVEC	28	// ivec
+#define EVT_IVGATHER	29	// ivgather
+#define EVT_IVSCATT	30	// ivscatt
+#define EVT_VGATHBC	31	// vgathbc
+#define EVT_VSCATBC	32	// vscatbc
+#define EVT_VSTALL	33	// vstall
+#define EVT_VBSLOT	34	// vbslot
+#define EVT_BWPCFLT	35	// bwpcflt
+#define EVT_BSTALL	36	// bstall
+#define EVT_BFLUSH	37	// bflush
+#define EVT_BDEBUG	38	// bdebug
+#define EVT_BISSUE	39	// bissue
+#define EVT_BESLOT	40	// beslot
+#define EVT_BDSLOT	41	// bdslot
+#define EVT_BFLGSTAL	42	// bflgstal
+#define EVT_BERRBRCH	43	// berrbrch
+#define EVT_BUOPSTAL	44	// buopstal
+#define EVT_BRGBANK	45	// brgbank
+#define EVT_BAGUSTL	46	// bagustl
+#define EVT_BACCSTAL	47	// baccstal
+#define EVT_BZOLCNT	48	// bzolcnt
+#define EVT_BDATA64	49	// bdata64
+#define EVT_BDCSTALL	50	// bdcstall
+#define EVT_BAUXFLSH	51	// bauxflsh
+#define EVT_BFIRQEX	52	// bfirqex
+#define EVT_ETAKEN	53	// etaken
+#define EVT_QTAKEN	54	// qtaken
+#define EVT_ICM		55	// icm
+#define EVT_ICLL	56	// icll
+#define EVT_ICOFF	57	// icoff
+#define EVT_IVIC	58	// ivic
+#define EVT_IVIL	59	// ivil
+#define EVT_ICWPM	60	// icwpm
+#define EVT_DCM		61	// dcm
+#define EVT_DCLM	62	// dclm
+#define EVT_DCSM	63	// dcsm
+#define EVT_DCPM	64	// dcpm
+#define EVT_DCBC	65	// dcbc
+#define EVT_FLDC	66	// fldc
+#define EVT_FLDL	67	// fldl
+#define EVT_IVDC	68	// ivdc
+#define EVT_IVDL	69	// ivdl
+#define EVT_BPMP	70	// bpmp
+#define EVT_BPLATE	71	// bplate
+#define EVT_BPCMP	72	// bpcmp
+#define EVT_BPBTAMP	73	// bpbtamp
+#define EVT_BPSUBRT	74	// bpsubrt
+#define EVT_BPERRBR	75	// bperrbr
+#define EVT_BPBCM	76	// bpbcm
+#define EVT_MECC1	77	// mecc1
+#define EVT_EITLB	78	// eitlb
+#define EVT_EDTLB	79	// edtlb
+#define EVT_EVINST	80	// evinst
+#define EVT_IVGATH	81	// ivgath
+#define EVT_IVSCAT	82	// ivscat
+#define EVT_BVGATH	83	// bvgath
+#define EVT_BVSCAT	84	// bvscat
+#define EVT_CCDC2CM	85	// ccdc2cm
+#define EVT_CCSERIAL	86	// ccserial
+#define EVT_CCUPGRAD	87	// ccupgrad
+#define EVT_CCRESPS	88	// ccresps
+#define EVT_DCSTGRAD	89	// dcstgrad
+#define EVT_DCLDFWD	90	// dcldfwd
+#define EVT_CRUN	91	// crun
+#define EVT_CRUNI	92	// cruni
+#define EVT_CDUALISS	93	// cdualiss
+#define EVT_CDUALCO	94	// cdualco
+#define EVT_UFLAG0	95	// uflag0
+#define EVT_UFLAG1	96	// uflag1
+#define EVT_UFLAG2	97	// uflag2
+#define EVT_UFLAG3	98	// uflag3
+#define EVT_UFLAG4	99	// uflag4
+#define EVT_UFLAG5	100	// uflag5
+#define EVT_UFLAG6	101	// uflag6
+#define EVT_UFLAG7	102	// uflag7
+#define EVT_UFLAG8	103	// uflag8
+#define EVT_UFLAG9	104	// uflag9
+#define EVT_UFLAG10	105	// uflag10
+#define EVT_UFLAG11	106	// uflag11
+#define EVT_UFLAG12	107	// uflag12
+#define EVT_UFLAG13	108	// uflag13
+#define EVT_UFLAG14	109	// uflag14
+#define EVT_UFLAG15	110	// uflag15
+#define EVT_UFLAG16	111	// uflag16
+#define EVT_UFLAG17	112	// uflag17
+#define EVT_UFLAG18	113	// uflag18
+#define EVT_UFLAG19	114	// uflag19
+#define EVT_UFLAG20	115	// uflag20
+#define EVT_UFLAG21	116	// uflag21
+#define EVT_UFLAG22	117	// uflag22
+#define EVT_UFLAG23	118	// uflag23
+#define EVT_UFLAG24	119	// uflag24
+#define EVT_UFLAG25	120	// uflag25
+#define EVT_UFLAG26	121	// uflag26
+#define EVT_UFLAG27	122	// uflag27
+#define EVT_UFLAG28	123	// uflag28
+#define EVT_UFLAG29	124	// uflag29
+#define EVT_UFLAG30	125	// uflag30
+#define EVT_UFLAG31	126	// uflag31
+
+#endif /* pct_defines_h */
+
+]]></string>
+  </configuration>
+  <configuration name="apex_assembly" filename="apexextensions.s">
+    <string><![CDATA[
+
+; Assembler directives for eia extensions in this design
+.set apex_eventmanager_present,1
+.set apex_eventmanager_present,1
+.extAuxRegister EVT_CTRL,0xf02,r|w
+.extAuxRegister EVT_FILTER_LO,0xf04,r|w
+.extAuxRegister EVT_FILTER_HI,0xf05,r|w
+.extAuxRegister EVT_CNT_SEL,0xf0a,r|w
+.extAuxRegister EVT_CNT_VAL,0xf0b,r|w
+.extAuxRegister EVT_VM_SEL,0xf00,r|w
+.extAuxRegister EVT_VM_MAP,0xf01,r|w
+.extAuxRegister EVT_GRP_SEL,0xf07,r|w
+.extAuxRegister EVT_SID,0xf08,r|w
+.extAuxRegister EVT_SSID,0xf09,r|w
+.extAuxRegister EVT_IRQ,0xf03,r|w
+.extInstruction EVTMASKCHK,7,0,SUFFIX_FLAG,SYNTAX_2OP
+.extInstruction EVTMASKALL,7,1,SUFFIX_FLAG,SYNTAX_2OP
+.extInstruction EVTMASKANY,7,2,SUFFIX_FLAG,SYNTAX_2OP
+.extInstruction EVTMASKDECR,7,3,SUFFIX_FLAG,SYNTAX_2OP
+.extInstruction EVTMASKINCR,7,4,SUFFIX_FLAG,SYNTAX_2OP
+.extInstruction EVTMASKSEND,7,5,SUFFIX_FLAG,SYNTAX_2OP
+.extInstruction EVTVMCHK,7,6,SUFFIX_FLAG,SYNTAX_2OP
+
+]]></string>
+  </configuration>
+  <configuration name="alb_mss_fab_system_memmap.s" filename="alb_mss_fab_system_memmap.s">
+    <string><![CDATA[
+// System memory map
+
+.equ MSS_CLKCTRL_0_BASE, 0xc0000000
+.equ MSS_CLKCTRL_0_SIZE, 0x1000
+.equ SCCM_AXI_0_BASE, 0x40000000
+.equ SCCM_AXI_0_SIZE, 0x1000000
+.equ SCCM_AXI_1_BASE, 0x41000000
+.equ SCCM_AXI_1_SIZE, 0x1000000
+.equ SCCM_AXI_2_BASE, 0x42000000
+.equ SCCM_AXI_2_SIZE, 0x1000000
+.equ MSS_MEM_0_BASE, 0x0000
+.equ MSS_MEM_0_SIZE, 0x100000000
+
+
+
+.equ UNALLOC_SPACE_NUM,       0
+
+// CCM system address with the specific name
+.equ ICCM0_SYS_BASE, 0x40000000
+.equ ICCM0_SYS_SIZE, 0x1000000
+.equ ICCM1_SYS_BASE, 0x41000000
+.equ ICCM1_SYS_SIZE, 0x1000000
+.equ DCCM_SYS_BASE, 0x42000000
+.equ DCCM_SYS_SIZE, 0x1000000
+
+.equ HAS_DEFAULT_SLAVE, 1
+]]></string>
+  </configuration>
+</config_list>
+

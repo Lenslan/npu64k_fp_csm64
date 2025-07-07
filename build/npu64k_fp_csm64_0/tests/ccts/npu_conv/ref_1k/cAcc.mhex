@@ -1,0 +1,34 @@
+//{d=32,h=2,w=4
+(vyixacc_t){
+    (ixacc_t){(acc_t)0x00000055,(acc_t)0x00000074,(acc_t)0x00000052,(acc_t)0x0000004c,(acc_t)0x0000005a,(acc_t)0x00000030,(acc_t)0x00000065,(acc_t)0x00000003,(acc_t)0x0000002d,(acc_t)0x0000004b,(acc_t)0x00000002,(acc_t)0x0000004d,(acc_t)0x00000015,(acc_t)0x00000026,(acc_t)0x00000070,(acc_t)0x0000000e,},//c0.d15.h0.w0-7
+    (ixacc_t){(acc_t)0x00000062,(acc_t)0x0000003c,(acc_t)0x00000044,(acc_t)0x00000035,(acc_t)0x00000006,(acc_t)0x0000001f,(acc_t)0x00000001,(acc_t)0x0000004a,(acc_t)0x0000006f,(acc_t)0x00000074,(acc_t)0x0000007f,(acc_t)0x00000072,(acc_t)0x0000001e,(acc_t)0x00000069,(acc_t)0x0000006d,(acc_t)0x00000070,},//c0.d15.h0.w0-7
+},
+(vyixacc_t){
+    (ixacc_t){(acc_t)0x00000004,(acc_t)0x00000006,(acc_t)0x0000000b,(acc_t)0x00000077,(acc_t)0x00000007,(acc_t)0x00000021,(acc_t)0x0000004b,(acc_t)0x00000013,(acc_t)0x00000034,(acc_t)0x00000015,(acc_t)0x00000058,(acc_t)0x00000047,(acc_t)0x0000004c,(acc_t)0x00000062,(acc_t)0x00000074,(acc_t)0x00000077,},//c0.d15.h0.w0-7
+    (ixacc_t){(acc_t)0x00000013,(acc_t)0x00000043,(acc_t)0x00000037,(acc_t)0x00000038,(acc_t)0x0000002d,(acc_t)0x00000077,(acc_t)0x00000012,(acc_t)0x00000057,(acc_t)0x0000003f,(acc_t)0x0000005c,(acc_t)0x00000007,(acc_t)0x00000037,(acc_t)0x0000005c,(acc_t)0x00000033,(acc_t)0x00000059,(acc_t)0x0000004e,},//c0.d15.h0.w0-7
+},
+(vyixacc_t){
+    (ixacc_t){(acc_t)0x00000073,(acc_t)0x00000028,(acc_t)0x0000006a,(acc_t)0x00000048,(acc_t)0x00000014,(acc_t)0x0000007a,(acc_t)0x00000060,(acc_t)0x00000064,(acc_t)0x0000004f,(acc_t)0x0000003f,(acc_t)0x00000022,(acc_t)0x0000000f,(acc_t)0x0000005e,(acc_t)0x0000006b,(acc_t)0x00000048,(acc_t)0x0000001c,},//c0.d15.h1.w0-7
+    (ixacc_t){(acc_t)0x0000000b,(acc_t)0x0000002a,(acc_t)0x00000041,(acc_t)0x00000025,(acc_t)0x0000005d,(acc_t)0x0000001b,(acc_t)0x0000002f,(acc_t)0x00000005,(acc_t)0x00000065,(acc_t)0x0000003c,(acc_t)0x00000068,(acc_t)0x0000006f,(acc_t)0x0000007c,(acc_t)0x00000057,(acc_t)0x00000019,(acc_t)0x0000005c,},//c0.d15.h1.w0-7
+},
+(vyixacc_t){
+    (ixacc_t){(acc_t)0x0000007b,(acc_t)0x00000068,(acc_t)0x00000077,(acc_t)0x00000074,(acc_t)0x00000006,(acc_t)0x00000022,(acc_t)0x00000059,(acc_t)0x00000075,(acc_t)0x0000005d,(acc_t)0x00000014,(acc_t)0x00000077,(acc_t)0x00000066,(acc_t)0x00000021,(acc_t)0x00000055,(acc_t)0x00000003,(acc_t)0x00000074,},//c0.d15.h1.w0-7
+    (ixacc_t){(acc_t)0x0000002a,(acc_t)0x0000004f,(acc_t)0x00000025,(acc_t)0x00000001,(acc_t)0x0000006c,(acc_t)0x00000018,(acc_t)0x00000067,(acc_t)0x0000006f,(acc_t)0x0000002d,(acc_t)0x00000076,(acc_t)0x00000065,(acc_t)0x0000007c,(acc_t)0x00000005,(acc_t)0x00000013,(acc_t)0x0000007b,(acc_t)0x00000023,},//c0.d15.h1.w0-7
+},
+(vyixacc_t){
+    (ixacc_t){(acc_t)0x0000005c,(acc_t)0x0000002b,(acc_t)0x00000067,(acc_t)0x00000071,(acc_t)0x00000070,(acc_t)0x00000007,(acc_t)0x0000003d,(acc_t)0x00000031,(acc_t)0x0000005b,(acc_t)0x00000014,(acc_t)0x00000031,(acc_t)0x00000055,(acc_t)0x0000002f,(acc_t)0x00000043,(acc_t)0x00000007,(acc_t)0x00000023,},//c2.d15.h0.w0-7
+    (ixacc_t){(acc_t)0x0000004a,(acc_t)0x00000038,(acc_t)0x00000004,(acc_t)0x00000014,(acc_t)0x00000035,(acc_t)0x00000003,(acc_t)0x0000001d,(acc_t)0x00000046,(acc_t)0x0000006a,(acc_t)0x0000004b,(acc_t)0x00000007,(acc_t)0x0000005c,(acc_t)0x00000008,(acc_t)0x00000079,(acc_t)0x00000043,(acc_t)0x0000007e,},//c2.d15.h0.w0-7
+},
+(vyixacc_t){
+    (ixacc_t){(acc_t)0x00000046,(acc_t)0x00000051,(acc_t)0x0000005b,(acc_t)0x0000000c,(acc_t)0x00000075,(acc_t)0x0000000f,(acc_t)0x00000026,(acc_t)0x0000002c,(acc_t)0x0000004c,(acc_t)0x0000000e,(acc_t)0x0000005e,(acc_t)0x00000053,(acc_t)0x0000002e,(acc_t)0x0000006e,(acc_t)0x0000001f,(acc_t)0x00000010,},//c2.d15.h0.w0-7
+    (ixacc_t){(acc_t)0x0000004f,(acc_t)0x00000038,(acc_t)0x0000001e,(acc_t)0x00000038,(acc_t)0x0000000e,(acc_t)0x00000035,(acc_t)0x0000005a,(acc_t)0x0000005b,(acc_t)0x00000017,(acc_t)0x00000076,(acc_t)0x00000004,(acc_t)0x00000010,(acc_t)0x00000064,(acc_t)0x00000056,(acc_t)0x00000044,(acc_t)0x0000002c,},//c2.d15.h0.w0-7
+},
+(vyixacc_t){
+    (ixacc_t){(acc_t)0x00000021,(acc_t)0x00000036,(acc_t)0x00000025,(acc_t)0x0000000a,(acc_t)0x0000000b,(acc_t)0x0000004e,(acc_t)0x0000003e,(acc_t)0x00000037,(acc_t)0x00000068,(acc_t)0x0000000e,(acc_t)0x00000067,(acc_t)0x00000032,(acc_t)0x0000005f,(acc_t)0x00000064,(acc_t)0x00000023,(acc_t)0x00000045,},//c2.d15.h1.w0-7
+    (ixacc_t){(acc_t)0x0000006a,(acc_t)0x0000000e,(acc_t)0x00000014,(acc_t)0x00000049,(acc_t)0x0000001b,(acc_t)0x0000006e,(acc_t)0x0000006a,(acc_t)0x0000001e,(acc_t)0x0000002f,(acc_t)0x00000063,(acc_t)0x00000000,(acc_t)0x0000005b,(acc_t)0x00000068,(acc_t)0x0000001a,(acc_t)0x00000075,(acc_t)0x00000031,},//c2.d15.h1.w0-7
+},
+(vyixacc_t){
+    (ixacc_t){(acc_t)0x0000005b,(acc_t)0x00000079,(acc_t)0x0000002f,(acc_t)0x00000014,(acc_t)0x00000057,(acc_t)0x00000011,(acc_t)0x00000075,(acc_t)0x0000003f,(acc_t)0x00000079,(acc_t)0x00000066,(acc_t)0x00000071,(acc_t)0x0000007e,(acc_t)0x00000021,(acc_t)0x0000004b,(acc_t)0x0000000c,(acc_t)0x0000006f,},//c2.d15.h1.w0-7
+    (ixacc_t){(acc_t)0x00000061,(acc_t)0x00000073,(acc_t)0x00000012,(acc_t)0x00000061,(acc_t)0x00000003,(acc_t)0x00000038,(acc_t)0x0000005f,(acc_t)0x0000002c,(acc_t)0x00000018,(acc_t)0x0000007a,(acc_t)0x00000074,(acc_t)0x0000005c,(acc_t)0x0000007b,(acc_t)0x0000000c,(acc_t)0x0000004d,(acc_t)0x00000041,},//c2.d15.h1.w0-7
+},
+//}

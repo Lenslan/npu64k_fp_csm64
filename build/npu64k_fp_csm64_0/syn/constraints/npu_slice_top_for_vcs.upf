@@ -1,0 +1,41 @@
+
+if {![info exists DESIGN_NAME]} {
+  set DESIGN_NAME npu_slice_top
+}
+
+create_supply_set AON_SS
+create_supply_net VDD
+create_supply_net VSS
+create_supply_port VDD
+create_supply_port VSS
+connect_supply_net VDD -ports {VDD}
+connect_supply_net VSS -ports {VSS}
+create_supply_set AON_SS -function {power VDD} -update
+create_supply_set AON_SS -function {ground VSS} -update
+
+create_supply_set npu_l1core_PD_SS
+create_supply_set npu_l1core_PD_SS -function {ground AON_SS.ground} -update
+create_supply_net npu_l1core_VDD -resolve parallel
+create_supply_set npu_l1core_PD_SS -function {power npu_l1core_VDD} -update
+
+create_power_domain PD_SLI -supply {primary npu_l1core_PD_SS} \
+                            -supply {default_isolation AON_SS} \
+                            -supply {extra_supplies_0 "AON_SS"}
+
+create_power_switch npu_top_PD_SLI_SW \
+  -domain PD_SLI \
+  -output_supply_port {vout npu_l1core_PD_SS.power} \
+  -input_supply_port {vin AON_SS.power} \
+  -control_port {ctrl pd_logic} \
+  -on_state {ON vin {!ctrl}} \
+  -off_state {OFF {ctrl}}
+map_power_switch npu_top_PD_SLI_SW -domain PD_SLI -lib_cells {`power_switch_cell}
+
+add_power_state AON_SS -state OFF {-supply_expr {power == `{OFF} && ground == `{FULL_ON, 0.0}} -simstate CORRUPT}
+add_power_state AON_SS -state ON {-supply_expr {power == `{FULL_ON, 1.1} && ground == `{FULL_ON, 0.0}} -simstate NORMAL}
+add_power_state npu_l1core_PD_SS -state OFF {-supply_expr {power == `{OFF} && ground == `{FULL_ON, 0.0}} -simstate CORRUPT}
+add_power_state npu_l1core_PD_SS -state ON {-supply_expr {power == `{FULL_ON, 1.1} && ground == `{FULL_ON, 0.0}} -simstate NORMAL}
+create_power_state_group SLICE
+add_power_state -group SLICE -state ON {-logic_expr { AON_SS == ON && npu_l1core_PD_SS == ON }}
+add_power_state -group SLICE -update -state PM1 {-logic_expr { AON_SS == ON && npu_l1core_PD_SS == OFF }}
+

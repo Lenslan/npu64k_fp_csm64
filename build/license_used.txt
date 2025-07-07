@@ -1,0 +1,2 @@
+ARChitect: Licenses used for the build: 
+[archs6_basecase, arcvpx_base, arc_seif, architect2_eia, archs_mmu, arc_dev, arcev7_dnn_3520, XCAM_common, archs_vfpu, arcev7_dnn_1760, architect2_author, arcev7_base, archs_4core, arcv2_mss_basecase, arc_npu_base, arc_npu_1k, archs_cache, arc_npu_tfpu, arcev7_dnn_880, arc_npu_48k, arc_npu_16k, archs_mpu, archs_basecase, archs_2core, arc_trace_int, arc_npu_8k, architect2_project, archs6_cache, archs_vdsp, arc_npu_4k, arc_npu_32k, archs4_cache, archs_smart, archs_xdma, arc_npu_24k, archs4_basecase, archs_fpu, arc_mcip, arc_npu_64k]

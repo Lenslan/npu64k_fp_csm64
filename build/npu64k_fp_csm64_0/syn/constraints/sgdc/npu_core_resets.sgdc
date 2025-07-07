@@ -1,0 +1,22 @@
+current_design npu_core 
+reset -name "nl2_rst_a"         -async -value 1
+test_mode -name "nl2_rst_a" -value 0 -scanshift
+reset -name "npu_noc_rst_a"     -async -value 1
+test_mode -name "npu_noc_rst_a" -value 0 -scanshift
+reset -name "npu_cfg_rst_a"     -async -value 1
+test_mode -name "npu_cfg_rst_a" -value 0 -scanshift
+reset -name "npu_core_rst_a"     -async -value 1
+test_mode -name "npu_core_rst_a" -value 0 -scanshift
+reset -name "at_rst_an"         -async -value 0
+test_mode -name "at_rst_an" -value 1 -scanshift
+reset -name "arct_rst_an"     -async -value 0
+test_mode -name "arct_rst_an" -value 1 -scanshift
+reset -name "grp0_rst_a"     -async -value 1
+test_mode -name "grp0_rst_a" -value 0 -scanshift
+reset -name "grp1_rst_a"     -async -value 1
+test_mode -name "grp1_rst_a" -value 0 -scanshift
+reset -name "grp2_rst_a"     -async -value 1
+test_mode -name "grp2_rst_a" -value 0 -scanshift
+reset -name "grp3_rst_a"     -async -value 1
+test_mode -name "grp3_rst_a" -value 0 -scanshift
+

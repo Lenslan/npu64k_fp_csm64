@@ -1,0 +1,59 @@
+var config = {
+  "name": "System",
+  "type": "com.arc.hardware.System.1_0",
+  "path": "System",
+  "options": {
+    "Testbench": "rascal",
+    "SynthesisLevel": "cpu_isle/archipelago",
+    "SynchronousResets": false,
+    "UniqueBuildName": "",
+    "GateLevelSim": true,
+    "UserLibraryName": "user",
+    "OPTION_SimulatorName": "vcs",
+    "sim64": true,
+    "verilog_2001": true,
+    "PLVTestbench": false,
+    "UVETestbench": false,
+    "rename_defines": true,
+    "export_srams": false,
+    "export_srams_to": "none",
+    "copy_prefix": "",
+    "encrypt_copy": false,
+    "always_instantiate_core": false
+  },
+  "kids": [
+    {
+      "name": "NPX6",
+      "type": "com.arc.hardware.NPX6.1_0",
+      "path": "System.NPX6",
+      "shortname": "NPX6",
+      "options": {
+        "npu_cfg": "npu64k_fp_csm64_0",
+        "npu_slice_num": 16,
+        "npu_has_float": true,
+        "npu_slice_mac": 4096,
+        "npu_csm_size": 64,
+        "npu_safety_level": "ASIL-B"
+      },
+      "options_to_int": {
+        "npu_cfg": 14,
+        "npu_safety_level": 1
+      }
+    },
+    {
+      "name": "Tool Configuration",
+      "type": "cgen.1_0",
+      "path": "System.Tool Configuration",
+      "options": {
+        "mwdt_version": "T-2022.06",
+        "code_base_addr": "0xffffffff",
+        "data_base_addr": "0xffffffff",
+        "ucdata_base_addr": "0xffffffff",
+        "ucdata_mem_size": "0",
+        "underscores_in_numbers": false,
+        "lcf_ccm_fill": true,
+        "tcf_rebrand_name": ""
+      }
+    }
+  ]
+}

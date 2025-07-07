@@ -1,0 +1,11 @@
+#ARChitect2 project properties....User properties.
+#Mon Oct 28 10:48:46 CST 2024
+Build.Required=false
+Environment.Topology.Scale=100%
+Environment.Ignored\ paths\ and\ directories=
+Paths.IPLibraries=/home/jjt/ARC/ARC_NPX6/DWC_ARC_NPX6_2_00a-IP-Libraries/NPX6_v2.0.0.iplib;/home/jjt/opt/ARC_2023/ARChitect/lib/cgen.iplib;/home/jjt/opt/ARC_2023/ARChitect/lib/ARC_xCAM.iplib;
+Environment.E-mailSettings.EmailAddress=
+Environment.Output.Level=2
+Output.OutputPragmaMarkers=false
+Output.OutputEmptyPragmas=false
+Paths.IPCatalog=

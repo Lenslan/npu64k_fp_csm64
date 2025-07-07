@@ -1,0 +1,420 @@
+# Common SDC waivers from npu_arc and npu dedicated waivers are located in npu.swl
+waive -rule "STARC05-1.1.1.1" -comment "Source file name should be same as the name of module in the file. Violation flagged in files with h32_/h64_/hhd_ prefixes. Reviewed with Carlos, can be waived"
+waive -rule "W415a" -comment "Signal dc4_dd_ecc_addr[14:13]  is being assigned multiple times .Kaushik reviewed. Can be waived"
+waive -rule "W528" -comment "Variable 'no_hit_lo' set but not read.[Hierarchy: ':archipelago:ihs_cluster_t. Kaushik reviewed. Can be waived"
+#waive -rule "Ar_resetcross01" -comment ""
+waive -rule "Setup_check01" \
+      -msg "Both set_case_analysis and quasi_static constraints have been specified on '*.*test_mode'" \
+      -comment "This is as intended. In SDC we only want to imply the functional (mission) mode  case of  test-mode signals "
+waive -rule "Setup_check01" \
+      -msg "Both set_case_analysis and abstract_port constraints have been specified on '*.*test_mode'" \
+      -comment "This is as intended. In SDC we only want to imply the functional (mission) mode  case of  test-mode signals "
+waive -rule "FalsePathSetup" \
+      -msg q%cdc_false_path constraint is not used to waive any crossing in the design%\
+      -comment "These cdc_false_path constraints are being automatically translated from sdc (synchronous) clock constraints. There is not always a real path from one clock to the other, that is what this warning is about. "      
+waive -rule "SDC_02" \
+      -msg q%Pin: "*" specified in constraint file not found in design%\
+      -comment "These constraints are valid only for post SEIF Spyglass flow"
+
+waive -rule "SDC_09" \
+      -msg q%The specified clock(s) : "*_gclk" is not found in the design%\
+      -comment "These constraints are valid only for post SEIF Spyglass flow"
+
+waive -rule "SDC_40" \
+      -msg q%In 'set_multicycle_path' command list returned by nested command for -through is empty %\
+      -comment "These constraints are valid only for post SEIF Spyglass flow"
+
+waive -rule "SDC_90" \
+      -comment "These constraints are valid only for post SEIF Spyglass flow"
+waive -rule "SDC_25" \
+      -comment "These constraints are valid only for post SEIF Spyglass flow"
+
+waive -rule "SGDCWRN_118" \
+      -msg "'-add' field for the constraint 'archipelago.irtt.u_rtt_transport_sys.u_clk_div.u_div356.out1' of file './constraints/archipelago.sgdc' at line '*' is ignored as there is no previous definiton of the same logical clock" \
+      -comment "The -add must be used because of multiple gclocks on same pin, but these generated clock are converted to clocks by Spgylass. But create_clock must have one definition without -add "
+
+waive -rule "SDC2SGDC_WRN01" \
+      -msg "Multiple clocks defined for object 'clk'. Continuing the analysis with the last specified clock at line no. * of file ./constraints/archipelago.sdc" \
+      -comment "in   multicore HS  we do not allow signal  prefix  (i.e. the c0, c1,c 2 etc)  to be applied to the clk pin  name of each core.They are all tied together."
+
+waive -rule "SGDC_reset02" \
+      -msg "Non-unique value for combination key specified for fields '-name presetdbgn -async 1 ' of constraint 'reset' specified in file './scripts/spyglass/resets.sgdc' at line * .The earlier command is ignored for this value" \
+      -comment "in   multicore HS  we do not allow signal  prefix  (i.e. the c0, c1,c 2 etc)  to be applied to the presetdbgn  pin  name of each core. This is considered a global signal"
+
+waive -file m/DW_axi/ -rule "ALL"
+
+##waive -rule "SDC_214" -comment "FC/RTLA SDC grammar is not fully recognized by SPYGLASS"
+#waive -rule "ReserveName" -comment "The Reserved Name is used in structure"
+#waive -rule "W240" -comment "Caused by configuration combination"
+#waive -file m/npu_DWbb_bcm21_atv/ -rule "W402b" -comment "TMR_CDC are not correctly recognized by tool in reset"
+#waive -file m/npu_DWbb_bcm21_atv/ -rule "Ar_converge01" -comment "TMR_CDC are not correctly recognized by tool in reset"
+#waive -file m/edc_guard/ -rule "Reset_check07" -comment "EDC reset use MACRO defines are not  recongnized well by tool"
+#waive -file m/edc_guard/ -rule "Ar_resetcross01" -comment "Reset of L2ARC0/1 will be assert when l2arc group reset assert"
+#waive -file m/edc_guard/ -rule "NoAssignX-ML" -comment "Reviewed OK"
+#waive -file m/hsls_dr_buffer/ -rule "Reset_check07" -comment "DCLS regs reset use TMR CDC reset ctrl which is not correctly recongnized by tool"
+#waive -file m/npu_err_aggr/ -rule "Reset_check07" -comment "reset use TMR CDC reset ctrl which is not correctly recongnized by tool"
+
+##waive -rule "Setup_check01" \
+##      -msg "Both set_case_analysis and abstract_port constraints have been specified on '*npu_sys*_addr_base*'" \
+##      -comment "This is as intended. In SDC we only want to imply the functional (mission) mode  case of  test-mode signals "
+##
+##waive -rule "Setup_check01" \
+##      -msg "Both set_case_analysis and quasi_static constraints have been specified on '*npu_sys*_addr_base*'" \
+##      -comment "This is as intended. In SDC we only want to imply the functional (mission) mode  case of  test-mode signals "
+
+##waive -rule "Clock_info03a" \
+##      -msg "Clock-Net 'core_archipelago.inpu_top.*clk_gated' is unconstrained" \
+##      -comment "Clock Gating is used and inserted"
+
+#!##waive -rule "Ac_conv01" \
+#!##      -msg "*npu_stu_cdc*" \
+#!##      -comment "USE DW_a2x as CDC"
+#!
+#!##waive -rule "Reset_sync02" \
+#!##      -msg "*dbank0_clk') is generated from domain*" \
+#!##      -comment "Ignore"
+#!
+#!##waive -rule "Reset_sync02" \
+#!##      -msg "*dbank1_clk') is generated from domain*" \
+#!##      -comment "Ignore"
+#!
+#!##waive -rule "Ac_unsync01" \
+#!##      -msg "Unsynchronized Crossing: destination primary output *stu*_dma_axi*Reason: Qualifier not found*" \
+#!##      -comment "USE DW_a2x as CDC "
+#!
+#!##waive -rule "Ac_unsync02" \
+#!##      -msg "Unsynchronized Crossing: destination primary output *stu*_dma_axi*Reason: Qualifier not found*" \
+#!##      -comment "USE DW_a2x as CDC "
+#!
+#!##waive -rule "Ar_asyncdeassert01" \
+#!##      -msg "Reset signal 'core_archipelago.npu_core_rst_a' for 'clear' pin of flop*dbank0_clk*" \
+#!##      -comment "Ignore"
+#!
+#!##waive -rule "Ar_asyncdeassert01" \
+#!##      -msg "Reset signal 'core_archipelago.npu_core_rst_a' for 'clear' pin of flop*dbank1_clk*" \
+#!##      -comment "Ignore"
+#!
+#!##waive -rule "Ar_unsync01" \
+#!##      -msg "*dbank0_clk', is unsynchronized by reason*" \
+#!##      -comment "Ignore"
+#!
+#!##waive -rule "W401" \
+#!##      -msg "*core_archipelago.inpu_top.u_npu_core.npu_core_clk_gated' is not an input to design*" \
+#!##      -comment "Ignore"
+#!
+#!##waive -rule "Ar_unsync01" \
+#!##      -msg "*dbank1_clk', is unsynchronized by reason*" \
+#!##      -comment "Ignore"
+#!
+#!##waive -rule "STARC05-1.3.1.3" \
+#!##      -msg "*in_valid_r[0]') used as non-reset/synchronous-reset at instance 'core_archipelago.inpu_top.u_npu_slice_top0.u_npu_slice.u_npu_gtoa.u_gtoa_ctrl_inst.u_mmio_inst.\mmio_status_r_reg[sngl]*" \
+#!##      -comment "Ignore"
+#!
+#!##waive -rule "Ac_coherency06" \
+#!##      -msg "Source flop 'core_archipelago.iarcsync_top.u_arcsync_core.u_arcsync_ac.irq_sending_r*is synchronized twice*" \
+#!##      -comment "Ignore"
+#!#
+#!##waive -rule "Ac_coherency06" \
+#!##      -msg "Source flop 'core_archipelago.iarcsync_top.u_arcsync_core.u_arcsync_axi2reg.mmio_npx_cgate_r*is synchronized twice*" \
+#!##      -comment "Ignore"
+#!
+#!##waive -rule "Ac_coherency06" \
+#!##      -msg "Source flop 'core_archipelago.iarcsync_top.u_arcsync_core.u_arcsync_axi2reg.mmio_npx_cgate_r*is synchronized twice*" \
+#!##      -comment "Ignore"
+#!
+#!##waive -rule "Ac_coherency06" \
+#!##      -msg "Source flop 'core_archipelago.iarcsync_top.u_arcsync_core.u_arcsync_eid.eid_irq_r*is synchronized twice*" \
+#!##      -comment "Ignore"
+#!
+#!##waive -rule "Ac_conv01" \
+#!##      -msg "*converge on combinational gate 'core_archipelago.iarcsync_top.u_arcsync_core.u_arcsync_acs.core_run_nxt*" \
+#!##      -comment "Ignore"
+#!
+#!##waive -rule "Ac_unsync01" \
+#!##      -msg "*Unsynchronized Crossing: destination primary output*iarcsync_top.u_arcsync_core*clocked by core_archipelago.arcsync_clk*" \
+#!##      -comment "lint environment not include vpx design, these violation should be synchronized in vpx side."
+#!
+#!##waive -rule "Ac_unsync02" \
+#!##      -msg "*Unsynchronized Crossing: destination*u_arcsync_core.u_arcsync_axi2reg.mmio_csm_addr_base_r*" \
+#!##      -comment "csm_base_addr is static after it is set."
+#!
+#!##waive -rule "Ac_unsync02" \
+#!##      -msg "*Unsynchronized Crossing: destination primary output*iarcsync_top.u_arcsync_core*clocked by core_archipelago.arcsync_clk*" \
+#!##      -comment "lint environment not include vpx design, these violation should be synchronized in vpx side."
+#!
+#!##waive -rule "Ac_conv01" \
+#!##      -msg "*iarcsync_top*GEN_TMR_EQ_0*sample_meta*" \
+#!##      -comment "These signal are status signal, they are stable after changed."
+#!
+#!waive -file m/DW_axi/ -rule "ALL"
+#!
+#!waive -file m/npuarc/ -rule "ALL"
+#!
+#!##waive -file m/npu_vpx_bridge/ -rule "ALL"
+#!
+#!##waive -file m/nl2_ral_blk_aux_regs_rtl/ -rule "ALL"
+#!
+#!##waive -file m@^$NPU_DEPS/vpx/.*v@ -rule "ALL"
+#!
+#!##waive -file m/nl2_/ -rule "ALL"
+#!
+#!##reset_filter_path -from_rst archipelago.cc_pu_rst_a archipelago.csm_pu_rst_a archipelago.slc_pu_rst_a archipelago.c0pu_rst_a archipelago.c1pu_rst_a archipelago.c2pu_rst_a archipelago.c3pu_rst_a archipelago.rtt_pu_rst_a -to_rst archipelago.rst_a -clock archipelago.clk "filter Ar_resetcross01 rules between power up rst and global rst. jimmy reviewed, it can make sure no meta-stability by isolation clamp value. Can be waived. how to add pu rst signal by VPP control should be considered"
+#!##"filter Ar_resetcross01 rules between power up rst and global rst. jimmy reviewed, it can make sure no meta-stability by isolation clamp value. Can be waived. how to add pu rst signal by VPP control should be considered"
+#!#current_design archipelago
+#!#reset_filter_path -from_rst c0pu_rst_a -to_rst c1pu_rst_a
+#!#reset_filter_path -from_rst c0pu_rst_a -to_rst c2pu_rst_a
+#!#reset_filter_path -from_rst c0pu_rst_a -to_rst c3pu_rst_a
+#!#reset_filter_path -from_rst c1pu_rst_a -to_rst c0pu_rst_a
+#!#reset_filter_path -from_rst c2pu_rst_a -to_rst c0pu_rst_a
+#!#reset_filter_path -from_rst c3pu_rst_a -to_rst c0pu_rst_a
+#!#
+#!#reset_filter_path -from_rst c1pu_rst_a -to_rst c2pu_rst_a
+#!#reset_filter_path -from_rst c1pu_rst_a -to_rst c3pu_rst_a
+#!#reset_filter_path -from_rst c2pu_rst_a -to_rst c1pu_rst_a
+#!#reset_filter_path -from_rst c3pu_rst_a -to_rst c1pu_rst_a
+#!#
+#!#reset_filter_path -from_rst c2pu_rst_a -to_rst c3pu_rst_a
+#!#reset_filter_path -from_rst c3pu_rst_a -to_rst c2pu_rst_a
+#!#
+#!waive -rule "Setup_blackbox01" \
+#!      -msg "Port coverage for black-box 'DW*'" \
+#!      -comment "DW modules are released IP "
+#!
+#!waive -rule "Ac_unsync01" \
+#!      -msg "Unsynchronized Crossing: destination primary output *arcsync_axi*Reason: Qualifier not found*" \
+#!      -comment "USE DW_a2x as CDC "
+#!
+#!waive -rule "Ac_unsync02" \
+#!      -msg "Unsynchronized Crossing: destination primary output *arcsync_axi*Reason: Qualifier not found*" \
+#!      -comment "USE DW_a2x as CDC "
+#!
+#!waive -rule "Ac_unsync02" \
+#!      -msg "*Unsynchronized Crossing: destination*arcsync_top_safety_controller*clocked by *arcsync_axi_clk*source flop*clocked by*arcsync_clk*" \
+#!      -comment "DCLS checks are stable"
+#!
+#!waive -rule "Ac_unsync02" \
+#!      -msg "*Unsynchronized Crossing: destination*arcsync_top_safety_controller*clocked by *arcsync_clk*source flop*clocked by*arcsync_axi_clk*" \
+#!      -comment "DCLS checks are stable"
+#!
+#!waive -rule "Ac_conv01" \
+#!      -msg "*synchronizers*converge on combinational gate *" \
+#!      -comment "These signal are status signal, they are stable after changed."
+#!
+#!waive -rule "Ac_conv01" \
+#!      -msg "*synchronizers*converge on MUX *" \
+#!      -comment "These signal are status signal, they are stable after changed."
+#!
+#!waive -rule "Ac_conv02" \
+#!      -msg "*cdc_sync.u_sync_wrp*" \
+#!      -comment "This is as intended to have event CDC sync"
+#!
+#!waive -rule "Ac_conv02" \
+#!      -msg "*synchronizers*converge on combinational gate *(same source divergence)*Gray encoding check: 'DISABLED'*" \
+#!      -comment "These signal are status signal, they are stable after changed."
+#!
+#!waive -rule "Ac_conv03" \
+#!      -msg "*cdc_sync.u_sync_wrp*" \
+#!      -comment "This is as intended to have event CDC sync"
+#!
+#!waive -rule "Ar_glitch01" \
+#!      -msg "Signal core_archipelago.iarcsync_top* driving 'clear' pin of element '*sample_syncl*' has glitch" \
+#!      -comment "This is as intended to ARCsync can reset"
+#!
+#!waive -rule "Ar_glitch01" \
+#!      -msg "*Signal *u_ini_pwr_dwn_event_cdc_sync.u_sync_wrp*sample_syncl driving '*' pin of element '*fifo_inst.*bcm21_atv.*sample_syncl*' has glitch*" \
+#!      -comment "high level module reset will require submodules power-down"
+#!
+#!waive -rule "Ar_glitch01" \
+#!      -msg "*Signal *u_event_cdc_sync.u_sync_wrp*.sample_syncl driving '*' pin of element '*fifo_inst.*bcm21_atv.*sample_syncl*' has glitch*" \
+#!      -comment "high level module reset will require submodules power-down"
+#!
+#!waive -rule "Ar_glitch01" \
+#!      -msg "Signal*sample_syncl driving '*' pin of element '*' has glitch*" \
+#!      -comment "The TMR CDC reset module is not recognized"
+#!
+#!waive -rule "Ac_glitch02" \
+#!      -msg "*Crossing from source*tgt*to destination*ini*may be subject to glitches*" \
+#!      -comment "Async bridge crossing"
+#!
+#!waive -rule "Ac_glitch02" \
+#!      -msg "*Crossing from source*ini*to destination*tgt*may be subject to glitches*" \
+#!      -comment "Async bridge crossing"
+#!
+#!waive -rule "Ac_glitch03" \
+#!      -msg "*Destination flop*sample_meta* can glitch*" \
+#!      -comment "Ignored"
+#!
+#!waive -rule "Ac_glitch04" \
+#!      -msg "*Destination primary output*arcsync_axi_rdata_ecc*clocked by '*arcsync_axi_clk' can glitch*" \
+#!      -comment "Already add DW_A2X as CDC"
+#!
+#!waive -rule "Reset_info09b" \
+#!      -msg "Reset net *u_arcsync_axi2reg.rtlc* is tied to its inactive value with a constant value*" \
+#!      -comment "It can be waived due to CDC module use 1'b1 to generate rst_n which is not correctly recongized by spyglass"
+#!
+#!waive -rule "Reset_info09b" \
+#!      -msg "Reset net *u_arcsync_acs.rtlc* is tied to its inactive value with a constant value*" \
+#!      -comment "It can be waived due to CDC module use 1'b1 to generate rst_n which is not correctly recongized by spyglass"
+#!
+#!waive -rule "Reset_info09b" \
+#!      -msg "*Reset net *npu_core_pd.u_nl2arc*rst_d_n is tied to its inactive value with a constant value 1*" \
+#!      -comment "These 2 are reset CDC for delay only"
+#!
+#!waive -rule "Reset_info09b" \
+#!      -msg "*Reset net *rtlc* is tied to its inactive value with a constant value 0*" \
+#!      -comment "Reset CTRL use 1'b1 to generate reset which is not correctly recognized by spyglass"
+#!
+#!waive -rule "Reset_sync04" \
+#!      -msg "Asynchronous reset signal '*rst_a' is synchronized at least twice*" \
+#!      -comment "This is as intended, ARCsync generate reset to outside."
+#!
+#!waive -rule "OneModule-ML" -comment "Safety ECC related module include all gen/cdc inside"
+#!
+#!waive -rule "Reset_check07" \
+#!      -msg "*_fifo_inst.*_bcm21_atv*.sample_syncl* is driven by combinational logic*" \
+#!      -comment "It's intended to have both soft_reset and reset to drive the input."
+#!
+#!waive -rule "Reset_check07" \
+#!      -msg "*npu_core_aon.u_npu_*_aon.*_err*_sync*' is driven by combinational logic*" \
+#!      -comment "It's intended to have both soft_reset and reset to drive the input."
+#!
+#!waive -rule "FlopEConst" \
+#!      -msg "*Enable pin EN on Flop * is  always enabled*" \
+#!      -comment "It's intended to enable the parity bit update every cycle."
+#!
+#!waive -rule "FlopEConst" \
+#!      -msg "*Enable pin EN on Flop * is  always disabled*" \
+#!      -comment "It's intended to enable the parity bit update every cycle."
+#!
+#!waive -rule "STARC05-1.3.1.3" \
+#!      -msg "*Asynchronous *signal*rst_dp_r*used as non*reset/synchronous*reset*" \
+#!      -comment "It's internal generated datapath reset"
+#!
+#!waive -rule "SelfDeterminedExpr-ML" \
+#!      -msg "*Self determined expression*found in module*[Hierarchy:*]*" \
+#!      -comment "For loop is widely used within NPX"
+#!
+#!waive -rule "W193" \
+#!      -msg "*Empty statement*" \
+#!      -comment "Empty statement is used in some full case"
+#!
+#!waive -rule "W486" \
+#!      -msg "*Rhs width*with shift*is more than lhs width*" \
+#!      -comment "use unsigned vars or not power of 2 width"
+#!
+#!waive -rule "W287b" \
+#!      -msg "*Instance output port*is not connected*" \
+#!      -comment "Intended open"
+#!
+#!##waive -rule "W164a" \
+#!##      -msg "*LHS:*width * is less than RHS*" \
+#!##      -comment "the calculation will trunk the MSB, ignore overflow"
+#!
+#!waive -rule "SDC_40" \
+#!      -msg "*In 'set_multicycle_path' command list returned by nested command for*is empty*" \
+#!      -comment "These constraints are valid only for post SEIF Spyglass flow"
+#!
+#!##waive -rule "SDC_17" \
+#!##      -msg "*Net:*specified in constraint file not found in design*" \
+#!##      -comment "These constraints are valid only for post SEIF Spyglass flow"
+#!
+#!waive -rule "ErrorAnalyzeBBox" \
+#!      -msg "*Design Unit*has no definition; black-box behavior assumed*" \
+#!      -comment "Blackbox for memory in lint flow"
+#!
+#!waive -rule "Ac_coherency06" \
+#!      -msg "*Source primary input*is synchronized*times (at*) in same destination domain*" \
+#!      -comment "l2group pwr_a is generated from rst_a"
+#!
+#!waive -rule "Ac_coherency06" \
+#!      -msg "*Source primary input '*nl2arc_pwr_dwn_a*' is synchronized twice*" \
+#!      -comment "Sync twice is as expected"
+#!      
+#!waive -rule "Ac_coherency06" \
+#!      -msg "*Source flop* is synchronized twice*in same destination domain" \
+#!      -comment "Sync twice is as expected"
+#!
+#!waive -rule "NoAssignX-ML" \
+#!      -msg "*RHS of the assignment contains 'X'*" \
+#!      -comment "Spyglass issue, edc guard 878 lines doesn't have this issue"
+#!
+#!waive -rule "NoGenLabel-ML" \
+#!      -msg "*Block label missing for * block in module*" \
+#!      -comment "EDC Guard Module report this which cause by grammer not correctly recongnize by spyglass"
+#!
+#!waive -rule "W402b" \
+#!      -msg "*Set *ecc* to flop *ecc* is gated or internally generated*" \
+#!      -comment "ECC reset value is internally generated"
+#!      
+#!waive -rule "UndrivenInTerm-ML" \
+#!      -msg "*Detected undriven input terminal *clk_gate0.IQ*" \
+#!      -comment "NPX Lint used CLK GATE CELL"
+#!
+#!waive -rule "WRN_1459" \
+#!      -msg "*Incompatible assignment to enum in port (*) of module (npu_axi_matrix)*" \
+#!      -comment "Internal return type is defined in HLA"
+#!
+#!waive -rule "W210" \
+#!      -msg "*HDBSVT08_CKGTPLT_V5Y2_1*" \
+#!      -comment "Gating CELL used only in spyglass"
+#!
+#!waive -rule "W287c" \
+#!      -msg "*Unconnected instance inout 'IQ'*" \
+#!      -comment "Gating CELL used only in spyglass"
+#!
+#!waive -rule "Ar_asyncdeassert01" \
+#!      -msg "*Reset signal '*npu_core_pd.nl2arc*_rst_d*" \
+#!      -comment "rst_d is synchronized from rst_a, BCM99 is already used as CDC"
+#!
+#!waive -rule "Ar_unsync01" \
+#!      -msg "*Reset signal '*npu_core_pd.nl2arc*_rst_d*" \
+#!      -comment "rst_d is synchronized from rst_a, BCM99 is already used as CDC"
+#!
+#!waive -rule "Reset_sync04" \
+#!      -msg "*Asynchronous reset signal*npu_core_pd.nl2arc*_rst_d*is synchronized at least twice*" \
+#!      -comment "rst_d is synchronized from rst_a, Sync twice as expected"
+#!
+#!waive -rule "STARC-2.3.4.3" \
+#!      -msg "*Flip-flop 'sample*' has neither asynchronous set nor asynchronous reset*u_nl2arc*_rst_cdc_sync*" \
+#!      -comment "rst_d is synchronized from rst_a, BCM99 is already used as CDC"
+#!      
+#!waive -rule "Ar_resetcross01" \
+#!      -msg "*Synchronized reset crossing detected from Flop*ini*" \
+#!      -comment "SYNC_INI/TGT reset need to work with power-down, no cross issue occur"
+#!
+#!waive -rule "Ar_resetcross01" \
+#!      -msg "*Synchronized reset crossing detected from Flop*tgt*" \
+#!      -comment "SYNC_INI/TGT reset need to work with power-down, no cross issue occur"
+#!      
+#!waive -rule "Ar_resetcross01" \
+#!      -msg "*Unsynchronized reset crossing detected from Flop*ini*" \
+#!      -comment "SYNC_INI/TGT reset need to work with power-down, no cross issue occur"
+#!
+#!waive -rule "Ar_resetcross01" \
+#!      -msg "*Unsynchronized reset crossing detected from Flop*tgt*" \
+#!      -comment "SYNC_INI/TGT reset need to work with power-down, no cross issue occur"
+#!      
+#!waive -rule "Ar_resetcross01" \
+#!      -msg "*Synchronized reset crossing detected from Flop*apb_bridge_inst*" \
+#!      -comment "Reviewed, APB reset path is confirmed no issue introduced."
+#!      
+#!waive -rule "Ar_resetcross01" \
+#!      -msg "*Unsynchronized reset crossing detected from Flop*apb_bridge_inst*" \
+#!      -comment "Reviewed, APB reset path is confirmed no issue introduced."
+#!      
+#!waive -rule "Ar_resetcross01" \
+#!      -msg "*Synchronized reset crossing detected from Flop*u_npu_fabric_sfty_monitor*" \
+#!      -comment "Reviewed, SAFETY related signal is OK with reset cross."
+#!      
+#!waive -rule "Ar_resetcross01" \
+#!      -msg "*Unsynchronized reset crossing detected from Flop*u_npu_fabric_sfty_monitor*" \
+#!      -comment "Reviewed, SAFETY related signal is OK with reset cross."
+#!      
+#!waive -rule "Ar_resetcross01" \
+#!      -msg "*Unsynchronized reset crossing detected from Flop*u_npu_grp_sfty_monitor*" \
+#!      -comment "Reviewed, SAFETY related signal is OK with reset cross."
+#!      
+#!waive -rule "Ar_resetcross01" \
+#!      -msg "*Unsynchronized reset crossing detected from Flop*u_cfg_axi_edc_err_sync*" \
+#!      -comment "Reviewed, SAFETY related signal is OK with reset cross."
+#!      

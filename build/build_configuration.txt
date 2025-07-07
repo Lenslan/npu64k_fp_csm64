@@ -1,0 +1,125 @@
+######## IP Libraries: ########
+# NPX6, v2.0.0                           /home/jjt/ARC/ARC_NPX6/DWC_ARC_NPX6_2_00a-IP-Libraries/NPX6_v2.0.0.iplib
+# ARC xCAM, v4.3.22                      /home/jjt/opt/ARC_2023/ARChitect/lib/ARC_xCAM.iplib
+# Tool Configuration, v1.0.99            /home/jjt/opt/ARC_2023/ARChitect/lib/cgen.iplib
+
+######## npu64k_fp_csm64 --- com.arc.templates.project.npu64k_fp_csm64_0.1_0 ########
+
+# BuildHDL --- Creates the behavioural and synthesisable HDL source code.
+-build_hdl true
+
+
+######## System --- com.arc.hardware.System.1_0 ########
+
+# Create System
+-create com.arc.hardware.System.1_0 System
+
+# Testbench --- 
+# Only the rascal testbench is supported, and is required by ARCtest.
+# 	
+-testbench rascal
+
+# SynthesisLevel --- 
+# Sets the top level module name for synthesis.  
+# 
+# If not using core_sys: for single-core designs, cpu_isle is used; for multicore designs, archipelago is used.
+# 	
+-synthesislevel cpu_isle/archipelago
+
+# GateLevelSim --- When selected the gate level sim test code and scripts would be installed to run ARCgatesim
+-gatesim true
+
+# UserLibraryName --- The name for your HDL library
+-library_name user
+
+# OPTION_SimulatorName --- The name of the simulator you wish to use
+-simulator vcs
+
+# sim64 --- When selected, the 64-bit version of the simulator is used.  Be sure you have the 64-bit-capable simulator installed  and $ARCHITECT_ROOT/lib/linux_x86_64/ added to your LD_LIBRARY_PATH.
+# The setting of this option affects the content of the generated makefile_interface_*_verilog, where * is the simulator name.
+-sim64 true
+
+# verilog_2001 --- Enable Verilog 2001 file-io syntax (if false: use pli)
+-verilog_2001 true
+
+# export_srams_to --- Where to place srams, if not cpu_top
+-export_srams_to none
+
+# copy_prefix --- 
+# A Copy Prefix P causes creation of a separate copy of the entire Verilog build where each Verilog filename, module, and `define is prefixed with P and copied to a separate directory named P.
+# 	
+-copy_prefix ""
+
+# always_instantiate_core --- 
+# In SMP, a core is instantiated for each instance.
+# With this option, even if there is just one core, it is instantiated, and thus
+# has a unique prefix for its ports.
+# 
+-always_instantiate_core false
+
+
+######## NPX6 --- com.arc.hardware.NPX6.1_0 ########
+
+# Create NPX6
+-create com.arc.hardware.NPX6.1_0 System.NPX6
+
+# npu_cfg --- Described the different NPX configs here
+-npu_cfg npu64k_fp_csm64_0
+
+# npu_slice_num --- (arc_dev) Instantiate multiple NPU Slice Accelerators.
+-npu_slice_num 16
+
+# npu_has_float --- (arc_dev) For each slice, add FP16 and BF16 support in the covolution accelerator
+-npu_has_float true
+
+# npu_slice_mac --- (arc_dev) Number of MAC in the convolution accelerator of the slice.
+-npu_slice_mac 4096
+
+# npu_csm_size --- (arc_dev) Size of the L2 shared memory (CSM), in bytes.
+-npu_csm_size 64
+
+# npu_safety_level --- (arc_dev) ASIL
+-npu_safety_level ASIL-B
+
+
+######## Tool Configuration --- cgen.1_0 ########
+
+# Create Tool Configuration
+-create cgen.1_0 "System.Tool Configuration"
+
+# mwdt_version --- Selects the MetaWare version to be used with the TCF file.
+# Change from the "default" setting to an older or newer toolset version if you want the TCF file to be used with an older or newer version of the MetaWare tools.
+-mwdt_version T-2022.06
+
+# code_base_addr --- 
+# The base address to assign to the executable code segment in the linker command file when there is no ICCM in the build.  If not set here, the value 0 or the location of the interrupt vectors may be used as a default.  This value is ignored when there is an ICCM.
+# 
+-code_base_addr 0xffffffff
+
+# data_base_addr --- 
+# The base address to assign to the data segment in the linker command file when the data is not being mapped to a DCCM.  This value is ignored when the data segment is mapped to a DCCM, as in that case the base address of the DCCM memory is used.
+# 
+# A value of 0xffffffff means that the data segment will not be mapped to any specific address.
+# 
+-data_base_addr 0xffffffff
+
+# ucdata_base_addr --- 
+# The base address to assign to the .ucdata section used to contain data designated _Uncached.  The region must not overlap the address ranges where code and data will be mapped in the TCF linker command file.
+# 
+-ucdata_base_addr 0xffffffff
+
+# ucdata_mem_size --- 
+# The size of the memory region to reserve for the .ucdata section
+# 
+-ucdata_mem_size 0
+
+# underscores_in_numbers --- Use underscores in hex numbers to improve readability.
+-underscores_in_numbers false
+
+# lcf_ccm_fill --- Linker command file fills CCM data memory for use with -Bzerobss
+-lcf_ccm_fill true
+
+# tcf_rebrand_name --- Alternate branding name for TCF (not used)
+-rebrand_name ""
+
+
