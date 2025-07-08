@@ -9,7 +9,7 @@ BUILD             ?= ${NPU_HOME_RLS}/$(LBUILD)
 NPU_RTL_SIMULATOR ?= 0
 RTL_SIMULATOR     ?= $(NPU_RTL_SIMULATOR)
 
-VERDI             ?= 0
+VERDI             ?= 1
 TB_MDB            ?= 0
 TB_SIM_MON        ?= 1
 TB_PDM            ?= $(NPU_HAS_POWERDOMAINS)
@@ -66,7 +66,7 @@ ifeq ($(TB_PDM),1)
   VCS_ELAB_OPTS   += -upf ${NPU_HOME_RLS}/syn/constraints/npu_top_for_vcs.upf -power_top npu_top
 endif
 #ifeq ($(TB_MDB),1)
-  VCS_COMP_OPTS   += -P ${NPU_HOME_RLS}/tb/mdb/arc_vcs_pli_table -L $(NPU_VCS_PLI) -larc-vcs-pli-verilog
+  VCS_COMP_OPTS   += -P ${NPU_HOME_RLS}/tb/mdb/arc_vcs_pli_table -L $(NPU_VCS_PLI) 
 #endif
 VCS_COMP_OPTS += $(COMP_DEFS)
 endif
@@ -108,12 +108,12 @@ config/.manifest-fixed: ${NPU_HOME_RLS}/config/manifest.rtl.flat ${NPU_HOME_RLS}
 
 ifeq ($(RTL_SIMULATOR),0)
 compile: config/.manifest-fixed
-	cd $(LBUILD) && vcs -j$(NCORES) $(VCS_COMP_OPTS) $(VCS_ELAB_OPTS) $(SRC_PATHS) -file $(SIM_SRC_LISTS) -top npu_tb_top -o simv
+	cd $(LBUILD) && vcs -j$(NCORES) $(VCS_COMP_OPTS) $(VCS_ELAB_OPTS) $(SRC_PATHS) -f $(SIM_SRC_LISTS) -top npu_tb_top -o simv
 	@echo "TB_MDB=$(TB_MDB)" > $(LBUILD)/vcs_bld.mk
 	@echo "VERDI=$(VERDI)" >> $(LBUILD)/vcs_bld.mk
 	@echo "TB_SIM_MON=$(TB_SIM_MON)" >> $(LBUILD)/vcs_bld.mk
 waves: config/.manifest-fixed
-	cd $(LBUILD) && vcs -j$(NCORES) $(VCS_COMP_OPTS) $(VCS_ELAB_OPTS)  $(WAVE_OPTS) $(SRC_PATHS) -file $(SIM_SRC_LISTS) -top npu_tb_top -o simv
+	cd $(LBUILD) && vcs -j$(NCORES) $(VCS_COMP_OPTS) $(VCS_ELAB_OPTS)  $(WAVE_OPTS) $(SRC_PATHS) -f $(SIM_SRC_LISTS) -top npu_tb_top -o simv
 	@echo "TB_MDB=$(TB_MDB)" > $(LBUILD)/vcs_bld.mk
 	@echo "VERDI=$(VERDI)" >> $(LBUILD)/vcs_bld.mk
 	@echo "TB_SIM_MON=$(TB_SIM_MON)" >> $(LBUILD)/vcs_bld.mk

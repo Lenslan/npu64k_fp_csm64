@@ -1,4 +1,7 @@
 #!/usr/bin/env bash
+export SYOPSYS=/usr/synopsys/vc_static-O-2018.09-SP2-2/vcs-mx/linux64/packages
+export VERDI_HOME=/usr/synopsys/vc_static-O-2018.09-SP2-2/verdi/
+
 export NCONFIG=npu64k_fp_csm64_0
 
 export NPU_HOME_RLS=`pwd`
