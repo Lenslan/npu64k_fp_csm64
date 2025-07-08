@@ -63,46 +63,50 @@ module npu_conv_mpy_mul
         logic upper_b;
         assign upper_a = fp ? 1'b1 : mpy_a[go][gi].sgn;      
         assign upper_b = fp ? 1'b1 : mpy_b[go][gi].sgn;      
-        DW02_mult 
-          #(
-            .A_width(11),
-            .B_width(11)
-            )
-        u_mpy12_inst
-          (
-           .A({upper_a,mpy_a[go][gi].int10[9:0]}),
-           .B({upper_b,mpy_b[go][gi].int10[9:0]}),
-           .TC(!fp),
-           .PRODUCT(prod_nxt[go].proda[gi])
-           );
+        // DW02_mult 
+        //   #(
+        //     .A_width(11),
+        //     .B_width(11)
+        //     )
+        // u_mpy12_inst
+        //   (
+        //    .A({upper_a,mpy_a[go][gi].int10[9:0]}),
+        //    .B({upper_b,mpy_b[go][gi].int10[9:0]}),
+        //    .TC(!fp),
+        //    .PRODUCT(prod_nxt[go].proda[gi])
+        //    );
+	assign prod_nxt[go].proda[gi] = fp ? {{upper_a,mpy_a[go][gi].int10[9:0]}} * {{upper_b,mpy_b[go][gi].int10[9:0]}} :
+                           		     $signed({{upper_a,mpy_a[go][gi].int10[9:0]}}) * $signed({{upper_b,mpy_b[go][gi].int10[9:0]}}) ;
       end // if (NPU_HAS_FLOAT)
       else
       begin : mpy12_el
         // 9b x 9b multiplier, because of sign extension
         // needed for fm16 mode!
         assign prod_nxt[go].proda[gi][21:18] = '0;
-        DW02_mult #(.A_width(9),.B_width(9))
-        u_mpy9a_inst
-          (
-           .A(mpy_a[go][gi].int10[8:0]),
-           .B(mpy_b[go][gi].int10[8:0]),
-           .TC(1'b1),
-           .PRODUCT(prod_nxt[go].proda[gi][17:0])
-           );
+        // DW02_mult #(.A_width(9),.B_width(9))
+        // u_mpy9a_inst
+        //   (
+        //    .A(mpy_a[go][gi].int10[8:0]),
+        //    .B(mpy_b[go][gi].int10[8:0]),
+        //    .TC(1'b1),
+        //    .PRODUCT(prod_nxt[go].proda[gi][17:0])
+        //    );
+	assign prod_nxt[go].proda[gi][17:0] = $signed(mpy_a[go][gi].int10[8:0]) * $signed(mpy_b[go][gi].int10[8:0]);
       end
       
-      DW02_mult 
-      #(
-        .A_width(8),
-        .B_width(9)
-      )
-      u_mpy_9_inst
-      (
-       .A(mpy_a[go][gi].int8),
-       .B(mpy_b[go][gi].int9),
-       .TC(1'b1),
-       .PRODUCT(prodb)
-      );
+      // DW02_mult 
+      // #(
+      //   .A_width(8),
+      //   .B_width(9)
+      // )
+      // u_mpy_9_inst
+      // (
+      //  .A(mpy_a[go][gi].int8),
+      //  .B(mpy_b[go][gi].int9),
+      //  .TC(1'b1),
+      //  .PRODUCT(prodb)
+      // );
+	assign prodb = $signed(mpy_a[go][gi].int8) * $signed(mpy_b[go][gi].int9);
  
       // process floating-point exponent
       always_comb
