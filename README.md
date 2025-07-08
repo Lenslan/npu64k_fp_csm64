@@ -2,6 +2,9 @@
 
 从闲鱼上两块钱买的npu项目
 
+## env
+使用`docker pull phyzli/ubuntu18.04_xfce4_vnc4server_synopsys`
+
 ## history 
 - V1.0:
   可以编译的版本
