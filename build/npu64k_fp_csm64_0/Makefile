@@ -105,6 +105,8 @@ fix-manifest: config/.manifest-fixed
 config/.manifest-fixed: ${NPU_HOME_RLS}/config/manifest.rtl.flat ${NPU_HOME_RLS}/config/manifest.flat
 	sed -i 's#$${NPU_HOME}/build#$${NPU_HOME_RLS}#g' $^
 	touch $@
+verdi:
+	verdi -dbdir $(LBUILD)/simv.daidir/ &
 
 ifeq ($(RTL_SIMULATOR),0)
 compile: config/.manifest-fixed
